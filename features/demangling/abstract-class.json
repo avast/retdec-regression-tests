@@ -1,0 +1,38 @@
+{
+   "functions" : [
+      {
+         "callingConvention" : "unknown",
+         "demangledName" : "demangled value from input config",
+         "endAddr" : 134514469,
+         "fncType" : "userDefined",
+         "name" : "_ZN7Polygon10set_valuesEii",
+         "parameters" : [
+            {
+               "llvmIrName" : "arg1",
+               "name" : "arg1",
+               "type" : {
+                  "llvmIr" : "i32"
+               }
+            },
+            {
+               "llvmIrName" : "arg2",
+               "name" : "arg2",
+               "type" : {
+                  "llvmIr" : "i32"
+               }
+            },
+            {
+               "llvmIrName" : "arg3",
+               "name" : "arg3",
+               "type" : {
+                  "llvmIr" : "i32"
+               }
+            }
+         ],
+         "returnType" : {
+            "llvmIr" : "i32"
+         },
+         "startAddr" : 134514446
+      }
+   ]
+}
