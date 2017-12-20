@@ -9,8 +9,8 @@ class TestCcg(Test):
 
     def test_heuristic_works(self):
         assert self.fileinfo.succeeded
-        self.assertEqual(self.fileinfo.output['tools'][0]['heuristics'], True)
-        self.assertEqual(self.fileinfo.output['tools'][0]['name'], 'CCG packer')
+        self.assertEqual(self.fileinfo.output['tools'][1]['heuristics'], True)
+        self.assertEqual(self.fileinfo.output['tools'][1]['name'], 'CCG packer')
 
 class TestGentee(Test):
     settings=TestSettings(
@@ -69,8 +69,8 @@ class TestTSULoader(Test):
 
     def test_heuristic_works(self):
         assert self.fileinfo.succeeded
-        self.assertEqual(self.fileinfo.output['tools'][0]['heuristics'], True)
-        self.assertEqual(self.fileinfo.output['tools'][0]['name'], 'TSULoader')
+        self.assertEqual(self.fileinfo.output['tools'][1]['heuristics'], True)
+        self.assertEqual(self.fileinfo.output['tools'][1]['name'], 'TSULoader')
 
 class TestWinZipLoader(Test):
     settings=TestSettings(
