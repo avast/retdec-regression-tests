@@ -8,4 +8,4 @@ class Test(Test):
 
     def test_correctly_analyzes_input_file(self):
         assert self.fileinfo.succeeded
-        assert self.fileinfo.output.contains(r'.*HotSoupProcessor')
+        assert self.fileinfo.output.contains(r'.*Hot Soup Processor')
