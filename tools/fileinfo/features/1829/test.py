@@ -82,4 +82,4 @@ class TestWinZipLoader(Test):
     def test_heuristic_works(self):
         assert self.fileinfo.succeeded
         self.assertEqual(self.fileinfo.output['tools'][0]['heuristics'], True)
-        self.assertEqual(self.fileinfo.output['tools'][0]['name'], 'WinZip Self-Extractor')
+        self.assertEqual(self.fileinfo.output['tools'][0]['name'], 'WinZip SFX')

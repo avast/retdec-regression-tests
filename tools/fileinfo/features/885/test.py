@@ -14,7 +14,7 @@ class Test(Test):
         assert self.fileinfo.output.contains(
             r'MSVC \(9.0\) Visual Studio 2008'
         )
-        assert self.fileinfo.output.contains(r"Visual C\+\+")
+        assert self.fileinfo.output.contains(r"C\+\+")
         self.assertEqual(self.fileinfo.output['File class'], '32-bit')
         self.assertEqual(self.fileinfo.output['File format'], 'PE')
         self.assertEqual(self.fileinfo.output['File type'], 'Executable file')
