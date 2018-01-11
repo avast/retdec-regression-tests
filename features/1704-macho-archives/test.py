@@ -3,13 +3,13 @@ import json
 
 class TestExtractArchiveJson(Test):
     settings = TestSettings(
-        tool='macho-extractor',
+        tool='retdec-macho-extractor',
         input='20',
         args='--json'
     )
 
     def test_check_extract_json(self):
-        as_json = json.loads(self.macho_extractor.output)
+        as_json = json.loads(self.retdec_macho_extractor.output)
         self.assertEqual(as_json['architectures'][0]['name'], 'armv7')
         self.assertEqual(as_json['architectures'][0]['index'], 0)
         self.assertEqual(as_json['architectures'][0]['cpuFamily'], 'arm')
@@ -21,13 +21,13 @@ class TestExtractArchiveJson(Test):
 
 class TestExtractArchiveJsonWithOjects(Test):
     settings = TestSettings(
-        tool='macho-extractor',
+        tool='retdec-macho-extractor',
         input='20',
         args='--json --objects'
     )
 
     def test_check_extract_json(self):
-        as_json = json.loads(self.macho_extractor.output)
+        as_json = json.loads(self.retdec_macho_extractor.output)
         self.assertEqual(as_json['architectures'][0]['name'], 'armv7')
         self.assertEqual(as_json['architectures'][0]['index'], 0)
         self.assertEqual(as_json['architectures'][0]['cpuFamily'], 'arm')
@@ -47,33 +47,33 @@ class TestExtractArchiveJsonWithOjects(Test):
 
 class TestExtractArchiveWithOjects(Test):
     settings = TestSettings(
-        tool='macho-extractor',
+        tool='retdec-macho-extractor',
         input='20',
         args='--objects'
     )
 
     def test_check_extract_json(self):
-        self.assertIn('0\tarmv7\tarm\tyes', self.macho_extractor.output)
-        self.assertIn('1\tarm64\tarm64\tno', self.macho_extractor.output)
-        self.assertIn('0\tTatvikMpeg2DemuxBitStreamReader.o', self.macho_extractor.output)
-        self.assertIn('1\tTatvikMpeg2DemuxPESDecoder.o', self.macho_extractor.output)
-        self.assertIn('2\tTatvikMpeg2TSDemuxer.o', self.macho_extractor.output)
-        self.assertIn('3\tTatvikTransportStreamParser.o', self.macho_extractor.output)
+        self.assertIn('0\tarmv7\tarm\tyes', self.retdec_macho_extractor.output)
+        self.assertIn('1\tarm64\tarm64\tno', self.retdec_macho_extractor.output)
+        self.assertIn('0\tTatvikMpeg2DemuxBitStreamReader.o', self.retdec_macho_extractor.output)
+        self.assertIn('1\tTatvikMpeg2DemuxPESDecoder.o', self.retdec_macho_extractor.output)
+        self.assertIn('2\tTatvikMpeg2TSDemuxer.o', self.retdec_macho_extractor.output)
+        self.assertIn('3\tTatvikTransportStreamParser.o', self.retdec_macho_extractor.output)
 
 class TestExtractArchivePlain(Test):
     settings = TestSettings(
-        tool='macho-extractor',
+        tool='retdec-macho-extractor',
         input='20',
         args='--list'
     )
 
     def test_check_extract_plain(self):
-        self.assertIn('0\tarmv7\tarm\tyes', self.macho_extractor.output)
-        self.assertIn('1\tarm64\tarm64\tno', self.macho_extractor.output)
+        self.assertIn('0\tarmv7\tarm\tyes', self.retdec_macho_extractor.output)
+        self.assertIn('1\tarm64\tarm64\tno', self.retdec_macho_extractor.output)
 
 class TestExtractDetectClassicMacho(Test):
     settings = TestSettings(
-        tool='macho-extractor',
+        tool='retdec-macho-extractor',
         input='invalid_ar'
     )
 
@@ -81,12 +81,12 @@ class TestExtractDetectClassicMacho(Test):
         pass
 
     def test_check_detection_list(self):
-        self.assertNotEqual(self.macho_extractor.return_code, 0)
-        self.assertIn('Error: file is not valid Mach-O Universal static library.', self.macho_extractor.log)
+        self.assertNotEqual(self.retdec_macho_extractor.return_code, 0)
+        self.assertIn('Error: file is not valid Mach-O Universal static library.', self.retdec_macho_extractor.log)
 
 class TestExtractPrintErrorInJson(Test):
     settings = TestSettings(
-        tool='macho-extractor',
+        tool='retdec-macho-extractor',
         args='--json'
     )
 
@@ -94,8 +94,8 @@ class TestExtractPrintErrorInJson(Test):
         pass
 
     def test_check_detection_list(self):
-        self.assertNotEqual(self.macho_extractor.return_code, 0)
-        as_json = json.loads(self.macho_extractor.output)
+        self.assertNotEqual(self.retdec_macho_extractor.return_code, 0)
+        as_json = json.loads(self.retdec_macho_extractor.output)
         self.assertEqual(as_json['error'], 'no input file')
 
 class TestExtractArchiveDecompilationPick(Test):
@@ -141,13 +141,13 @@ class TestExtractArchiveDecompilation(Test):
 
 class TestExtractDecompileArchiveJson(Test):
     settings = TestSettings(
-        tool='decompile-archive.sh',
+        tool='retdec-archive-decompiler.sh',
         input='20',
         args='--list --json'
     )
 
     def test_check_list(self):
-        as_json = json.loads(self.decompile_archive_sh.output)
+        as_json = json.loads(self.retdec_archive_decompiler_sh.output)
         self.assertEqual(as_json['architectures'][0]['name'], 'armv7')
         self.assertEqual(as_json['architectures'][0]['index'], 0)
         self.assertEqual(as_json['architectures'][0]['cpuFamily'], 'arm')
@@ -167,15 +167,15 @@ class TestExtractDecompileArchiveJson(Test):
 
 class TestExtractDecompileArchivePlainText(Test):
     settings = TestSettings(
-        tool='decompile-archive.sh',
+        tool='retdec-archive-decompiler.sh',
         input='20',
         args='--list'
     )
 
     def test_check_list(self):
-        self.assertIn('0\tarmv7\tarm\tyes', self.decompile_archive_sh.output)
-        self.assertIn('1\tarm64\tarm64\tno', self.decompile_archive_sh.output)
-        self.assertIn('0\tTatvikMpeg2DemuxBitStreamReader.o', self.decompile_archive_sh.output)
-        self.assertIn('1\tTatvikMpeg2DemuxPESDecoder.o', self.decompile_archive_sh.output)
-        self.assertIn('2\tTatvikMpeg2TSDemuxer.o', self.decompile_archive_sh.output)
-        self.assertIn('3\tTatvikTransportStreamParser.o', self.decompile_archive_sh.output)
+        self.assertIn('0\tarmv7\tarm\tyes', self.retdec_archive_decompiler_sh.output)
+        self.assertIn('1\tarm64\tarm64\tno', self.retdec_archive_decompiler_sh.output)
+        self.assertIn('0\tTatvikMpeg2DemuxBitStreamReader.o', self.retdec_archive_decompiler_sh.output)
+        self.assertIn('1\tTatvikMpeg2DemuxPESDecoder.o', self.retdec_archive_decompiler_sh.output)
+        self.assertIn('2\tTatvikMpeg2TSDemuxer.o', self.retdec_archive_decompiler_sh.output)
+        self.assertIn('3\tTatvikTransportStreamParser.o', self.retdec_archive_decompiler_sh.output)
