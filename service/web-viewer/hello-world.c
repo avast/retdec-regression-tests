@@ -1,5 +1,4 @@
 // Source code of hello-world.exe.
-// Decompilation: decompile.sh hello-world.c
 
 #include <stdio.h>
 

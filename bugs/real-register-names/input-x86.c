@@ -1,8 +1,4 @@
 // Input file for input-x86.exe.
-//
-// Decompilation:
-//
-//   decompile.sh input.c
 
 __attribute__((fastcall)) int func(int a) {
 	printf("%d\n", a);
