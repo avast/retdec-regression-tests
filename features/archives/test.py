@@ -16,8 +16,8 @@ class TestArchiveIdentification(Test):
 
     def test_check_archive_identification(self):
         self.assertNotEqual(self.decomp.return_code, 0)
-        assert 'fact_x86.o' in self.decompile_sh.output
-        assert 'lib.o' in self.decompile_sh.output
+        assert 'fact_x86.o' in self.decomp.output
+        assert 'lib.o' in self.decomp.output
 
 
 class TestArchiveEmptyInputArchive(Test):
