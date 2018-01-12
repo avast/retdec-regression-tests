@@ -9,4 +9,4 @@ class Test(Test):
 	)
 
 	def test_decompiles_successfully(self):
-		assert self.decomp.succeeded
+		assert self.decompiler.succeeded

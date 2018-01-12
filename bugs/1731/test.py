@@ -21,8 +21,8 @@ class TestNoInstructionInSelectedRange0x0To0x0DecodeOnly(Test):
         pass
 
     def test_decompilation_fails_with_correct_error_message(self):
-        self.assertNotEqual(self.decomp.return_code, 0)
-        assert self.decomp.log.contains(r'Error: No instructions were decoded')
+        self.assertNotEqual(self.decompiler.return_code, 0)
+        assert self.decompiler.log.contains(r'Error: No instructions were decoded')
 
 class TestNoInstructionInSelectedRange0x1To0x1(Test):
     settings=CriticalTestSettings.from_settings(base_settings,
@@ -41,8 +41,8 @@ class TestNoInstructionInSelectedRange0x1To0x1DecodeOnly(Test):
         pass
 
     def test_decompilation_fails_with_correct_error_message(self):
-        self.assertNotEqual(self.decomp.return_code, 0)
-        assert self.decomp.log.contains(r'Error: No instructions were decoded')
+        self.assertNotEqual(self.decompiler.return_code, 0)
+        assert self.decompiler.log.contains(r'Error: No instructions were decoded')
 
 class TestInstructionInSelectedRange0x407741To0x4077411(Test):
     settings=CriticalTestSettings.from_settings(base_settings,
@@ -65,5 +65,5 @@ class TestInstructionInSelectedRange0x407741To0x4077411DecodeOnly(Test):
         pass
 
     def test_decompilation_fails_with_correct_error_message(self):
-        self.assertNotEqual(self.decomp.return_code, 0)
-        assert self.decomp.log.contains(r'Error: No instructions were decoded')
+        self.assertNotEqual(self.decompiler.return_code, 0)
+        assert self.decompiler.log.contains(r'Error: No instructions were decoded')

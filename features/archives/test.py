@@ -15,9 +15,9 @@ class TestArchiveIdentification(Test):
         pass
 
     def test_check_archive_identification(self):
-        self.assertNotEqual(self.decomp.return_code, 0)
-        assert 'fact_x86.o' in self.decomp.output
-        assert 'lib.o' in self.decomp.output
+        self.assertNotEqual(self.decompiler.return_code, 0)
+        assert 'fact_x86.o' in self.decompiler.output
+        assert 'lib.o' in self.decompiler.output
 
 
 class TestArchiveEmptyInputArchive(Test):
@@ -30,9 +30,9 @@ class TestArchiveEmptyInputArchive(Test):
         pass
 
     def test_check_archive_identification(self):
-        self.assertNotEqual(self.decomp.return_code, 0)
-        assert self.decomp.log.contains(r'This file is an archive!')
-        assert self.decomp.log.contains(r'Error: The input archive is empty.')
+        self.assertNotEqual(self.decompiler.return_code, 0)
+        assert self.decompiler.log.contains(r'This file is an archive!')
+        assert self.decompiler.log.contains(r'Error: The input archive is empty.')
 
 
 class TestArchiveWithEmptyFile(Test):
@@ -46,12 +46,12 @@ class TestArchiveWithEmptyFile(Test):
         pass
 
     def test_is_archive_but_the_format_of_file_inside_it_is_unsupported(self):
-        self.assertNotEqual(self.decomp.return_code, 0)
-        assert self.decomp.log.contains(r'This file is an archive!')
+        self.assertNotEqual(self.decompiler.return_code, 0)
+        assert self.decompiler.log.contains(r'This file is an archive!')
         # The archive contains an empty file, so the archive is valid and its
         # extraction should succeed. However, fileinfo should fail because the
         # format is not supported.
-        assert self.decomp.log.contains(r'Error: File format.*not supported.')
+        assert self.decompiler.log.contains(r'Error: File format.*not supported.')
 
 
 class TestArchiveInvalidInputArchive(Test):
@@ -64,9 +64,9 @@ class TestArchiveInvalidInputArchive(Test):
         pass
 
     def test_check_archive_identification(self):
-        self.assertNotEqual(self.decomp.return_code, 0)
-        assert self.decomp.log.contains(r'This file is an archive!')
-        assert self.decomp.log.contains(
+        self.assertNotEqual(self.decompiler.return_code, 0)
+        assert self.decompiler.log.contains(r'This file is an archive!')
+        assert self.decompiler.log.contains(
             r'Error: The input archive has invalid format.'
         )
 
@@ -126,9 +126,9 @@ class TestArchiveInvalidIndex(Test):
         pass
 
     def test_check_failure(self):
-        self.assertTrue(self.decomp.failed)
-        assert not self.decomp.log.contains(r'integer expression expected')
-        assert self.decomp.log.contains(
+        self.assertTrue(self.decompiler.failed)
+        assert not self.decompiler.log.contains(r'integer expression expected')
+        assert self.decompiler.log.contains(
             r'Error: File on index ".*" was not found in the input archive. '
             'Valid indexes are 0-1.'
         )
@@ -145,9 +145,9 @@ class TestArchiveInvalidIndexOneFile(Test):
         pass
 
     def test_check_failure(self):
-        self.assertTrue(self.decomp.failed)
-        assert not self.decomp.log.contains(r'integer expression expected')
-        assert self.decomp.log.contains(
+        self.assertTrue(self.decompiler.failed)
+        assert not self.decompiler.log.contains(r'integer expression expected')
+        assert self.decompiler.log.contains(
             r'Error: File on index ".*" was not found in the input archive. '
             'The only valid index is 0.'
         )
@@ -164,8 +164,8 @@ class TestArchiveInvalidName(Test):
         pass
 
     def test_check_failure(self):
-        self.assertTrue(self.decomp.failed)
-        assert self.decomp.log.contains(
+        self.assertTrue(self.decompiler.failed)
+        assert self.decompiler.log.contains(
             r'Error: File named "notavalidname" was '
             'not found in the input archive.'
         )
@@ -339,9 +339,9 @@ class TestArchiveThinInputArchive(Test):
         pass
 
     def test_check_thin_archive_identification(self):
-        self.assertNotEqual(self.decomp.return_code, 0)
-        assert self.decomp.log.contains(r'This file is an archive!')
-        assert self.decomp.log.contains(
+        self.assertNotEqual(self.decompiler.return_code, 0)
+        assert self.decompiler.log.contains(r'This file is an archive!')
+        assert self.decompiler.log.contains(
             r'Error: File is a thin archive and cannot be decompiled.'
         )
 

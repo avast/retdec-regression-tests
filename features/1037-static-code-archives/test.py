@@ -45,6 +45,6 @@ class DecompileWithSignaturesFromArchiveInvalidArchive(Test):
     )
 
     def test_check_correct_warning(self):
-        assert self.decomp.log.contains(r'Warning: Failed extracting signatures from file ".*"')
+        assert self.decompiler.log.contains(r'Warning: Failed extracting signatures from file ".*"')
 
 # TODO: test for multiple archives and yara files when framework is ready.

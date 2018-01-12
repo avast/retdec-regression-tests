@@ -108,11 +108,11 @@ class TestExtractArchiveDecompilationPick(Test):
         pass
 
     def test_check_objet_list(self):
-        self.assertNotEqual(self.decomp.return_code, 0)
-        self.assertIn('0\tTatvikMpeg2DemuxBitStreamReader.o', self.decomp.output)
-        self.assertIn('1\tTatvikMpeg2DemuxPESDecoder.o', self.decomp.output)
-        self.assertIn('2\tTatvikMpeg2TSDemuxer.o', self.decomp.output)
-        self.assertIn('3\tTatvikTransportStreamParser.o', self.decomp.output)
+        self.assertNotEqual(self.decompiler.return_code, 0)
+        self.assertIn('0\tTatvikMpeg2DemuxBitStreamReader.o', self.decompiler.output)
+        self.assertIn('1\tTatvikMpeg2DemuxPESDecoder.o', self.decompiler.output)
+        self.assertIn('2\tTatvikMpeg2TSDemuxer.o', self.decompiler.output)
+        self.assertIn('3\tTatvikTransportStreamParser.o', self.decompiler.output)
 
 class TestExtractArchiveDecompilationListArchs(Test):
     settings = TestSettings(
@@ -124,10 +124,10 @@ class TestExtractArchiveDecompilationListArchs(Test):
         pass
 
     def test_check_arch_list(self):
-        self.assertNotEqual(self.decomp.return_code, 0)
-        self.assertIn('Invalid --arch option "x86". File contains these architecture families:', self.decomp.output)
-        self.assertIn('armv7\tarm\tyes', self.decomp.output)
-        self.assertIn('arm64\tarm64\tno', self.decomp.output)
+        self.assertNotEqual(self.decompiler.return_code, 0)
+        self.assertIn('Invalid --arch option "x86". File contains these architecture families:', self.decompiler.output)
+        self.assertIn('armv7\tarm\tyes', self.decompiler.output)
+        self.assertIn('arm64\tarm64\tno', self.decompiler.output)
 
 class TestExtractArchiveDecompilation(Test):
     settings = TestSettings(

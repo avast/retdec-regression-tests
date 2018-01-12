@@ -87,5 +87,5 @@ class TestEmpty(Test):
         pass
 
     def test_output_has_no_functions(self):
-        self.assertNotEqual(self.decomp.return_code, 0)
-        assert self.decomp.log.contains(r'Error: No instructions were decoded')
+        self.assertNotEqual(self.decompiler.return_code, 0)
+        assert self.decompiler.log.contains(r'Error: No instructions were decoded')

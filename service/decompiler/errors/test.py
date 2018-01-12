@@ -30,9 +30,9 @@ class NoSectionsOrSegmentsErrorTest(Test):
     #            parser of the decompiler's output relies on it. If you want to
     #            change it, consult this with Petr Zemek.
     def test_decompilation_fails_with_correct_error_message(self):
-        self.assertNotEqual(self.decomp.return_code, 0)
-        assert self.decomp.log.contains(r'Error: Failed to load input file')
-        
+        self.assertNotEqual(self.decompiler.return_code, 0)
+        assert self.decompiler.log.contains(r'Error: Failed to load input file')
+
 class NoInstructionsDecodedTest(Test):
     """Checks that bin2llvmir fails with a proper error message when no
     instructions were decoded.
@@ -51,8 +51,8 @@ class NoInstructionsDecodedTest(Test):
     #            parser of the decompiler's output relies on it. If you want to
     #            change it, consult this with Petr Zemek.
     def test_decompilation_fails_with_correct_error_message(self):
-        self.assertNotEqual(self.decomp.return_code, 0)
-        assert self.decomp.log.contains(r'Error: No instructions were decoded')
+        self.assertNotEqual(self.decompiler.return_code, 0)
+        assert self.decompiler.log.contains(r'Error: No instructions were decoded')
 
 class InvalidInputConfigErrorTest(Test):
     """Checks that fileinfo fails with a proper error message when the input
@@ -77,8 +77,8 @@ class InvalidInputConfigErrorTest(Test):
         pass
 
     def test_decompilation_fails_with_correct_error_message(self):
-        self.assertNotEqual(self.decomp.return_code, 0)
-        assert self.decomp.log.contains(r'Error: .*config.*[sS]yntax error.*')
+        self.assertNotEqual(self.decompiler.return_code, 0)
+        assert self.decompiler.log.contains(r'Error: .*config.*[sS]yntax error.*')
 
 class MissingInfoAboutFileTest(Test):
     """Checks that bin2llvmir fails with a proper error message when basic
@@ -106,5 +106,5 @@ class MissingInfoAboutFileTest(Test):
     #            parser of the decompiler's output relies on it. If you want to
     #            change it, consult this with Petr Zemek.
     def test_decompilation_fails_with_correct_error_message(self):
-        self.assertNotEqual(self.decomp.return_code, 0)
-        assert self.decomp.log.contains(r'Error: Missing basic info about input file -> there can be no decompilation')
+        self.assertNotEqual(self.decompiler.return_code, 0)
+        assert self.decompiler.log.contains(r'Error: Missing basic info about input file -> there can be no decompilation')

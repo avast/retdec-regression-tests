@@ -25,9 +25,9 @@ class TestDecompileSelect0x1DecodeAll(TestBase):
     
 class TestBaseDecodeOnly(Test):
     def test_decompilation_fails_with_correct_error_message(self):
-        self.assertNotEqual(self.decomp.return_code, 0)
-        assert self.decomp.log.contains(r'Error: No instructions were decoded')
-    
+        self.assertNotEqual(self.decompiler.return_code, 0)
+        assert self.decompiler.log.contains(r'Error: No instructions were decoded')
+
 class TestDecompileSelectXxxDecodeOnly(TestBaseDecodeOnly):
     settings = CriticalTestSettings.from_settings(base_settings,
         args = '--select-functions xxx --select-decode-only'

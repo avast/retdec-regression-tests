@@ -73,32 +73,32 @@ class for_simple_O0_MIPS_gcc(TestBase):
     def test_dsm_contains_correct_function_names(self):
         # Ensure that in the generated DSM, we have correct function names
         # (e.g. f1, not f1.1).
-        assert self.decomp.out_dsm.contains(r'; function: f1 at')
-        assert self.decomp.out_dsm.contains(r'jal 0x[0-9a-f]+ <f1>')
+        assert self.decompiler.out_dsm.contains(r'; function: f1 at')
+        assert self.decompiler.out_dsm.contains(r'jal 0x[0-9a-f]+ <f1>')
 
-        assert self.decomp.out_dsm.contains(r'; function: f2 at')
-        assert self.decomp.out_dsm.contains(r'jal 0x[0-9a-f]+ <f2>')
+        assert self.decompiler.out_dsm.contains(r'; function: f2 at')
+        assert self.decompiler.out_dsm.contains(r'jal 0x[0-9a-f]+ <f2>')
 
-        assert self.decomp.out_dsm.contains(r'; function: f3 at')
-        assert self.decomp.out_dsm.contains(r'jal 0x[0-9a-f]+ <f3>')
+        assert self.decompiler.out_dsm.contains(r'; function: f3 at')
+        assert self.decompiler.out_dsm.contains(r'jal 0x[0-9a-f]+ <f3>')
 
-        assert self.decomp.out_dsm.contains(r'; function: f4 at')
-        assert self.decomp.out_dsm.contains(r'jal 0x[0-9a-f]+ <f4>')
+        assert self.decompiler.out_dsm.contains(r'; function: f4 at')
+        assert self.decompiler.out_dsm.contains(r'jal 0x[0-9a-f]+ <f4>')
 
-        assert self.decomp.out_dsm.contains(r'; function: f5 at')
-        assert self.decomp.out_dsm.contains(r'jal 0x[0-9a-f]+ <f5>')
+        assert self.decompiler.out_dsm.contains(r'; function: f5 at')
+        assert self.decompiler.out_dsm.contains(r'jal 0x[0-9a-f]+ <f5>')
 
-        assert self.decomp.out_dsm.contains(r'; function: f6 at')
-        assert self.decomp.out_dsm.contains(r'jal 0x[0-9a-f]+ <f6>')
+        assert self.decompiler.out_dsm.contains(r'; function: f6 at')
+        assert self.decompiler.out_dsm.contains(r'jal 0x[0-9a-f]+ <f6>')
 
-        assert self.decomp.out_dsm.contains(r'; function: f7 at')
-        assert self.decomp.out_dsm.contains(r'jal 0x[0-9a-f]+ <f7>')
+        assert self.decompiler.out_dsm.contains(r'; function: f7 at')
+        assert self.decompiler.out_dsm.contains(r'jal 0x[0-9a-f]+ <f7>')
 
-        assert self.decomp.out_dsm.contains(r'; function: f8 at')
-        assert self.decomp.out_dsm.contains(r'jal 0x[0-9a-f]+ <f8>')
+        assert self.decompiler.out_dsm.contains(r'; function: f8 at')
+        assert self.decompiler.out_dsm.contains(r'jal 0x[0-9a-f]+ <f8>')
 
-        assert self.decomp.out_dsm.contains(r'; function: f9 at')
-        assert self.decomp.out_dsm.contains(r'jal 0x[0-9a-f]+ <f9>')
+        assert self.decompiler.out_dsm.contains(r'; function: f9 at')
+        assert self.decompiler.out_dsm.contains(r'jal 0x[0-9a-f]+ <f9>')
 
-        assert self.decomp.out_dsm.contains(r'; function: f10 at')
-        assert self.decomp.out_dsm.contains(r'jal 0x[0-9a-f]+ <f10>')
+        assert self.decompiler.out_dsm.contains(r'; function: f10 at')
+        assert self.decompiler.out_dsm.contains(r'jal 0x[0-9a-f]+ <f10>')

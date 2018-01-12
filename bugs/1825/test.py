@@ -18,5 +18,5 @@ class Test(Test):
         pass
 
     def test_decompilation_fails_because_of_unsupported_format(self):
-        assert self.decomp.failed
-        assert self.decomp.log.contains(r'Error: Unsupported target format \'ELF64\'.')
+        assert self.decompiler.failed
+        assert self.decompiler.log.contains(r'Error: Unsupported target format \'ELF64\'.')
