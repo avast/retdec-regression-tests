@@ -1,4 +1,4 @@
-"""Checks that fileinfo.sh is able to analyze archives (.a/.lib files)."""
+"""Checks that retdec-fileinfo.sh is able to analyze archives (.a/.lib files)."""
 
 from regression_tests import *
 

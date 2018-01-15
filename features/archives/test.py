@@ -15,9 +15,9 @@ class TestArchiveIdentification(Test):
         pass
 
     def test_check_archive_identification(self):
-        self.assertNotEqual(self.decomp.return_code, 0)
-        assert 'fact_x86.o' in self.decomp.output
-        assert 'lib.o' in self.decomp.output
+        self.assertNotEqual(self.decompiler.return_code, 0)
+        assert 'fact_x86.o' in self.decompiler.output
+        assert 'lib.o' in self.decompiler.output
 
 
 class TestArchiveEmptyInputArchive(Test):
@@ -30,9 +30,9 @@ class TestArchiveEmptyInputArchive(Test):
         pass
 
     def test_check_archive_identification(self):
-        self.assertNotEqual(self.decomp.return_code, 0)
-        assert self.decomp.log.contains(r'This file is an archive!')
-        assert self.decomp.log.contains(r'Error: The input archive is empty.')
+        self.assertNotEqual(self.decompiler.return_code, 0)
+        assert self.decompiler.log.contains(r'This file is an archive!')
+        assert self.decompiler.log.contains(r'Error: The input archive is empty.')
 
 
 class TestArchiveWithEmptyFile(Test):
@@ -46,12 +46,12 @@ class TestArchiveWithEmptyFile(Test):
         pass
 
     def test_is_archive_but_the_format_of_file_inside_it_is_unsupported(self):
-        self.assertNotEqual(self.decomp.return_code, 0)
-        assert self.decomp.log.contains(r'This file is an archive!')
+        self.assertNotEqual(self.decompiler.return_code, 0)
+        assert self.decompiler.log.contains(r'This file is an archive!')
         # The archive contains an empty file, so the archive is valid and its
         # extraction should succeed. However, fileinfo should fail because the
         # format is not supported.
-        assert self.decomp.log.contains(r'Error: File format.*not supported.')
+        assert self.decompiler.log.contains(r'Error: File format.*not supported.')
 
 
 class TestArchiveInvalidInputArchive(Test):
@@ -64,9 +64,9 @@ class TestArchiveInvalidInputArchive(Test):
         pass
 
     def test_check_archive_identification(self):
-        self.assertNotEqual(self.decomp.return_code, 0)
-        assert self.decomp.log.contains(r'This file is an archive!')
-        assert self.decomp.log.contains(
+        self.assertNotEqual(self.decompiler.return_code, 0)
+        assert self.decompiler.log.contains(r'This file is an archive!')
+        assert self.decompiler.log.contains(
             r'Error: The input archive has invalid format.'
         )
 
@@ -126,9 +126,9 @@ class TestArchiveInvalidIndex(Test):
         pass
 
     def test_check_failure(self):
-        self.assertTrue(self.decomp.failed)
-        assert not self.decomp.log.contains(r'integer expression expected')
-        assert self.decomp.log.contains(
+        self.assertTrue(self.decompiler.failed)
+        assert not self.decompiler.log.contains(r'integer expression expected')
+        assert self.decompiler.log.contains(
             r'Error: File on index ".*" was not found in the input archive. '
             'Valid indexes are 0-1.'
         )
@@ -145,9 +145,9 @@ class TestArchiveInvalidIndexOneFile(Test):
         pass
 
     def test_check_failure(self):
-        self.assertTrue(self.decomp.failed)
-        assert not self.decomp.log.contains(r'integer expression expected')
-        assert self.decomp.log.contains(
+        self.assertTrue(self.decompiler.failed)
+        assert not self.decompiler.log.contains(r'integer expression expected')
+        assert self.decompiler.log.contains(
             r'Error: File on index ".*" was not found in the input archive. '
             'The only valid index is 0.'
         )
@@ -164,8 +164,8 @@ class TestArchiveInvalidName(Test):
         pass
 
     def test_check_failure(self):
-        self.assertTrue(self.decomp.failed)
-        assert self.decomp.log.contains(
+        self.assertTrue(self.decompiler.failed)
+        assert self.decompiler.log.contains(
             r'Error: File named "notavalidname" was '
             'not found in the input archive.'
         )
@@ -173,14 +173,14 @@ class TestArchiveInvalidName(Test):
 
 class TestDecompileArchiveList(Test):
     settings = TestSettings(
-        tool='decompile-archive.sh',
+        tool='retdec-archive-decompiler.sh',
         input='gnu.a',
         args='--json'
     )
 
     def test_check_list(self):
-        assert self.decompile_archive_sh.succeeded
-        as_json = json.loads(self.decompile_archive_sh.output)
+        assert self.retdec_archive_decompiler_sh.succeeded
+        as_json = json.loads(self.retdec_archive_decompiler_sh.output)
         self.assertEqual(as_json['objects'][0]['name'], 'fact_x86.o')
         self.assertEqual(as_json['objects'][0]['index'], 0)
         self.assertEqual(as_json['objects'][1]['name'], 'lib.o')
@@ -189,100 +189,100 @@ class TestDecompileArchiveList(Test):
 
 class TestDecompileArchiveListPlainText(Test):
     settings = TestSettings(
-        tool='decompile-archive.sh',
+        tool='retdec-archive-decompiler.sh',
         input='gnu.a',
         args='--plain'
     )
 
     def test_check_list(self):
-        assert self.decompile_archive_sh.succeeded
-        assert '0\tfact_x86.o' in self.decompile_archive_sh.output
-        assert '1\tlib.o' in self.decompile_archive_sh.output
+        assert self.retdec_archive_decompiler_sh.succeeded
+        assert '0\tfact_x86.o' in self.retdec_archive_decompiler_sh.output
+        assert '1\tlib.o' in self.retdec_archive_decompiler_sh.output
 
 
 class TestDecompileArchiveNoInput(Test):
     settings = TestSettings(
-        tool='decompile-archive.sh',
+        tool='retdec-archive-decompiler.sh',
         args='--plain'
     )
 
     def test_check_list(self):
-        assert 'Error: No input file.' in self.decompile_archive_sh.output
+        assert 'Error: No input file.' in self.retdec_archive_decompiler_sh.output
 
 
 class TestDecompileArchiveNoInputJson(Test):
     settings = TestSettings(
-        tool='decompile-archive.sh',
+        tool='retdec-archive-decompiler.sh',
         args='--json'
     )
 
     def test_check_list(self):
-        as_json = json.loads(self.decompile_archive_sh.output)
+        as_json = json.loads(self.retdec_archive_decompiler_sh.output)
         self.assertEqual(as_json['error'], 'No input file.')
 
 
 class TestDecompileArchiveExclusiveArgs(Test):
     settings = TestSettings(
-        tool='decompile-archive.sh',
+        tool='retdec-archive-decompiler.sh',
         args='--plain --json'
     )
 
     def test_check_list(self):
-        assert self.decompile_archive_sh.failed
-        assert self.decompile_archive_sh.log.contains(
+        assert self.retdec_archive_decompiler_sh.failed
+        assert self.retdec_archive_decompiler_sh.log.contains(
             'Arguments --plain and --json are mutually exclusive.'
         )
 
 
 class TestDecompileArchiveListQuotesEscaped(Test):
     settings = TestSettings(
-        tool='decompile-archive.sh',
+        tool='retdec-archive-decompiler.sh',
         input='quotes .a',
         args='--json'
     )
 
     def test_check_list(self):
-        assert self.decompile_archive_sh.succeeded
-        as_json = json.loads(self.decompile_archive_sh.output)
+        assert self.retdec_archive_decompiler_sh.succeeded
+        as_json = json.loads(self.retdec_archive_decompiler_sh.output)
         self.assertEqual(as_json['objects'][0]['name'], 'myobject_.o')
         self.assertEqual(as_json['objects'][0]['index'], 0)
 
 
 class TestDecompileArchiveListNamesEscaped(Test):
     settings = TestSettings(
-        tool='decompile-archive.sh',
+        tool='retdec-archive-decompiler.sh',
         input='msvc.lib',
         args='--json'
     )
 
     def test_check_list(self):
-        assert self.decompile_archive_sh.succeeded
-        as_json = json.loads(self.decompile_archive_sh.output)
+        assert self.retdec_archive_decompiler_sh.succeeded
+        as_json = json.loads(self.retdec_archive_decompiler_sh.output)
         self.assertEqual(as_json['objects'][0]['name'], 'Debug\\Factorial.obj')
         self.assertEqual(as_json['objects'][1]['name'], 'Debug\\Ack.obj')
 
 
 class TestDecompileArchiveListLeadingWSJson(Test):
     settings = TestSettings(
-        tool='decompile-archive.sh',
+        tool='retdec-archive-decompiler.sh',
         input='leading_ws.a',
         args='--json'
     )
 
     def test_check_list(self):
-        as_json = json.loads(self.decompile_archive_sh.output)
+        as_json = json.loads(self.retdec_archive_decompiler_sh.output)
         self.assertEqual(as_json['objects'][0]['name'], ' file.o')
 
 
 class TestDecompileArchiveListLeadingWSPlainText(Test):
     settings = TestSettings(
-        tool='decompile-archive.sh',
+        tool='retdec-archive-decompiler.sh',
         input='leading_ws.a',
         args='--plain'
     )
 
     def test_check_list(self):
-        assert '0\t file.o' in self.decompile_archive_sh.output
+        assert '0\t file.o' in self.retdec_archive_decompiler_sh.output
 
 
 #class TestArchiveDecompilationLeadingWSIndex(Test):
@@ -320,13 +320,13 @@ class TestDecompileArchiveListLeadingWSPlainText(Test):
 
 class TestDecompileArchiveListLeadingWSPlainText(Test):
     settings = TestSettings(
-        tool='decompile-archive.sh',
+        tool='retdec-archive-decompiler.sh',
         input='newline.a',
         args='--plain'
     )
 
     def test_check_list(self):
-        assert '0\tfi_le.o' in self.decompile_archive_sh.output
+        assert '0\tfi_le.o' in self.retdec_archive_decompiler_sh.output
 
 
 class TestArchiveThinInputArchive(Test):
@@ -339,22 +339,22 @@ class TestArchiveThinInputArchive(Test):
         pass
 
     def test_check_thin_archive_identification(self):
-        self.assertNotEqual(self.decomp.return_code, 0)
-        assert self.decomp.log.contains(r'This file is an archive!')
-        assert self.decomp.log.contains(
+        self.assertNotEqual(self.decompiler.return_code, 0)
+        assert self.decompiler.log.contains(r'This file is an archive!')
+        assert self.decompiler.log.contains(
             r'Error: File is a thin archive and cannot be decompiled.'
         )
 
 
 class TestDecompileArchiveThinInputArchive(Test):
     settings = TestSettings(
-        tool='decompile-archive.sh',
+        tool='retdec-archive-decompiler.sh',
         input='thin.a',
     )
 
     def test_check_thin_archive_identification(self):
-        assert self.decompile_archive_sh.failed
-        assert self.decompile_archive_sh.log.contains(
+        assert self.retdec_archive_decompiler_sh.failed
+        assert self.retdec_archive_decompiler_sh.log.contains(
             r'Error: File is a thin archive and cannot be decompiled.'
         )
 
