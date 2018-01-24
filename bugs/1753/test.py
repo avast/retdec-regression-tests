@@ -6,4 +6,4 @@ class Test(Test):
     )
 
     def test_decompilation_succeeds(self):
-        assert self.decomp.succeeded
+        assert self.decompiler.succeeded

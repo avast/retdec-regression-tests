@@ -2,7 +2,7 @@ from regression_tests import *
 
 class UnitTests(Test):
     settings = CriticalTestSettings(
-        tool='run-unit-tests.sh'
+        tool='retdec-tests-runner.sh'
     )
 
     def test_all_tests_pass(self):

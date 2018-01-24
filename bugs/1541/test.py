@@ -6,7 +6,7 @@ CommonSettings = TestSettings(
 
 class CommonTest(Test):
     def test(self):
-        assert self.decomp.succeeded
+        assert self.decompiler.succeeded
 
 class AlarmManagerTest(CommonTest):
     settings=TestSettings.from_settings(CommonSettings,

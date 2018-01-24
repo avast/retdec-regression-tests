@@ -1,6 +1,5 @@
 //
 // Source code for debug-info.exe.
-// decompile.sh debug-info.c -g -C -O0
 //
 
 #include <stdio.h>
