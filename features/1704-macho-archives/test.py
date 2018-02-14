@@ -81,17 +81,41 @@ class TestExtractArchiveJsonWithOjects(Test):
         self.assertEqual(as_json['architectures'][0]['name'], 'armv7')
         self.assertEqual(as_json['architectures'][0]['index'], 0)
         self.assertEqual(as_json['architectures'][0]['cpuFamily'], 'arm')
-        self.assertEqual(as_json['architectures'][0]['objects'][0]['name'], 'TatvikMpeg2DemuxBitStreamReader.o')
-        self.assertEqual(as_json['architectures'][0]['objects'][1]['name'], 'TatvikMpeg2DemuxPESDecoder.o')
-        self.assertEqual(as_json['architectures'][0]['objects'][2]['name'], 'TatvikMpeg2TSDemuxer.o')
-        self.assertEqual(as_json['architectures'][0]['objects'][3]['name'], 'TatvikTransportStreamParser.o')
+        self.assertEqual(
+            as_json['architectures'][0]['objects'][0]['name'],
+            'TatvikMpeg2DemuxBitStreamReader.o'
+        )
+        self.assertEqual(
+            as_json['architectures'][0]['objects'][1]['name'],
+            'TatvikMpeg2DemuxPESDecoder.o'
+        )
+        self.assertEqual(
+            as_json['architectures'][0]['objects'][2]['name'],
+            'TatvikMpeg2TSDemuxer.o'
+        )
+        self.assertEqual(
+            as_json['architectures'][0]['objects'][3]['name'],
+            'TatvikTransportStreamParser.o'
+        )
         self.assertEqual(as_json['architectures'][1]['name'], 'arm64')
         self.assertEqual(as_json['architectures'][1]['index'], 1)
         self.assertEqual(as_json['architectures'][1]['cpuFamily'], 'arm64')
-        self.assertEqual(as_json['architectures'][1]['objects'][0]['name'], 'TatvikMpeg2DemuxBitStreamReader.o')
-        self.assertEqual(as_json['architectures'][1]['objects'][1]['name'], 'TatvikMpeg2DemuxPESDecoder.o')
-        self.assertEqual(as_json['architectures'][1]['objects'][2]['name'], 'TatvikMpeg2TSDemuxer.o')
-        self.assertEqual(as_json['architectures'][1]['objects'][3]['name'], 'TatvikTransportStreamParser.o')
+        self.assertEqual(
+            as_json['architectures'][1]['objects'][0]['name'],
+            'TatvikMpeg2DemuxBitStreamReader.o'
+        )
+        self.assertEqual(
+            as_json['architectures'][1]['objects'][1]['name'],
+            'TatvikMpeg2DemuxPESDecoder.o'
+        )
+        self.assertEqual(
+            as_json['architectures'][1]['objects'][2]['name'],
+            'TatvikMpeg2TSDemuxer.o'
+        )
+        self.assertEqual(
+            as_json['architectures'][1]['objects'][3]['name'],
+            'TatvikTransportStreamParser.o'
+        )
 
 
 class TestExtractArchiveWithOjects(Test):
@@ -104,10 +128,22 @@ class TestExtractArchiveWithOjects(Test):
     def test_check_extract_json(self):
         self.assertIn('0\tarmv7\tarm', self.retdec_macho_extractor.output)
         self.assertIn('1\tarm64\tarm64', self.retdec_macho_extractor.output)
-        self.assertIn('0\tTatvikMpeg2DemuxBitStreamReader.o', self.retdec_macho_extractor.output)
-        self.assertIn('1\tTatvikMpeg2DemuxPESDecoder.o', self.retdec_macho_extractor.output)
-        self.assertIn('2\tTatvikMpeg2TSDemuxer.o', self.retdec_macho_extractor.output)
-        self.assertIn('3\tTatvikTransportStreamParser.o', self.retdec_macho_extractor.output)
+        self.assertIn(
+            '0\tTatvikMpeg2DemuxBitStreamReader.o',
+            self.retdec_macho_extractor.output
+        )
+        self.assertIn(
+            '1\tTatvikMpeg2DemuxPESDecoder.o',
+            self.retdec_macho_extractor.output
+        )
+        self.assertIn(
+            '2\tTatvikMpeg2TSDemuxer.o',
+            self.retdec_macho_extractor.output
+        )
+        self.assertIn(
+            '3\tTatvikTransportStreamParser.o',
+            self.retdec_macho_extractor.output
+        )
 
 
 class TestExtractArchivePlain(Test):
@@ -148,10 +184,22 @@ class TestExtractArchiveDecompilationPick(Test):
 
     def test_check_objet_list(self):
         self.assertNotEqual(self.decompiler.return_code, 0)
-        self.assertIn('0\tTatvikMpeg2DemuxBitStreamReader.o', self.decompiler.output)
-        self.assertIn('1\tTatvikMpeg2DemuxPESDecoder.o', self.decompiler.output)
-        self.assertIn('2\tTatvikMpeg2TSDemuxer.o', self.decompiler.output)
-        self.assertIn('3\tTatvikTransportStreamParser.o', self.decompiler.output)
+        self.assertIn(
+            '0\tTatvikMpeg2DemuxBitStreamReader.o',
+            self.decompiler.output
+        )
+        self.assertIn(
+            '1\tTatvikMpeg2DemuxPESDecoder.o',
+            self.decompiler.output
+        )
+        self.assertIn(
+            '2\tTatvikMpeg2TSDemuxer.o',
+            self.decompiler.output
+        )
+        self.assertIn(
+            '3\tTatvikTransportStreamParser.o',
+            self.decompiler.output
+        )
 
 
 class TestExtractArchiveDecompilationListArchs(Test):
@@ -165,7 +213,10 @@ class TestExtractArchiveDecompilationListArchs(Test):
 
     def test_check_arch_list(self):
         self.assertNotEqual(self.decompiler.return_code, 0)
-        self.assertIn('Invalid --arch option "x86". File contains these architecture families:', self.decompiler.output)
+        self.assertIn(
+            'Invalid --arch option "x86". File contains these architecture families:',
+            self.decompiler.output
+        )
         self.assertIn('armv7\tarm', self.decompiler.output)
         self.assertIn('arm64\tarm64', self.decompiler.output)
 
@@ -193,17 +244,41 @@ class TestExtractDecompileArchiveJson(Test):
         self.assertEqual(as_json['architectures'][0]['name'], 'armv7')
         self.assertEqual(as_json['architectures'][0]['index'], 0)
         self.assertEqual(as_json['architectures'][0]['cpuFamily'], 'arm')
-        self.assertEqual(as_json['architectures'][0]['objects'][0]['name'], 'TatvikMpeg2DemuxBitStreamReader.o')
-        self.assertEqual(as_json['architectures'][0]['objects'][1]['name'], 'TatvikMpeg2DemuxPESDecoder.o')
-        self.assertEqual(as_json['architectures'][0]['objects'][2]['name'], 'TatvikMpeg2TSDemuxer.o')
-        self.assertEqual(as_json['architectures'][0]['objects'][3]['name'], 'TatvikTransportStreamParser.o')
+        self.assertEqual(
+            as_json['architectures'][0]['objects'][0]['name'],
+            'TatvikMpeg2DemuxBitStreamReader.o'
+        )
+        self.assertEqual(
+            as_json['architectures'][0]['objects'][1]['name'],
+            'TatvikMpeg2DemuxPESDecoder.o'
+        )
+        self.assertEqual(
+            as_json['architectures'][0]['objects'][2]['name'],
+            'TatvikMpeg2TSDemuxer.o'
+        )
+        self.assertEqual(
+            as_json['architectures'][0]['objects'][3]['name'],
+            'TatvikTransportStreamParser.o'
+        )
         self.assertEqual(as_json['architectures'][1]['name'], 'arm64')
         self.assertEqual(as_json['architectures'][1]['index'], 1)
         self.assertEqual(as_json['architectures'][1]['cpuFamily'], 'arm64')
-        self.assertEqual(as_json['architectures'][1]['objects'][0]['name'], 'TatvikMpeg2DemuxBitStreamReader.o')
-        self.assertEqual(as_json['architectures'][1]['objects'][1]['name'], 'TatvikMpeg2DemuxPESDecoder.o')
-        self.assertEqual(as_json['architectures'][1]['objects'][2]['name'], 'TatvikMpeg2TSDemuxer.o')
-        self.assertEqual(as_json['architectures'][1]['objects'][3]['name'], 'TatvikTransportStreamParser.o')
+        self.assertEqual(
+            as_json['architectures'][1]['objects'][0]['name'],
+            'TatvikMpeg2DemuxBitStreamReader.o'
+        )
+        self.assertEqual(
+            as_json['architectures'][1]['objects'][1]['name'],
+            'TatvikMpeg2DemuxPESDecoder.o'
+        )
+        self.assertEqual(
+            as_json['architectures'][1]['objects'][2]['name'],
+            'TatvikMpeg2TSDemuxer.o'
+        )
+        self.assertEqual(
+            as_json['architectures'][1]['objects'][3]['name'],
+            'TatvikTransportStreamParser.o'
+        )
 
 
 class TestExtractDecompileArchivePlainText(Test):
@@ -214,9 +289,27 @@ class TestExtractDecompileArchivePlainText(Test):
     )
 
     def test_check_list(self):
-        self.assertIn('0\tarmv7\tarm', self.retdec_archive_decompiler_sh.output)
-        self.assertIn('1\tarm64\tarm64', self.retdec_archive_decompiler_sh.output)
-        self.assertIn('0\tTatvikMpeg2DemuxBitStreamReader.o', self.retdec_archive_decompiler_sh.output)
-        self.assertIn('1\tTatvikMpeg2DemuxPESDecoder.o', self.retdec_archive_decompiler_sh.output)
-        self.assertIn('2\tTatvikMpeg2TSDemuxer.o', self.retdec_archive_decompiler_sh.output)
-        self.assertIn('3\tTatvikTransportStreamParser.o', self.retdec_archive_decompiler_sh.output)
+        self.assertIn(
+            '0\tarmv7\tarm',
+            self.retdec_archive_decompiler_sh.output
+        )
+        self.assertIn(
+            '1\tarm64\tarm64',
+            self.retdec_archive_decompiler_sh.output
+        )
+        self.assertIn(
+            '0\tTatvikMpeg2DemuxBitStreamReader.o',
+            self.retdec_archive_decompiler_sh.output
+        )
+        self.assertIn(
+            '1\tTatvikMpeg2DemuxPESDecoder.o',
+            self.retdec_archive_decompiler_sh.output
+        )
+        self.assertIn(
+            '2\tTatvikMpeg2TSDemuxer.o',
+            self.retdec_archive_decompiler_sh.output
+        )
+        self.assertIn(
+            '3\tTatvikTransportStreamParser.o',
+            self.retdec_archive_decompiler_sh.output
+        )
