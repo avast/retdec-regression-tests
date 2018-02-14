@@ -47,7 +47,7 @@ class TestExtractMachOJson(Test):
         self.assertEqual(as_json['architectures'][0]['name'], 'i386')
         self.assertEqual(as_json['architectures'][0]['index'], 0)
         self.assertEqual(as_json['architectures'][0]['cpuFamily'], 'x86')
-        self.assertEqual(as_json['architectures'][1]['name'], '')
+        self.assertEqual(as_json['architectures'][1]['name'], 'powerpc')
         self.assertEqual(as_json['architectures'][1]['index'], 1)
         self.assertEqual(as_json['architectures'][1]['cpuFamily'], 'powerpc')
 
