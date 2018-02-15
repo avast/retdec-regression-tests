@@ -307,3 +307,19 @@ class TestMachox86Relocs(Test):
         self.assertEqual(self.fileinfo.output['relocationTables'][0]['relocations'][0]['offset'], '0x40')
         self.assertEqual(self.fileinfo.output['relocationTables'][0]['relocations'][0]['symbolName'], '_test_function')
         self.assertEqual(self.fileinfo.output['relocationTables'][0]['relocations'][0]['type'], '0')
+
+
+class TestMachox64Relocs(Test):
+    settings = TestSettings(
+        tool='fileinfo',
+        input='macho_reloc_x86_64.o',
+        args='--json --verbose'
+    )
+
+    def test_analyze_relocation_tables(self):
+        self.assertEqual(self.fileinfo.output['relocationTables'][0]['numberOfRelocations'], '20')
+        self.assertEqual(self.fileinfo.output['relocationTables'][0]['relocations'][18]['index'], '18')
+        self.assertEqual(self.fileinfo.output['relocationTables'][0]['relocations'][18]['offset'], '0x115')
+        self.assertEqual(self.fileinfo.output['relocationTables'][0]['relocations'][18]['symbolName'], '___dso_handle')
+        self.assertEqual(self.fileinfo.output['relocationTables'][0]['relocations'][18]['type'], '1')
+
