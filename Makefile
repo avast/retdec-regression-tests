@@ -1,5 +1,5 @@
 #
-# Makefile for the regression test suite.
+# Makefile for the RetDec's regression-test suite.
 #
 
 .PHONY: clean help
