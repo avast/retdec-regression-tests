@@ -15,10 +15,9 @@ class PDBTest(Test):
         assert self.out_c.has_func('smichana_funkce')
 
         # Address ranges.
-        # As of commit 2373564, we do not use line info from debug information
-        # to obtain address ranges. The following address ranges are thus not
-        # obtained from debug information. Addresses ranges from debug
-        # information are:
+        # We do not use line info from debug information to obtain address
+        # ranges. The following address ranges are thus not obtained from debug
+        # information. Addresses ranges from debug information are:
         #
         #     0x11000 - 0x11147
         #     0x11234 - 0x1130b
