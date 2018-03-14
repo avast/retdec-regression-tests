@@ -9,12 +9,6 @@ from regression_tests import *
 class NoSectionsOrSegmentsErrorTest(Test):
     """Checks that bin2llvmir fails with a proper error message when neither
     sections nor segments are found.
-
-    The printing of the error message was added in commit 2fd1b89 and updated
-    in commit ca9899f.
-
-    The parsing of the error message in the decompilation service was added in
-    commit f4985ee and updated in commit d46f05b.
     """
 
     settings = TestSettings(
@@ -85,11 +79,6 @@ class MissingInfoAboutFileTest(Test):
     information about the input file is missing.
 
     This happens when a different architecture is forced for a binary file.
-
-    The parsing of the error message in the decompilation service was added in
-    commit 5029997.
-
-    See #1518 for more details.
     """
 
     settings = TestSettings(

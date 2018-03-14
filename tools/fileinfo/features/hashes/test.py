@@ -1,6 +1,6 @@
 from regression_tests import *
 
-class Test(Test):
+class TestAllHashes(Test):
     settings = TestSettings(
         tool='fileinfo',
         input='input.ex',
@@ -23,3 +23,37 @@ class Test(Test):
         self.assertEqual(self.fileinfo.output['crc32'], '754f366a')
         self.assertEqual(self.fileinfo.output['md5'], '496c97a81e58c72398750b5c4808261e')
         self.assertEqual(self.fileinfo.output['sha256'], '7b016e04b4ac2cd10cbbad5978be9c460adf274ed12b4872965572980b386d59')
+
+
+# https://github.com/avast-tl/retdec/issues/246
+# Test for ordinals thar are translated by YARA/pefile LUT.
+class TestImportHashYARAcompatibleLutOrds(Test):
+    settings = TestSettings(
+        tool='fileinfo',
+        input='ordinal',
+        args='--verbose --json'
+    )
+
+    def test_correctly_computes_import_hash(self):
+        assert self.fileinfo.succeeded
+        self.assertEqual(
+            self.fileinfo.output['importTable']['md5'],
+            'd3bf8a7746a8d1ee8f6e5960c3f69378'
+        )
+
+
+# https://github.com/avast-tl/retdec/issues/246
+# Test for ordinals thar are NOT translated by YARA/pefile LUT.
+class TestImportHashYARAcompatibleNoLutOrds(Test):
+    settings = TestSettings(
+        tool='fileinfo',
+        input='ordinal-nonlut',
+        args='--verbose --json'
+    )
+
+    def test_correctly_computes_import_hash(self):
+        assert self.fileinfo.succeeded
+        self.assertEqual(
+            self.fileinfo.output['importTable']['md5'],
+            '4a685152543193737b50e1b699b8764e'
+        )

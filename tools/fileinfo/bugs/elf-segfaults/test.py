@@ -21,3 +21,14 @@ class TestDynamicSegfault(Test):
 
     def test_no_segfault(self):
         assert self.fileinfo.succeeded
+
+
+# https://github.com/avast-tl/retdec/issues/241
+class TestAddSymbolTableSegfault(Test):
+    settings = TestSettings(
+        tool='fileinfo',
+        input='add_symbol_table_sf'
+    )
+
+    def test_no_segfault(self):
+        assert self.fileinfo.succeeded
