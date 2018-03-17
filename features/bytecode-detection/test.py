@@ -14,7 +14,7 @@ class Test(Test):
         # to detect the presence of a warning after fileinfo is run.
         args='--select-ranges 0x0-0x1 --select-decode-only'
     )
-    
+
     def setUp(self):
         pass
 

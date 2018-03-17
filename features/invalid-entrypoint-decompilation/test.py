@@ -10,7 +10,7 @@ class TestKernel(Test):
         assert self.decompiler.succeeded
         assert self.out_c.has_funcs('binit', 'balloc', 'dirlookup', 'kalloc',
             'kfree', 'scheduler', 'sys_fork')
-        
+
 class TestApplication(Test):
     settings=TestSettings(
         input='application.axf'
