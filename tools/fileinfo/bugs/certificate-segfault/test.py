@@ -43,3 +43,16 @@ class Test3(Test):
 	def test_certificate_table_present(self):
 		assert self.fileinfo.succeeded
 		self.assertEqual(self.fileinfo.output['certificateTable']['certificates'][0]['sha256'], 'A2219C3E44EE3748EAE12E5AA6C961AF47C185E25A8E59AFFD8FCAED641286CD')
+
+
+# https://github.com/avast-tl/retdec/issues/250
+class Test4(Test):
+	settings=TestSettings(
+		tool='fileinfo',
+		args='--json --verbose',
+		input='34722C26B5557979DE5B4DCAE01DD4D0CD1DC99AF78656D7DA93D3B6BB907C9A'
+	)
+
+	def test_certificate_table_present(self):
+		assert self.fileinfo.succeeded
+		self.assertEqual(self.fileinfo.output['certificateTable']['certificates'][0]['sha256'], 'F0A14C45793C834FA6B10891813FD27487315E98BF5423D30DCAA44B4B28CD04')
