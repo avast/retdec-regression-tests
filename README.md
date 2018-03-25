@@ -6,7 +6,7 @@ A collection of regression tests for [RetDec](https://github.com/avast-tl/retdec
 
 ## Use
 
-This repository contains a collection of test cases. To run them, you have to use our [regression-tests framework](https://github.com/avast-tl/retdec-regression-tests-framework).
+This repository contains a collection of test cases for [RetDec](https://github.com/avast-tl/retdec) and associated tools.. To run the tests, you have to use our [regression-tests framework](https://github.com/avast-tl/retdec-regression-tests-framework).
 
 ## License
 

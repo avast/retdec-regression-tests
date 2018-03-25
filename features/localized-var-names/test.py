@@ -5,7 +5,7 @@ class Test(Test):
     definitions of localized global variables.
 
     For example, if variable 'v1' comes from global variable 'gpr1', we want to
-    emit the following line:
+    emit the following line in the generated C code:
 
         int32_t v1 = rand(); // gpr1
     """

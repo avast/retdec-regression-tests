@@ -7,5 +7,5 @@ class TestNoSegfault(Test):
         input='feac0b7ef47b197a381b04d057853ebe'
     )
 
-    def test_unmasq_does_not_produce_invalid_output(self):
+    def test_fileinfo_does_not_crash(self):
         assert self.fileinfo.succeeded
