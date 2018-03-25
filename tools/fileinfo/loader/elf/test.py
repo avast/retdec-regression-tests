@@ -190,3 +190,25 @@ class ArmElfLoadableSegmentContainsJustOneBssSection(Test):
 	def test_output_contains_warning(self):
 		assert self.fileinfo.succeeded
 		assert self.fileinfo.output.contains(r'Warning: Segment with single BSS section mapped to it. This may cause problems with instruction decoding.')
+
+
+# https://github.com/avast-tl/retdec/issues/239
+class InvalidRangeExceptionSegToSec(Test):
+	settings = TestSettings(
+		tool='fileinfo',
+		input='seg_to_sec_ex'
+	)
+
+	def test_no_exception_seg_to_sec(self):
+		assert self.fileinfo.succeeded
+
+
+# https://github.com/avast-tl/retdec/issues/240
+class InvalidRangeExceptionAddSeg(Test):
+	settings = TestSettings(
+		tool='fileinfo',
+		input='add_segment_ex'
+	)
+
+	def test_no_exception_add_seg(self):
+		assert self.fileinfo.succeeded

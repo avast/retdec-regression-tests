@@ -8,10 +8,9 @@ class WithDebugInfo(Test):
     )
 
     def test_address_ranges_are_emitted(self):
-        # As of commit 2373564, we do not use line info from debug information
-        # to obtain address ranges. The following address ranges are thus not
-        # obtained from debug information. Addresses ranges from debug
-        # information are:
+        # We do not use line info from debug information to obtain address
+        # ranges. The following address ranges are thus not obtained from debug
+        # information. Addresses ranges from debug information are:
         #
         #     0x80484e0 - 0x80484f1
         #     0x8048500 - 0x8048511

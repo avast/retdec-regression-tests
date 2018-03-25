@@ -23,13 +23,23 @@ class TestDynamicSegfault(Test):
         assert self.fileinfo.succeeded
 
 
-# https://github.com/avast-tl/retdec/issues/248
-class TestReloationTableSegfault(Test):
+# https://github.com/avast-tl/retdec/issues/241
+class TestAddSymbolTableSegfault(Test):
     settings = TestSettings(
         tool='fileinfo',
-        input='98bd83292d284692f5723d52dc1ba467a3a5c38c03ced34b5307c511e113e390'
+        input='add_symbol_table_sf'
     )
 
     def test_no_segfault(self):
         assert self.fileinfo.succeeded
 
+
+# https://github.com/avast-tl/retdec/issues/248
+class TestAddRelocationTableSegfault(Test):
+    settings = TestSettings(
+        tool='fileinfo',
+        input='add_relocation_table_sf'
+    )
+
+    def test_no_segfault(self):
+        assert self.fileinfo.succeeded

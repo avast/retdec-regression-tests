@@ -5,7 +5,7 @@ class Test(Test):
         input='libf021.so',
         args='--select-functions __gnu_satfractqidq --select-decode-only'
     )
-    
+
     def test_c_contains_only_selected_function(self):
         assert self.out_c.has_just_funcs('__gnu_satfractqidq')
 
