@@ -21,3 +21,15 @@ class TestDynamicSegfault(Test):
 
     def test_no_segfault(self):
         assert self.fileinfo.succeeded
+
+
+# https://github.com/avast-tl/retdec/issues/248
+class TestReloationTableSegfault(Test):
+    settings = TestSettings(
+        tool='fileinfo',
+        input='98bd83292d284692f5723d52dc1ba467a3a5c38c03ced34b5307c511e113e390'
+    )
+
+    def test_no_segfault(self):
+        assert self.fileinfo.succeeded
+
