@@ -32,3 +32,14 @@ class TestAddSymbolTableSegfault(Test):
 
     def test_no_segfault(self):
         assert self.fileinfo.succeeded
+
+
+# https://github.com/avast-tl/retdec/issues/248
+class TestAddRelocationTableSegfault(Test):
+    settings = TestSettings(
+        tool='fileinfo',
+        input='add_relocation_table_sf'
+    )
+
+    def test_no_segfault(self):
+        assert self.fileinfo.succeeded
