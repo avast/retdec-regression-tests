@@ -87,3 +87,22 @@ class TestELFNotesCore(Test):
             out['elfNotes'][0]['noteEntries'][7]['description'],
             'NT_X86_XSTATE'
         )
+
+    def test_correctly_analyzes_elf_core_structs(self):
+        assert self.fileinfo.succeeded
+        out = self.fileinfo.output
+        self.assertEqual(out['elfCore']['numberOfAuxVectorEntries'], 20)
+        self.assertEqual(out['elfCore']['auxVector'][0]['name'], 'AT_SYSINFO')
+        self.assertEqual(out['elfCore']['auxVector'][0]['value'], 4151790800)
+        self.assertEqual(out['elfCore']['auxVector'][19]['name'], 'AT_NULL')
+        self.assertEqual(out['elfCore']['auxVector'][19]['value'], 0)
+        # File map
+        self.assertEqual(out['elfCore']['numberOfFileMapEntries'], 1)
+        self.assertEqual(out['elfCore']['fileMap'][0]['address'], 134512640)
+        self.assertEqual(out['elfCore']['fileMap'][0]['page'], 0)
+        self.assertEqual(out['elfCore']['fileMap'][0]['size'], 4096)
+        self.assertEqual(
+            out['elfCore']['fileMap'][0]['path'],
+            "/usr/local/google/home/labath/ll/lldb/packages/Python/lldbsuite/"
+            "test/functionalities/unwind/noreturn/module-end/test.out"
+        )
