@@ -3,24 +3,27 @@ from regression_tests import *
 class Test000(Test):
 	settings=TestSettings(
 		tool='fileinfo',
-		input=['000-correct-file-32bit.ex_', '000-correct-file-64bit.ex_', '000-correct-file-coff-debug-info-32bit.ex_', '000-correct-file-small-alignment-32bit.ex_'],
+		input=[
+			'000-correct-file-32bit.ex_',
+			'000-correct-file-64bit.ex_',
+			'000-correct-file-coff-debug-info-32bit.ex_',
+			'000-correct-file-small-alignment-32bit.ex_',
+		],
 		args='--json --verbose'
 	)
 
 	def test_corrupted_pe(self):
-		try:
-			test_complete = self.fileinfo.output["loaderError"]
-		except KeyError as e:
-			test_complete = True
-
 		assert self.fileinfo.succeeded
-		self.assertEqual(test_complete, True)
+		assert 'loaderError' not in self.fileinfo.output, 'unexpectedly found loader error'
 
 
 class Test002(Test):
 	settings=TestSettings(
 		tool='fileinfo',
-		input=['002-pe-header-offset-unaligned-32bit.ex_', '002-pe-header-offset-unaligned-64bit.ex_'],
+		input=[
+			'002-pe-header-offset-unaligned-32bit.ex_',
+			'002-pe-header-offset-unaligned-64bit.ex_',
+		],
 		args='--json --verbose'
 	)
 
@@ -33,7 +36,10 @@ class Test002(Test):
 class Test008(Test):
 	settings=TestSettings(
 		tool='fileinfo',
-		input=['008-missing-executable-bit-32bit.ex_', '008-missing-executable-bit-64bit.ex_'],
+		input=[
+			'008-missing-executable-bit-32bit.ex_',
+			'008-missing-executable-bit-64bit.ex_',
+		],
 		args='--json --verbose'
 	)
 
@@ -46,7 +52,10 @@ class Test008(Test):
 class Test009(Test):
 	settings=TestSettings(
 		tool='fileinfo',
-		input=['009-missing-optional-header-magic-32bit.ex_', '009-missing-optional-header-magic-64bit.ex_'],
+		input=[
+			'009-missing-optional-header-magic-32bit.ex_',
+			'009-missing-optional-header-magic-64bit.ex_',
+		],
 		args='--json --verbose'
 	)
 
@@ -59,7 +68,10 @@ class Test009(Test):
 class Test010(Test):
 	settings=TestSettings(
 		tool='fileinfo',
-		input=['010-size-of-headers-zero-32bit.ex_', '010-size-of-headers-zero-64bit.ex_'],
+		input=[
+			'010-size-of-headers-zero-32bit.ex_',
+			'010-size-of-headers-zero-64bit.ex_',
+		],
 		args='--json --verbose'
 	)
 
@@ -71,7 +83,10 @@ class Test010(Test):
 class Test011(Test):
 	settings=TestSettings(
 		tool='fileinfo',
-		input=['011-file-alignment-zero-32bit.ex_', '011-file-alignment-zero-64bit.ex_'],
+		input=[
+			'011-file-alignment-zero-32bit.ex_',
+			'011-file-alignment-zero-64bit.ex_',
+		],
 		args='--json --verbose'
 	)
 
@@ -84,7 +99,10 @@ class Test011(Test):
 class Test012(Test):
 	settings=TestSettings(
 		tool='fileinfo',
-		input=['012-file-alignment-not-power-of-two-32bit.ex_', '012-file-alignment-not-power-of-two-64bit.ex_'],
+		input=[
+			'012-file-alignment-not-power-of-two-32bit.ex_',
+			'012-file-alignment-not-power-of-two-64bit.ex_',
+		],
 		args='--json --verbose'
 	)
 
@@ -97,7 +115,10 @@ class Test012(Test):
 class Test013(Test):
 	settings=TestSettings(
 		tool='fileinfo',
-		input=['013-section-alignment-zero-32bit.ex_', '013-section-alignment-zero-64bit.ex_'],
+		input=[
+			'013-section-alignment-zero-32bit.ex_',
+			'013-section-alignment-zero-64bit.ex_',
+		],
 		args='--json --verbose'
 	)
 
@@ -110,7 +131,10 @@ class Test013(Test):
 class Test014(Test):
 	settings=TestSettings(
 		tool='fileinfo',
-		input=['014-section-alignment-not-power-of-two-32bit.ex_', '014-section-alignment-not-power-of-two-64bit.ex_'],
+		input=[
+			'014-section-alignment-not-power-of-two-32bit.ex_',
+			'014-section-alignment-not-power-of-two-64bit.ex_',
+		],
 		args='--json --verbose'
 	)
 
@@ -119,11 +143,14 @@ class Test014(Test):
 		self.assertEqual(self.fileinfo.output["loaderError"]["code"], 14)
 		self.assertEqual(self.fileinfo.output["loaderError"]["code_text"], 'LDR_ERROR_SECTION_ALIGNMENT_NOT_POW2')
 
-		
+
 class Test015(Test):
 	settings=TestSettings(
 		tool='fileinfo',
-		input=['015-section-alignment-smaller-than-file-alignment-32bit.ex_', '015-section-alignment-smaller-than-file-alignment-64bit.ex_'],
+		input=[
+			'015-section-alignment-smaller-than-file-alignment-32bit.ex_',
+			'015-section-alignment-smaller-than-file-alignment-64bit.ex_',
+		],
 		args='--json --verbose'
 	)
 
@@ -132,11 +159,13 @@ class Test015(Test):
 		self.assertEqual(self.fileinfo.output["loaderError"]["code"], 15)
 		self.assertEqual(self.fileinfo.output["loaderError"]["code_text"], 'LDR_ERROR_SECTION_ALIGNMENT_TOO_SMALL')
 
-		
+
 class Test016(Test):
 	settings=TestSettings(
 		tool='fileinfo',
-		input=['016-section-alignment-not-equal-to-file-alignment-32bit.ex_'],
+		input=[
+			'016-section-alignment-not-equal-to-file-alignment-32bit.ex_',
+		],
 		args='--json --verbose'
 	)
 
@@ -145,11 +174,14 @@ class Test016(Test):
 		self.assertEqual(self.fileinfo.output["loaderError"]["code"], 16)
 		self.assertEqual(self.fileinfo.output["loaderError"]["code_text"], 'LDR_ERROR_SECTION_ALIGNMENT_INVALID')
 
-		
+
 class Test017(Test):
 	settings=TestSettings(
 		tool='fileinfo',
-		input=['017-size-of-image-too-big-32bit.ex_', '017-size-of-image-too-big-64bit.ex_'],
+		input=[
+			'017-size-of-image-too-big-32bit.ex_',
+			'017-size-of-image-too-big-64bit.ex_',
+		],
 		args='--json --verbose'
 	)
 
@@ -162,7 +194,9 @@ class Test017(Test):
 class Test018(Test):
 	settings=TestSettings(
 		tool='fileinfo',
-		input=['018-invalid-machine-32bit.ex_'],
+		input=[
+			'018-invalid-machine-32bit.ex_',
+		],
 		args='--json --verbose'
 	)
 
@@ -175,7 +209,9 @@ class Test018(Test):
 class Test019(Test):
 	settings=TestSettings(
 		tool='fileinfo',
-		input=['019-invalid-machine-64bit.ex_'],
+		input=[
+			'019-invalid-machine-64bit.ex_',
+		],
 		args='--json --verbose'
 	)
 
@@ -187,7 +223,10 @@ class Test019(Test):
 class Test020(Test):
 	settings=TestSettings(
 		tool='fileinfo',
-		input=['020-size-of-headers-greater-than-size-of-image-32bit.ex_', '020-size-of-headers-greater-than-size-of-image-64bit.ex_'],
+		input=[
+			'020-size-of-headers-greater-than-size-of-image-32bit.ex_',
+			'020-size-of-headers-greater-than-size-of-image-64bit.ex_',
+		],
 		args='--json --verbose'
 	)
 
@@ -200,7 +239,10 @@ class Test020(Test):
 class Test021(Test):
 	settings=TestSettings(
 		tool='fileinfo',
-		input=['021-size-of-optional-header-not-aligned-32bit.ex_', '021-size-of-optional-header-not-aligned-64bit.ex_'],
+		input=[
+			'021-size-of-optional-header-not-aligned-32bit.ex_',
+			'021-size-of-optional-header-not-aligned-64bit.ex_',
+		],
 		args='--json --verbose'
 	)
 
@@ -209,11 +251,14 @@ class Test021(Test):
 		self.assertEqual(self.fileinfo.output["loaderError"]["code"], 21)
 		self.assertEqual(self.fileinfo.output["loaderError"]["code_text"], 'LDR_ERROR_SIZE_OF_OPTHDR_NOT_ALIGNED')
 
-		
+
 class Test023(Test):
 	settings=TestSettings(
 		tool='fileinfo',
-		input=['023-image-base-not-aligned-32bit.ex_', '023-image-base-not-aligned-64bit.ex_'],
+		input=[
+			'023-image-base-not-aligned-32bit.ex_',
+			'023-image-base-not-aligned-64bit.ex_',
+		],
 		args='--json --verbose'
 	)
 
@@ -226,7 +271,10 @@ class Test023(Test):
 class Test025(Test):
 	settings=TestSettings(
 		tool='fileinfo',
-		input=['025-raw-data-overflow-32bit.ex_', '025-raw-data-overflow-64bit.ex_'],
+		input=[
+			'025-raw-data-overflow-32bit.ex_',
+			'025-raw-data-overflow-64bit.ex_',
+		],
 		args='--json --verbose'
 	)
 
@@ -239,7 +287,9 @@ class Test025(Test):
 class Test028(Test):
 	settings=TestSettings(
 		tool='fileinfo',
-		input=['028-section-size-mismatch-32bit.ex_'],
+		input=[
+			'028-section-size-mismatch-32bit.ex_',
+		],
 		args='--json --verbose'
 	)
 
@@ -247,12 +297,15 @@ class Test028(Test):
 		assert self.fileinfo.succeeded
 		self.assertEqual(self.fileinfo.output["loaderError"]["code"], 28)
 		self.assertEqual(self.fileinfo.output["loaderError"]["code_text"], 'LDR_ERROR_SECTION_SIZE_MISMATCH')
-		
-		
+
+
 class Test030(Test):
 	settings=TestSettings(
 		tool='fileinfo',
-		input=['030-invalid-section-vsize-32bit.ex_', '030-invalid-section-vsize-64bit.ex_'],
+		input=[
+			'030-invalid-section-vsize-32bit.ex_',
+			'030-invalid-section-vsize-64bit.ex_',
+		],
 		args='--json --verbose'
 	)
 
@@ -265,7 +318,10 @@ class Test030(Test):
 class Test032(Test):
 	settings=TestSettings(
 		tool='fileinfo',
-		input=['032-invalid-size-of-image-32bit.ex_', '032-invalid-size-of-image-64bit.ex_'],
+		input=[
+			'032-invalid-size-of-image-32bit.ex_',
+			'032-invalid-size-of-image-64bit.ex_',
+		],
 		args='--json --verbose'
 	)
 
@@ -278,7 +334,11 @@ class Test032(Test):
 class Test033(Test):
 	settings=TestSettings(
 		tool='fileinfo',
-		input=['033-file-is-cut-32bit.ex_', '033-file-is-cut-32bit.ex_', '033-file-is-cut-small-alignment-32bit.ex_'],
+		input=[
+			'033-file-is-cut-32bit.ex_',
+			'033-file-is-cut-32bit.ex_',
+			'033-file-is-cut-small-alignment-32bit.ex_',
+		],
 		args='--json --verbose'
 	)
 
@@ -291,7 +351,9 @@ class Test033(Test):
 class Test034(Test):
 	settings=TestSettings(
 		tool='fileinfo',
-		input=['034-coff-debug-info-overflow-32bit.ex_'],
+		input=[
+			'034-coff-debug-info-overflow-32bit.ex_',
+		],
 		args='--json --verbose'
 	)
 
@@ -300,11 +362,13 @@ class Test034(Test):
 		self.assertEqual(self.fileinfo.output["loaderError"]["code"], 34)
 		self.assertEqual(self.fileinfo.output["loaderError"]["code_text"], 'LDR_ERROR_COFF_POS_OVERFLOW')
 
-		
+
 class Test035(Test):
 	settings=TestSettings(
 		tool='fileinfo',
-		input=['035-coff-debuginfo-out-of-file-32bit.ex_'],
+		input=[
+			'035-coff-debuginfo-out-of-file-32bit.ex_',
+		],
 		args='--json --verbose'
 	)
 
