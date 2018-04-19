@@ -53,7 +53,7 @@ class TestCustomInsufficientLimit(Test):
 
     settings = TestSettings(
         input='ack.ex',
-        args='--max-memory 100',  # 100 bytes
+        args='--max-memory=4096',  # minimal limit is 1 page (4096 bytes)
     )
 
     def setUp(self):
