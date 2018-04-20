@@ -24,8 +24,8 @@ class PDBTest(Test):
         #     0x11328 - 0x1154c
         #
         assert self.out_c.has_comment_matching(r'// Address range:\s*0x11000 - 0x1113b')
-        assert self.out_c.has_comment_matching(r'// Address range:\s*0x11234 - 0x1130f')
-        assert self.out_c.has_comment_matching(r'// Address range:\s*0x11328 - 0x114bf')
+        assert self.out_c.has_comment_matching(r'// Address range:\s*0x11234 - 0x11303')
+        assert self.out_c.has_comment_matching(r'// Address range:\s*0x11328 - 0x114b7')
 
         # Line ranges.
         assert self.out_c.has_comment_matching(r'// Line range:\s*7 - 29')
@@ -47,17 +47,15 @@ class PDBTest(Test):
         assert self.out_c.contains(r'v2')
         assert self.out_c.contains(r'v3')
 
-    # rand = function_114d0
-    # puts = function_11530
     def test_bug_1227(self):
         main = self.out_c.funcs['main']
-        assert main.calls('nejaka_funkce', 'volaci_funkce', 'function_114d0')
+        assert main.calls('nejaka_funkce', 'volaci_funkce', 'rand')
 
         volaci_funkce = self.out_c.funcs['volaci_funkce']
-        assert volaci_funkce.calls('function_114d0', 'smichana_funkce', 'printf', 'function_11530', '_itod', '_addd', '_dtos')
+        assert volaci_funkce.calls('rand', 'smichana_funkce', 'printf', 'puts', '_itod', '_addd', '_dtos')
 
         smichana_funkce = self.out_c.funcs['smichana_funkce']
         assert smichana_funkce.calls('printf', '_stod', '_muld', '_itod', '_addd', '_dtoi')
 
         nejaka_funkce = self.out_c.funcs['nejaka_funkce']
-        assert nejaka_funkce.calls('function_114d0', 'printf')
+        assert nejaka_funkce.calls('rand', 'printf')

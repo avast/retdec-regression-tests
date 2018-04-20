@@ -80,7 +80,7 @@ class Test_2015_ThumbGccElf(TestBase):
     def test_check_dsm(self):
         assert self.out_dsm.contains('0x8100:\s*0b 78\s*ldrb r3, \[r1\]')
         assert self.out_dsm.contains('0x81e0:\s*bd 46\s*mov sp, r7')
-        assert self.out_dsm.contains('0xe1e2:\s*18 43\s*orrs r0, r3')
+        assert self.out_dsm.contains('0xac3a:\s*06 43\s*orrs r6, r0')
 
     def test_statically_linked_function_detection(self):
         # confirmed functions
@@ -183,7 +183,7 @@ class Test_2015_ThumbGccElf(TestBase):
         assert self.out_config.is_statically_linked('lflush', 0xe0fc)
         assert self.out_config.is_statically_linked('_sbrk_r', 0xe114)
         assert self.out_config.is_statically_linked('__sccl', 0xe138)
-        assert self.out_config.is_statically_linked('isinf', 0xe1b4)
+        assert self.out_config.is_statically_linked('__isinfd', 0xe1b4)
         assert self.out_config.is_statically_linked('__isnand', 0xe1d8)
         assert self.out_config.is_statically_linked('sprintf', 0xe1f4)
         assert self.out_config.is_statically_linked('_sprintf_r', 0xe238)
@@ -199,7 +199,7 @@ class Test_2015_ThumbGccElf(TestBase):
         assert self.out_config.is_statically_linked('strtol', 0xf410)
         assert self.out_config.is_statically_linked('_strtoul_r', 0xf42c)
         assert self.out_config.is_statically_linked('strtoul', 0xf584)
-        assert self.out_config.is_statically_linked('__sprint_r', 0xf5a0)
+        assert self.out_config.is_statically_linked('__sprint_r.1', 0xf5a0)
         assert self.out_config.is_statically_linked('_svfprintf_r', 0xf6d0)
         assert self.out_config.is_statically_linked('__submore', 0x109dc)
         assert self.out_config.is_statically_linked('_ungetc_r', 0x10a54)
@@ -227,7 +227,7 @@ class Test_2015_ArmGccElf(TestBase):
 
     def test_check_dsm(self):
         assert self.out_dsm.contains('0x8084:\s*01 30 a0 e3\s*mov r3, \#1')
-        assert self.out_dsm.contains('0x8214:\s*ff 00 00 00\s*strdeq r0, r1, \[r0\], \-pc')
+        assert self.out_dsm.contains('0x82a8:\s*00 48 2d e9\s*push {fp, lr}')
         assert self.out_dsm.contains('0x81c4:\s*04 40 12 85\s*ldrhi r4, \[r2, \#\-4\]')
 
     def test_statically_linked_function_detection(self):
@@ -280,8 +280,8 @@ class Test_2015_ArmGccElf(TestBase):
         assert self.out_config.is_statically_linked('__errno', 0xde34)
         assert self.out_config.is_statically_linked('_fflush_r', 0xde44)
         assert self.out_config.is_statically_linked('fflush', 0xe010)
-        assert self.out_config.is_statically_linked('__fp_lock_all', 0xe060)
-        assert self.out_config.is_statically_linked('__fp_unlock_all', 0xe078)
+        assert self.out_config.is_statically_linked('__fp_unlock_all', 0xe060)
+        assert self.out_config.is_statically_linked('__fp_lock_all', 0xe078)
         assert self.out_config.is_statically_linked('_cleanup', 0xe09c)
         assert self.out_config.is_statically_linked('std', 0xe0ac)
         assert self.out_config.is_statically_linked('__sinit', 0xe124)
@@ -295,7 +295,7 @@ class Test_2015_ArmGccElf(TestBase):
         assert self.out_config.is_statically_linked('_fwalk_reent', 0xed48)
         assert self.out_config.is_statically_linked('_fwalk', 0xedcc)
         assert self.out_config.is_statically_linked('iswspace', 0xee4c)
-        assert self.out_config.is_statically_linked('__getreent', 0xee70)
+        assert self.out_config.is_statically_linked('__locale_charset', 0xee70)
         assert self.out_config.is_statically_linked('_setlocale_r', 0xee98)
         assert self.out_config.is_statically_linked('setlocale', 0xeef8)
         assert self.out_config.is_statically_linked('__smakebuf_r', 0xef14)
@@ -332,7 +332,7 @@ class Test_2015_ArmGccElf(TestBase):
         assert self.out_config.is_statically_linked('lflush', 0x10fac)
         assert self.out_config.is_statically_linked('_sbrk_r', 0x10fc8)
         assert self.out_config.is_statically_linked('__sccl', 0x11000)
-        assert self.out_config.is_statically_linked('isinf', 0x110cc)
+        assert self.out_config.is_statically_linked('__isinfd', 0x110cc)
         assert self.out_config.is_statically_linked('__isnand', 0x110fc)
         assert self.out_config.is_statically_linked('sprintf', 0x1112c)
         assert self.out_config.is_statically_linked('_sprintf_r', 0x111a0)
@@ -348,7 +348,7 @@ class Test_2015_ArmGccElf(TestBase):
         assert self.out_config.is_statically_linked('strtol', 0x12bdc)
         assert self.out_config.is_statically_linked('_strtoul_r', 0x12c08)
         assert self.out_config.is_statically_linked('strtoul', 0x12da4)
-        assert self.out_config.is_statically_linked('__sprint_r', 0x12dd0)
+        assert self.out_config.is_statically_linked('__sprint_r.1', 0x12dd0)
         assert self.out_config.is_statically_linked('_svfprintf_r', 0x12f54)
         assert self.out_config.is_statically_linked('__submore', 0x14d38)
         assert self.out_config.is_statically_linked('_ungetc_r', 0x14de0)
@@ -588,7 +588,6 @@ class Test_2015_MipsGccElf(TestBase):
         assert self.out_config.is_statically_linked('_fstat_r', 0x890f33c)
         assert self.out_config.is_statically_linked('__sfvwrite_r', 0x890f3a8)
         assert self.out_config.is_statically_linked('__hexdig_init', 0x890f890)
-        assert self.out_config.is_statically_linked('rshift', 0x890f924)
         assert self.out_config.is_statically_linked('__gethex', 0x890fa58)
         assert self.out_config.is_statically_linked('__hexnan', 0x89103c8)
         assert self.out_config.is_statically_linked('_lseek_r', 0x89106b0)

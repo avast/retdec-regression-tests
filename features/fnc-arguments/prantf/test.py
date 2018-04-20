@@ -6,13 +6,23 @@ class CommonTest(Test):
         input=[
             'prantf.arm.gcc.elf',
             'prantf.arm.clang.elf',
-            'prantf.thumb.gcc.elf',
             'prantf.thumb.clang.elf'])
 
     def test_main_calls_prantf(self):
         main = self.out_c.funcs['main']
         assert main.calls('prantf')
         assert self.out_c.contains('prantf\(.*"My number is %d\.", 1')
+
+class ThumbGccTest(Test):
+    settings = TestSettings(input='prantf.thumb.gcc.elf')
+
+    def test_structure(self):
+        main = self.out_c.funcs['main']
+        assert main.calls('_24_t')
+        assert self.out_c.contains('_24_t\(.*"My number is %d\.", 1\)')
+
+        fnc = self.out_c.funcs['_24_t']
+        assert fnc.calls('prantf')
 
 class MipsClangTest(Test):
     settings = TestSettings(input='prantf.mips.clang.elf')

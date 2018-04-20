@@ -45,8 +45,7 @@ class TestAckMacho(Test):
 
     def test_decompilation_has_funcs(self):
         assert self.out_c.has_func( '_ack' )
-        assert self.out_c.has_func( 'function_1eee' )
 
     def test_decompilation_calls(self):
         assert self.out_c.funcs['_ack'].calls( '_ack' )
-        assert self.out_c.funcs['function_1eee'].calls( '_scanf', '_ack', '_printf' )
+        assert self.out_c.funcs['main'].calls( '_scanf', '_ack', '_printf' )
