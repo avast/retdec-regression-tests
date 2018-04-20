@@ -15,7 +15,7 @@ class Test1(Test):
 	#
 	def test_check_some_functions(self):
 		assert self.out_c.has_funcs(
-			'function_2000',
+			'function_d074',
 			#'function_34ac',
 			#'function_4398',
 			#'function_53d0',
@@ -23,7 +23,7 @@ class Test1(Test):
 			#'function_86f0',
 			#'function_953c',
 			#'function_b934',
-			'function_d14e',
+			'function_2260',
 			#'function_d258',
 		)
 
