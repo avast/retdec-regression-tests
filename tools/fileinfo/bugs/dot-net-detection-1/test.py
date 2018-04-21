@@ -7,7 +7,7 @@ class DotNetTest(Test):
         input=files_in_dir('inputs')
     )
 
-    def test_fileinfo_json_output_correctly_parsed(self):
+    def test_fileinfo_json_output_is_correctly_parsed(self):
         assert self.fileinfo.succeeded
         self.assertEqual(self.fileinfo.output['fileFormat'], 'PE')
         self.assertEqual(self.fileinfo.output['dataDirectories']['numberOfDataDirectories'], '16')
@@ -25,7 +25,7 @@ class PackedDotNetTest(Test):
         input=files_in_dir('packed_inputs')
     )
 
-    def test_fileinfo_json_output_correctly_parsed(self):
+    def test_fileinfo_json_output_is_correctly_parsed(self):
         assert self.fileinfo.succeeded
         self.assertEqual(self.fileinfo.output['fileFormat'], 'PE')
         self.assertEqual(self.fileinfo.output['languages'][0]['name'], 'CIL/.NET')

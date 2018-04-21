@@ -7,7 +7,7 @@ class Test(Test):
         input='billingsoft.ex'
     )
 
-    def test_fileinfo_json_output_correctly_parsed(self):
+    def test_fileinfo_json_output_is_correctly_parsed(self):
         assert self.fileinfo.succeeded
         self.assertEqual(self.fileinfo.output['fileFormat'], 'PE')
         self.assertEqual(self.fileinfo.output['dataDirectories']['numberOfDataDirectories'], '16')

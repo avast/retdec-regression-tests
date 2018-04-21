@@ -7,7 +7,7 @@ class Eziriz42Test(Test):
         input=['x86-pe-ff10e014c94cbc89f9e653bc647b6d5a', 'x86-pe-d5a674ff381b95f36f3f4ef3e5a8d0c4-eziriz42']
     )
 
-    def test_fileinfo_json_output_correctly_parsed(self):
+    def test_fileinfo_json_output_is_correctly_parsed(self):
         assert self.fileinfo.succeeded
 
         self.assertEqual(self.fileinfo.output['fileFormat'], 'PE')
@@ -28,7 +28,7 @@ class Eziriz50Test(Test):
         input='x86-pe-08f9c6c1cfb53ece69025050c95fcd5e-eziriz5'
     )
 
-    def test_fileinfo_json_output_correctly_parsed(self):
+    def test_fileinfo_json_output_is_correctly_parsed(self):
         assert self.fileinfo.succeeded
 
         self.assertEqual(self.fileinfo.output['fileFormat'], 'PE')

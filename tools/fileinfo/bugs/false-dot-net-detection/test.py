@@ -7,7 +7,7 @@ class NotDotNetButImportMscoreeTest(Test):
         input=files_in_dir('mscoree-but-not-clr-header')
     )
 
-    def test_fileinfo_json_output_correctly_parsed(self):
+    def test_fileinfo_json_output_is_correctly_parsed(self):
         assert self.fileinfo.succeeded
         if 'languages' in self.fileinfo.output:
             for language in self.fileinfo.output['languages']:
@@ -26,7 +26,7 @@ class NotEzirizTest(Test):
         input=files_in_dir('mscoree-not-and-clr-header-not')
     )
 
-    def test_fileinfo_json_output_correctly_parsed(self):
+    def test_fileinfo_json_output_is_correctly_parsed(self):
         assert self.fileinfo.succeeded
         assert (self.fileinfo.output.contains('Eziriz .NET Reactor') == False)
         if 'languages' in self.fileinfo.output:
