@@ -106,7 +106,7 @@ class TestMipsGccElf(FullTest):
 	ack_name='function_8900368'
 	main_name='main'
 	scanf_name='scanf'
-	printf_name='printf'
+	printf_name='wprintf'
 
 class TestPic32GccElf(Test):
 	settings = TestSettings(
