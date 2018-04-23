@@ -24,7 +24,7 @@ class TestDecodeOnly(Test):
 
         assert self.out_c.has_comment_matching( '// Address range: 0x804900f - 0x804906a' )
         fnc = self.out_c.funcs['function_804900f']
-        assert fnc.calls('unknown_804a271','unknown_8048fdf','atoi','__stack_chk_fail')
+        assert fnc.calls('function_804a271','function_8048fdf','atoi','__stack_chk_fail')
 
         # bug #1162
         assert not self.out_c.has_comment_matching( '// void' )
