@@ -10,11 +10,11 @@ from regression_tests import *
 #		],
 #		args='--json --verbose'
 #	)
-
-	def test_imports_exports(self):
-		assert self.fileinfo.succeeded
-		self.assertEqual(self.fileinfo.output['declaredNumberOfDataDirectories'], '620')
-		self.assertEqual(len(self.fileinfo.output['importTable']['imports']), 527798)
+#
+#	def test_imports_exports(self):
+#		assert self.fileinfo.succeeded
+#		self.assertEqual(self.fileinfo.output['declaredNumberOfDataDirectories'], '620')
+#		self.assertEqual(len(self.fileinfo.output['importTable']['imports']), 527798)
 
 
 class Test002(Test):

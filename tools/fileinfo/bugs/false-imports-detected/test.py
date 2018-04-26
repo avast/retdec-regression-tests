@@ -24,4 +24,4 @@ class DelayedImportsWithHighRvaTest(Test):
 		self.assertEqual(self.fileinfo.output['importTable']['imports'][598]['index'], '598')
 		self.assertEqual(self.fileinfo.output['importTable']['imports'][598]['name'], 'GetLogicalProcessorInformation')
 		self.assertEqual(self.fileinfo.output['importTable']['imports'][598]['libraryName'], 'kernel32.dll')
-		self.assertEqual(self.fileinfo.output['importTable']['imports'][598]['address'], '0x804c38')
+		self.assertEqual(self.fileinfo.output['importTable']['imports'][598]['address'], '0x404c38')
