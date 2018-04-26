@@ -23,9 +23,9 @@ class PDBTest(Test):
         #     0x11234 - 0x1130b
         #     0x11328 - 0x1154c
         #
-        assert self.out_c.has_comment_matching(r'// Address range:\s*0x11000 - 0x1113b')
-        assert self.out_c.has_comment_matching(r'// Address range:\s*0x11234 - 0x11303')
-        assert self.out_c.has_comment_matching(r'// Address range:\s*0x11328 - 0x114b7')
+        assert self.out_c.has_comment_matching(r'// Address range:\s*0x11000 - 0x1113c')
+        assert self.out_c.has_comment_matching(r'// Address range:\s*0x11234 - 0x11304')
+        assert self.out_c.has_comment_matching(r'// Address range:\s*0x11328 - 0x114b8')
 
         # Line ranges.
         assert self.out_c.has_comment_matching(r'// Line range:\s*7 - 29')

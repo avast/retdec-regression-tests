@@ -18,11 +18,11 @@ class WithDebugInfo(Test):
         #     0x8048540 - 0x8048551
         #     0x8048380 - 0x804839c
         #
-        assert self.out_c.has_comment_matching(r'// Address range: 0x80484e0 - 0x80484f2')
-        assert self.out_c.has_comment_matching(r'// Address range: 0x8048500 - 0x8048512')
-        assert self.out_c.has_comment_matching(r'// Address range: 0x8048520 - 0x8048532')
-        assert self.out_c.has_comment_matching(r'// Address range: 0x8048540 - 0x8048552')
-        assert self.out_c.has_comment_matching(r'// Address range: 0x8048380 - 0x804839d')
+        assert self.out_c.has_comment_matching(r'// Address range: 0x80484e0 - 0x80484f3')
+        assert self.out_c.has_comment_matching(r'// Address range: 0x8048500 - 0x8048513')
+        assert self.out_c.has_comment_matching(r'// Address range: 0x8048520 - 0x8048533')
+        assert self.out_c.has_comment_matching(r'// Address range: 0x8048540 - 0x8048553')
+        assert self.out_c.has_comment_matching(r'// Address range: 0x8048380 - 0x804839e')
 
     def test_funcs_are_emitted_in_order_by_address_ranges(self):
         self.assertEqual(self.out_c.func_names, ['func1', 'func2', 'func3', 'func4', 'main'])
@@ -35,11 +35,11 @@ class WithoutDebugInfo(Test):
     )
 
     def test_address_ranges_are_emitted(self):
-        assert self.out_c.has_comment_matching(r'// Address range: *0x8048380 - 0x804839d')
-        assert self.out_c.has_comment_matching(r'// Address range: *0x80484e0 - 0x80484f2')
-        assert self.out_c.has_comment_matching(r'// Address range: *0x8048500 - 0x8048512')
-        assert self.out_c.has_comment_matching(r'// Address range: *0x8048520 - 0x8048532')
-        assert self.out_c.has_comment_matching(r'// Address range: *0x8048540 - 0x8048552')
+        assert self.out_c.has_comment_matching(r'// Address range: *0x8048380 - 0x804839e')
+        assert self.out_c.has_comment_matching(r'// Address range: *0x80484e0 - 0x80484f3')
+        assert self.out_c.has_comment_matching(r'// Address range: *0x8048500 - 0x8048513')
+        assert self.out_c.has_comment_matching(r'// Address range: *0x8048520 - 0x8048533')
+        assert self.out_c.has_comment_matching(r'// Address range: *0x8048540 - 0x8048553')
 
     def test_funcs_are_emitted_in_order_by_line_numbers_from_debug_info(self):
         self.assertEqual(self.out_c.func_names, ['main', 'func1', 'func2', 'func3', 'func4'])

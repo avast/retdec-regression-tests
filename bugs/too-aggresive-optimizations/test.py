@@ -9,7 +9,7 @@ class Test(Test):
     )
 
     def test_check_for_single_function(self):
-        assert self.out_c.has_comment_matching(r'.*Address range: *0x10000000 - 0x1000001f')
+        assert self.out_c.has_comment_matching(r'.*Address range: *0x10000000 - 0x10000020')
         fnc = self.out_c.funcs['entry_point']
         assert fnc.has_just_params('a1')
         assert fnc.params['a1'].type.is_pointer()
