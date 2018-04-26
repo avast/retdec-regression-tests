@@ -48,7 +48,7 @@ class Test(Test):
 		assert self.out_c.has_string_literal( "%s: I won't write compressed data to a terminal.\\n" )
 		assert self.out_c.has_string_literal( '%s: Input file %s already has %s suffix.\\n' )
 		assert self.out_c.has_string_literal( '%s: Input file %s has %d other link%s.\\n' )
-		assert self.out_c.has_string_literal( '%s: Input file %s is a directory.\\n' )
+		#assert self.out_c.has_string_literal( '%s: Input file %s is a directory.\\n' )
 		assert self.out_c.has_string_literal( '%s: Input file %s is not a normal file.\\n' )
 		assert self.out_c.has_string_literal( '%s: Output file %s already exists.\\n' )
 		#assert self.out_c.has_string_literal( "%s: There are no files matching `%s'.\\n" )
