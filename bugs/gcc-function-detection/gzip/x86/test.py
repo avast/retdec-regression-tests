@@ -71,7 +71,7 @@ class Test(Test):
 		assert self.out_c.has_string_literal( '.tgz' )
 		assert self.out_c.has_string_literal( '1.2.4' )
 		assert self.out_c.has_string_literal( '18 Aug 93' )
-		#assert self.out_c.has_string_literal( 'Bad table\\n' )
+		assert self.out_c.has_string_literal( 'Bad table\\n' )
 		assert self.out_c.has_string_literal( 'Compilation options:\\n%s %s ' )
 		assert self.out_c.has_string_literal( 'For help, type: %s -h\\n' )
 		assert self.out_c.has_string_literal( 'HAVE_UNISTD_H ' )
