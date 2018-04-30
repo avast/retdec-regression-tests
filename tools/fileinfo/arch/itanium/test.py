@@ -26,7 +26,7 @@ class TestIA64(Test):
 
 # https://github.com/avast-tl/retdec/issues/142
 # While this is not a core file, it contains note sections that has slightly
-# different behaviour that common ELF files so will test it aswell
+# different behaviour that common ELF files so we will test it aswell
 class TestELFNotes(Test):
     settings = TestSettings(
         tool='fileinfo',
