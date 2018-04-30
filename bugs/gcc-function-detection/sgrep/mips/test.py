@@ -161,8 +161,6 @@ class Test(Test):
 		assert self.out_c.has_func( 'function_89002e4' )  #
 		assert self.out_c.has_func( 'function_89002f8' )  #
 		assert self.out_c.has_func( 'function_8900354' )  #
-		assert self.out_c.has_func( 'function_8900368' )  #
-		assert self.out_c.has_func( 'function_8900cb8' )  #
 		assert self.out_c.has_func( 'function_8902878' )  #
 		assert self.out_c.has_func( 'function_89028d4' )  #
 		assert self.out_c.has_func( 'function_8902930' )  #
@@ -251,13 +249,17 @@ class Test(Test):
 		assert self.out_c.has_func( 'function_890b358' )  #
 		assert self.out_c.has_func( 'function_890b440' )  #
 		assert self.out_c.has_func( 'function_890b818' )  #
-		assert self.out_c.has_func( 'function_890e01c' )  #
 		assert self.out_c.has_func( 'function_891c0b0' )  #
 		assert self.out_c.has_func( 'function_891c100' )  #
 		assert self.out_c.has_func( 'function_891c114' )  #
-		assert self.out_c.has_func( 'function_891c130' )  #
 		assert self.out_c.has_func( 'function_891c188' )  #
 		assert self.out_c.has_func( 'function_891c190' )  #
+		assert self.out_c.has_func( 'sceIoDopen' )  # function_891c130
+
+	def test_check_for_all_currently_detected_statically_linked_functions(self):
+		assert self.out_config.is_statically_linked('atexit', 0x8900368)
+		assert self.out_config.is_statically_linked('__errno', 0x8900cb8)
+		assert self.out_config.is_statically_linked('realloc', 0x890e01c)
 
 	# Functions reported in #1050 as not detected.
 	# TODO: matula, uncomment when fixed.
