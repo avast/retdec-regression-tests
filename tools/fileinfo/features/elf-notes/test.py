@@ -2,6 +2,7 @@ from regression_tests import *
 
 
 # https://github.com/avast-tl/retdec/issues/142
+# https://github.com/avast-tl/retdec/issues/244
 class TestELFNotesExe(Test):
     settings = TestSettings(
         tool='fileinfo',
@@ -45,6 +46,39 @@ class TestELFNotesExe(Test):
             out['elfNotes'][0]['noteEntries'][1]['description'],
             'NT_FREEBSD_NOINIT_TAG'
         )
+
+    def test_correctly_analyzes_freebsd_osabi_notes(self):
+        assert self.fileinfo.succeeded
+        self.assertEqual(self.fileinfo.output['osOrAbi'], 'FreeBSD')
+        self.assertEqual(self.fileinfo.output['osOrAbiVersion'], '11.1.506')
+
+
+# https://github.com/avast-tl/retdec/issues/244
+class TestELFNotesGnu(Test):
+    settings = TestSettings(
+        tool='fileinfo',
+        input='d446ac335663141b888807cfef5a9a73f0c2297f2fc807127bfe6e23af286021',
+        args='--json --verbose'
+    )
+
+    def test_correctly_analyzes_osabi_notes(self):
+        assert self.fileinfo.succeeded
+        self.assertEqual(self.fileinfo.output['osOrAbi'], 'Linux')
+        self.assertEqual(self.fileinfo.output['osOrAbiVersion'], '2.6.32')
+
+
+# https://github.com/avast-tl/retdec/issues/244
+class TestELFNotesAndroid(Test):
+    settings = TestSettings(
+        tool='fileinfo',
+        input='3505f8faec50203f0b177d008e645b3bec88b79c89a9ef2185e2b9c82055976e',
+        args='--json --verbose'
+    )
+
+    def test_correctly_analyzes_osabi_notes(self):
+        assert self.fileinfo.succeeded
+        self.assertEqual(self.fileinfo.output['osOrAbi'], 'Android')
+        self.assertEqual(self.fileinfo.output['osOrAbiVersion'], '19')
 
 
 # https://github.com/avast-tl/retdec/issues/142
