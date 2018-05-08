@@ -80,6 +80,11 @@ class TestELFNotesAndroid(Test):
         self.assertEqual(self.fileinfo.output['osOrAbi'], 'Android')
         self.assertEqual(self.fileinfo.output['osOrAbiVersion'], '19')
 
+    def test_correctly_detect_gold_linker(self):
+        assert self.fileinfo.succeeded
+        self.assertEqual(self.fileinfo.output['tools'][0]['name'], 'gold')
+        self.assertEqual(self.fileinfo.output['tools'][0]['version'], '1.11')
+
 
 # https://github.com/avast-tl/retdec/issues/142
 class TestELFNotesCore(Test):
