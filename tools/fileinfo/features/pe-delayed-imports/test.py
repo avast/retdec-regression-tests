@@ -154,3 +154,18 @@ class Test004(Test):
 		self.assertEqual(self.fileinfo.output['importTable']['imports'][26]['address'], '0x140000a60')
 		assert 'name' not in self.fileinfo.output['importTable']['imports'][26]
 		self.assertEqual(self.fileinfo.output['importTable']['imports'][26]['ordinalNumber'], '115')
+
+class Test005(Test):
+	settings=TestSettings(
+		tool='fileinfo',
+		args='--verbose --json',
+		input='delayimports.ex'
+	)
+
+	def test_delayled_imports_detection(self):
+		assert self.fileinfo.succeeded
+		self.assertEqual(self.fileinfo.output['importTable']['numberOfImports'], '4')
+		self.assertEqual(self.fileinfo.output['importTable']['imports'][3]['address'], '0x401150')
+		self.assertEqual(self.fileinfo.output['importTable']['imports'][3]['index'],   '3')
+		self.assertEqual(self.fileinfo.output['importTable']['imports'][3]['libraryName'], 'msvcrt.dll')
+		self.assertEqual(self.fileinfo.output['importTable']['imports'][3]['name'], 'printf')
