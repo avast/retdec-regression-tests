@@ -8,6 +8,7 @@ class Test000(Test):
 			'000-correct-file-64bit.ex_',
 			'000-correct-file-coff-debug-info-32bit.ex_',
 			'000-correct-file-small-alignment-32bit.ex_',
+			'000-correct-file-size-of-opt-header-zero-64bit.ex_',
 		],
 		args='--json --verbose'
 	)
@@ -298,6 +299,21 @@ class Test028(Test):
 		self.assertEqual(self.fileinfo.output["loaderError"]["code"], 28)
 		self.assertEqual(self.fileinfo.output["loaderError"]["code_text"], 'LDR_ERROR_SECTION_SIZE_MISMATCH')
 
+class Test029(Test):
+	settings=TestSettings(
+		tool='fileinfo',
+		input=[
+			'029-invalid-section-va-32bit.ex_',
+			'029-invalid-section-va-64bit.ex_',
+		],
+		args='--json --verbose'
+	)
+
+	def test_corrupted_pe(self):
+		assert self.fileinfo.succeeded
+		self.assertEqual(self.fileinfo.output["loaderError"]["code"], 29)
+		self.assertEqual(self.fileinfo.output["loaderError"]["code_text"], 'LDR_ERROR_INVALID_SECTION_VA')
+
 
 class Test030(Test):
 	settings=TestSettings(
@@ -346,33 +362,3 @@ class Test033(Test):
 		assert self.fileinfo.succeeded
 		self.assertEqual(self.fileinfo.output["loaderError"]["code"], 33)
 		self.assertEqual(self.fileinfo.output["loaderError"]["code_text"], 'LDR_ERROR_FILE_IS_CUT')
-
-
-class Test034(Test):
-	settings=TestSettings(
-		tool='fileinfo',
-		input=[
-			'034-coff-debug-info-overflow-32bit.ex_',
-		],
-		args='--json --verbose'
-	)
-
-	def test_corrupted_pe(self):
-		assert self.fileinfo.succeeded
-		self.assertEqual(self.fileinfo.output["loaderError"]["code"], 34)
-		self.assertEqual(self.fileinfo.output["loaderError"]["code_text"], 'LDR_ERROR_COFF_POS_OVERFLOW')
-
-
-class Test035(Test):
-	settings=TestSettings(
-		tool='fileinfo',
-		input=[
-			'035-coff-debuginfo-out-of-file-32bit.ex_',
-		],
-		args='--json --verbose'
-	)
-
-	def test_corrupted_pe(self):
-		assert self.fileinfo.succeeded
-		self.assertEqual(self.fileinfo.output["loaderError"]["code"], 35)
-		self.assertEqual(self.fileinfo.output["loaderError"]["code_text"], 'LDR_ERROR_COFF_POS_OUT_OF_FILE')
