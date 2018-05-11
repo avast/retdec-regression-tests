@@ -162,7 +162,7 @@ class Test005(Test):
 		input='delayimports.ex'
 	)
 
-	def test_delayled_imports_detection(self):
+	def test_delayed_imports_detection(self):
 		assert self.fileinfo.succeeded
 		self.assertEqual(self.fileinfo.output['importTable']['numberOfImports'], '4')
 		self.assertEqual(self.fileinfo.output['importTable']['imports'][3]['address'], '0x401150')
