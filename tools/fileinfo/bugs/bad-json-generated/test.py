@@ -7,5 +7,5 @@ class Test(Test):
         input=files_in_dir('inputs')
     )
 
-    def test_fileinfo_json_output_correctly_parsed(self):
+    def test_fileinfo_json_output_is_correctly_parsed(self):
         self.assertIn('inputFile', self.fileinfo.output)

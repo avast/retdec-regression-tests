@@ -7,7 +7,7 @@ class Test(Test):
         input='991bf8ae92b3e59d41b2365be4edf88c_hydracrypt'
     )
 
-    def test_fileinfo_json_output_correctly_parsed(self):
+    def test_fileinfo_json_output_is_correctly_parsed(self):
         assert self.fileinfo.succeeded
         assert (self.fileinfo.output.contains('symbolTable') == False)
         assert (self.fileinfo.output.contains('relocationTable') == False)
