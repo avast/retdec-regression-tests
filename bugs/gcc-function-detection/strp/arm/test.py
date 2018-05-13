@@ -27,7 +27,7 @@ class Test(Test):
 	# Currently detected functions which have their named (from symbols) counterparts in not-stripped binary.
 	#
 	def test_check_for_all_currently_detected_functions(self):
-		assert self.out_c.has_func( 'function_8000' )  # _init
+		assert self.out_c.has_func( '_init' )  # _init
 		assert self.out_c.has_func( 'function_80b0' )  # frame_dummy
 		assert self.out_c.has_func( 'entry_point' )  # entry_point
 		assert self.out_c.has_func( 'function_8354' )  # help
