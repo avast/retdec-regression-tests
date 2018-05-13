@@ -51,7 +51,7 @@ class Test(Test):
 		# assert self.out_c.has_string_literal( ' incomplete distance tree\\n' )
 		assert self.out_c.has_string_literal( "can't recover suffix\\n" )
 		assert self.out_c.has_string_literal( 'For help, type: %s -h\\n' )
-		assert self.out_c.has_string_literal( '.' )
+		#assert self.out_c.has_string_literal( '.' )
 		assert self.out_c.has_string_literal( '%s: %s: part number %u\\n' )
 		assert self.out_c.has_string_literal( '\\n%s: ' )
 		assert self.out_c.has_string_literal( 'GZIP' )
@@ -126,8 +126,8 @@ class Test(Test):
 		assert self.out_c.has_func( 'function_8907bdc' )  #
 		assert self.out_c.has_func( 'function_8907d4c' )  #
 		assert self.out_c.has_func( 'function_8907ef8' )  #
-		assert self.out_c.has_func( 'function_8907f9c' )  #
-		assert self.out_c.has_func( 'function_8907ff8' )  #
+		assert self.out_c.has_func( 'gettimeofday' )  # function_8907f9c
+		assert self.out_c.has_func( '_text' )  # function_8907ff8
 		assert self.out_c.has_func( 'function_8908024' )  #
 		assert self.out_c.has_func( 'function_8908074' )  #
 		assert self.out_c.has_func( 'function_89082a8' )  #
@@ -150,18 +150,20 @@ class Test(Test):
 		assert self.out_c.has_func( 'function_890a4bc' )  #
 		assert self.out_c.has_func( 'function_890ad88' )  #
 		assert self.out_c.has_func( 'function_890ada4' )  #
-		assert self.out_c.has_func( 'function_890aef0' )  #
-		assert self.out_c.has_func( 'function_890af1c' )  #
-		assert self.out_c.has_func( 'function_890b00c' )  #
-		assert self.out_c.has_func( 'function_890c1c8' )  #
-		assert self.out_c.has_func( 'function_890ef4c' )  #
-		assert self.out_c.has_func( 'function_89134f8' )  #
 		assert self.out_c.has_func( 'function_8920084' )  #
 		assert self.out_c.has_func( 'function_89200d4' )  #
 		assert self.out_c.has_func( 'function_89200e8' )  #
-		assert self.out_c.has_func( 'function_8920104' )  #
 		assert self.out_c.has_func( 'function_89201cc' )  #
 		assert self.out_c.has_func( 'function_89201d4' )  #
+		assert self.out_c.has_func( 'sceIoClose' )  # @ 0x8920104
+
+	def test_check_for_some_static_functions(self):
+		assert self.out_config.is_statically_linked('atexit', 0x890aef0)
+		assert self.out_config.is_statically_linked('calloc', 0x890af1c)
+		assert self.out_config.is_statically_linked('__errno', 0x890b00c)
+		assert self.out_config.is_statically_linked('localtime', 0x890c1c8)
+		assert self.out_config.is_statically_linked('fstat', 0x890ef4c)
+		assert self.out_config.is_statically_linked('asctime', 0x89134f8)
 
 	# Functions reported in #1050 as not detected.
 	# TODO: matula, uncomment when fixed.

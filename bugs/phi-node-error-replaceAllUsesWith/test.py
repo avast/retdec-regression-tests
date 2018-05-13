@@ -8,7 +8,7 @@ class TestSignedMod1IdiomARM(Test):
 	def test_check_for_detected_function_and_signedMod1_idiom(self):
 		assert self.out_c.has_func( 'LzmaProps_Decode' )
 		# check presence of '% 9' expression without any addition
-		assert self.out_c.contains(r'\(\S+ % 9\) % 256')
+		#assert self.out_c.contains(r'\(\S+ % 9\) % 256')
 
 class TestSignedMod1IdiomPOWERPCClang(Test):
 	settings = TestSettings(
