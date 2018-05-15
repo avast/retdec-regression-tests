@@ -10,6 +10,7 @@ class Test001(Test):
 	def test_delayed_imports_detection(self):
 		assert self.fileinfo.succeeded
 		self.assertEqual(self.fileinfo.output['importTable']['numberOfImports'], '80')
+		self.assertEqual(self.fileinfo.output['importTable']['md5'], '6f94503e98785a3637bc2177cce10427')
 		self.assertEqual(self.fileinfo.output['importTable']['imports'][69]['index'], '69')
 		self.assertEqual(self.fileinfo.output['importTable']['imports'][72]['index'], '72')
 		self.assertEqual(self.fileinfo.output['importTable']['imports'][73]['index'], '73')
@@ -67,6 +68,7 @@ class Test002(Test):
 	def test_delayled_imports_detection(self):
 		assert self.fileinfo.succeeded
 		self.assertEqual(self.fileinfo.output['importTable']['numberOfImports'], '31')
+		self.assertEqual(self.fileinfo.output['importTable']['md5'], 'c64d18c2324195b6f30e544ac4d0793a')
 
 		self.assertEqual(self.fileinfo.output['importTable']['imports'][0]['index'], '0')
 		self.assertEqual(self.fileinfo.output['importTable']['imports'][0]['libraryName'], 'KERNEL32.dll')
@@ -106,6 +108,7 @@ class Test003(Test):
 	def test_delayed_imports_detection(self):
 		assert self.fileinfo.succeeded
 		self.assertEqual(self.fileinfo.output['importTable']['numberOfImports'], '31')
+		self.assertEqual(self.fileinfo.output['importTable']['md5'], '7877a03959578abdcfd18f857518208c')
 
 		self.assertEqual(self.fileinfo.output['importTable']['imports'][0]['index'], '0')
 		self.assertEqual(self.fileinfo.output['importTable']['imports'][0]['libraryName'], 'KERNEL32.dll')
@@ -145,6 +148,7 @@ class Test004(Test):
 	def test_delayed_imports_detection(self):
 		assert self.fileinfo.succeeded
 		self.assertEqual(self.fileinfo.output['importTable']['numberOfImports'], '30')
+		self.assertEqual(self.fileinfo.output['importTable']['md5'], '68592d0426806874d10b4c28d9c5cd40')
 
 		self.assertEqual(self.fileinfo.output['importTable']['imports'][0]['index'], '0')
 		self.assertEqual(self.fileinfo.output['importTable']['imports'][0]['libraryName'], 'KERNEL32.dll')
@@ -188,3 +192,4 @@ class Test005(Test):
 		self.assertEqual(self.fileinfo.output['importTable']['imports'][3]['libraryName'], 'msvcrt.dll')
 		self.assertEqual(self.fileinfo.output['importTable']['imports'][3]['name'], 'printf')
 		self.assertEqual(self.fileinfo.output['importTable']['imports'][3]['delayed'], 'true')
+		self.assertEqual(self.fileinfo.output['importTable']['md5'], '4e7b7b5b63ae609e9707b4896498325d')
