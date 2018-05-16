@@ -10,12 +10,6 @@ class Test(Test):
 	def test_has_important_fncs(self):
 		assert self.out_c.has_funcs('_start','ls_cmd','cat_cmd','ping_cmd','shell_cmd','lotto_cmd','sleep_cmd','quote_cmd','admin_cmd','run_cmd','create_sock','sock_print','tok_gen','shell','process_sock')
 
-	def test_sock_print_return_send(self):
-		#
-		# back-end might decide to store result to temp var and return it instead of this direct send() return.
-		#
-		assert self.out_c.contains(r'return send\(sock')
-
 	# Some of these are inside shell() functions, so check for their presence also checks for the shell()'s body.
 	#
 	def test_check_for_all_currently_detected_strings(self):

@@ -63,7 +63,7 @@ class Test_0922b80e59bf37eb6dbbb62263f8473e(Test):
 
 	def test(self):
 		assert self.out_c.has_funcs('entry_point')
-		assert self.out_c.funcs['entry_point'].calls('wsprintfA', '_memset',
+		assert self.out_c.funcs['entry_point'].calls('wsprintfA', '__asm_rep_stosd_memset',
 			'ExitProcess', 'inet_ntoa', )
 		assert r'microsoft.com' in self.out_c.string_literal_values
 		assert r'http://85.255.113.26/hello.php' in self.out_c.string_literal_values

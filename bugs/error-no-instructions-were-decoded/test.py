@@ -218,7 +218,6 @@ class Testx86(Test):
 		assert fnc.calls( 'write' )
 		assert fnc.calls( 'function_8048122' )
 		assert fnc.calls( 'function_8048185' )
-		assert fnc.calls( 'strncmp' ) or fnc.calls( '_strncmp' )
 		# fixme
 		#fnc = self.out_c.funcs[ 'function_8048115' ]
 		#assert fnc.calls( 'sys_write' )

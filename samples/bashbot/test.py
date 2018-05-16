@@ -115,7 +115,7 @@ class BashbotTest(Test):
 	#
 	def test_check_callgraph(self):
 		fnc = self.out_c.funcs[ 'trim' ]
-		assert fnc.calls( 'strlen' ) or fnc.calls( '_strlen' )
+		#assert fnc.calls( 'strlen' ) or fnc.calls( '_strlen' )
 
 		#fnc = self.out_c.funcs[ 'printchar' ] #thumb O3
 		#assert fnc.calls( 'write' )
@@ -141,7 +141,7 @@ class BashbotTest(Test):
 		fnc = self.out_c.funcs[ 'sockprintf' ]
 		assert fnc.calls( 'free' )
 		assert fnc.calls( 'malloc' )
-		assert fnc.calls( 'memset' ) or fnc.calls( '_memset' )
+		assert fnc.calls( 'memset' ) or fnc.calls( '__asm_rep_stosd_memset' )
 		assert fnc.calls( 'print' )
 		#assert fnc.calls( 'send' ) #probably some error in our C parser on Windows
 		assert fnc.calls( 'zprintf' )
@@ -186,7 +186,7 @@ class BashbotTest(Test):
 		fnc = self.out_c.funcs[ 'getCores' ]
 		#assert fnc.calls( 'close' ) #PPC
 		#assert fnc.calls( 'fdgets' ) #thumb O3
-		assert fnc.calls( 'memset' ) or fnc.calls( '_memset' )
+		assert fnc.calls( 'memset' ) or fnc.calls( '__asm_rep_stosd_memset' )
 		assert fnc.calls( 'open' )
 		assert fnc.calls( 'strstr' )
 		#assert fnc.calls( 'uppercase' ) #thumb O3
@@ -217,7 +217,7 @@ class BashbotTest(Test):
 		#assert fnc.calls( 'send' ) #arm
 
 		fnc = self.out_c.funcs[ 'matchPrompt' ]
-		assert fnc.calls( 'strlen' ) or fnc.calls( '_strlen' )
+		#assert fnc.calls( 'strlen' ) or fnc.calls( '_strlen' )
 
 		fnc = self.out_c.funcs[ 'readUntil' ]
 		#assert fnc.calls( 'negotiate' ) #x86
@@ -251,7 +251,7 @@ class BashbotTest(Test):
 		#assert fnc.calls( 'getdtablesize' ) #thumb
 		#assert fnc.calls( 'getRandomPublicIP' ) #thumb
 		#assert fnc.calls( 'inet_ntoa' ) #arm
-		assert fnc.calls( 'memset' ) or fnc.calls( '_memset' )
+		assert fnc.calls( 'memset' ) or fnc.calls( '__asm_rep_stosd_memset' )
 		#assert fnc.calls( 'readUntil' ) #arm
 		#assert fnc.calls( 'sclose' ) #arm
 		#assert fnc.calls( 'select' ) #arm
@@ -341,7 +341,7 @@ class BashbotTest(Test):
 		fnc = self.out_c.funcs[ 'initConnection' ]
 		assert fnc.calls( 'close' )
 		#assert fnc.calls( 'connectTimeout' ) #thumb O3
-		assert fnc.calls( 'memset' ) or fnc.calls( '_memset' )
+		assert fnc.calls( 'memset' ) or fnc.calls( '__asm_rep_stosd_memset' )
 		#assert fnc.calls( 'socket' ) #probably some error in our C parser on Windows
 		assert fnc.calls( 'strcpy' )
 		assert fnc.calls( 'strchr' )
