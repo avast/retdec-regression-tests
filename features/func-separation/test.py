@@ -62,22 +62,22 @@ class UserAndSyscallTest(Test):
         )
         assert self.out_c.contains(expected_code_re)
 
-class IdiomFromFrontendTest(Test):
-    """Tests that the generated functions are recognized "idiom" by frontend,
-    an put into proper sections in the generated C file.
-    """
+#class IdiomFromFrontendTest(Test):
+    #"""Tests that the generated functions are recognized "idiom" by frontend,
+    #an put into proper sections in the generated C file.
+    #"""
 
-    settings = TestSettings(
-        input='idioms.arm.gcc.O0.exe',
-    )
+    #settings = TestSettings(
+        #input='idioms.arm.gcc.O0.exe',
+    #)
 
-    def test_funcs_are_separated_into_idioms(self):
-        expected_code_re = re.compile("""
-                -\ Instruction-Idiom\ Functions\ -
-                .*
-                fabsf
-                .*
-            """,
-            flags=re.VERBOSE | re.DOTALL
-        )
-        assert self.out_c.contains(expected_code_re)
+    #def test_funcs_are_separated_into_idioms(self):
+        #expected_code_re = re.compile("""
+                #-\ Instruction-Idiom\ Functions\ -
+                #.*
+                #fabsf
+                #.*
+            #""",
+            #flags=re.VERBOSE | re.DOTALL
+        #)
+        #assert self.out_c.contains(expected_code_re)
