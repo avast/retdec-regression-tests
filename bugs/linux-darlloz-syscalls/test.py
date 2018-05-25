@@ -42,7 +42,7 @@ class Test(Test):
     #
     def test_external_fncs_from_syscalls(self):
         assert self.out_c.has_comment_matching(r'.*int.*clone\(.*\);')
-        assert self.out_c.has_comment_matching(r'.*int.*int80_syscall\(.*\);')
+        #assert self.out_c.has_comment_matching(r'.*int.*int80_syscall\(.*\);')
         #assert self.out_c.has_comment_matching(r'.*int.*sigreturn\(.*\);')
         #assert self.out_c.has_comment_matching(r'.*int.*accept\(.*\);')
         #assert self.out_c.has_comment_matching(r'.*int.*bind\(.*\);')
