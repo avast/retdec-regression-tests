@@ -15,7 +15,7 @@ class Test(Test):
         assert fnc.params['a1'].type.is_pointer()
         assert fnc.params['a1'].type.pointed_type.is_int(32)
         assert self.out_c.contains('return 3') or self.out_c.contains('return result')
-        assert self.out_c.contains('a1 = 3')
+        assert self.out_c.contains('a1 = 3') or self.out_c.contains('result = 3')
         assert self.out_c.contains('\*.*\(result \+ 4\) = ')
         assert self.out_c.contains('\*.*\(result \+ 8\) = ')
         assert self.out_c.contains('\*.*\(result \+ 12\) = ')
