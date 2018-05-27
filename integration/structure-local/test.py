@@ -63,7 +63,7 @@ class Test_2017(TestBase):
         input=files_in_dir('2017-11-14'),
     )
 
-class Test_2015(TestBase):
-    settings_2015 = CriticalTestSettings(
-        input=files_in_dir('2015-03-30'),
-    )
+#class Test_2015(TestBase):
+    #settings_2015 = CriticalTestSettings(
+        #input=files_in_dir('2015-03-30'),
+    #)
