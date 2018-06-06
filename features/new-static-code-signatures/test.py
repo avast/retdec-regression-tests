@@ -130,7 +130,7 @@ class TestNewx86Signatures(Test):
         assert self.out_config.is_statically_linked('___setusermatherr', 0x403bbe)
         assert self.out_config.is_statically_linked('___acrt_allocate_buffer_for_argv', 0x403e6c)
         assert self.out_config.is_statically_linked('___dcrt_uninitialize_environments_nolock', 0x40414e)
-        assert self.out_config.is_statically_linked('__get_initial_wide_environment', 0x404185)
+        #assert self.out_config.is_statically_linked('__get_initial_wide_environment', 0x404185)
         assert self.out_config.is_statically_linked('__initterm', 0x40419e)
         assert self.out_config.is_statically_linked('__initterm_e', 0x4041fa)
         assert self.out_config.is_statically_linked('__Exit', 0x404487)
