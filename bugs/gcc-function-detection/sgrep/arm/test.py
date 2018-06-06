@@ -87,7 +87,7 @@ class Test(Test):
 	# Currently detected functions which have their named (from symbols) counterparts in not-stripped binary.
 	#
 	def test_check_for_all_currently_detected_functions(self):
-		assert self.out_c.has_func( 'function_8000' )  #
+		assert self.out_c.has_func( '_init' )  # @ 0x8000
 		assert self.out_c.has_func( 'function_8020' )  #
 		assert self.out_c.has_func( 'function_80b0' )  #
 		assert self.out_c.has_func( 'entry_point' )  #
@@ -179,16 +179,17 @@ class Test(Test):
 		assert self.out_c.has_func( 'function_feac' )  #
 		assert self.out_c.has_func( 'function_ff40' )  #
 		assert self.out_c.has_func( 'function_102bc' )  #
-		assert self.out_c.has_func( 'function_11254' )  #
-		assert self.out_c.has_func( 'function_1305c' )  #
-		#assert self.out_c.has_func( 'function_13060' )  #
-		assert self.out_c.has_func( 'function_15840' )  #
-		assert self.out_c.has_func( 'function_18ddc' )  #
-		assert self.out_c.has_func( 'function_1a814' )  #
+
+		#assert self.out_c.has_func( 'function_11254' )  # @__errno
+		#assert self.out_c.has_func( 'function_1305c' )  # @__malloc_lock
+		#assert self.out_c.has_func( 'function_13060' )  # @__malloc_unlock
+		#assert self.out_c.has_func( 'function_15840' )  # @__sigtramp_r.12
+		#assert self.out_c.has_func( 'function_18ddc' )  # @abort
+		#assert self.out_c.has_func( 'function_1a814' )  # @__env_lock
 		#assert self.out_c.has_func( 'function_1bd90' )  #
-		#assert self.out_c.has_func( 'function_1be00' )  #
+		#assert self.out_c.has_func( 'function_1be00' )  # @_sprintf_r
+
 		assert self.out_c.has_func( 'function_1e6ec' )  #
-		#assert self.out_c.has_func( '' )  #
 
 	# Functions reported in #1050 as not detected.
 	# TODO: matula, uncomment when fixed.

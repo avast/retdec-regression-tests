@@ -23,13 +23,15 @@ class TestIhexPic32GccO0O1(Test):
         if self.settings.input == 'ack.pic32.gcc.O0.little.ihex':
             main = self.out_c.funcs[ 'function_9d001e0c' ]
             ack = self.out_c.funcs[ 'function_9d001d5c' ]
+            printf = 'printf'
         elif self.settings.input == 'ack.pic32.gcc.O1.little.ihex':
             main = self.out_c.funcs[ 'function_9d0024b8' ]
             ack = self.out_c.funcs[ 'function_9d002460' ]
+            printf = 'printf'
 
-        #assert main.calls( 'scanf' )
+        assert main.calls( 'scanf' )
         assert main.calls( ack )
-        assert main.calls( 'printf' )
+        assert main.calls( printf )
 
         assert ack.calls( ack )
 
@@ -95,9 +97,12 @@ class TestIhexMipsGccO0O1O2(Test):
         elif self.settings.input == 'ack.mips.gcc.O2.little.ihex':
             main = self.out_c.funcs[ 'function_89003c0' ]
 
-        assert main.calls( 'scanf' )
+        scanf = 'scanf'
+        printf = 'printf'
+
+        assert main.calls( scanf )
         assert main.calls( 'function_8900368' )
-        assert main.calls( 'printf' )
+        assert main.calls( printf )
 
         ack = self.out_c.funcs[ 'function_8900368' ]
         assert ack.calls( 'function_8900368' )
@@ -121,5 +126,7 @@ class TestIhexMipsGccO3(Test):
 
     def test_call_graph(self):
         main = self.out_c.funcs[ 'function_8900554' ]
-        assert main.calls( 'scanf' )
-        assert main.calls( 'printf' )
+        scanf = 'scanf'
+        printf = 'printf'
+        assert main.calls( scanf )
+        assert main.calls( printf )

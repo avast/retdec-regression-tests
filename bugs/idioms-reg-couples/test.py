@@ -37,14 +37,14 @@ class TestCryptoLocker(Test):
 		assert self.out_c.has_string_literal( 'CryptoLocker' )
 		assert self.out_c.has_string_literal( 'Explorer' )
 		assert self.out_c.has_string_literal( 'GetFileInformationByHandleEx' )
-		assert self.out_c.has_string_literal( 'GetUserPreferredUILanguages' )
+		#assert self.out_c.has_string_literal( 'GetUserPreferredUILanguages' )
 		assert self.out_c.has_string_literal( 'HTTP/1.1' )
 		assert self.out_c.has_string_literal( "I'll be back!" )
 		assert self.out_c.has_string_literal( 'Microsoft Enhanced Cryptographic Provider v1.0' )
 		assert self.out_c.has_string_literal( 'Microsoft Enhanced RSA and AES Cryptographic Provider' )
 		assert self.out_c.has_string_literal( 'Msftedit.dll' )
 		assert self.out_c.has_string_literal( 'ObtainUserAgentString' )
-		assert self.out_c.has_string_literal( 'RegDeleteKeyExW' )
+		#assert self.out_c.has_string_literal( 'RegDeleteKeyExW' )
 		assert self.out_c.has_string_literal( 'SHGetKnownFolderPath' )
 		assert self.out_c.has_string_literal( 'SetFileInformationByHandle' )
 		assert self.out_c.has_string_literal( 'VersionInfo' )
@@ -562,8 +562,8 @@ class TestCryptoLocker(Test):
 		assert fnc.calls( 'CreateEventW' )
 		assert fnc.calls( 'function_407c00' )
 		fnc = self.out_c.funcs[ 'function_402be0' ]
-		assert fnc.calls( '__allmul' )
-		assert fnc.calls( '__aulldiv' )
+		#assert fnc.calls( 'function_4109d0' )
+		#assert fnc.calls( 'function_410a10' )
 		assert fnc.calls( 'GetCurrentThreadId' )
 		assert fnc.calls( 'SendMessageW' )
 		assert fnc.calls( 'WaitForMultipleObjects' )
@@ -587,7 +587,7 @@ class TestCryptoLocker(Test):
 		assert fnc.calls( 'ReleaseMutex' )
 		assert fnc.calls( 'WaitForSingleObject' )
 		fnc = self.out_c.funcs[ 'function_403070' ]
-		assert fnc.calls( '__aulldiv' )
+		#assert fnc.calls( 'function_410a10' )
 		#assert fnc.calls( 'function_402ea0' )
 		#assert fnc.calls( 'function_403010' )
 		assert fnc.calls( 'function_410370' )
@@ -883,9 +883,9 @@ class TestCryptoLocker(Test):
 		assert fnc.calls( 'GetObjectW' )
 		fnc = self.out_c.funcs[ 'function_4067d4' ]
 		assert fnc.calls( 'function_4065b0' )
-		#fnc = self.out_c.funcs[ 'function_4067f0' ]
+		fnc = self.out_c.funcs[ 'function_4067f0' ]
 		assert fnc.calls( 'DefSubclassProc' )
-		assert fnc.calls( 'GetKeyState' )
+		#assert fnc.calls( 'GetKeyState' )
 		assert fnc.calls( 'GetParent' )
 		assert fnc.calls( 'GetWindowLongW' )
 		assert fnc.calls( 'SendMessageW' )
@@ -1185,7 +1185,7 @@ class TestCryptoLocker(Test):
 		assert fnc.calls( 'StrChrW' )
 		assert fnc.calls( 'TrackPopupMenu' )
 		fnc = self.out_c.funcs[ 'function_40a070' ]
-		assert fnc.calls( '__aulldiv' )
+		#assert fnc.calls( 'function_410a10' )
 		assert fnc.calls( 'function_407270' )
 		assert fnc.calls( 'function_40a660' )
 		assert fnc.calls( 'function_40ba10' )
@@ -1217,14 +1217,14 @@ class TestCryptoLocker(Test):
 		fnc = self.out_c.funcs[ 'function_40a5f0' ]
 		#fnc = self.out_c.funcs[ 'function_40a650' ]
 		fnc = self.out_c.funcs[ 'function_40a660' ]
-		assert fnc.calls( '__allmul' )
+		#assert fnc.calls( 'function_4109d0' )
 		assert fnc.calls( 'FileTimeToLocalFileTime' )
 		assert fnc.calls( 'FileTimeToSystemTime' )
 		assert fnc.calls( 'function_40c410' )
 		assert fnc.calls( 'GetDateFormatW' )
 		assert fnc.calls( 'GetTimeFormatW' )
 		fnc = self.out_c.funcs[ 'function_40a760' ]
-		assert fnc.calls( '__aulldiv' )
+		#assert fnc.calls( 'function_410a10' )
 		#assert fnc.calls( 'FindResourceExW' ) # this function is called, but call is not found by tests
 		assert fnc.calls( 'function_40c250' )
 		assert fnc.calls( 'function_40c8f0' )
@@ -1286,12 +1286,12 @@ class TestCryptoLocker(Test):
 		fnc = self.out_c.funcs[ 'function_40b1c0' ]
 		assert fnc.calls( 'DestroyWindow' )
 		assert fnc.calls( 'function_406610' )
-		#fnc = self.out_c.funcs[ 'function_40b250' ]
+		fnc = self.out_c.funcs[ 'function_40b250' ]
 		assert fnc.calls( 'CreateDialogParamW' )
 		assert fnc.calls( 'function_406720' )
 		fnc = self.out_c.funcs[ 'function_40b2b4' ]
 		assert fnc.calls( 'function_40ad40' )
-		#fnc = self.out_c.funcs[ 'function_40b2d0' ]
+		fnc = self.out_c.funcs[ 'function_40b2d0' ]
 		assert fnc.calls( 'function_40b3e0' )
 		assert fnc.calls( 'function_40b420' )
 		assert fnc.calls( 'LoadIconW' )
@@ -1473,7 +1473,7 @@ class TestCryptoLocker(Test):
 		fnc = self.out_c.funcs[ 'function_40cda0' ]
 		assert fnc.calls( 'DestroyWindow' )
 		assert fnc.calls( 'function_406610' )
-		#fnc = self.out_c.funcs[ 'function_40ce20' ]
+		fnc = self.out_c.funcs[ 'function_40ce20' ]
 		assert fnc.calls( 'CreateDialogParamW' )
 		assert fnc.calls( 'function_406720' )
 		fnc = self.out_c.funcs[ 'function_40ce84' ]
@@ -1543,7 +1543,7 @@ class TestCryptoLocker(Test):
 		assert fnc.calls( 'DeleteObject' )
 		assert fnc.calls( 'DestroyWindow' )
 		assert fnc.calls( 'function_406610' )
-		#fnc = self.out_c.funcs[ 'function_40db20' ]
+		fnc = self.out_c.funcs[ 'function_40db20' ]
 		assert fnc.calls( 'CreateDialogParamW' )
 		assert fnc.calls( 'function_406720' )
 		fnc = self.out_c.funcs[ 'function_40db84' ]
@@ -1675,7 +1675,7 @@ class TestCryptoLocker(Test):
 		assert fnc.calls( 'function_40fdd0' )
 		assert fnc.calls( 'GetSystemTime' )
 		fnc = self.out_c.funcs[ 'function_40efd0' ]
-		assert fnc.calls( '__aulldiv' )
+		#assert fnc.calls( 'function_410a10' )
 		assert fnc.calls( 'function_40c250' )
 		assert fnc.calls( 'GetSystemTime' )
 		assert fnc.calls( 'memset' )
@@ -1777,7 +1777,7 @@ class TestCryptoLocker(Test):
 		fnc = self.out_c.funcs[ 'function_410350' ]
 		assert fnc.calls( 'WaitForSingleObject' )
 		fnc = self.out_c.funcs[ 'function_410370' ]
-		assert fnc.calls( '__aulldiv' )
+		#assert fnc.calls( 'function_410a10' )
 		assert fnc.calls( 'GetSystemTime' )
 		assert fnc.calls( 'memset' )
 		assert fnc.calls( 'RegCloseKey' )
@@ -1788,7 +1788,7 @@ class TestCryptoLocker(Test):
 		assert fnc.calls( 'SystemTimeToFileTime' )
 		assert fnc.calls( 'WaitForSingleObject' )
 		fnc = self.out_c.funcs[ 'function_4104f0' ]
-		assert fnc.calls( '_memcpy' )
+		assert fnc.calls( '__asm_rep_movsd_memcpy' )
 		assert fnc.calls( 'RegCloseKey' )
 		#assert fnc.calls( 'RegCreateKeyExW' )
 		assert fnc.calls( 'RegFlushKey' )
@@ -1827,13 +1827,13 @@ class TestCryptoLocker(Test):
 		assert fnc.calls( 'RegCloseKey' )
 		assert fnc.calls( 'RegFlushKey' )
 		assert fnc.calls( 'ReleaseMutex' )
-		fnc = self.out_c.funcs[ '__purecall' ]
+		fnc = self.out_c.funcs[ 'function_4109c6' ]
 		assert fnc.calls( '_purecall' )
-		fnc = self.out_c.funcs[ '__except_handler3' ]
+		fnc = self.out_c.funcs[ 'function_410a78' ]
 		assert fnc.calls( '_except_handler3' )
-		fnc = self.out_c.funcs[ '_memcpy_1' ]
+		fnc = self.out_c.funcs[ 'function_410a7e' ]
 		assert fnc.calls( 'memcpy' )
-		fnc = self.out_c.funcs[ '_memset' ]
+		fnc = self.out_c.funcs[ 'function_410a84' ]
 		assert fnc.calls( 'memset' )
 
 	#def test_check_for_signedMod1_idiom_detection(self):

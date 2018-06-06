@@ -44,7 +44,7 @@ class TestDecompileAllBig(Test):
     settings = CriticalTestSettings.from_settings(base_settings_big)
 
     def test_call_graph(self):
-        main = self.out_c.funcs[ 'main' ]
+        main = self.out_c.funcs[ 'sub_4007C4' ]
         assert main.calls( 'sub_400A40' ) # scanf
         assert main.calls( 'sub_4006F0' )
         assert main.calls( 'sub_400A20' ) # printf

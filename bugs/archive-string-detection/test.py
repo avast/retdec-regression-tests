@@ -18,8 +18,7 @@ class TestArmCOFF(Test):
 	)
 
 	def test_relocations_applied(self):
-		assert self.out_dsm.contains('0xe8:\s*00 01 00 00')
-		assert self.out_dsm.contains('0xec:\s*10 01 00 00')
+		assert self.out_dsm.contains('0xe8:\s*00 01 00 00 10 01 00 00')
 
 
 #class TestX86Elf(Test):

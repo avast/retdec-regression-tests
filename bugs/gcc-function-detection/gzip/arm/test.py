@@ -130,7 +130,7 @@ class Test(Test):
 	# Currently detected functions which have their named (from symbols) counterparts in not-stripped binary.
 	#
 	def test_check_for_all_currently_detected_functions(self):
-		assert self.out_c.has_func( 'function_8000' )  #
+		assert self.out_c.has_func( '_init' )  # function_8000
 		assert self.out_c.has_func( 'function_8020' )  #
 		assert self.out_c.has_func( 'function_80b0' )  #
 		assert self.out_c.has_func( 'entry_point' )  # function_810c
@@ -198,13 +198,13 @@ class Test(Test):
 		assert self.out_c.has_func( 'function_113c0' )  #
 		assert self.out_c.has_func( 'function_11484' )  #
 		#assert self.out_c.has_func( 'function_11cf0' )  # statically linked
-		assert self.out_c.has_func( 'function_1210c' )  #
-		assert self.out_c.has_func( 'function_1211c' )  #
+		#assert self.out_c.has_func( 'function_1210c' )  # statically linked
+		#assert self.out_c.has_func( 'function_1211c' )  # statically linked __errno
 		#assert self.out_c.has_func( 'function_14218' )  #
 		#assert self.out_c.has_func( 'function_149dc' )  #
 		#assert self.out_c.has_func( 'function_162a8' )  #
-		assert self.out_c.has_func( 'function_162e4' )  #
-		assert self.out_c.has_func( 'function_1a020' )  #
+		#assert self.out_c.has_func( 'function_162e4' )  # statically linked
+		#assert self.out_c.has_func( 'function_1a020' )  # statically linked __env_lock
 		#assert self.out_c.has_func( 'function_1a024' )  #
 		assert self.out_c.has_func( 'function_1a6b4' )  #
 		assert self.out_c.has_func( 'function_1ec3c' )  #

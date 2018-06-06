@@ -10,4 +10,4 @@ class TestDecodeOnly(Test):
 		assert self.out_c.has_funcs( 'main' )
 
 		fnc = self.out_c.funcs['main']
-		assert fnc.calls('unknown_4d7014')
+		assert fnc.calls('function_4d7014')

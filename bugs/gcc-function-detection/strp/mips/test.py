@@ -49,11 +49,13 @@ class Test(Test):
 		assert self.out_c.has_func( 'function_8900638' )  # usage
 		assert self.out_c.has_func( 'function_8900668' )  # try
 		assert self.out_c.has_func( 'main' )  # main
-		assert self.out_c.has_func( 'function_8900d78' )  # __errno
-		assert self.out_c.has_func( 'function_8903ea4' )  # putchar
-		assert self.out_c.has_func( 'function_8904444' )  # _rename
 		assert self.out_c.has_func( 'function_89044c8' )  # rindex
-		assert self.out_c.has_func( 'function_8904f9c' )  # _stat
+
+	def test_check_for_some_static_functions(self):
+		assert self.out_config.is_statically_linked('__errno', 0x8900d78)
+		assert self.out_config.is_statically_linked('stat', 0x8904f9c)
+		assert self.out_config.is_statically_linked('putchar', 0x8903ea4)
+		assert self.out_config.is_statically_linked('fstat', 0x8904444)
 
 	# Functions reported in #1050 as not detected.
 	# TODO: matula, uncomment when fixed.

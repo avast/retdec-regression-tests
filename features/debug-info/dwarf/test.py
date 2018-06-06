@@ -13,8 +13,8 @@ class DWARFTest(Test):
         self.assertEqual(self.out_c.func_names, ['func', 'main'])
 
     def test_address_ranges_are_emitted(self):
-        assert self.out_c.has_comment_matching(r'// Address range: *0x401560 - 0x401597')
-        assert self.out_c.has_comment_matching(r'// Address range: *0x401598 - 0x4015cd')
+        assert self.out_c.has_comment_matching(r'// Address range: *0x401560 - 0x401598')
+        assert self.out_c.has_comment_matching(r'// Address range: *0x401598 - 0x4015ce')
 
     def test_line_ranges_are_emitted(self):
         assert self.out_c.has_comment_matching(r'// Line range: *10 - 14')

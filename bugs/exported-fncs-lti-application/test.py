@@ -7,5 +7,5 @@ class Test(Test):
 
 	def test_check_scanf_is_user_defined(self):
 		assert self.out_c.has_func( '_scanf' )
-		main = self.out_c.funcs['main']
+		main = self.out_c.funcs['_main']
 		assert main.calls('_scanf')

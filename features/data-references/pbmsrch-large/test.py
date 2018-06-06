@@ -47,4 +47,4 @@ class Test(Test):
         assert self.out_c.has_string_literal_matching( r'Kurt Vonneguts Commencement Address at' ) # first search_strings
         assert self.out_c.has_string_literal_matching( r'fructose' ) # mid search_strings
         assert self.out_c.has_string_literal_matching( r'zygote' ) # one before last search_strings
-        assert self.out_c.has_string_literal_matching( r'' ) # last search_strings
+        #assert self.out_c.has_string_literal_matching( r'' ) # last search_strings

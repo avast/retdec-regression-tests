@@ -128,8 +128,6 @@ class Test(Test):
 		assert self.out_c.has_func( 'function_89002e4' )  #
 		assert self.out_c.has_func( 'function_89002f8' )  #
 		assert self.out_c.has_func( 'function_8900354' )  # call_frame_dummy
-		assert self.out_c.has_func( 'function_8900368' )  #
-		assert self.out_c.has_func( 'function_8900cb8' )  #
 		assert self.out_c.has_func( 'function_8902878' )  #
 		assert self.out_c.has_func( 'function_89028b4' )  #
 		assert self.out_c.has_func( 'function_89029a4' )  #
@@ -203,13 +201,17 @@ class Test(Test):
 		assert self.out_c.has_func( 'function_8913f9c' )  #
 		assert self.out_c.has_func( 'function_8914000' )  #
 		assert self.out_c.has_func( 'function_89141b4' )  #
-		assert self.out_c.has_func( 'function_89181d4' )  #
 		assert self.out_c.has_func( 'function_891f470' )  #
 		assert self.out_c.has_func( 'function_891f4c0' )  #
 		assert self.out_c.has_func( 'function_891f4d4' )  #
-		assert self.out_c.has_func( 'function_891f4f0' )  #
 		assert self.out_c.has_func( 'function_891f548' )  #
 		assert self.out_c.has_func( 'function_891f550' )  #
+		assert self.out_c.has_func( 'sceIoDopen' )  # @ 891f4f0
+
+	def test_check_for_some_static_functions(self):
+		assert self.out_config.is_statically_linked('atexit', 0x8900368)
+		assert self.out_config.is_statically_linked('__errno', 0x8900cb8)
+		assert self.out_config.is_statically_linked('stat', 0x89181d4)
 
 	# Functions reported in #1050 as not detected.
 	#

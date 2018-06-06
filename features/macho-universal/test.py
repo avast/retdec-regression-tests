@@ -10,9 +10,7 @@ class TestMachoUniversalDecomp(Test):
 
     def test_decompilation_has_funcs(self):
         assert self.out_c.has_func( '_factorial' )
-        assert self.out_c.has_func( 'function_1eec' )
 
     def test_decompilation_calls(self):
         assert self.out_c.funcs['_factorial'].calls( '_factorial' )
-        assert self.out_c.funcs['main'].calls( 'function_1eec' )
-        assert self.out_c.funcs['function_1eec'].calls( '_scanf', '_factorial', '_printf' )
+        assert self.out_c.funcs['main'].calls( '_scanf', '_factorial', '_printf' )
