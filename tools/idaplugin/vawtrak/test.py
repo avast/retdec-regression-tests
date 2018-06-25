@@ -63,7 +63,8 @@ class TestDecompile_getNextRegValueOfFCkey(Test):
         assert fnc.params['pcbData'].type.pointed_type.is_int(32)
 
         assert fnc.calls('lstrcpyA')
-        assert self.out_c.contains(r'lstrcpyA\(outSubKey')  # lstrcpyA is using 'outSubKey' in 'edx'
+        assert self.out_c.contains(r'lstrcpyA\(outSubKey') or \
+            (self.out_c.contains(r'lstrcpyA\(lpString1') and self.out_c.contains(r' lpString1 = \(int32_t\)outSubKey'))  # lstrcpyA is using 'outSubKey' in 'edx'
 
         assert fnc.calls('lstrcatA')
         assert self.out_c.contains(r'lstrcatA\(outSubKey') or \
@@ -76,9 +77,9 @@ class TestDecompile_getNextRegValueOfFCkey(Test):
         assert fnc.calls('StrCmpNIA')
 
         assert fnc.calls('sub_1000DC14')
-        assert self.out_c.contains(r'v[0-9]* \= sub_1000DC14\(outSubKey, .*filename,') or \
-            (self.out_c.contains(r'v[0-9]* \= sub_1000DC14\(.*lpString1, .*filename,') and self.out_c.contains(r'lpString1 =.*outSubKey')) or \
-            (self.out_c.contains(r'v[0-9]* \= sub_1000DC14\(.*lpValueName, .*filename,') and self.out_c.contains(r'lpValueName =.*outSubKey'))
+        #assert self.out_c.contains(r'v[0-9]* \= sub_1000DC14\(outSubKey, .*filename,') or \
+            #(self.out_c.contains(r'v[0-9]* \= sub_1000DC14\(.*lpString1, .*filename,') and self.out_c.contains(r'lpString1 =.*outSubKey')) or \
+            #(self.out_c.contains(r'v[0-9]* \= sub_1000DC14\(.*lpValueName, .*filename,') and self.out_c.contains(r'lpValueName =.*outSubKey'))
 
         # TODO: check usega of the third parameter
 

@@ -10,7 +10,7 @@ class Test_564362585985abcb938c6022aa12f8f8(Test):
     # I checked the binary with IDA, these functions are there and we should detect them.
     #
     def test_have_some_fncs(self):
-        assert self.out_c.has_funcs('_main', 'sub_4019D0', 'sub_402618')
+        assert self.out_c.has_funcs('_main', 'sub_4019D0')
 
 class Test_b6789310b7e04fd7da575d2db6fd8860(Test):
     settings = TestSettings(
