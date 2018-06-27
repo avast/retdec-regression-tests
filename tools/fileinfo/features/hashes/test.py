@@ -57,3 +57,52 @@ class TestImportHashYARAcompatibleNoLutOrds(Test):
             self.fileinfo.output['importTable']['md5'],
             '4a685152543193737b50e1b699b8764e'
         )
+
+# https://github.com/avast-tl/retdec/issues/121
+# Test export hashes for PE format
+class TestExportHashPE(Test):
+    settings = TestSettings(
+        tool='fileinfo',
+        input='export_hashPE',
+        args='--verbose --json'
+    )
+
+    def test_correctly_computes_export_hash(self):
+        assert self.fileinfo.succeeded
+
+        self.assertEqual(self.fileinfo.output['exportTable']['crc32'], '537c3723')
+        self.assertEqual(self.fileinfo.output['exportTable']['md5'], 'ed5fc6509f84c22d0a5181a74b169f4d')
+        self.assertEqual(self.fileinfo.output['exportTable']['sha256'], '2ad7a39d00b78ab7bcb584bcef1d4a95246ebe9241e5ae3e24234bd6bca63cd9')
+
+# https://github.com/avast-tl/retdec/issues/121
+# Test export hashes for ELF format
+class TestExportHashELF(Test):
+    settings = TestSettings(
+        tool='fileinfo',
+        input='export_hashELF',
+        args='--verbose --json'
+    )
+
+    def test_correctly_computes_export_hash(self):
+        assert self.fileinfo.succeeded
+
+        self.assertEqual(self.fileinfo.output['exportTable']['crc32'], 'e1696c79')
+        self.assertEqual(self.fileinfo.output['exportTable']['md5'], '1751216bdaf64142e87ce756a0c40817')
+        self.assertEqual(self.fileinfo.output['exportTable']['sha256'], '6bb3c5893a91e9680ebcedea9f2b01cac380b1f98af4067be567981e3b3bf91b')
+
+# https://github.com/avast-tl/retdec/issues/121
+# Test export hashes for ELF format
+class TestExportHashMACHO(Test):
+    settings = TestSettings(
+        tool='fileinfo',
+        input='export_hashMACHO',
+        args='--verbose --json'
+    )
+
+    def test_correctly_computes_export_hash(self):
+        assert self.fileinfo.succeeded
+
+        self.assertEqual(self.fileinfo.output['exportTable']['crc32'], 'b4a8ec08')
+        self.assertEqual(self.fileinfo.output['exportTable']['md5'], '69c3263d43b9c3a5fad072fd81519e50')
+        self.assertEqual(self.fileinfo.output['exportTable']['sha256'], 'b59f469f07123abee30e93a83e8b8908ed7faa8b140dba0093204b6b3efd541c')
+
