@@ -214,7 +214,7 @@ class TestExtractArchiveDecompilationListArchs(Test):
     def test_check_arch_list(self):
         self.assertNotEqual(self.decompiler.return_code, 0)
         self.assertIn(
-            'Invalid --arch option "x86". File contains these architecture families:',
+            'Invalid --arch option \'x86\'. File contains these architecture families:',
             self.decompiler.output
         )
         self.assertIn('armv7\tarm', self.decompiler.output)
