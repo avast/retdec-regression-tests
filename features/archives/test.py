@@ -129,7 +129,7 @@ class TestArchiveInvalidIndex(Test):
         self.assertTrue(self.decompiler.failed)
         assert not self.decompiler.log.contains(r'integer expression expected')
         assert self.decompiler.log.contains(
-            r'Error: File on index ".*" was not found in the input archive. '
+            r'Error: File on index \'.*\' was not found in the input archive. '
             'Valid indexes are 0-1.'
         )
 
@@ -148,7 +148,7 @@ class TestArchiveInvalidIndexOneFile(Test):
         self.assertTrue(self.decompiler.failed)
         assert not self.decompiler.log.contains(r'integer expression expected')
         assert self.decompiler.log.contains(
-            r'Error: File on index ".*" was not found in the input archive. '
+            r'Error: File on index \'.*\' was not found in the input archive. '
             'The only valid index is 0.'
         )
 
