@@ -166,7 +166,7 @@ class TestArchiveInvalidName(Test):
     def test_check_failure(self):
         self.assertTrue(self.decompiler.failed)
         assert self.decompiler.log.contains(
-            r'Error: File named "notavalidname" was '
+            r'Error: File named \'notavalidname\' was '
             'not found in the input archive.'
         )
 
