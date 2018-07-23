@@ -2,7 +2,7 @@ from regression_tests import *
 
 
 class TestDefaultLimit(Test):
-    """Checks that retdec-decompiler.sh correctly decompiles a binary file when
+    """Checks that retdec-decompiler.py correctly decompiles a binary file when
     there is the default memory limit (half of system RAM).
 
     Test for https://github.com/avast-tl/retdec/issues/270
@@ -23,7 +23,7 @@ class TestDefaultLimit(Test):
 
 
 class TestCustomSufficientLimit(Test):
-    """Checks that retdec-decompiler.sh correctly decompiles a binary file when
+    """Checks that retdec-decompiler.py correctly decompiles a binary file when
     there is a custom memory limit (but sufficient).
 
     Test for https://github.com/avast-tl/retdec/issues/270
@@ -45,7 +45,7 @@ class TestCustomSufficientLimit(Test):
 
 
 class TestCustomInsufficientLimit(Test):
-    """Checks that retdec-decompiler.sh fails to decompile a binary file when
+    """Checks that retdec-decompiler.py fails to decompile a binary file when
     the maximal memory limit is too low.
 
     Test for https://github.com/avast-tl/retdec/issues/270
@@ -65,7 +65,7 @@ class TestCustomInsufficientLimit(Test):
 
 
 class TestNoLimit(Test):
-    """Checks that retdec-decompiler.sh correctly decompiles a binary file when
+    """Checks that retdec-decompiler.py correctly decompiles a binary file when
     there is no memory limit.
 
     Test for https://github.com/avast-tl/retdec/issues/270

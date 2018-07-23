@@ -3,7 +3,7 @@ from regression_tests import *
 class Test(Test):
     """Checks that our internal function name can be given as a parameter to
 
-        retdec-decompiler.sh --select-functions
+        retdec-decompiler.py --select-functions
 
     See #1388 for more details.
     """
