@@ -106,7 +106,8 @@ class arm_elf_509262418069137b2d989f0ac2d1460f(Test):
 		#assert fnc.calls( 'dlopen' )
 
 		fnc = self.out_c.funcs[ 'function_86d4' ]
-		assert fnc.calls( 'strlcpy' )
+		if not on_macos():
+			assert fnc.calls( 'strlcpy' )
 
 class p4_firmware_arm(Test):
 	settings = TestSettings(
