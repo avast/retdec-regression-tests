@@ -47,18 +47,21 @@ class TestAnalysisWhenSufficient(Test):
         )
 
 
-class TestAnalysisWhenInsufficientLimit(Test):
-    """Checks that fileinfo fails to analyze the file when the memory limit is
-    not sufficient.
+# Memory limiting does not work correctly on macOS (see
+# https://github.com/avast-tl/retdec/issues/379).
+if not on_macos():
+    class TestAnalysisWhenInsufficientLimit(Test):
+        """Checks that fileinfo fails to analyze the file when the memory limit is
+        not sufficient.
 
-    Test for https://github.com/avast-tl/retdec/issues/270
-    """
+        Test for https://github.com/avast-tl/retdec/issues/270
+        """
 
-    settings = TestSettings(
-        tool='fileinfo',
-        args='--max-memory=4096',  # minimal limit is 1 page (4096 bytes)
-        input='ack.ex',
-    )
+        settings = TestSettings(
+            tool='fileinfo',
+            args='--max-memory=4096',  # minimal limit is 1 page (4096 bytes)
+            input='ack.ex',
+        )
 
-    def test_fails_to_analyze_file(self):
-        assert not self.fileinfo.succeeded, 'fileinfo succeeded but should have failed'
+        def test_fails_to_analyze_file(self):
+            assert not self.fileinfo.succeeded, 'fileinfo succeeded but should have failed'

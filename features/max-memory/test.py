@@ -44,26 +44,6 @@ class TestCustomSufficientLimit(Test):
         self.assertIn(' -max-memory 1073741824', self.decompiler.output)
 
 
-class TestCustomInsufficientLimit(Test):
-    """Checks that retdec-decompiler.py fails to decompile a binary file when
-    the maximal memory limit is too low.
-
-    Test for https://github.com/avast-tl/retdec/issues/270
-    """
-
-    settings = TestSettings(
-        input='ack.ex',
-        args='--max-memory=4096',  # minimal limit is 1 page (4096 bytes)
-    )
-
-    def setUp(self):
-        # Fail expected.
-        pass
-
-    def test_failed_to_decompile_file(self):
-        self.assertNotEqual(self.decompiler.return_code, 0)
-
-
 class TestNoLimit(Test):
     """Checks that retdec-decompiler.py correctly decompiles a binary file when
     there is no memory limit.
@@ -84,3 +64,26 @@ class TestNoLimit(Test):
         self.assertNotIn('--max-memory', self.decompiler.output)
         # For bin2llvmir and llvmir2hll:
         self.assertNotIn(' -max-memory', self.decompiler.output)
+
+
+# Memory limiting does not work correctly on macOS (see
+# https://github.com/avast-tl/retdec/issues/379).
+if not on_macos():
+    class TestCustomInsufficientLimit(Test):
+        """Checks that retdec-decompiler.py fails to decompile a binary file when
+        the maximal memory limit is too low.
+
+        Test for https://github.com/avast-tl/retdec/issues/270
+        """
+
+        settings = TestSettings(
+            input='ack.ex',
+            args='--max-memory=4096',  # minimal limit is 1 page (4096 bytes)
+        )
+
+        def setUp(self):
+            # Fail expected.
+            pass
+
+        def test_failed_to_decompile_file(self):
+            self.assertNotEqual(self.decompiler.return_code, 0)
