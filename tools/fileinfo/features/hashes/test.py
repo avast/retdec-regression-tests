@@ -68,7 +68,7 @@ class TestTypeRefHash(Test):
         args='--verbose --json'
     )
 
-    def test_correctly_computes_export_hash(self):
+    def test_correctly_computes_typeref_hash(self):
         assert self.fileinfo.succeeded
 
         self.assertEqual(self.fileinfo.output['typeRefTable']['crc32'], 'c86ab1fc')
