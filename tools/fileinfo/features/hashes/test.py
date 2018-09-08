@@ -106,3 +106,19 @@ class TestExportHashMACHO(Test):
         self.assertEqual(self.fileinfo.output['exportTable']['md5'], '69c3263d43b9c3a5fad072fd81519e50')
         self.assertEqual(self.fileinfo.output['exportTable']['sha256'], 'b59f469f07123abee30e93a83e8b8908ed7faa8b140dba0093204b6b3efd541c')
 
+
+# https://github.com/avast-tl/retdec/issues/363
+# Test typeref hashes for .NET files
+class TestTypeRefHash(Test):
+    settings = TestSettings(
+        tool='fileinfo',
+        input='typeref_hash',
+        args='--verbose --json'
+    )
+
+    def test_correctly_computes_typeref_hash(self):
+        assert self.fileinfo.succeeded
+
+        self.assertEqual(self.fileinfo.output['typeRefTable']['crc32'], 'c86ab1fc')
+        self.assertEqual(self.fileinfo.output['typeRefTable']['md5'], '27d1cf54d7e587f753ad68387f3d440b')
+        self.assertEqual(self.fileinfo.output['typeRefTable']['sha256'], '2ee04084f1174ed6b1453cfec0572aaedb40f8dff112c958f1e8f657ebf53ec0')
