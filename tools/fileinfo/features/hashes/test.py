@@ -91,7 +91,7 @@ class TestExportHashELF(Test):
         self.assertEqual(self.fileinfo.output['exportTable']['sha256'], '6bb3c5893a91e9680ebcedea9f2b01cac380b1f98af4067be567981e3b3bf91b')
 
 # https://github.com/avast-tl/retdec/issues/121
-# Test export hashes for ELF format
+# Test export hashes for MACHO format
 class TestExportHashMACHO(Test):
     settings = TestSettings(
         tool='fileinfo',
@@ -105,4 +105,20 @@ class TestExportHashMACHO(Test):
         self.assertEqual(self.fileinfo.output['exportTable']['crc32'], 'b4a8ec08')
         self.assertEqual(self.fileinfo.output['exportTable']['md5'], '69c3263d43b9c3a5fad072fd81519e50')
         self.assertEqual(self.fileinfo.output['exportTable']['sha256'], 'b59f469f07123abee30e93a83e8b8908ed7faa8b140dba0093204b6b3efd541c')
+
+# https://github.com/avast-tl/retdec/issues/339
+# Test icon hashes
+class TestIconHash(Test):
+    settings = TestSettings(
+        tool='fileinfo',
+        input='icon_hash',
+        args='--verbose --json'
+    )
+
+    def test_correctly_computes_export_hash(self):
+        assert self.fileinfo.succeeded
+
+        self.assertEqual(self.fileinfo.output['resourceTable']['iconCrc32'], '268030d4')
+        self.assertEqual(self.fileinfo.output['resourceTable']['iconMd5'], '386cbd7ad9151964fd9f8de36cbb32b7')
+        self.assertEqual(self.fileinfo.output['resourceTable']['iconSha256'], '16053dc6c225ff5593b29e2dfb1da93244d0620e1b61e31be0ef013b48a06210')
 
