@@ -57,3 +57,20 @@ class TestImportHashYARAcompatibleNoLutOrds(Test):
             self.fileinfo.output['importTable']['md5'],
             '4a685152543193737b50e1b699b8764e'
         )
+
+
+# https://github.com/avast-tl/retdec/issues/363
+# Test typeref hashes for .NET files
+class TestTypeRefHash(Test):
+    settings = TestSettings(
+        tool='fileinfo',
+        input='typeref_hash',
+        args='--verbose --json'
+    )
+
+    def test_correctly_computes_export_hash(self):
+        assert self.fileinfo.succeeded
+
+        self.assertEqual(self.fileinfo.output['typeRefTable']['crc32'], 'c86ab1fc')
+        self.assertEqual(self.fileinfo.output['typeRefTable']['md5'], '27d1cf54d7e587f753ad68387f3d440b')
+        self.assertEqual(self.fileinfo.output['typeRefTable']['sha256'], '2ee04084f1174ed6b1453cfec0572aaedb40f8dff112c958f1e8f657ebf53ec0')
