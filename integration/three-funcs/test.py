@@ -8,6 +8,11 @@ class TestBase(Test):
             expected_output=''
         )
 
+class Test_2018(Test):
+    settings_2018 = TestSettings(
+        input=files_in_dir('2018-09-17'),
+    )
+
 class Test_2017(TestBase):
     settings = TestSettings(
         input=files_in_dir('2017-11-14'),

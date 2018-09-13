@@ -18,6 +18,39 @@ class TestBase(Test):
             expected_return_code=1
         )
 
+class Test_2018(TestBase):
+    settings_2018 = TestSettings(
+        input=files_in_dir('2018-09-13', excluding=r'.*\.exe'),
+    )
+
+class Test_2018_x64Pe(Test):
+    settings = TestSettings(
+        input=files_in_dir('2018-09-13', matching=r'.*\.exe')
+    )
+
+    def test_check_function_ack(self):
+        assert self.out_c.has_func('ack')
+        assert self.out_c.funcs['ack'].return_type.is_int(32)
+        assert self.out_c.funcs['ack'].param_count == 2
+        assert self.out_c.funcs['ack'].params[0].type.is_int(32)
+        assert self.out_c.funcs['ack'].params[1].type.is_int(32)
+        assert self.out_c.funcs['ack'].has_any_return_stmts()
+        assert self.out_c.funcs['ack'].return_stmts[0].return_expr.is_add_op()
+        assert self.out_c.funcs['ack'].calls('ack')
+        assert self.out_c.funcs['ack'].has_any_if_stmts()
+
+    def test_check_main(self):
+        assert self.out_c.has_func('main')
+        assert self.out_c.funcs['main'].calls('scanf')
+        assert self.out_c.funcs['main'].calls('ack')
+        assert self.out_c.funcs['main'].calls('printf')
+        assert self.out_c.funcs['main'].has_any_return_stmts()
+        assert len(self.out_c.funcs['main'].return_stmts) == 1
+
+    def test_check_presence_of_literals(self):
+        assert self.out_c.has_string_literal('%d %d')
+        assert self.out_c.has_string_literal('ackerman( %d , %d ) = %d\\n')
+
 class Test_2017(TestBase):
     settings_2017 = TestSettings(
         input=files_in_dir('2017-11-14'),

@@ -45,3 +45,38 @@ class Test_2017_todo(Test):
         assert self.out_c.has_string_literal('%d')
         assert self.out_c.has_string_literal('Input number: ')
         assert self.out_c.has_string_literal('fibonacci(%d) = %u\\n')
+
+class Test_2018(TestBase):
+    settings_2018 = TestSettings(
+        input=files_in_dir('2018-09-17', excluding=r'.*\.exe'),
+    )
+
+class Test_2018_x64Pe(Test):
+    settings_2018 = TestSettings(
+        input=files_in_dir('2018-09-17', matching=r'.*\.exe'),
+    )
+
+    def test_check_function_fib(self):
+        assert self.out_c.has_func('fib')
+        assert self.out_c.funcs['fib'].return_type.is_int(32)
+        assert self.out_c.funcs['fib'].param_count == 1
+        assert self.out_c.funcs['fib'].params[0].type.is_int(32)
+        assert self.out_c.funcs['fib'].calls('fib')
+        assert self.out_c.funcs['fib'].has_any_if_stmts()
+        assert self.out_c.funcs['fib'].has_any_return_stmts()
+
+    def test_check_fnction_main(self):
+        assert self.out_c.has_func('main')
+        main = self.out_c.funcs['main']
+        assert main.calls('printf')
+        assert main.calls('scanf')
+        assert main.calls('fib')
+        assert main.has_any_for_loops() or main.has_any_while_loops()
+        assert main.has_any_return_stmts()
+        assert main.has_return_stmts('return 0')
+
+    def test_check_presence_of_literals(self):
+        assert self.out_c.has_string_literal('Input number of iterations: ')
+        assert self.out_c.has_string_literal('%d')
+        assert self.out_c.has_string_literal('Input number: ')
+        assert self.out_c.has_string_literal('fibonacci(%d) = %u\\n')

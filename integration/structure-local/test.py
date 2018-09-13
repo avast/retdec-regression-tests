@@ -58,6 +58,90 @@ class TestBase(Test):
 '''
         )
 
+class Test_2018(Test):
+    settings_2018 = TestSettings(
+        input=files_in_dir('2018-09-17'),
+    )
+
+    def test_check_function_fnc_basic_print(self):
+        assert self.out_c.has_func('fnc_basic_print')
+        assert self.out_c.funcs['fnc_basic_print'].return_type.is_int(32)
+        assert self.out_c.funcs['fnc_basic_print'].param_count == 1
+        #ssert self.out_c.funcs['fnc_basic_print'].params[0].type.is_pointer()
+        #assert self.out_c.funcs['fnc_basic_print'].params[0].type.point_type.is_struct()
+        assert self.out_c.funcs['fnc_basic_print'].calls('printf')
+
+    def test_check_function_fnc_basic(self):
+        assert self.out_c.has_func('fnc_basic')
+        assert self.out_c.funcs['fnc_basic'].return_type.is_void()
+        assert self.out_c.funcs['fnc_basic'].param_count == 0
+        assert self.out_c.funcs['fnc_basic'].calls('malloc')
+        assert self.out_c.funcs['fnc_basic'].calls('scanf')
+        assert self.out_c.funcs['fnc_basic'].calls('printf')
+        assert self.out_c.funcs['fnc_basic'].calls('fnc_basic_print')
+
+    def test_check_function_fnc_complex_print(self):
+        assert self.out_c.funcs['fnc_complex_print'].return_type.is_void()
+        #assert self.out_c.funcs['fnc_complex_print'].param_count == 1
+        #assert self.out_c.funcs['fnc_complex_print'].params[0].type.is_pointer()
+        #assert self.out_c.funcs['fnc_complex_print'].params[0].type.point_type.is_struct()
+        assert self.out_c.funcs['fnc_complex_print'].calls('printf')
+        assert self.out_c.funcs['fnc_complex_print'].has_any_for_loops()
+
+    def test_check_function_fnc_complex(self):
+        assert self.out_c.has_func('fnc_complex')
+        assert self.out_c.funcs['fnc_complex'].return_type.is_int(32)
+        assert self.out_c.funcs['fnc_complex'].param_count == 0
+        assert self.out_c.funcs['fnc_complex'].has_any_for_loops()
+        assert self.out_c.funcs['fnc_complex'].calls('malloc')
+        assert self.out_c.funcs['fnc_complex'].has_any_return_stmts()
+        #assert self.out_c.funcs['fnc_complex'].has_return_stmts('return 0')
+
+    def test_check_function_fnc_sasa_fill(self):
+        assert self.out_c.has_func('fnc_sasa_fill')
+        assert self.out_c.funcs['fnc_sasa_fill'].return_type.is_void()
+        assert self.out_c.funcs['fnc_sasa_fill'].param_count == 1
+        #assert self.out_c.funcs['fnc_sasa_fill'].params[0].type.is_pointer()
+        #assert self.out_c.funcs['fnc_sasa_fill'].params[0].type.point_type.is_pointer()
+        #assert self.out_c.funcs['fnc_sasa_fill'].params[0].type.point_type.point_type.is_struct()
+        #assert self.out_c.funcs['fnc_sasa_fill'].calls('malloc')
+
+    def test_check_function_fnc_sasa_print(self):
+        assert self.out_c.has_func('fnc_sasa_print')
+        assert self.out_c.funcs['fnc_sasa_print'].return_type.is_void()
+        assert self.out_c.funcs['fnc_sasa_print'].param_count == 1
+        #assert self.out_c.funcs['fnc_sasa_print'].params[0].type.is_pointer()
+        #assert self.out_c.funcs['fnc_sasa_print'].params[0].type.point_type.is_struct()
+        assert self.out_c.funcs['fnc_sasa_print'].calls('printf')
+        assert self.out_c.funcs['fnc_sasa_print'].has_any_for_loops()
+
+    def test_check_function_fnc_sasa(self):
+        assert self.out_c.has_func('fnc_sasa')
+        assert self.out_c.funcs['fnc_sasa'].return_type.is_int(32)
+        assert self.out_c.funcs['fnc_sasa'].param_count == 0
+        assert self.out_c.funcs['fnc_sasa'].calls('malloc')
+        assert self.out_c.funcs['fnc_sasa'].calls('fnc_sasa_fill')
+        assert self.out_c.funcs['fnc_sasa'].calls('fnc_sasa_print')
+        assert self.out_c.funcs['fnc_sasa'].has_any_return_stmts()
+        #assert self.out_c.funcs['fnc_sasa'].has_return_stmts('return 0')
+
+    def test_check_function_main(self):
+        assert self.out_c.has_func('main')
+        assert self.out_c.funcs['main'].calls('fnc_basic')
+        assert self.out_c.funcs['main'].calls('fnc_complex')
+        assert self.out_c.funcs['main'].calls('fnc_sasa')
+        assert self.out_c.funcs['main'].has_any_return_stmts()
+        assert self.out_c.funcs['main'].has_return_stmts('return 0')
+
+    def test_check_presence_of_literals(self):
+        #assert self.out_c.has_string_literal("\\n")
+        assert self.out_c.has_string_literal("%d\\n")
+        assert self.out_c.has_string_literal("%d %d\\n")
+        assert self.out_c.has_string_literal("%f %d %d\\n")
+        assert self.out_c.has_string_literal("%d %d %f\\n")
+        #assert self.out_c.has_string_literal("%c %d %f\\n")
+        assert self.out_c.has_string_literal("%d %d %d %f\\n")
+
 class Test_2017(TestBase):
     settings_2017 = TestSettings(
         input=files_in_dir('2017-11-14'),

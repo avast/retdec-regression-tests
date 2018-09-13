@@ -109,6 +109,28 @@ class TestBase(Test):
 '''
         )
 
+class Test_2018(TestBase):
+    settings_2018 = TestSettings(
+        input=files_in_dir('2018-09-17', excluding=r'.*\.exe'),
+    )
+
+class Test_2018_x64Pe(Test):
+    settings_2018 = TestSettings(
+        input=files_in_dir('2018-09-17', matching=r'.*\.exe'),
+    )
+
+    def test_check_function_main(self):
+        assert self.out_c.has_func('main')
+        assert self.out_c.funcs['main'].has_any_for_loops()
+        assert (self.out_c.funcs['main'].has_for_loops('for (uint64_t i = 0; i < 10; i++)')
+                or self.out_c.funcs['main'].has_for_loops('for (uint64_t i = 0; i < (uint64_t)10; i++)'))
+        assert (self.out_c.funcs['main'].has_for_loops('for (uint64_t j = 0; j < 10; j++)')
+                or self.out_c.funcs['main'].has_for_loops('for (uint64_t j = 0; j < (uint64_t)10; j++)'))
+        assert self.out_c.funcs['main'].calls('printf')
+
+    def test_check_presence_of_literals(self):
+        assert self.out_c.has_string_literal('%d %d\\n')
+
 class Test_2017(TestBase):
     settings = TestSettings(
         input=files_in_dir('2017-11-14'),

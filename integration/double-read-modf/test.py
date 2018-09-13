@@ -13,6 +13,29 @@ class TestBase(Test):
             expected_output='func( -21.120 ) = 21.000000\n'
         )
 
+class Test_2018(Test):
+    settings_2018 = TestSettings(
+        input=files_in_dir('2018-09-17'),
+    )
+
+    def test_check_function_func(self):
+        assert self.out_c.has_func('func')
+        assert self.out_c.funcs['func'].return_type.is_double()
+        assert self.out_c.funcs['func'].param_count == 1
+        assert self.out_c.funcs['func'].params[0].type.is_double()
+        assert self.out_c.funcs['func'].calls('modf')
+
+    def test_check_function_main(self):
+        assert self.out_c.has_func('main')
+        assert self.out_c.funcs['main'].calls('scanf')
+        assert self.out_c.funcs['main'].calls('func')
+        assert self.out_c.funcs['main'].calls('printf')
+        assert self.out_c.funcs['main'].has_any_return_stmts()
+
+    def test_check_presence_of_literals(self):
+        assert self.out_c.has_string_literal('%lf')
+        assert self.out_c.has_string_literal('func( %.3lf ) = %lf\\n')
+
 class Test_2017(TestBase):
     settings_2017 = TestSettings(
         input=files_in_dir('2017-11-14'),
