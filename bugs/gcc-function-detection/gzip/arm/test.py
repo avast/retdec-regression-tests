@@ -208,11 +208,6 @@ class Test(Test):
 		#assert self.out_c.has_func( 'function_1a024' )  #
 		assert self.out_c.has_func( 'function_1a6b4' )  #
 		assert self.out_c.has_func( 'function_1ec3c' )  #
-
-	# Functions reported in #1050 as not detected.
-	# TODO: matula, uncomment when fixed.
-	#
-	def test_check_for_functions_not_detected_before_1050_fix(self):
 		assert self.out_c.has_func( 'function_ade0' )  # file_read
 		assert self.out_c.has_func( 'function_d718' )  # unzip
 		assert self.out_c.has_func( 'function_f7fc' )  # warn

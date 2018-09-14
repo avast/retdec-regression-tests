@@ -643,7 +643,7 @@ class TestCryptoLocker(Test):
 		assert fnc.calls( 'GetFileSizeEx' )
 		assert fnc.calls( 'GetTickCount' )
 		# Do not check the following call because it is not detected on Windows
-		# due to a syntax error (see #1297 for more details).
+		# due to a syntax error.
 		# assert fnc.calls( 'SetFilePointerEx' )
 		assert fnc.calls( 'Sleep' )
 		assert fnc.calls( 'WriteFile' )
@@ -831,7 +831,7 @@ class TestCryptoLocker(Test):
 		assert fnc.calls( 'SetWindowTextW' )
 		fnc = self.out_c.funcs[ 'function_406010' ]
 		# Do not check the following call because it is not detected on Windows
-		# due to a syntax error (see #1297 for more details).
+		# due to a syntax error.
 		# assert fnc.calls( 'AlphaBlend' )
 		assert fnc.calls( 'BeginPaint' )
 		assert fnc.calls( 'CreateCompatibleDC' )
@@ -850,7 +850,7 @@ class TestCryptoLocker(Test):
 		assert fnc.calls( 'SetTextColor' )
 		fnc = self.out_c.funcs[ 'function_4062f0' ]
 		# Do not check the following call because it is not detected on Windows
-		# due to a syntax error (see #1297 for more details).
+		# due to a syntax error.
 		# assert fnc.calls( 'AlphaBlend' )
 		assert fnc.calls( 'CreateCompatibleDC' )
 		assert fnc.calls( 'DeleteDC' )
@@ -1327,7 +1327,7 @@ class TestCryptoLocker(Test):
 		assert fnc.calls( 'IsWindowVisible' )
 		assert fnc.calls( 'LeaveCriticalSection' )
 		# Do not check the following call because it is not detected on Windows
-		# due to a syntax error (see #1297 for more details).
+		# due to a syntax error.
 		# assert fnc.calls( 'MonitorFromPoint' )
 		assert fnc.calls( 'ReplyMessage' )
 		assert fnc.calls( 'SendMessageW' )
@@ -1517,7 +1517,7 @@ class TestCryptoLocker(Test):
 		assert fnc.calls( 'UpdateWindow' )
 		fnc = self.out_c.funcs[ 'function_40d560' ]
 		# Do not check the following call because it is not detected on Windows
-		# due to a syntax error (see #1297 for more details).
+		# due to a syntax error.
 		# assert fnc.calls( 'AlphaBlend' )
 		assert fnc.calls( 'CreateCompatibleDC' )
 		assert fnc.calls( 'DeleteDC' )

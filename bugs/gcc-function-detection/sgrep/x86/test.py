@@ -196,8 +196,6 @@ class Test(Test):
 		assert self.out_c.has_string_literal( 'total' )
 		assert self.out_c.has_string_literal( 'usr' )
 		assert self.out_c.has_string_literal( 'you have to recompile with greater MAX_PHRASE_LENGTH.' )
-		# jk: the following strings are not checked because they often fails
-		# due to the bug #1187
 		#assert self.out_c.has_string_literal( '                                    \\r' )
 		#assert self.out_c.has_string_literal( 'r1.start!=-1' )
 		#assert self.out_c.has_string_literal( 'tmpp.ind==tmp->length && tmpp.node->next==((void *)0)' )
@@ -249,7 +247,7 @@ class Test(Test):
 		assert self.out_c.has_func( 'function_804b367' )  #
 		assert self.out_c.has_func( 'function_804b537' )  #
 		assert self.out_c.has_func( 'function_804b5af' )  #
-		#assert self.out_c.has_func( 'function_804b627' )  # give_oper_name, missing in #1050
+		#assert self.out_c.has_func( 'function_804b627' )  # give_oper_name
 		assert self.out_c.has_func( 'function_804b6a9' )  #
 		assert self.out_c.has_func( 'function_804b820' )  #
 		assert self.out_c.has_func( 'function_804b86d' )  #
@@ -301,22 +299,8 @@ class Test(Test):
 		assert self.out_c.has_func( 'function_804fdc6' )  #
 		assert self.out_c.has_func( 'function_804ff02' )  #
 		assert self.out_c.has_func( 'function_80501c0' )  #
-		#assert self.out_c.has_func( '' )  #
-
-	# Functions reported in #1050 as not detected.
-	# TODO: matula, uncomment when fixed.
-	#
-	def test_check_for_functions_not_detected_before_1050_fix(self):
 		assert self.out_c.has_func( 'function_804a51a' )  # main
 		assert self.out_c.has_func( 'function_804aa50' )  # end_first
 		assert self.out_c.has_func( 'function_804aaa8' )  # start_first
 		assert self.out_c.has_func( 'function_8050140' )  # __libc_csu_init
 		#assert self.out_c.has_func( 'function_80501b0' )  # __libc_csu_fini
-		#assert self.out_c.has_func( 'function_' )  #
-
-	# Functions detected in stripped binary, that do not have their named (from symbols) counterparts in not-stripped binary.
-	# TODO: matula, not sure how serious is this problem. if possible fix detection and uncomment this check.
-	#
-	#def test_check_for_falsely_detected_functions_before_1050_fix(self):
-
-		#assert not self.out_c.has_func( '' )

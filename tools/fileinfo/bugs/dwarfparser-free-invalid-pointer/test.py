@@ -1,7 +1,7 @@
 from regression_tests import *
 
 class Test(Test):
-	"""Checks that fileinfo does not segfault in dwarfparserl (#1808)."""
+	"""Checks that fileinfo does not segfault in dwarfparserl."""
 
 	settings=TestSettings(
 		tool='fileinfo',

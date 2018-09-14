@@ -147,8 +147,8 @@ class Test(Test):
 		assert self.out_c.has_func( 'function_8902ed0' )  #
 		assert self.out_c.has_func( 'function_8902f70' )  #
 		assert self.out_c.has_func( 'function_89030c4' )  #
-		#assert self.out_c.has_func( 'function_89030fc' )  # mySignalCatcher, missing in #1050
-		#assert self.out_c.has_func( 'function_8903128' )  # mySIGSEGVorSIGBUScatcher, missing in #1050
+		#assert self.out_c.has_func( 'function_89030fc' )  # mySignalCatcher
+		#assert self.out_c.has_func( 'function_8903128' )  # mySIGSEGVorSIGBUScatcher
 		assert self.out_c.has_func( 'function_89031b0' )  #
 		assert self.out_c.has_func( 'function_89031ec' )  #
 		assert self.out_c.has_func( 'function_8903238' )  #
@@ -207,16 +207,7 @@ class Test(Test):
 		assert self.out_c.has_func( 'function_891f548' )  #
 		assert self.out_c.has_func( 'function_891f550' )  #
 		assert self.out_c.has_func( 'sceIoDopen' )  # @ 891f4f0
-
-	def test_check_for_some_static_functions(self):
-		assert self.out_config.is_statically_linked('atexit', 0x8900368)
-		assert self.out_config.is_statically_linked('__errno', 0x8900cb8)
-		assert self.out_config.is_statically_linked('stat', 0x89181d4)
-
-	# Functions reported in #1050 as not detected.
-	#
-	def test_check_for_functions_not_detected_before_1050_fix(self):
-		#assert self.out_c.has_func( 'function_89065bc' )  # BZ2_bzflush, no idea if this should be a function
+        #assert self.out_c.has_func( 'function_89065bc' )  # BZ2_bzflush, no idea if this should be a function
 		assert self.out_c.has_func( 'function_89065c4' )  # BZ2_bzerror
 		assert self.out_c.has_func( 'function_89066bc' )  # default_bzfree
 		assert self.out_c.has_func( 'function_8906c90' )  # default_bzalloc
@@ -227,3 +218,8 @@ class Test(Test):
 		assert self.out_c.has_func( 'function_8908300' )  # BZ2_bzread
 		assert self.out_c.has_func( 'function_890900c' )  # BZ2_bzwrite
 		assert self.out_c.has_func( 'function_8908dbc' )  # BZ2_bzclose
+
+	def test_check_for_some_static_functions(self):
+		assert self.out_config.is_statically_linked('atexit', 0x8900368)
+		assert self.out_config.is_statically_linked('__errno', 0x8900cb8)
+		assert self.out_config.is_statically_linked('stat', 0x89181d4)

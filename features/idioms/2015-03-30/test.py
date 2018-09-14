@@ -512,7 +512,7 @@ class CommonTest(Test):
 	# Idiom test CopySign - only for mips and arm (powerpc lacks support of FPU)
 	#
 	def test_c_does_not_contain_idiom_CopySign(self):
-		# TODO: mips - #638
+		# TODO: mips
 		test_arch = {'pic32', 'arm', 'thumb'}
 		if self.local_arch in test_arch:
 			if self.local_format != 'pe':

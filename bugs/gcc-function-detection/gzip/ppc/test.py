@@ -119,7 +119,7 @@ class Test(Test):
 		assert self.out_c.has_func( 'function_10008a94' )  #
 		assert self.out_c.has_func( 'function_10008ae0' )  #
 		assert self.out_c.has_func( 'function_10008b5c' )  #
-		assert self.out_c.has_func( 'function_10008be0' )  # flush_outbuf, missing in #1050
+		assert self.out_c.has_func( 'function_10008be0' )  # flush_outbuf
 		assert self.out_c.has_func( 'function_10008c40' )  # copy
 		assert self.out_c.has_func( 'function_10008d54' )  # display_ratio
 		assert self.out_c.has_func( 'function_10008e2c' )  #
@@ -129,11 +129,6 @@ class Test(Test):
 		assert self.out_c.has_func( 'function_10009f54' )  #
 		assert self.out_c.has_func( 'function_1000a268' )  #
 		assert self.out_c.has_func( 'function_1000aa48' )  #
-
-	# Functions reported in #1050 as not detected.
-	# TODO: matula, uncomment when fixed.
-	#
-	#def test_check_for_functions_not_detected_before_1050_fix(self):
 		#assert self.out_c.has_func( 'function_100090a0' )  # lzw
 		assert self.out_c.has_func( 'function_10009120' )  # unlzw
 		assert self.out_c.has_func( 'function_100097a0' )  # unpack

@@ -1,7 +1,7 @@
 from regression_tests import *
 
 class WithDebugInfo(Test):
-    """Tests the emission and use of address ranges when debug info is present (#1059)."""
+    """Tests the emission and use of address ranges when debug info is present."""
 
     settings = TestSettings(
         input='with-debug.elf'
@@ -28,7 +28,7 @@ class WithDebugInfo(Test):
         self.assertEqual(self.out_c.func_names, ['func1', 'func2', 'func3', 'func4', 'main'])
 
 class WithoutDebugInfo(Test):
-    """Tests the emission of address ranges when debug info is not present (#1059)."""
+    """Tests the emission of address ranges when debug info is not present."""
 
     settings = TestSettings(
         input='without-debug.elf'

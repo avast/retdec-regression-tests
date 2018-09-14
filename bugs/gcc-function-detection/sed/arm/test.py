@@ -59,11 +59,6 @@ class Test(Test):
 		#assert self.out_c.has_func( 'function_d334' )  # __malloc_unlock
 		#assert self.out_c.has_func( 'function_11fe8' )  # __errno
 		assert self.out_c.has_func( 'function_14824' )  # __do_global_ctors_aux
-
-	# Functions reported in #1050 as not detected.
-	# TODO: matula, uncomment when fixed.
-	#
-	def test_check_for_functions_not_detected_before_1050_fix(self):
 		assert self.out_c.has_func( 'function_89b0' )  # address
 		assert self.out_c.has_func( 'function_8af8' )  # cmdline
 		assert self.out_c.has_func( 'function_8c88' )  # cmdcomp

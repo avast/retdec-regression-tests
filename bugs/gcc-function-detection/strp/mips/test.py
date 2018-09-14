@@ -50,23 +50,15 @@ class Test(Test):
 		assert self.out_c.has_func( 'function_8900668' )  # try
 		assert self.out_c.has_func( 'main' )  # main
 		assert self.out_c.has_func( 'function_89044c8' )  # rindex
+		assert self.out_c.has_func( 'function_8900354' )  # call_frame_dummy
+		assert self.out_c.has_func( 'function_8900368' )  # to_unix
+		assert self.out_c.has_func( 'function_89003cc' )  # to_dos
+		assert self.out_c.has_func( 'function_8900444' )  # to_mac
+		#assert self.out_c.has_func( 'function_8903eb8' )  # _putchar_r
+		#assert self.out_c.has_func( 'function_8913ad0' )  # getpid
 
 	def test_check_for_some_static_functions(self):
 		assert self.out_config.is_statically_linked('__errno', 0x8900d78)
 		assert self.out_config.is_statically_linked('stat', 0x8904f9c)
 		assert self.out_config.is_statically_linked('putchar', 0x8903ea4)
 		assert self.out_config.is_statically_linked('fstat', 0x8904444)
-
-	# Functions reported in #1050 as not detected.
-	# TODO: matula, uncomment when fixed.
-	#
-	def test_check_for_functions_not_detected_before_1050_fix(self):
-		assert self.out_c.has_func( 'function_8900354' )  # call_frame_dummy
-		assert self.out_c.has_func( 'function_8900368' )  # to_unix
-		assert self.out_c.has_func( 'function_89003cc' )  # to_dos
-		assert self.out_c.has_func( 'function_8900444' )  # to_mac
-		#assert self.out_c.has_func( 'function_8903eb8' )  # _putchar_r
-
-		# TODO: there is many functions like this, they may not be used anywhere. they all start with something like:
-		# 		addiu $sp, $sp, 0xfffffffffffffff8
-		#assert self.out_c.has_func( 'function_8913ad0' )  # getpid

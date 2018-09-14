@@ -156,19 +156,6 @@ class Test(Test):
 		assert self.out_c.has_func( 'function_89201cc' )  #
 		assert self.out_c.has_func( 'function_89201d4' )  #
 		assert self.out_c.has_func( 'sceIoClose' )  # @ 0x8920104
-
-	def test_check_for_some_static_functions(self):
-		assert self.out_config.is_statically_linked('atexit', 0x890aef0)
-		assert self.out_config.is_statically_linked('calloc', 0x890af1c)
-		assert self.out_config.is_statically_linked('__errno', 0x890b00c)
-		assert self.out_config.is_statically_linked('localtime', 0x890c1c8)
-		assert self.out_config.is_statically_linked('fstat', 0x890ef4c)
-		assert self.out_config.is_statically_linked('asctime', 0x89134f8)
-
-	# Functions reported in #1050 as not detected.
-	# TODO: matula, uncomment when fixed.
-	#
-	def test_check_for_functions_not_detected_before_1050_fix(self):
 		#assert self.out_c.has_func( 'function_8903058' )  # file_read
 		assert self.out_c.has_func( 'function_8905ee4' )  # unzip
 		assert self.out_c.has_func( 'function_8908240' )  # warn
@@ -178,3 +165,11 @@ class Test(Test):
 		assert self.out_c.has_func( 'function_8908a0c' )  # unlzw
 		assert self.out_c.has_func( 'function_8909130' )  # unpack
 		assert self.out_c.has_func( 'function_8909e00' )  # unlzh
+
+	def test_check_for_some_static_functions(self):
+		assert self.out_config.is_statically_linked('atexit', 0x890aef0)
+		assert self.out_config.is_statically_linked('calloc', 0x890af1c)
+		assert self.out_config.is_statically_linked('__errno', 0x890b00c)
+		assert self.out_config.is_statically_linked('localtime', 0x890c1c8)
+		assert self.out_config.is_statically_linked('fstat', 0x890ef4c)
+		assert self.out_config.is_statically_linked('asctime', 0x89134f8)

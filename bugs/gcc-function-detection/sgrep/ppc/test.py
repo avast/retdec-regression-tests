@@ -215,8 +215,8 @@ class Test(Test):
 		assert self.out_c.has_func( 'function_100026cc' )  #
 		assert self.out_c.has_func( 'main' )  #
 		assert self.out_c.has_func( 'function_10002cf8' )  #
-		assert self.out_c.has_func( 'function_10002de8' )  # end_first, missing in #1050
-		assert self.out_c.has_func( 'function_10002e40' )  # start_first, missing in #1050
+		assert self.out_c.has_func( 'function_10002de8' )  # end_first
+		assert self.out_c.has_func( 'function_10002e40' )  # start_first
 		assert self.out_c.has_func( 'function_10002e98' )  #
 		assert self.out_c.has_func( 'function_10002f00' )  #
 		assert self.out_c.has_func( 'function_10002f88' )  #
@@ -234,7 +234,7 @@ class Test(Test):
 		assert self.out_c.has_func( 'function_100039f8' )  #
 		assert self.out_c.has_func( 'function_10003be8' )  #
 		assert self.out_c.has_func( 'function_10003c88' )  #
-		#assert self.out_c.has_func( 'function_10003d30' )  # give_oper_name, missing in #1050
+		#assert self.out_c.has_func( 'function_10003d30' )  # give_oper_name
 		#assert self.out_c.has_func( 'function_10003d50' )  #
 		#assert self.out_c.has_func( 'function_10003d5c' )  #
 		#assert self.out_c.has_func( 'function_10003d68' )  #
@@ -306,17 +306,3 @@ class Test(Test):
 		assert self.out_c.has_func( 'function_1000980c' )  #
 		assert self.out_c.has_func( 'function_100098c4' )  #
 		assert self.out_c.has_func( 'function_10009c70' )  #
-		#assert self.out_c.has_func( '' )  #
-
-	# Functions reported in #1050 as not detected.
-	# TODO: matula, uncomment when fixed.
-	#
-	#def test_check_for_functions_not_detected_before_1050_fix(self):
-		#assert self.out_c.has_func( 'function_' )  #
-
-	# Functions detected in stripped binary, that do not have their named (from symbols) counterparts in not-stripped binary.
-	# TODO: matula, not sure how serious is this problem. if possible fix detection and uncomment this check.
-	#
-	#def test_check_for_falsely_detected_functions_before_1050_fix(self):
-
-		#assert not self.out_c.has_func( '' )

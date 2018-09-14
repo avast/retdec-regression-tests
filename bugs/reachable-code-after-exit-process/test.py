@@ -2,8 +2,6 @@ from regression_tests import *
 
 class Test(Test):
     """Checks that ExitProcess() is recognized as never-returning function.
-
-    See #1563 for more details.
     """
 
     settings = TestSettings(

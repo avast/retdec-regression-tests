@@ -47,7 +47,7 @@ class PDBTest(Test):
         assert self.out_c.contains(r'v2')
         assert self.out_c.contains(r'v3')
 
-    def test_bug_1227(self):
+    def test_function_calls(self):
         main = self.out_c.funcs['main']
         assert main.calls('nejaka_funkce', 'volaci_funkce', 'rand')
 

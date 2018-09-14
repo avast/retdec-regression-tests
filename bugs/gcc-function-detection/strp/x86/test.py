@@ -54,12 +54,6 @@ class Test(Test):
 		assert self.out_c.has_func( 'function_8048c35' )  # usage
 		assert self.out_c.has_func( 'function_8048c5a' )  # main # TODO: this was detected as main in Jakub's outputs, now it is function_8048c5a.
 		assert self.out_c.has_func( 'function_8049300' )  # __do_global_ctors_aux
-		#assert self.out_c.has_func( '' )  #
-
-	# Functions reported in #1050 as not detected.
-	# TODO: matula, uncomment when fixed.
-	#
-	def test_check_for_functions_not_detected_before_1050_fix(self):
 		#assert self.out_c.has_func( 'function_80489d0' )  # to_unix
 		assert self.out_c.has_func( 'function_8048a1c' )  # to_dos
 		assert self.out_c.has_func( 'function_8048a6e' )  # to_mac

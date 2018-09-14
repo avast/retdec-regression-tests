@@ -9,8 +9,6 @@ class Test(Test):
 
         v1 = (int32_t)"/var/run/m";
         unknown_80559c4();
-
-    See #1146 for more details.
     """
 
     settings = TestSettings(

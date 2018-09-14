@@ -7,8 +7,7 @@ class UserAndLinkedTest(Test):
     "statically linked", and "dynamically linked", and put into proper sections
     in the generated C file.
 
-    Also, we check that a correct separation is done in the generated DSM file
-    (#1328).
+    Also, we check that a correct separation is done in the generated DSM file.
     """
 
     settings = TestSettings(

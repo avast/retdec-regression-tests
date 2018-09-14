@@ -59,11 +59,6 @@ class Test(Test):
 		assert self.out_c.has_func( 'function_10003094' )  # command
 		assert self.out_c.has_func( 'function_10003750' )  # execute
 		assert self.out_c.has_func( 'function_100039d4' )  # __do_global_ctors_aux
-
-	# Functions reported in #1050 as not detected.
-	# TODO: matula, uncomment when fixed.
-	#
-	def test_check_for_functions_not_detected_before_1050_fix(self):
 		assert self.out_c.has_func( 'function_10000dec' ) # cmdline
 		assert self.out_c.has_func( 'function_100019c8' ) # cmdcomp
 		assert self.out_c.has_func( 'function_10001468' ) # search
@@ -71,8 +66,6 @@ class Test(Test):
 		assert self.out_c.has_func( 'main' ) # main
 		assert self.out_c.has_func( 'function_1000391c' ) # __libc_csu_init
 		assert self.out_c.has_func( 'function_10003a24' ) # call___do_global_ctors_aux
-
-	def test_bug_1060(self):
 		assert self.out_c.has_func( 'function_100006b4' )  # __do_global_dtors_aux
 		assert self.out_c.has_func( 'function_10000f28' )  # address
 		assert self.out_c.has_func( 'gettext' )  #

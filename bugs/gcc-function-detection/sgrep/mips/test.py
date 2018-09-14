@@ -92,8 +92,6 @@ class Test(Test):
 		assert self.out_c.has_string_literal( '\\t-%c %s\\t%s\\n' )
 		assert self.out_c.has_string_literal( '\\t--\\t\\tno more options' )
 		assert self.out_c.has_string_literal( 'acsearch' )
-		# jk: the following string is not checked because it often fails
-		# due to the bug #1187
 		#assert self.out_c.has_string_literal( 'common.c' )
 		assert self.out_c.has_string_literal( 'concat' )
 		assert self.out_c.has_string_literal( 'containing' )
@@ -255,16 +253,11 @@ class Test(Test):
 		assert self.out_c.has_func( 'function_891c188' )  #
 		assert self.out_c.has_func( 'function_891c190' )  #
 		assert self.out_c.has_func( 'sceIoDopen' )  # function_891c130
+		assert self.out_c.has_func( 'function_8904b6c' )  # end_first
+		assert self.out_c.has_func( 'function_8904bd8' )  # start_first
+		assert self.out_c.has_func( 'function_8904e84' )  # give_oper_name
 
 	def test_check_for_all_currently_detected_statically_linked_functions(self):
 		assert self.out_config.is_statically_linked('atexit', 0x8900368)
 		assert self.out_config.is_statically_linked('__errno', 0x8900cb8)
 		assert self.out_config.is_statically_linked('realloc', 0x890e01c)
-
-	# Functions reported in #1050 as not detected.
-	# TODO: matula, uncomment when fixed.
-	#
-	def test_check_for_functions_not_detected_before_1050_fix(self):
-		assert self.out_c.has_func( 'function_8904b6c' )  # end_first
-		assert self.out_c.has_func( 'function_8904bd8' )  # start_first
-		assert self.out_c.has_func( 'function_8904e84' )  # give_oper_name

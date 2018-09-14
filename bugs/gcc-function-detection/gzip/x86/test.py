@@ -187,10 +187,6 @@ class Test(Test):
 		assert self.out_c.has_func( 'function_8050240' )  #
 		assert self.out_c.has_func( 'function_8050478' )  #
 		assert self.out_c.has_func( 'function_8050a60' )  #
-
-	# Functions reported in #1050 as not detected.
-	#
-	def test_check_for_functions_not_detected_before_1050_fix(self):
 		assert self.out_c.has_func( 'function_804b6b3' )  # file_read
 		assert self.out_c.has_func( 'function_804d592' )  # unzip
 		assert self.out_c.has_func( 'function_804f734' )  # lzw

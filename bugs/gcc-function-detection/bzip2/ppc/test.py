@@ -131,8 +131,8 @@ class Test(Test):
 		assert self.out_c.has_func( 'function_10001140' )  #
 		assert self.out_c.has_func( 'function_100011e4' )  #
 		assert self.out_c.has_func( 'function_1000132c' )  #
-		#assert self.out_c.has_func( 'function_10001368' )  # mySignalCatcher, missing in #1050
-		#assert self.out_c.has_func( 'function_1000139c' )  # mySIGSEGVorSIGBUScatcher, missing in #1050
+		#assert self.out_c.has_func( 'function_10001368' )  # mySignalCatcher
+		#assert self.out_c.has_func( 'function_1000139c' )  # mySIGSEGVorSIGBUScatcher
 		assert self.out_c.has_func( 'function_10001424' )  #
 		assert self.out_c.has_func( 'function_1000146c' )  #
 		assert self.out_c.has_func( 'function_100014c4' )  #
@@ -154,8 +154,8 @@ class Test(Test):
 		assert self.out_c.has_func( 'function_100041bc' )  #
 		assert self.out_c.has_func( 'function_100041e4' )  #
 		assert self.out_c.has_func( 'function_10004368' )  #
-		assert self.out_c.has_func( 'function_100043b0' )  # default_bzfree, missing in #1050
-		assert self.out_c.has_func( 'function_100043d8' )  # default_bzalloc, missing in #1050
+		assert self.out_c.has_func( 'function_100043b0' )  # default_bzfree
+		assert self.out_c.has_func( 'function_100043d8' )  # default_bzalloc
 		assert self.out_c.has_func( 'function_100043fc' )  #
 		assert self.out_c.has_func( 'function_100048bc' )  #
 		assert self.out_c.has_func( 'function_10004b20' )  #
@@ -175,12 +175,12 @@ class Test(Test):
 		assert self.out_c.has_func( 'function_1000702c' )  #
 		assert self.out_c.has_func( 'function_1000733c' )  #
 		assert self.out_c.has_func( 'function_10007348' )  #
-		assert self.out_c.has_func( 'function_100073ac' )  # BZ2_bzopen, missing in #1050
-		assert self.out_c.has_func( 'function_100073d8' )  # BZ2_bzdopen, missing in #1050
-		assert self.out_c.has_func( 'function_1000740c' )  # BZ2_bzread, missing in #1050
-		assert self.out_c.has_func( 'function_1000746c' )  # BZ2_bzwrite, missing in #1050
-		assert self.out_c.has_func( 'function_100074c4' )  # BZ2_bzflush, missing in #1050
-		assert self.out_c.has_func( 'function_100074cc' )  # BZ2_bzclose, missing in #1050
+		assert self.out_c.has_func( 'function_100073ac' )  # BZ2_bzopen
+		assert self.out_c.has_func( 'function_100073d8' )  # BZ2_bzdopen
+		assert self.out_c.has_func( 'function_1000740c' )  # BZ2_bzread
+		assert self.out_c.has_func( 'function_1000746c' )  # BZ2_bzwrite
+		assert self.out_c.has_func( 'function_100074c4' )  # BZ2_bzflush
+		assert self.out_c.has_func( 'function_100074cc' )  # BZ2_bzclose
 		assert self.out_c.has_func( 'function_100075b0' )  #
 		assert self.out_c.has_func( 'function_10007748' )  #
 		assert self.out_c.has_func( 'function_100077b0' )  #
@@ -193,11 +193,6 @@ class Test(Test):
 		assert self.out_c.has_func( 'function_10011e30' )  #
 		assert self.out_c.has_func( 'function_10011e90' )  #
 		assert self.out_c.has_func( 'function_100120d4' )  #
-		#assert self.out_c.has_func( '' )  #
-
-	# Functions reported in #1050 as not detected.
-	#
-	def test_check_for_functions_not_detected_before_1050_fix(self):
 		assert self.out_c.has_func( 'function_100070c8' )  # BZ2_bzBuffToBuffCompress
 		assert self.out_c.has_func( 'function_1000720c' )  # BZ2_bzBuffToBuffDecompress
 		assert self.out_c.has_func( 'function_10007584' )  # BZ2_bzerror

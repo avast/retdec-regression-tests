@@ -202,7 +202,7 @@ class TestDsm(Test):
         assert self.out_dsm.contains(r'0x401623:.*je 0x401657 <_iterative_ackermann\+0x57>')
         assert self.out_dsm.contains(r'0x401713:.*jmp 0x40168f <_formula_ackermann\+0x1f>')
 
-    def test_bug_1619(self):
+    def test_jump_instructions(self):
         assert self.out_dsm.contains(r'0x401096:.*je 0x401100')
         assert self.out_dsm.contains(r'0x4011e8:.*jne 0x401480')
         assert self.out_dsm.contains(r'0x40147b:.*jmp 0x401268')

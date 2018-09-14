@@ -1,7 +1,7 @@
 from regression_tests import *
 
 class Test(Test):
-    """Checks that we do not generate classes with invalid names (see #1404).
+    """Checks that we do not generate classes with invalid names.
     """
 
     settings = TestSettings(

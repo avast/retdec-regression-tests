@@ -41,7 +41,7 @@ class TinyImportsTest(Test):
 	def test_tiny_imports(self):
 		assert self.out_c.has_funcs('entry_point')
 		assert self.out_c.funcs['entry_point'].calls('printf', 'ExitProcess')
-		#assert self.out_c.has_string_literal(r' * tiny imports (W7)\n')
+		assert self.out_c.has_string_literal(r' * tiny imports (W7)\n')
 
 class DataInCodeTest(Test):
 	settings = TestSettings(
@@ -51,7 +51,7 @@ class DataInCodeTest(Test):
 	def test_data_in_code(self):
 		assert self.out_c.has_funcs('entry_point')
 		assert self.out_c.funcs['entry_point'].calls('printf', 'ExitProcess')
-		#assert self.out_c.has_string_literal(r' * appended data\n')
+		assert self.out_c.has_string_literal(r' * appended data\n')
 
 class ResourcesTest(Test):
 	settings = TestSettings(
@@ -62,4 +62,4 @@ class ResourcesTest(Test):
 		assert self.out_c.has_funcs('entry_point')
 		assert self.out_c.funcs['entry_point'].calls('FindResourceA', 'LoadResource', 'ExitProcess')
 		assert self.out_c.has_string_literal(r'#7354')
-		#assert self.out_c.has_string_literal(r'#315')
+		assert self.out_c.has_string_literal(r'#315')

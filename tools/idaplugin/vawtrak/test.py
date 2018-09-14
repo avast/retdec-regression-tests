@@ -200,7 +200,7 @@ class TestDecompile_sub_1002243B(Test):
         assert fnc.param_count == 0
 
         # Do not check that fnc calls FreeLibrary because calls to FreeLibrary
-        # are not recognized on Windows (see #1297 for more details).
+        # are not recognized on Windows.
         assert fnc.calls('GetProcAddress', 'LoadLibraryA')
 
         assert self.out_c.has_string_literal('nss3.dll')
@@ -262,7 +262,7 @@ class TestDecompile_sub_1002243B(Test):
         assert s1.members[0].type.is_int()
         # Do not check that s1.members[0].name == 'e0' because on Windows,
         # Clang uses the definition of HINSTANCE__ from minwindef.h, which has
-        # its element named 'unused'. See #1297 for more details.
+        # its element named 'unused'.
 
 class TestDecompileAll(Test):
     settings = TestSettings.from_settings(base_settings)

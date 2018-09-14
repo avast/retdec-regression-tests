@@ -37,10 +37,6 @@ class Test(Test):
 		assert self.out_c.has_func( 'main' )  # main
 		assert self.out_c.has_func( 'function_9430' )  # rindex
 		assert self.out_c.has_func( 'function_11b98' )  # __do_global_ctors_aux
-
-	# Functions reported in #1050 as not detected.
-	#
-	def test_check_for_functions_not_detected_before_1050_fix(self):
 		assert self.out_c.has_func( 'function_80b0' )  # call___do_global_dtors_aux
 		#assert self.out_c.has_func( 'function_8218' )  # to_unix
 		assert self.out_c.has_func( 'function_8280' )  # to_dos

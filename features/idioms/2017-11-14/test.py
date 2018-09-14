@@ -496,7 +496,7 @@ class CommonTest(Test):
 
     # Idiom test CopySign - only for mips and arm (powerpc lacks support of FPU)
     #
-    # TODO: mips - #638
+    # TODO: mips
     # TODO: ARM and THUMB fail on -O1 and -O3
     def test_c_does_not_contain_idiom_CopySign(self):
         if self.local_arch in {'pic32', 'arm', 'thumb'} and self.local_format == 'elf' and self.settings.input.endswith('.O0.elf'):

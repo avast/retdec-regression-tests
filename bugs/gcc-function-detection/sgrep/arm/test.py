@@ -190,19 +190,6 @@ class Test(Test):
 		#assert self.out_c.has_func( 'function_1be00' )  # @_sprintf_r
 
 		assert self.out_c.has_func( 'function_1e6ec' )  #
-
-	# Functions reported in #1050 as not detected.
-	# TODO: matula, uncomment when fixed.
-	#
-	def test_check_for_functions_not_detected_before_1050_fix(self):
 		assert self.out_c.has_func( 'function_a2f0' )  # end_first
 		assert self.out_c.has_func( 'function_a33c' )  # start_first
 		assert self.out_c.has_func( 'function_a52c' )  # give_oper_name
-		#assert self.out_c.has_func( 'function_' )  #
-
-	# Functions detected in stripped binary, that do not have their named (from symbols) counterparts in not-stripped binary.
-	# TODO: matula, not sure how serious is this problem. if possible fix detection and uncomment this check.
-	#
-	#def test_check_for_falsely_detected_functions_before_1050_fix(self):
-
-		#assert not self.out_c.has_func( '' )

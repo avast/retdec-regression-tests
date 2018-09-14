@@ -108,8 +108,6 @@ class Test(Test):
 		assert self.out_c.has_string_literal( 'unzip' )
 		assert self.out_c.has_string_literal( 'z2cat' )
 		assert self.out_c.has_string_literal( 'zcat' )
-		# jk: the following strings are not checked because they often fails
-		# due to the bug #1187
 		#assert self.out_c.has_string_literal( 'data integrity (CRC) error in data\\n' )
 		#assert self.out_c.has_string_literal( 'file ends unexpectedly\\n' )
 		#assert self.out_c.has_string_literal( 'trailing garbage after EOF ignored\\n' )
@@ -147,8 +145,8 @@ class Test(Test):
 		assert self.out_c.has_func( 'function_80491b7' )  #
 		assert self.out_c.has_func( 'function_804923d' )  #
 		assert self.out_c.has_func( 'function_8049314' )  #
-		#assert self.out_c.has_func( 'function_8049348' )  # mySignalCatcher, missing in #1050
-		#assert self.out_c.has_func( 'function_8049373' )  # mySIGSEGVorSIGBUScatcher, missing in #1050
+		#assert self.out_c.has_func( 'function_8049348' )  # mySignalCatcher
+		#assert self.out_c.has_func( 'function_8049373' )  # mySIGSEGVorSIGBUScatcher
 		assert self.out_c.has_func( 'function_80493e4' )  #
 		assert self.out_c.has_func( 'function_8049409' )  #
 		assert self.out_c.has_func( 'function_8049436' )  #
@@ -169,8 +167,8 @@ class Test(Test):
 		assert self.out_c.has_func( 'function_804bba1' )  #
 		assert self.out_c.has_func( 'function_804bbb8' )  #
 		assert self.out_c.has_func( 'function_804bcec' )  #
-		assert self.out_c.has_func( 'function_804bd1c' )  # default_bzfree, missing in #1050
-		assert self.out_c.has_func( 'function_804bd33' )  # default_bzalloc, missing in #1050
+		assert self.out_c.has_func( 'function_804bd1c' )  # default_bzfree
+		assert self.out_c.has_func( 'function_804bd33' )  # default_bzalloc
 		assert self.out_c.has_func( 'function_804bd4b' )  #
 		assert self.out_c.has_func( 'function_804c060' )  #
 		assert self.out_c.has_func( 'function_804c283' )  #
@@ -190,13 +188,13 @@ class Test(Test):
 		assert self.out_c.has_func( 'function_804e3b9' )  #
 		assert self.out_c.has_func( 'function_804e6e4' )  #
 		assert self.out_c.has_func( 'function_804e6ea' )  #
-		assert self.out_c.has_func( 'function_804e74d' )  # BZ2_bzopen, missing in #1050
-		assert self.out_c.has_func( 'function_804e76d' )  # BZ2_bzdopen, missing in #1050
-		assert self.out_c.has_func( 'function_804e78d' )  # BZ2_bzread, missing in #1050
-		assert self.out_c.has_func( 'function_804e7d5' )  # BZ2_bzwrite, missing in #1050
-		assert self.out_c.has_func( 'function_804e811' )  # BZ2_bzflush, missing in #1050
-		assert self.out_c.has_func( 'function_804e817' )  # BZ2_bzclose, missing in #1050
-		assert self.out_c.has_func( 'function_804e8c6' )  # BZ2_bzerror, missing in #1050
+		assert self.out_c.has_func( 'function_804e74d' )  # BZ2_bzopen
+		assert self.out_c.has_func( 'function_804e76d' )  # BZ2_bzdopen
+		assert self.out_c.has_func( 'function_804e78d' )  # BZ2_bzread
+		assert self.out_c.has_func( 'function_804e7d5' )  # BZ2_bzwrite
+		assert self.out_c.has_func( 'function_804e811' )  # BZ2_bzflush
+		assert self.out_c.has_func( 'function_804e817' )  # BZ2_bzclose
+		assert self.out_c.has_func( 'function_804e8c6' )  # BZ2_bzerror
 		assert self.out_c.has_func( 'function_804e8f0' )  #
 		assert self.out_c.has_func( 'function_804e92b' )  #
 		assert self.out_c.has_func( 'function_804eb3d' )  #
@@ -211,10 +209,5 @@ class Test(Test):
 		assert self.out_c.has_func( 'function_80579b3' )  #
 		assert self.out_c.has_func( 'function_8057a07' )  #
 		assert self.out_c.has_func( 'function_8057bc0' )  #
-
-	# Functions reported in #1050 as not detected.
-	# TODO: matula, uncomment when fixed.
-	#
-	def test_check_for_functions_not_detected_before_1050_fix(self):
 		assert self.out_c.has_func( 'function_804e445' )  # BZ2_bzBuffToBuffCompress
 		assert self.out_c.has_func( 'function_804e5b6' )  # BZ2_bzBuffToBuffDecompress

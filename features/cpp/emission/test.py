@@ -1,7 +1,7 @@
 from regression_tests import *
 
 class Test(Test):
-    """Checks that C++-related information is emitted into the C file (#1315)."""
+    """Checks that C++-related information is emitted into the C file."""
 
     settings = TestSettings(
         input='abstract-class.x86.gcc.O0.g.elf',

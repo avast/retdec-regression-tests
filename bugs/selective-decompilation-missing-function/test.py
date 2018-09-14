@@ -26,5 +26,4 @@ class TestDecodeOnly(Test):
         fnc = self.out_c.funcs['function_804900f']
         assert fnc.calls('function_804a271','function_8048fdf','atoi','__stack_chk_fail')
 
-        # bug #1162
         assert not self.out_c.has_comment_matching( '// void' )

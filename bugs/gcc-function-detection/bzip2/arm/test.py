@@ -174,7 +174,7 @@ class Test(Test):
 		assert self.out_c.has_func( 'function_bdb0' )  #
 		assert self.out_c.has_func( 'function_be34' )  #
 		assert self.out_c.has_func( 'function_bee8' )  #
-		assert self.out_c.has_func( 'function_befc' )  # BZ2_bzerror, missing in #1050
+		assert self.out_c.has_func( 'function_befc' )  # BZ2_bzerror
 		assert self.out_c.has_func( 'function_bf24' )  #
 		assert self.out_c.has_func( 'function_bf4c' )  #
 		assert self.out_c.has_func( 'function_bffc' )  #
@@ -205,12 +205,6 @@ class Test(Test):
 		#assert self.out_c.has_func( 'function_22ef8' )  # statically linked __env_lock
 		#assert self.out_c.has_func( 'function_22efc' )  #
 		assert self.out_c.has_func( 'function_25004' )  #
-		#assert self.out_c.has_func( '' )  #
-
-	# Functions reported in #1050 as not detected.
-	# TODO: matula, uncomment when fixed.
-	#
-	def test_check_for_functions_not_detected_before_1050_fix(self):
 		#assert self.out_c.has_func( 'function_83dc' )  # applySavedTimeInfoToOutputFile
 		#assert self.out_c.has_func( 'function_83e0' )  # applySavedFileAttrToOutputFile
 		#assert self.out_c.has_func( 'function_8960' )  # mySignalCatcher
@@ -226,10 +220,3 @@ class Test(Test):
 		assert self.out_c.has_func( 'function_bef4' )  # BZ2_bzflush
 		assert self.out_c.has_func( 'function_e500' )  # BZ2_bzclose
 		#assert self.out_c.has_func( 'function_' )  #
-
-	# Functions detected in stripped binary, that do not have their named (from symbols) counterparts in not-stripped binary.
-	# TODO: matula, not sure how serious is this problem. if possible fix detection and uncomment this check.
-	#
-	#def test_check_for_falsely_detected_functions_before_1050_fix(self):
-
-		#assert not self.out_c.has_func( '' )

@@ -1,5 +1,5 @@
 #
-# Tests sample 00A299FD149939CEC860C71224B77209 from #761.
+# Tests sample 00A299FD149939CEC860C71224B77209.
 # Tests mainly detection of functions called by syscall, but also same other important things.
 #
 

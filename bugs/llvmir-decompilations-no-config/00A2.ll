@@ -335,10 +335,10 @@ dec_label_pc_8048960:	;100000111110110000001100
 	%_g_subinst_0_8048960 = add i32 15, 0
 	%u3_8048960 = icmp ugt i32 %u2_subinst_0_8048960, %_g_subinst_0_8048960
 	%_f_8048960 = add i32 0, 0
-	store i1 %u3_8048960, i1*  @af0	; store to i1 register, should we ignore it? But than it causes problems, see #153
+	store i1 %u3_8048960, i1*  @af0
 	%u4_8048960 = icmp ult i32 %u2_8048960, %u1_8048960
 	%_h_8048960 = add i32 0, 0
-	store i1 %u4_8048960, i1*  @cf0	; store to i1 register, should we ignore it? But than it causes problems, see #153
+	store i1 %u4_8048960, i1*  @cf0
 	; overflow_sub is a little bit more complicated, so it contains more code
 	%sub_ab_0_8048960 = sub i32 %u2_8048960, %u1_8048960
 	%xor_ab_0_8048960 = xor i32 %u2_8048960, %u1_8048960
@@ -347,24 +347,24 @@ dec_label_pc_8048960:	;100000111110110000001100
 	%u5_8048960 = icmp slt i32 %and_aab_0_8048960, 0
 
 	%_j_8048960 = add i32 0, 0
-	store i1 %u5_8048960, i1*  @of0	; store to i1 register, should we ignore it? But than it causes problems, see #153
+	store i1 %u5_8048960, i1*  @of0
 	%u6_8048960 = sub i32 %u2_8048960, %u1_8048960
 
 	%_b_subinst_1_8048960 = add i32 0, 0
 	%u0_subinst_1_8048960 = icmp eq i32 %u6_8048960, %_b_subinst_1_8048960
 	%_d_subinst_1_8048960 = add i32 0, 0
-	store i1 %u0_subinst_1_8048960, i1*  @zf0	; store to i1 register, should we ignore it? But than it causes problems, see #153
+	store i1 %u0_subinst_1_8048960, i1*  @zf0
 	%_e_subinst_1_8048960 = add i32 0, 0
 	%u1_subinst_1_8048960 = icmp slt i32 %u6_8048960, %_e_subinst_1_8048960
 	%_g_subinst_1_8048960 = add i32 0, 0
-	store i1 %u1_subinst_1_8048960, i1*  @sf0	; store to i1 register, should we ignore it? But than it causes problems, see #153
+	store i1 %u1_subinst_1_8048960, i1*  @sf0
 	%u2_subinst_1_8048960 = trunc i32 %u6_8048960 to i8
 	%parity_odd_bit_cnt_1_8048960 = call i8 @llvm.ctpop.i8( i8 %u2_subinst_1_8048960 ) nounwind
 	%parity_odd_mod_1_8048960 = urem i8 %parity_odd_bit_cnt_1_8048960, 2
 	%u3_subinst_1_8048960 = icmp eq i8 1, %parity_odd_mod_1_8048960
 
 	%_j_subinst_1_8048960 = add i32 0, 0
-	store i1 %u3_subinst_1_8048960, i1*  @pf0	; store to i1 register, should we ignore it? But than it causes problems, see #153
+	store i1 %u3_subinst_1_8048960, i1*  @pf0
 	; store of stack pointer to offset -12 into register  @gpr4
 
 
@@ -473,30 +473,30 @@ dec_label_pc_8048960:	;100000111110110000001100
 	%u1_8048990 = load i32, i32*  @gpr2
 	%_d_8048990 = add i32 0, 0
 	%_e_8048990 = add i1 0, 0
-	store i1 %_e_8048990, i1*  @cf0	; store to i1 register, should we ignore it? But than it causes problems, see #153
+	store i1 %_e_8048990, i1*  @cf0
 	%_f_8048990 = add i32 0, 0
 	%_g_8048990 = add i1 0, 0
-	store i1 %_g_8048990, i1*  @of0	; store to i1 register, should we ignore it? But than it causes problems, see #153
+	store i1 %_g_8048990, i1*  @of0
 	%_h_8048990 = add i32 0, 0
 	%_i_8048990 = add i1 0, 0
-	store i1 %_i_8048990, i1*  @af0	; store to i1 register, should we ignore it? But than it causes problems, see #153
+	store i1 %_i_8048990, i1*  @af0
 	%u2_8048990 = xor i32 %u1_8048990, %u0_8048990
 
 	%_b_subinst_2_8048990 = add i32 0, 0
 	%u0_subinst_2_8048990 = icmp eq i32 %u2_8048990, %_b_subinst_2_8048990
 	%_d_subinst_2_8048990 = add i32 0, 0
-	store i1 %u0_subinst_2_8048990, i1*  @zf0	; store to i1 register, should we ignore it? But than it causes problems, see #153
+	store i1 %u0_subinst_2_8048990, i1*  @zf0
 	%_e_subinst_2_8048990 = add i32 0, 0
 	%u1_subinst_2_8048990 = icmp slt i32 %u2_8048990, %_e_subinst_2_8048990
 	%_g_subinst_2_8048990 = add i32 0, 0
-	store i1 %u1_subinst_2_8048990, i1*  @sf0	; store to i1 register, should we ignore it? But than it causes problems, see #153
+	store i1 %u1_subinst_2_8048990, i1*  @sf0
 	%u2_subinst_2_8048990 = trunc i32 %u2_8048990 to i8
 	%parity_odd_bit_cnt_0_8048990 = call i8 @llvm.ctpop.i8( i8 %u2_subinst_2_8048990 ) nounwind
 	%parity_odd_mod_0_8048990 = urem i8 %parity_odd_bit_cnt_0_8048990, 2
 	%u3_subinst_2_8048990 = icmp eq i8 1, %parity_odd_mod_0_8048990
 
 	%_j_subinst_2_8048990 = add i32 0, 0
-	store i1 %u3_subinst_2_8048990, i1*  @pf0	; store to i1 register, should we ignore it? But than it causes problems, see #153
+	store i1 %u3_subinst_2_8048990, i1*  @pf0
 	store i32 %u2_8048990, i32*  @gpr2
 
 	;8048992	1011100010100110011101000000010100001000	b8 a6 74 05 08
@@ -655,10 +655,10 @@ dec_label_pc_8048960:	;100000111110110000001100
 	%_g_subinst_3_80489c4 = add i32 15, 0
 	%u3_80489c4 = icmp ugt i32 %u2_subinst_3_80489c4, %_g_subinst_3_80489c4
 	%_f_80489c4 = add i32 0, 0
-	store i1 %u3_80489c4, i1*  @af0	; store to i1 register, should we ignore it? But than it causes problems, see #153
+	store i1 %u3_80489c4, i1*  @af0
 	%u4_80489c4 = icmp ult i32 %u2_80489c4, %u1_80489c4
 	%_h_80489c4 = add i32 0, 0
-	store i1 %u4_80489c4, i1*  @cf0	; store to i1 register, should we ignore it? But than it causes problems, see #153
+	store i1 %u4_80489c4, i1*  @cf0
 	; overflow_sub is a little bit more complicated, so it contains more code
 	%sub_ab_0_80489c4 = sub i32 %u2_80489c4, %u1_80489c4
 	%xor_ab_0_80489c4 = xor i32 %u2_80489c4, %u1_80489c4
@@ -667,24 +667,24 @@ dec_label_pc_8048960:	;100000111110110000001100
 	%u5_80489c4 = icmp slt i32 %and_aab_0_80489c4, 0
 
 	%_j_80489c4 = add i32 0, 0
-	store i1 %u5_80489c4, i1*  @of0	; store to i1 register, should we ignore it? But than it causes problems, see #153
+	store i1 %u5_80489c4, i1*  @of0
 	%u6_80489c4 = sub i32 %u2_80489c4, %u1_80489c4
 
 	%_b_subinst_4_80489c4 = add i32 0, 0
 	%u0_subinst_4_80489c4 = icmp eq i32 %u6_80489c4, %_b_subinst_4_80489c4
 	%_d_subinst_4_80489c4 = add i32 0, 0
-	store i1 %u0_subinst_4_80489c4, i1*  @zf0	; store to i1 register, should we ignore it? But than it causes problems, see #153
+	store i1 %u0_subinst_4_80489c4, i1*  @zf0
 	%_e_subinst_4_80489c4 = add i32 0, 0
 	%u1_subinst_4_80489c4 = icmp slt i32 %u6_80489c4, %_e_subinst_4_80489c4
 	%_g_subinst_4_80489c4 = add i32 0, 0
-	store i1 %u1_subinst_4_80489c4, i1*  @sf0	; store to i1 register, should we ignore it? But than it causes problems, see #153
+	store i1 %u1_subinst_4_80489c4, i1*  @sf0
 	%u2_subinst_4_80489c4 = trunc i32 %u6_80489c4 to i8
 	%parity_odd_bit_cnt_1_80489c4 = call i8 @llvm.ctpop.i8( i8 %u2_subinst_4_80489c4 ) nounwind
 	%parity_odd_mod_1_80489c4 = urem i8 %parity_odd_bit_cnt_1_80489c4, 2
 	%u3_subinst_4_80489c4 = icmp eq i8 1, %parity_odd_mod_1_80489c4
 
 	%_j_subinst_4_80489c4 = add i32 0, 0
-	store i1 %u3_subinst_4_80489c4, i1*  @pf0	; store to i1 register, should we ignore it? But than it causes problems, see #153
+	store i1 %u3_subinst_4_80489c4, i1*  @pf0
 	; store of stack pointer to offset -24 into register  @gpr4
 
 
@@ -1925,13 +1925,13 @@ dec_label_pc_8048960:	;100000111110110000001100
 	%_g_subinst_5_8048b99 = add i32 15, 0
 	%u3_8048b99 = icmp ugt i32 %u2_subinst_5_8048b99, %_g_subinst_5_8048b99
 	%_f_8048b99 = add i32 0, 0
-	store i1 %u3_8048b99, i1*  @af0	; store to i1 register, should we ignore it? But than it causes problems, see #153
+	store i1 %u3_8048b99, i1*  @af0
 	; carry_add
 	%cadd_ab_0_8048b99 = add i32 %u2_8048b99, %u1_8048b99
 	%u4_8048b99 = icmp ult i32 %cadd_ab_0_8048b99, %u2_8048b99
 
 	%_h_8048b99 = add i32 0, 0
-	store i1 %u4_8048b99, i1*  @cf0	; store to i1 register, should we ignore it? But than it causes problems, see #153
+	store i1 %u4_8048b99, i1*  @cf0
 	; overflow_add is a little bit more complicated, so it contains more code
 	%add_ab_1_8048b99 = add i32 %u2_8048b99, %u1_8048b99
 	%xor_aab_1_8048b99 = xor i32 %u2_8048b99, %add_ab_1_8048b99
@@ -1940,24 +1940,24 @@ dec_label_pc_8048960:	;100000111110110000001100
 	%u5_8048b99 = icmp slt i32 %and_aabbab_1_8048b99, 0
 
 	%_j_8048b99 = add i32 0, 0
-	store i1 %u5_8048b99, i1*  @of0	; store to i1 register, should we ignore it? But than it causes problems, see #153
+	store i1 %u5_8048b99, i1*  @of0
 	%u6_8048b99 = add i32 %u2_8048b99, %u1_8048b99
 
 	%_b_subinst_6_8048b99 = add i32 0, 0
 	%u0_subinst_6_8048b99 = icmp eq i32 %u6_8048b99, %_b_subinst_6_8048b99
 	%_d_subinst_6_8048b99 = add i32 0, 0
-	store i1 %u0_subinst_6_8048b99, i1*  @zf0	; store to i1 register, should we ignore it? But than it causes problems, see #153
+	store i1 %u0_subinst_6_8048b99, i1*  @zf0
 	%_e_subinst_6_8048b99 = add i32 0, 0
 	%u1_subinst_6_8048b99 = icmp slt i32 %u6_8048b99, %_e_subinst_6_8048b99
 	%_g_subinst_6_8048b99 = add i32 0, 0
-	store i1 %u1_subinst_6_8048b99, i1*  @sf0	; store to i1 register, should we ignore it? But than it causes problems, see #153
+	store i1 %u1_subinst_6_8048b99, i1*  @sf0
 	%u2_subinst_6_8048b99 = trunc i32 %u6_8048b99 to i8
 	%parity_odd_bit_cnt_2_8048b99 = call i8 @llvm.ctpop.i8( i8 %u2_subinst_6_8048b99 ) nounwind
 	%parity_odd_mod_2_8048b99 = urem i8 %parity_odd_bit_cnt_2_8048b99, 2
 	%u3_subinst_6_8048b99 = icmp eq i8 1, %parity_odd_mod_2_8048b99
 
 	%_j_subinst_6_8048b99 = add i32 0, 0
-	store i1 %u3_subinst_6_8048b99, i1*  @pf0	; store to i1 register, should we ignore it? But than it causes problems, see #153
+	store i1 %u3_subinst_6_8048b99, i1*  @pf0
 	; store of stack pointer to offset 0 into register  @gpr4
 
 

@@ -3,8 +3,6 @@ from regression_tests import *
 class Test(Test):
     """Checks that we correctly detect and report cases when the input file
     contains bytecode.
-
-    See #1278 for more details.
     """
 
     settings = TestSettings(

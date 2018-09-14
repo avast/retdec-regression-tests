@@ -63,24 +63,13 @@ class Test(Test):
 		assert self.out_c.has_func( 'function_804a391' )  # command
 		assert self.out_c.has_func( 'function_804a913' )  # execute
 		assert self.out_c.has_func( 'function_804aad0' )  # __do_global_ctors_aux
-
-	# Functions reported in #1050 as not detected.
-	# TODO: matula, uncomment when fixed.
-	#
-	def test_check_for_functions_not_detected_before_1050_fix(self):
 		assert self.out_c.has_func( 'function_8048d59' )  # cmdline
 		assert self.out_c.has_func( 'function_8048e50' )  # address
-
-		## Range not decoded.
-		##
 		assert self.out_c.has_func( 'function_8048f88' )  # search
 		assert self.out_c.has_func( 'function_8048fce' )  # resolve
 		assert self.out_c.has_func( 'function_804904d' )  # main
 		assert self.out_c.has_func( 'function_8049279' )  # ycomp
 		assert self.out_c.has_func( 'function_8049373' )  # cmdcomp
-
-		## Not detected functions in decoded ranges.
-		##
 		assert self.out_c.has_func( 'function_804aa50' )  # __libc_csu_init
 		#assert self.out_c.has_func( 'function_804aac0' )  # __libc_csu_fini
 		assert self.out_c.has_func( 'function_804aafc' )  # _fini
@@ -88,6 +77,6 @@ class Test(Test):
 	# Functions detected in stripped binary, that do not have their named (from symbols) counterparts in not-stripped binary.
 	# TODO: matula, not sure how serious is this problem. if possible fix detection and uncomment this check.
 	#
-	def test_check_for_falsely_detected_functions_before_1050_fix(self):
+	def test_check_for_falsely_detected_functions(self):
 		assert not self.out_c.has_func( 'function_80487db' )
 		assert not self.out_c.has_func( 'function_8048818' )

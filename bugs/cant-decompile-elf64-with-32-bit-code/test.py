@@ -5,8 +5,6 @@ class Test(Test):
     64b ELF and its header is probably corrupted (even IDA is unable to analyze
     it). Therefore, we should signal an error about an unsupported target
     format.
-
-    See #1825 for more details.
     """
     settings = TestSettings(
         input='x86_elf'

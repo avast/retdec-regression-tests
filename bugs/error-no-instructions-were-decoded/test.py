@@ -191,7 +191,7 @@ class TestPpc(Test):
 	def test_check_for_currently_detected_functions(self):
 		assert self.out_c.has_func( 'factor' )
 
-	def test_dsm_not_empty_bug_1079(self):
+	def test_dsm_not_empty(self):
 		assert self.out_dsm.contains('; section: .text')
 
 		assert self.out_dsm.contains('93 e1 00 1c\s*stw r31, 0x1c\(r1\)')

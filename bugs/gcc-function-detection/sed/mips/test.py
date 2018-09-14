@@ -50,23 +50,13 @@ class Test(Test):
 		assert self.out_c.has_func( 'function_89025f4' )  # dosub
 		assert self.out_c.has_func( 'function_8902d70' )  # substitute
 		assert self.out_c.has_func( 'function_8901ffc' )  # listto
-
 		assert self.out_c.has_func( 'function_8902804' )  # truncated
 		assert self.out_c.has_func( 'function_8901cb0' )  # readout
 		assert self.out_c.has_func( 'function_8902e04' )  # command
 		assert self.out_c.has_func( 'function_890386c' )  # execute
-
-		# TODO: v nestripnutej verzii je getline asi nespravne odstranena ako linked.
-		# Je odstraneneho viac kodu, takze sa odstrania aj zaciatky niektorych funkcii.
-		#
 		assert self.out_c.has_func( 'function_8901e6c' )  # getline
 		assert self.out_c.has_func( 'function_8901ee0' )  # dumpto
 		assert self.out_c.has_func( 'function_89004b4' )  # ycomp
-
-	# Functions reported in #1050 as not detected.
-	# TODO: matula, uncomment when fixed.
-	#
-	def test_check_for_functions_not_detected_before_1050_fix(self):
 		#assert self.out_c.has_func( 'function_8900354' )  # call_frame_dummy
 		assert self.out_c.has_func( 'function_890107c' )  # cmdline
 		assert self.out_c.has_func( 'function_8901230' )  # cmdcomp

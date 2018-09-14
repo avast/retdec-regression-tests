@@ -1,7 +1,5 @@
 """Checks that we correctly decompiled, detect, and reconstruct loops (for,
 while).
-
-See #1358 for more details.
 """
 
 import re

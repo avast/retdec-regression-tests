@@ -36,11 +36,6 @@ class Test(Test):
 		assert self.out_c.has_func( 'function_10000878' )  # usage
 		assert self.out_c.has_func( 'main' )  # main
 		assert self.out_c.has_func( 'function_10000a30' )  # __do_global_ctors_aux
-
-	# Functions reported in #1050 as not detected.
-	# TODO: matula, uncomment when fixed.
-	#
-	def test_check_for_functions_not_detected_before_1050_fix(self):
 		assert self.out_c.has_func( 'function_1000050c' )  # call___do_global_dtors_aux
 		assert self.out_c.has_func( 'function_10000570' )  # call_frame_dummy
 		assert self.out_c.has_func( 'function_1000058c' )  # to_unix

@@ -32,5 +32,4 @@ class Test(Test):
 		# back-end, which removes statically linked library functions. This
 		# removal causes _impure_ptr to become unused. The following test
 		# ensures that it is not present in the decompiled code.
-		# See #1107 for more details.
 		assert not self.out_c.has_global_var('_impure_ptr')
