@@ -63,8 +63,3 @@ class TestPic32BigGccElf(Test):
 
     def test_has_not_little_endian_functions(self):
         assert not self.out_c.has_funcs('function_9d003614', 'function_9d0036f0', 'function_9d003790')
-
-    # I have no idea if this is ok tests or not.
-    #
-    #def test_has_big_endian_functions(self):
-        #assert self.out_c.has_funcs('function_9d0038b0')

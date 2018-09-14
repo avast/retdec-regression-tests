@@ -7,7 +7,7 @@ if not on_macos():
         )
 
         def test_check_for_all_currently_detected_strings(self):
-            #assert self.out_c.has_string_literal('(null)')
+            assert self.out_c.has_string_literal('(null)')
             assert self.out_c.has_string_literal('PST')
             assert self.out_c.has_string_literal('PDT')
             assert self.out_c.has_string_literal('R6002\\r\\n- floating point not loaded\\r\\n')

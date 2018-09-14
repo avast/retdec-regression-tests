@@ -65,7 +65,7 @@ class TestAll(TestBase):
                                     ['__ZN7DerivedD1Ev', '__ZN7DerivedD0Ev', '__ZN7Derived7method1Ev', '__ZN7Derived7method2Ev'],
                                     ['___bid_truncdddf.7', '__ZN7DerivedD0Ev', '__ZN7Derived7method1Ev', '__ZN7Derived7method2Ev'],
                                     ['___bid_truncdddf_65', '__ZN7DerivedD0Ev', '__ZN7Derived7method1Ev', '__ZN7Derived7method2Ev'],
-									['___bid_truncdddf_14', '__ZN7DerivedD0Ev', '__ZN7Derived7method1Ev', '__ZN7Derived7method2Ev'],
+                                    ['___bid_truncdddf_14', '__ZN7DerivedD0Ev', '__ZN7Derived7method1Ev', '__ZN7Derived7method2Ev'],
                                     ['__ZN7DerivedD0Ev', '__ZN7Derived7method1Ev', '__ZN7Derived7method2Ev'],
                                     ['_ZN7DerivedD1Ev', '_ZN7DerivedD0Ev', '_ZN7Derived7method1Ev', '_ZN7Derived7method2Ev'] ]
 
