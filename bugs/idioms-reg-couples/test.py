@@ -1666,7 +1666,6 @@ class TestCryptoLocker(Test):
 		assert fnc.calls( 'GetProcAddress' )
 		assert fnc.calls( 'GetUserDefaultUILanguage' )
 		fnc = self.out_c.funcs[ 'function_40edd0' ]
-		assert fnc.calls( 'abort' )
 		fnc = self.out_c.funcs[ 'function_40ee80' ]
 		fnc = self.out_c.funcs[ 'function_40ef30' ]
 		fnc = self.out_c.funcs[ 'function_40ef40' ]
