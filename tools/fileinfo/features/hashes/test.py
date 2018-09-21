@@ -119,6 +119,6 @@ class TestTypeRefHash(Test):
     def test_correctly_computes_typeref_hash(self):
         assert self.fileinfo.succeeded
 
-        self.assertEqual(self.fileinfo.output['typeRefTable']['crc32'], 'c86ab1fc')
-        self.assertEqual(self.fileinfo.output['typeRefTable']['md5'], '27d1cf54d7e587f753ad68387f3d440b')
-        self.assertEqual(self.fileinfo.output['typeRefTable']['sha256'], '2ee04084f1174ed6b1453cfec0572aaedb40f8dff112c958f1e8f657ebf53ec0')
+        self.assertEqual(self.fileinfo.output['typeRefTable']['crc32'], 'bb390cc9')
+        self.assertEqual(self.fileinfo.output['typeRefTable']['md5'], '93b7f964c87a94b07d1f6171f0b7d7c1')
+        self.assertEqual(self.fileinfo.output['typeRefTable']['sha256'], '37a37a2d4cc651a9b6cf54da949cbb6c89fc1e6e9991628087741d51666c7f1b')
