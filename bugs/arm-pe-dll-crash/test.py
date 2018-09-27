@@ -47,7 +47,7 @@ class Test(Test):
 
     def test_has_some_random_imported_functions(self):
         assert self.out_c.has_comment_matching(r'.*int32_t _addd\(.*a1.*') # a2.*')
-        assert self.out_c.has_comment_matching(r'.*int32_t.*_led\(.*a1.*a2.*')
+        assert self.out_c.has_comment_matching(r'.*int32_t.*_led\(.*a1.*') # a2.*')
         assert self.out_c.has_comment_matching(r'.*int32_t.*_subd\(.*\);')
         assert self.out_c.has_comment_matching(r'.*HPEN.*CreatePen\(.*\);')
         assert self.out_c.has_comment_matching(r'.*HGDIOBJ.*SelectObject\(.*\);')
