@@ -39,3 +39,35 @@ class TestIssue376(Test):
         assert f2.calls('_40_LStrAsg')
         assert f2.calls('function_41697aa4')
         assert not f2.calls('abort')
+
+class TestIssue347(Test):
+    """Related to:
+    #347: https://github.com/avast-tl/retdec/issues/347
+    """
+    settings=TestSettings(
+        input='625dc8112bc509236ff5d0255b85cc0b82c9dd1ef27f6320a7394f33ab46800e',
+        args='--select-functions=function_402ee0,function_402f30,function_403880'
+    )
+
+    def test(self):
+        f1 = self.out_c.funcs['function_402ee0']
+        assert f1.calls('__readfsdword')
+        assert f1.calls('__writefsdword')
+        assert f1.calls('function_41ce00')
+        assert not f1.calls('abort')
+
+        f2 = self.out_c.funcs['function_402f30']
+        assert f2.calls('__readfsdword')
+        assert f2.calls('__writefsdword')
+        assert f2.calls('function_41ce00')
+        assert f2.calls('function_41e347')
+        assert not f2.calls('abort')
+
+        f3 = self.out_c.funcs['function_403880']
+        assert f3.calls('__readfsdword')
+        assert f3.calls('__writefsdword')
+        assert f3.calls('function_4154ec')
+        assert f3.calls('function_416645')
+        assert f3.calls('function_41654c')
+        assert not f3.calls('abort')
+        assert self.out_c.has_string_literal(r'Megafiles (*.meg)|*.meg|All Files (*.*)|*.*||')
