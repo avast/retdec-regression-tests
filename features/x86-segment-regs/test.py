@@ -14,6 +14,24 @@ class TestBasic(Test):
         main = self.out_c.funcs['main']
         assert main.calls('__readfsdword')
         assert self.out_c.contains('__readfsdword\(24\)')
+        assert not main.calls('abort')
+
+class TestLoadNull(Test):
+    """Related to:
+    #41:  https://github.com/avast-tl/retdec/issues/41
+    #169: https://github.com/avast-tl/retdec/issues/169
+    #391: https://github.com/avast-tl/retdec/pull/391
+
+    Test that load from null is replaced by special intrinsic.
+    """
+    settings=TestSettings(
+        input='TestNull.exe'
+    )
+
+    def test(self):
+        main = self.out_c.funcs['main']
+        assert main.calls('__readNullptrDword')
+        assert not main.calls('abort')
 
 class TestIssue376(Test):
     """Related to:
