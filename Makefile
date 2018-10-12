@@ -15,6 +15,6 @@ clean:
 	@# Clean empty directories or directories that contain only empty
 	@# directories. This is needed because of changes in the structure of
 	@# regression tests, like movement of directories. Without this cleaning,
-	@# such empty directories would not be removed because git does not show
+	@# such empty directories would never be removed because git does not show
 	@# empty directories in the index.
 	@find . -depth -type d -empty -exec rmdir {} \;
