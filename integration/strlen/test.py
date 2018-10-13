@@ -1,7 +1,7 @@
 from regression_tests import *
 
 class Test_2017(Test):
-    settings_2017 = CriticalTestSettings(
+    settings_2017 = TestSettings(
         input=files_in_dir('2017-11-14'),
     )
 
@@ -13,7 +13,7 @@ class Test_2017(Test):
         )
 
 class Test_2015(Test):
-    settings_2015 = CriticalTestSettings(
+    settings_2015 = TestSettings(
         input=files_in_dir('2015-03-30'),
     )
 

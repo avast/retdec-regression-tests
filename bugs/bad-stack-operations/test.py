@@ -1,7 +1,7 @@
 from regression_tests import *
 
 class Test(Test):
-    settings = CriticalTestSettings(
+    settings = TestSettings(
         input='strcpy.elf'
     )
 

@@ -1,7 +1,7 @@
 from regression_tests import *
 
 class UnitTests(Test):
-    settings = CriticalTestSettings(
+    settings = TestSettings(
         tool='retdec-tests-runner.py'
     )
 

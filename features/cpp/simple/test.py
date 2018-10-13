@@ -10,7 +10,7 @@ class TestBase(Test):
             assert "main" not in c.destructors
 
 class TestAll(TestBase):
-    settings = CriticalTestSettings(
+    settings = TestSettings(
         input=files_in_dir('inputs/symbols'),
         args='-k'
     )
@@ -39,7 +39,7 @@ class TestAll(TestBase):
         assert len(c.virtualMethods) == 1
 
 class TestAllStripped(TestBase):
-    settings = CriticalTestSettings(
+    settings = TestSettings(
         input=files_in_dir('inputs/stripped'),
         args='-k'
     )
@@ -60,12 +60,12 @@ class TestAllStripped(TestBase):
         assert len(c.destructors) == 2
 
 class TestMsvc(TestBase):
-    settings = CriticalTestSettings(
+    settings = TestSettings(
         input='inputs/msvc/simple-msvc-release.ex',
         args='-k'
     )
 
-    settings_d = CriticalTestSettings(
+    settings_d = TestSettings(
         input='inputs/msvc/simple-msvc-debug.ex',
         args='-k'
     )

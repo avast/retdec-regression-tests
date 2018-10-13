@@ -9,17 +9,17 @@ class TestBase(Test):
         assert self.out_c.func_count == 0
 
 class TestDecompileSelectXxxDecodeAll(TestBase):
-    settings = CriticalTestSettings.from_settings(base_settings,
+    settings = TestSettings.from_settings(base_settings,
         args = '--select-functions xxx'
     )
 
 class TestDecompileSelect0x0DecodeAll(TestBase):
-    settings = CriticalTestSettings.from_settings(base_settings,
+    settings = TestSettings.from_settings(base_settings,
         args = '--select-ranges 0x0-0x0'
     )
 
 class TestDecompileSelect0x1DecodeAll(TestBase):
-    settings = CriticalTestSettings.from_settings(base_settings,
+    settings = TestSettings.from_settings(base_settings,
         args = '--select-ranges 0x0-0x1'
     )
 
@@ -29,7 +29,7 @@ class TestBaseDecodeOnly(Test):
         assert self.decompiler.log.contains(r'Error: No instructions were decoded')
 
 class TestDecompileSelectXxxDecodeOnly(TestBaseDecodeOnly):
-    settings = CriticalTestSettings.from_settings(base_settings,
+    settings = TestSettings.from_settings(base_settings,
         args = '--select-functions xxx --select-decode-only'
     )
 
@@ -37,7 +37,7 @@ class TestDecompileSelectXxxDecodeOnly(TestBaseDecodeOnly):
         pass
 
 class TestDecompileSelect0x0DecodeOnly(TestBaseDecodeOnly):
-    settings = CriticalTestSettings.from_settings(base_settings,
+    settings = TestSettings.from_settings(base_settings,
         args = '--select-ranges 0x0-0x0 --select-decode-only'
     )
 
@@ -45,7 +45,7 @@ class TestDecompileSelect0x0DecodeOnly(TestBaseDecodeOnly):
         pass
 
 class TestDecompileSelect0x1DecodeOnly(TestBaseDecodeOnly):
-    settings = CriticalTestSettings.from_settings(base_settings,
+    settings = TestSettings.from_settings(base_settings,
         args = '--select-ranges 0x0-0x1 --select-decode-only'
     )
 

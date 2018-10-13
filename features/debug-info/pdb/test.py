@@ -3,7 +3,7 @@ from regression_tests import *
 class PDBTest(Test):
     """Checks basic handling of debug information from PDB files."""
 
-    settings = CriticalTestSettings(
+    settings = TestSettings(
         input='manyvars.ex',
         pdb='manyvars.pdb'
     )

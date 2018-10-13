@@ -5,7 +5,7 @@ base_settings = TestSettings(
 )
 
 class TestNoInstructionInSelectedRange0x0To0x0(Test):
-    settings=CriticalTestSettings.from_settings(base_settings,
+    settings=TestSettings.from_settings(base_settings,
         args='--select-ranges 0x0-0x0'
     )
 
@@ -13,7 +13,7 @@ class TestNoInstructionInSelectedRange0x0To0x0(Test):
         assert self.out_c.func_count == 0
 
 class TestNoInstructionInSelectedRange0x0To0x0DecodeOnly(Test):
-    settings=CriticalTestSettings.from_settings(base_settings,
+    settings=TestSettings.from_settings(base_settings,
         args='--select-ranges 0x0-0x0 --select-decode-only'
     )
 
@@ -25,7 +25,7 @@ class TestNoInstructionInSelectedRange0x0To0x0DecodeOnly(Test):
         assert self.decompiler.log.contains(r'Error: No instructions were decoded')
 
 class TestNoInstructionInSelectedRange0x0To0x1(Test):
-    settings=CriticalTestSettings.from_settings(base_settings,
+    settings=TestSettings.from_settings(base_settings,
         args='--select-ranges 0x0-0x1'
     )
 
@@ -33,7 +33,7 @@ class TestNoInstructionInSelectedRange0x0To0x1(Test):
         assert self.out_c.func_count == 0
 
 class TestNoInstructionInSelectedRange0x0To0x1DecodeOnly(Test):
-    settings=CriticalTestSettings.from_settings(base_settings,
+    settings=TestSettings.from_settings(base_settings,
         args='--select-ranges 0x0-0x1 --select-decode-only'
     )
 
@@ -45,7 +45,7 @@ class TestNoInstructionInSelectedRange0x0To0x1DecodeOnly(Test):
         assert self.decompiler.log.contains(r'Error: No instructions were decoded')
 
 class TestNoInstructionInSelectedRange0x1To0x1(Test):
-    settings=CriticalTestSettings.from_settings(base_settings,
+    settings=TestSettings.from_settings(base_settings,
         args='--select-ranges 0x1-0x1'
     )
 
@@ -53,7 +53,7 @@ class TestNoInstructionInSelectedRange0x1To0x1(Test):
         assert self.out_c.func_count == 0
 
 class TestNoInstructionInSelectedRange0x1To0x1DecodeOnly(Test):
-    settings=CriticalTestSettings.from_settings(base_settings,
+    settings=TestSettings.from_settings(base_settings,
         args='--select-ranges 0x1-0x1 --select-decode-only'
     )
 
@@ -65,7 +65,7 @@ class TestNoInstructionInSelectedRange0x1To0x1DecodeOnly(Test):
         assert self.decompiler.log.contains(r'Error: No instructions were decoded')
 
 class TestInstructionInSelectedRange0x407741To0x407742(Test):
-    settings=CriticalTestSettings.from_settings(base_settings,
+    settings=TestSettings.from_settings(base_settings,
         args='--select-ranges 0x407741-0x407742'
     )
 
@@ -77,7 +77,7 @@ class TestInstructionInSelectedRange0x407741To0x407742(Test):
         assert main.calls('___main', 'puts')
 
 class TestInstructionInSelectedRange0x407741To0x407742DecodeOnly(Test):
-    settings=CriticalTestSettings.from_settings(base_settings,
+    settings=TestSettings.from_settings(base_settings,
         args='--select-ranges 0x407741-0x407742 --select-decode-only'
     )
 

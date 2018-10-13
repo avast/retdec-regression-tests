@@ -44,11 +44,11 @@ class TestBase(Test):
         )
 
 class Test_2017(TestBase):
-    settings_2017 = CriticalTestSettings(
+    settings_2017 = TestSettings(
         input=files_in_dir('2017-11-14'),
     )
 
 class Test_2015(TestBase):
-    settings_2015 = CriticalTestSettings(
+    settings_2015 = TestSettings(
         input=files_in_dir('2015-03-30'),
     )

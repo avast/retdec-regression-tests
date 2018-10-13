@@ -10,7 +10,7 @@ class TestBase(Test):
             assert "main" not in c.destructors
 
 class TestAll(TestBase):
-    settings = CriticalTestSettings(
+    settings = TestSettings(
         input=files_in_dir('inputs/symbols'),
         args='-k'
     )
@@ -79,7 +79,7 @@ class TestAll(TestBase):
         self.assertIn(derived_names, possible_derived_names_set)
 
 class TestAllStripped(TestBase):
-    settings = CriticalTestSettings(
+    settings = TestSettings(
         input=files_in_dir('inputs/stripped'),
         args='-k'
     )
@@ -109,13 +109,13 @@ class TestAllStripped(TestBase):
         assert "" not in derived_names
 
 class TestMsvcDebug(TestBase):
-    settings = CriticalTestSettings(
+    settings = TestSettings(
         input='inputs/msvc/derived-single-msvc-debug.ex',
         args='-k'
     )
 
 class TestMsvcRelease(TestBase):
-    settings = CriticalTestSettings(
+    settings = TestSettings(
         input='inputs/msvc/derived-single-msvc-release.ex',
         args='-k'
     )

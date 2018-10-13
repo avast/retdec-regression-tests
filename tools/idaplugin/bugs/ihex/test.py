@@ -8,7 +8,7 @@ base_settings_little = TestSettings(
 )
 
 class TestDecompileAllLittle(Test):
-    settings = CriticalTestSettings.from_settings(base_settings_little)
+    settings = TestSettings.from_settings(base_settings_little)
 
     def test_for_strings(self):
         assert self.out_c.has_string_literal('%d %d')
@@ -24,7 +24,7 @@ class TestDecompileAllLittle(Test):
         assert ack.calls( 'sub_8900368' )
 
 class TestDecompileSelectiveAckLittle(Test):
-    settings = CriticalTestSettings.from_settings(base_settings_little,
+    settings = TestSettings.from_settings(base_settings_little,
         args='--select 0x8900368'
     )
 
@@ -41,7 +41,7 @@ base_settings_big = TestSettings(
 )
 
 class TestDecompileAllBig(Test):
-    settings = CriticalTestSettings.from_settings(base_settings_big)
+    settings = TestSettings.from_settings(base_settings_big)
 
     def test_call_graph(self):
         main = self.out_c.funcs[ 'sub_4007C4' ]
@@ -53,7 +53,7 @@ class TestDecompileAllBig(Test):
         assert ack.calls( 'sub_4006F0' )
 
 class TestDecompileSelectiveAckBig(Test):
-    settings = CriticalTestSettings.from_settings(base_settings_big,
+    settings = TestSettings.from_settings(base_settings_big,
         args='--select 0x4006f0'
     )
 

@@ -7,13 +7,13 @@ base_settings = TestSettings(
 )
 
 class TestDecompileAll(Test):
-    settings = CriticalTestSettings.from_settings(base_settings)
+    settings = TestSettings.from_settings(base_settings)
 
     def test_main_comment(self):
         assert self.out_c.contains(r'// Comment:\n//     this is\n//     a main\n//     function\nint32_t _main')
 
 class TestDecompileSelective(Test):
-    settings = CriticalTestSettings.from_settings(base_settings,
+    settings = TestSettings.from_settings(base_settings,
         args='--select 0x40159a'
     )
 

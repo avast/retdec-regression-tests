@@ -1,7 +1,7 @@
 from regression_tests import *
 
 class Test_C(Test):
-    settings = CriticalTestSettings(
+    settings = TestSettings(
         input=[
             'wide-strings.arm.clang.O0.elf',
             'wide-strings.arm.gcc.O0.elf',

@@ -57,7 +57,7 @@ class TestX86GccExe__main(Test):
        Do not even run static code recognition.
     """
 
-    settings = CriticalTestSettings.from_settings(base_settings,
+    settings = TestSettings.from_settings(base_settings,
         input=inName+'.x86.mingw32-gcc-4.7.3.O0.g.ex',
         args='--select 0x4023E0'
     )
@@ -70,7 +70,7 @@ class TestX86GccExe0x402400(Test):
        Do not even run static code recognition.
     """
 
-    settings = CriticalTestSettings.from_settings(base_settings,
+    settings = TestSettings.from_settings(base_settings,
         input=inName+'.x86.mingw32-gcc-4.7.3.O0.g.ex',
         args='--select 0x402400'
     )

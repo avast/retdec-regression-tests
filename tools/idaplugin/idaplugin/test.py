@@ -6,7 +6,7 @@ base_settings = TestSettings(
 )
 
 class TestDecompileMainDecodeOnly(Test):
-    settings = CriticalTestSettings.from_settings(base_settings,
+    settings = TestSettings.from_settings(base_settings,
         args='--select 0x40159a'
     )
 
@@ -25,7 +25,7 @@ class TestDecompileMainDecodeOnly(Test):
         assert fnc.calls('___main', '_addRet', '_addNoRet', '_fAddRet', '_fAddNoRet', '_printf', '_rand')
 
 class TestDecompile_addRet(Test):
-    settings = CriticalTestSettings.from_settings(base_settings,
+    settings = TestSettings.from_settings(base_settings,
         args='--select 0x401560'
     )
 
@@ -42,7 +42,7 @@ class TestDecompile_addRet(Test):
         assert self.out_c.contains(r'return a2 \+ a1;')
 
 class TestDecompile_addNoRet(Test):
-    settings = CriticalTestSettings.from_settings(base_settings,
+    settings = TestSettings.from_settings(base_settings,
         args='--select 0x40156d'
     )
 
@@ -60,7 +60,7 @@ class TestDecompile_addNoRet(Test):
         assert self.out_c.contains(r'a3 \= a. \+ a.;')
 
 class TestDecompile_fAddRet(Test):
-    settings = CriticalTestSettings.from_settings(base_settings,
+    settings = TestSettings.from_settings(base_settings,
         args='--select 0x40157f'
     )
 
@@ -78,7 +78,7 @@ class TestDecompile_fAddRet(Test):
         #assert self.out_c.contains(r'return a2 \+ a1;')
 
 class TestDecompile_fAddNoRet(Test):
-    settings = CriticalTestSettings.from_settings(base_settings,
+    settings = TestSettings.from_settings(base_settings,
         args='--select 0x40158a'
     )
 
@@ -95,7 +95,7 @@ class TestDecompile_fAddNoRet(Test):
         assert self.out_c.contains(r'a3 \= a. \+ a.;')
 
 class TestDecompileAll(Test):
-    settings = CriticalTestSettings.from_settings(base_settings)
+    settings = TestSettings.from_settings(base_settings)
 
     # Names are from config. Therefore, this also tests that IDA names are applied.
     #

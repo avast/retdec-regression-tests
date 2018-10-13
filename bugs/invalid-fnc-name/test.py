@@ -1,7 +1,7 @@
 from regression_tests import *
 
 class Test(Test):
-    settings = CriticalTestSettings(
+    settings = TestSettings(
         input=['gpr0.x86.gcc.O0.g.elf', 'gpr0.x86.gcc.O0.g.exe'],
     )
 

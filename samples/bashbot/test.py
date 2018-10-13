@@ -3,7 +3,7 @@
 from regression_tests import *
 
 class BashbotTest(Test):
-    setting = CriticalTestSettings(
+    setting = TestSettings(
         input=[
             'bashbot.arm.gcc.O0.elf', 'bashbot.arm.gcc.O2.elf', 'bashbot.arm.gcc.O3.elf', # TODO: 'bashbot.arm.gcc.O1.elf'
             'bashbot.ppc.gcc.O0.elf', 'bashbot.ppc.gcc.O2.elf', 'bashbot.ppc.gcc.O3.elf', # TODO: 'bashbot.ppc.gcc.O1.elf'

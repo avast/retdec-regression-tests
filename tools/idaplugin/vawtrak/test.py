@@ -7,7 +7,7 @@ base_settings = TestSettings(
 )
 
 class TestDecompile_xorByRND(Test):
-    settings = CriticalTestSettings.from_settings(base_settings,
+    settings = TestSettings.from_settings(base_settings,
         args='--select 0x10010f90'
     )
 
@@ -35,7 +35,7 @@ class TestDecompile_xorByRND(Test):
         assert self.out_c.contains(r'int32_t rand16\(int32_t \* a1\);')
 
 class TestDecompile_getNextRegValueOfFCkey(Test):
-    settings = CriticalTestSettings.from_settings(base_settings,
+    settings = TestSettings.from_settings(base_settings,
         args='--select 0x1000dd3e'
     )
 
@@ -91,7 +91,7 @@ class TestDecompile_getNextRegValueOfFCkey(Test):
         assert self.out_c.has_string_literal('#FC_')
 
 class TestDecompile_sub_1000BB79(Test):
-    settings = CriticalTestSettings.from_settings(base_settings,
+    settings = TestSettings.from_settings(base_settings,
         args='--select 0x1000bb79'
     )
 
@@ -116,7 +116,7 @@ class TestDecompile_sub_1000BB79(Test):
         assert self.out_c.has_comment_matching(r'.*int.*wsprintfA\(.*...')
 
 class TestDecompile_unregisterAutorun3(Test):
-    settings = CriticalTestSettings.from_settings(base_settings,
+    settings = TestSettings.from_settings(base_settings,
         args='--select 0x1001880a'
     )
 
@@ -140,7 +140,7 @@ class TestDecompile_unregisterAutorun3(Test):
         assert self.out_c.contains(r'int32_t regOpenKeyAndCallProc\(.*\);')
 
 class TestDecompile_cyberDuck_grabPasswordsInFolders(Test):
-    settings = CriticalTestSettings.from_settings(base_settings,
+    settings = TestSettings.from_settings(base_settings,
         args='--select 0x10021a1f'
     )
 
@@ -186,7 +186,7 @@ class TestDecompile_cyberDuck_grabPasswordsInFolders(Test):
         assert self.out_c.has_comment_matching(r'.*SHGetFolderPathA\(.*')
 
 class TestDecompile_sub_1002243B(Test):
-    settings = CriticalTestSettings.from_settings(base_settings,
+    settings = TestSettings.from_settings(base_settings,
         args='--select 0x1002243b'
     )
 

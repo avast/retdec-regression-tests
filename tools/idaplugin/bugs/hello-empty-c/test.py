@@ -1,7 +1,7 @@
 from regression_tests import *
 
 class TestDecompileElfX86NotRebased(Test):
-    settings = CriticalTestSettings(
+    settings = TestSettings(
         tool='idaplugin',
         input='hello-x86.o',
         args='--select 0x8000000'
@@ -17,7 +17,7 @@ class TestDecompileElfX86NotRebased(Test):
 
 
 class TestDecompileElfX86RebasedTo0x0(Test):
-    settings = CriticalTestSettings(
+    settings = TestSettings(
         tool='idaplugin',
         input='hello-x86-rebase.o',
         idb='hello-x86-rebase.idb',
@@ -29,7 +29,7 @@ class TestDecompileElfX86RebasedTo0x0(Test):
         self.assertEqual(self.idaplugin.succeeded, True)
 
 class TestDecompileElfArm(Test):
-    settings = CriticalTestSettings(
+    settings = TestSettings(
         tool='idaplugin',
         input='hello-arm.o',
         args='--select 0x0'
@@ -40,7 +40,7 @@ class TestDecompileElfArm(Test):
         self.assertEqual(self.idaplugin.succeeded, True)
 
 class TestDecompileElfMips(Test):
-    settings = CriticalTestSettings(
+    settings = TestSettings(
         tool='idaplugin',
         input='hello-mips.o',
         args='--select 0x0'
@@ -51,7 +51,7 @@ class TestDecompileElfMips(Test):
         self.assertEqual(self.idaplugin.succeeded, True)
 
 class TestDecompileElfPpc(Test):
-    settings = CriticalTestSettings(
+    settings = TestSettings(
         tool='idaplugin',
         input='hello-ppc.o',
         args='--select 0x0'
@@ -62,7 +62,7 @@ class TestDecompileElfPpc(Test):
         self.assertEqual(self.idaplugin.succeeded, True)
 
 class TestDecompileCoffX86(Test):
-    settings = CriticalTestSettings(
+    settings = TestSettings(
         tool='idaplugin',
         input='debug.obj',
         args='--select 0x0'
@@ -73,7 +73,7 @@ class TestDecompileCoffX86(Test):
         self.assertEqual(self.idaplugin.succeeded, True)
 
 class TestDecompileCoffX86RebasedTo0x1000(Test):
-    settings = CriticalTestSettings(
+    settings = TestSettings(
         tool='idaplugin',
         input='debug-rebase.obj',
         idb='debug-rebase.idb',

@@ -110,6 +110,6 @@ class TestBase(Test):
         )
 
 class Test_2017(TestBase):
-    settings = CriticalTestSettings(
+    settings = TestSettings(
         input=files_in_dir('2017-11-14'),
     )

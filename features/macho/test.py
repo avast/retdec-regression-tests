@@ -1,7 +1,7 @@
 from regression_tests import *
 
 class TestX86C(Test):
-    settings = CriticalTestSettings(
+    settings = TestSettings(
         input='hello.x86.clang.macho',
     )
 
@@ -9,7 +9,7 @@ class TestX86C(Test):
         assert self.out_c.has_func( 'main' )
 
 class TestX86Cpp(Test):
-    settings = CriticalTestSettings(
+    settings = TestSettings(
         input='hello.cpp.x86.clang.macho',
     )
 
@@ -17,7 +17,7 @@ class TestX86Cpp(Test):
         assert self.out_c.has_func( 'main' )
 
 class TestArmC(Test):
-    settings = CriticalTestSettings(
+    settings = TestSettings(
         input='hello.arm.clang.macho',
     )
 
@@ -25,7 +25,7 @@ class TestArmC(Test):
         pass
 
 class TestArmCpp(Test):
-    settings = CriticalTestSettings(
+    settings = TestSettings(
         input='hello.cpp.arm.clang.macho',
     )
 

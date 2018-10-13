@@ -8,7 +8,7 @@ base_settings_x86 = TestSettings(
 )
 
 class TestDecompileAllX86(Test):
-    settings = CriticalTestSettings.from_settings(base_settings_x86)
+    settings = TestSettings.from_settings(base_settings_x86)
 
     def test_call_graph(self):
         main = self.out_c.funcs[ 'sub_4015D4' ]
@@ -20,7 +20,7 @@ class TestDecompileAllX86(Test):
         assert ack.calls( 'sub_401560' )
 
 class TestDecompileSelectiveAckX86(Test):
-    settings = CriticalTestSettings.from_settings(base_settings_x86,
+    settings = TestSettings.from_settings(base_settings_x86,
         args='--select 0x401560'
     )
 

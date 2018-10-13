@@ -29,12 +29,12 @@ class TestBase(Test):
         )
 
 class Test_2017(TestBase):
-    settings_2017 = CriticalTestSettings(
+    settings_2017 = TestSettings(
         input=files_in_dir('2017-11-14'),
     )
 
 class Test_2017_todo(Test):
-    settings_2017 = CriticalTestSettings(
+    settings_2017 = TestSettings(
         input=files_in_dir('2017-11-14-todo'),
     )
 
@@ -45,6 +45,6 @@ class Test_2017_todo(Test):
         assert self.out_c.has_string_literal('factorial( %d ) = %d\\n')
 
 class Test_2015(TestBase):
-    settings_2015 = CriticalTestSettings(
+    settings_2015 = TestSettings(
         input=files_in_dir('2015-03-30'),
     )
