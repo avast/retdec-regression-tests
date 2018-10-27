@@ -106,3 +106,15 @@ class TestExportHashMACHO(Test):
         self.assertEqual(self.fileinfo.output['exportTable']['md5'], '69c3263d43b9c3a5fad072fd81519e50')
         self.assertEqual(self.fileinfo.output['exportTable']['sha256'], 'b59f469f07123abee30e93a83e8b8908ed7faa8b140dba0093204b6b3efd541c')
 
+# Test average hash of a PE icon
+class TestResourceIconHash(Test):
+    settings = TestSettings(
+        tool='fileinfo',
+        input='resource_icon_hash',
+        args='--verbose --json'
+    )
+
+    def test_correctly_computes_resource_icon_hash(self):
+        assert self.fileinfo.succeeded
+
+        self.assertEqual(self.fileinfo.output['resourceTable']['iconAvgHash'], 'e3e7efcf8fcf9fff')
