@@ -7,7 +7,7 @@ class TestTypeRefNested(Test):
         args='--verbose --json'
     )
 
-    def test_correctly_analyzes_typerefs_default(self):
+    def test_correctly_analyzes_typerefs_nested(self):
         assert self.fileinfo.succeeded
 
         self.assertEqual(self.fileinfo.output['dotnetInfo']['typeRefTable']['types'][0]['libraryName'], 'System.Runtime')
