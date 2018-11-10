@@ -172,7 +172,7 @@ class TestEscaping(Test):
 		self.assertEqual(self.fileinfo.output["certificateTable"]["certificates"][2]["sha256"], "0374881C9B74D31F28DC580B0F2B9D2B14A97CE31CBEC2A05AEB377DCDDCC2B0")
 		self.assertEqual(self.fileinfo.output["certificateTable"]["certificates"][3]["sha256"], "0625FEE1A80D7B897A9712249C2F55FF391D6661DBD8B87F9BE6F252D88CED95")
 		self.assertEqual(self.fileinfo.output["certificateTable"]["certificates"][0]["attributes"]["subject"]["locality"], R"M\xfcnchen")
-		
+
 class Test11(Test):
 	settings=TestSettings(
 		tool='fileinfo',

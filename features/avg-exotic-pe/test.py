@@ -40,7 +40,7 @@ class Test_07143bf9233c29683460adeac4ec5b11(Test):
 		assert self.out_c.has_funcs('entry_point')
 		assert self.out_c.funcs['entry_point'].calls('GetModuleHandleA', 'GetProcAddress',
 			'FindWindowA', 'GetStartupInfoA', 'CreateProcessA', 'ExitProcess', 'GetWindowThreadProcessId',
-			'OpenProcess', 'VirtualAllocEx', 
+			'OpenProcess', 'VirtualAllocEx',
 			# Present in output C, but not found by framework on Windows (probably bad C parsing)
 			#'WriteProcessMemory', 'CloseHandle', 'CreateRemoteThread'
 			)
@@ -54,7 +54,7 @@ class Test_074190bfb0a383539f695d885618fd54(Test):
 
 	def test(self):
 		assert self.out_c.has_funcs('entry_point')
-		assert self.out_c.funcs['entry_point'].calls('GetTempPathA', 'lstrcatA',
+		assert on_macos() or self.out_c.funcs['entry_point'].calls('GetTempPathA', 'lstrcatA',
 			'memset', 'strcat', 'URLDownloadToFileA', 'CreateProcessA')
 		assert r'msarch1.exe' in self.out_c.string_literal_values
 		assert r'nordbbs.com/rel/msarch1.exe' in self.out_c.string_literal_values

@@ -159,8 +159,8 @@ class BashbotTest(Test):
 
 		fnc = self.out_c.funcs[ 'fdpclose' ]
 		assert fnc.calls( 'close' )
-		assert fnc.calls( 'sigaddset' )
-		assert fnc.calls( 'sigemptyset' )
+		assert on_macos() or fnc.calls( 'sigaddset' )
+		assert on_macos() or fnc.calls( 'sigemptyset' )
 		#assert fnc.calls( 'sigprocmask' ) #PPC
 		assert fnc.calls( 'waitpid' )
 
@@ -343,7 +343,7 @@ class BashbotTest(Test):
 		#assert fnc.calls( 'connectTimeout' ) #thumb O3
 		assert fnc.calls( 'memset' ) or fnc.calls( '__asm_rep_stosd_memset' )
 		#assert fnc.calls( 'socket' ) #probably some error in our C parser on Windows
-		assert fnc.calls( 'strcpy' )
+		assert on_macos() or fnc.calls( 'strcpy' )
 		assert fnc.calls( 'strchr' )
 
 		fnc = self.out_c.funcs[ 'getOurIP' ]

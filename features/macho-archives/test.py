@@ -214,7 +214,7 @@ class TestExtractArchiveDecompilationListArchs(Test):
     def test_check_arch_list(self):
         self.assertNotEqual(self.decompiler.return_code, 0)
         self.assertIn(
-            'Invalid --arch option "x86". File contains these architecture families:',
+            'Invalid --arch option \'x86\'. File contains these architecture families:',
             self.decompiler.output
         )
         self.assertIn('armv7\tarm', self.decompiler.output)
@@ -234,13 +234,13 @@ class TestExtractArchiveDecompilation(Test):
 
 class TestExtractDecompileArchiveJson(Test):
     settings = TestSettings(
-        tool='retdec-archive-decompiler.sh',
+        tool='retdec-archive-decompiler.py',
         input='archive',
         args='--list --json'
     )
 
     def test_check_list(self):
-        as_json = json.loads(self.retdec_archive_decompiler_sh.output)
+        as_json = json.loads(self.retdec_archive_decompiler_py.output)
         self.assertEqual(as_json['architectures'][0]['name'], 'armv7')
         self.assertEqual(as_json['architectures'][0]['index'], 0)
         self.assertEqual(as_json['architectures'][0]['cpuFamily'], 'arm')
@@ -283,7 +283,7 @@ class TestExtractDecompileArchiveJson(Test):
 
 class TestExtractDecompileArchivePlainText(Test):
     settings = TestSettings(
-        tool='retdec-archive-decompiler.sh',
+        tool='retdec-archive-decompiler.py',
         input='archive',
         args='--list'
     )
@@ -291,25 +291,25 @@ class TestExtractDecompileArchivePlainText(Test):
     def test_check_list(self):
         self.assertIn(
             '0\tarmv7\tarm',
-            self.retdec_archive_decompiler_sh.output
+            self.retdec_archive_decompiler_py.output
         )
         self.assertIn(
             '1\tarm64\tarm64',
-            self.retdec_archive_decompiler_sh.output
+            self.retdec_archive_decompiler_py.output
         )
         self.assertIn(
             '0\tTatvikMpeg2DemuxBitStreamReader.o',
-            self.retdec_archive_decompiler_sh.output
+            self.retdec_archive_decompiler_py.output
         )
         self.assertIn(
             '1\tTatvikMpeg2DemuxPESDecoder.o',
-            self.retdec_archive_decompiler_sh.output
+            self.retdec_archive_decompiler_py.output
         )
         self.assertIn(
             '2\tTatvikMpeg2TSDemuxer.o',
-            self.retdec_archive_decompiler_sh.output
+            self.retdec_archive_decompiler_py.output
         )
         self.assertIn(
             '3\tTatvikTransportStreamParser.o',
-            self.retdec_archive_decompiler_sh.output
+            self.retdec_archive_decompiler_py.output
         )

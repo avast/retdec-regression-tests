@@ -1,4 +1,3 @@
-
 from regression_tests import *
 
 class Test(Test):
@@ -51,4 +50,3 @@ class Test(Test):
 		#assert self.out_c.has_func( 'GetStartupInfo' )
 		#assert self.out_c.has_func( 'RegQueryValueEx' )
 		#assert self.out_c.has_func( 'GetModuleHandle' )
-		
