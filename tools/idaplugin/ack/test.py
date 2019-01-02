@@ -91,3 +91,9 @@ class TestX86ClangMacho__ack(Test):
         assert self.out_c.has_just_funcs('_ack')
         fnc = self.out_c.funcs['_ack']
         assert fnc.calls('_ack')
+
+class TestX86GccElf_EA64(CommonTest):
+    settings = TestSettings.from_settings(base_settings,
+        input=inName+'.x86.gcc-4.7.2.O0.g.elf',
+        args='--ea64'
+    )
