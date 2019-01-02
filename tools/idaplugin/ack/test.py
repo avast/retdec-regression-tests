@@ -52,6 +52,9 @@ class TestX86GccElf(CommonTest):
 class TestX86GccExe(CommonTest):
     settings = TestSettings.from_settings(base_settings, input=inName+'.x86.mingw32-gcc-4.7.3.O0.g.ex' )
 
+class TestX86ClangMacho(CommonTest):
+    settings = TestSettings.from_settings(base_settings, input=inName+'.x86.clang.macho' )
+
 class TestX86GccExe__main(Test):
     """Keep statically linked function in selected IDA decompilation.
        Do not even run static code recognition.
@@ -77,3 +80,14 @@ class TestX86GccExe0x402400(Test):
 
     def test_for___security_init_cookie(self):
         assert self.out_c.has_just_funcs('___security_init_cookie')
+
+class TestX86ClangMacho__ack(Test):
+    settings = TestSettings.from_settings(base_settings,
+        input=inName+'.x86.clang.macho',
+        args='--select 0x1e90'
+    )
+
+    def test_for__ack(self):
+        assert self.out_c.has_just_funcs('_ack')
+        fnc = self.out_c.funcs['_ack']
+        assert fnc.calls('_ack')
