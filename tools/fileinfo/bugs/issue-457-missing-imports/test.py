@@ -1,6 +1,6 @@
 from regression_tests import *
 
-class Test(Test):
+class TestMissingLibsAndFunctions(Test):
     settings = TestSettings(
         tool='fileinfo',
         input='d17d6c07090a26c3368f0aca900d034fd2ccd5e165964c087101540fe634ba89',
@@ -42,3 +42,62 @@ class Test(Test):
         self.assertEqual(self.fileinfo.output['importTable']['imports'][127]['name'], 'inflateEnd')
         self.assertEqual(self.fileinfo.output['importTable']['imports'][139]['name'], 'getenv')
         self.assertEqual(self.fileinfo.output['importTable']['imports'][151]['name'], '__gnu_Unwind_Find_exidx')
+
+    def test_import_usage_types(self):
+        self.assertEqual(self.fileinfo.output['importTable']['imports'][10]['name'], '__stack_chk_guard')
+        self.assertEqual(self.fileinfo.output['importTable']['imports'][10]['usageType'], 'OBJECT')
+        self.assertEqual(self.fileinfo.output['importTable']['imports'][104]['name'], '_tolower_tab_')
+        self.assertEqual(self.fileinfo.output['importTable']['imports'][104]['usageType'], 'OBJECT')
+        self.assertEqual(self.fileinfo.output['importTable']['imports'][119]['name'], '_toupper_tab_')
+        self.assertEqual(self.fileinfo.output['importTable']['imports'][119]['usageType'], 'OBJECT')
+        self.assertEqual(self.fileinfo.output['importTable']['imports'][120]['name'], '_ctype_')
+        self.assertEqual(self.fileinfo.output['importTable']['imports'][120]['usageType'], 'OBJECT')
+        self.assertEqual(self.fileinfo.output['importTable']['imports'][137]['name'], '__page_size')
+        self.assertEqual(self.fileinfo.output['importTable']['imports'][137]['usageType'], 'OBJECT')
+        self.assertEqual(self.fileinfo.output['importTable']['imports'][149]['name'], '__sF')
+        self.assertEqual(self.fileinfo.output['importTable']['imports'][149]['usageType'], 'OBJECT')
+
+        self.assertEqual(self.fileinfo.output['importTable']['imports'][100]['name'], 'deflate')
+        self.assertEqual(self.fileinfo.output['importTable']['imports'][100]['usageType'], 'FUNCTION')
+        self.assertEqual(self.fileinfo.output['importTable']['imports'][150]['name'], '__gnu_Unwind_Find_exidx')
+        self.assertEqual(self.fileinfo.output['importTable']['imports'][150]['usageType'], 'FUNCTION')
+
+class TestDynamicSegmentToBig(Test):
+    """ Dynamic segment in this file is too bif - its offset + size > filesize.
+        Test that we load it anyway.
+    """
+    settings = TestSettings(
+        tool='fileinfo',
+        input='68f8e2fdc6085ea83f51f46cdac7529188061ef6ec83150d8246b765a776a6ba',
+        args='--verbose --json'
+    )
+
+    def test_for_dynamic_section_entries(self):
+        assert self.fileinfo.succeeded
+
+        # first entry
+        self.assertEqual(self.fileinfo.output['dynamicSections'][0]['dynamicSectionEntries'][0]['type'], 'dt_pltgot')
+        self.assertEqual(self.fileinfo.output['dynamicSections'][0]['dynamicSectionEntries'][0]['value'], '0xcf28')
+
+        # needed libs entries
+        type = 'string table offset of name of needed library (dt_needed)'
+        self.assertEqual(self.fileinfo.output['dynamicSections'][0]['dynamicSectionEntries'][13]['type'], type)
+        self.assertEqual(self.fileinfo.output['dynamicSections'][0]['dynamicSectionEntries'][13]['description'], 'libstdc++.so')
+        self.assertEqual(self.fileinfo.output['dynamicSections'][0]['dynamicSectionEntries'][14]['type'], type)
+        self.assertEqual(self.fileinfo.output['dynamicSections'][0]['dynamicSectionEntries'][14]['description'], 'libm.so')
+        self.assertEqual(self.fileinfo.output['dynamicSections'][0]['dynamicSectionEntries'][15]['type'], type)
+        self.assertEqual(self.fileinfo.output['dynamicSections'][0]['dynamicSectionEntries'][15]['description'], 'libc.so')
+        self.assertEqual(self.fileinfo.output['dynamicSections'][0]['dynamicSectionEntries'][16]['type'], type)
+        self.assertEqual(self.fileinfo.output['dynamicSections'][0]['dynamicSectionEntries'][16]['description'], 'libdl.so')
+
+        # last entry
+        self.assertEqual(self.fileinfo.output['dynamicSections'][0]['dynamicSectionEntries'][0]['type'], 'dt_pltgot')
+        self.assertEqual(self.fileinfo.output['dynamicSections'][0]['dynamicSectionEntries'][0]['value'], '0xcf28')
+
+    def test_for_random_imports_missing_before_solving_the_issue(self):
+        self.assertEqual(self.fileinfo.output['importTable']['numberOfImports'], '54')
+
+        self.assertEqual(self.fileinfo.output['importTable']['imports'][5]['name'], 'malloc')
+        self.assertEqual(self.fileinfo.output['importTable']['imports'][16]['name'], 'exit')
+        self.assertEqual(self.fileinfo.output['importTable']['imports'][31]['name'], 'gettimeofday')
+        self.assertEqual(self.fileinfo.output['importTable']['imports'][47]['name'], 'raise')
