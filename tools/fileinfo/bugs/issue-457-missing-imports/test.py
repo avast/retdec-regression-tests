@@ -63,7 +63,7 @@ class TestMissingLibsAndFunctions(Test):
         self.assertEqual(self.fileinfo.output['importTable']['imports'][150]['usageType'], 'FUNCTION')
 
 class TestDynamicSegmentToBig(Test):
-    """ Dynamic segment in this file is too bif - its offset + size > filesize.
+    """ Dynamic segment in this file is too big - its offset + size > filesize.
         Test that we load it anyway.
     """
     settings = TestSettings(
@@ -91,8 +91,8 @@ class TestDynamicSegmentToBig(Test):
         self.assertEqual(self.fileinfo.output['dynamicSections'][0]['dynamicSectionEntries'][16]['description'], 'libdl.so')
 
         # last entry
-        self.assertEqual(self.fileinfo.output['dynamicSections'][0]['dynamicSectionEntries'][0]['type'], 'dt_pltgot')
-        self.assertEqual(self.fileinfo.output['dynamicSections'][0]['dynamicSectionEntries'][0]['value'], '0xcf28')
+        self.assertEqual(self.fileinfo.output['dynamicSections'][0]['dynamicSectionEntries'][25]['type'], 'end of _dynamic array (dt_null)')
+        self.assertEqual(self.fileinfo.output['dynamicSections'][0]['dynamicSectionEntries'][25]['value'], '0')
 
     def test_for_random_imports_missing_before_solving_the_issue(self):
         self.assertEqual(self.fileinfo.output['importTable']['numberOfImports'], '54')
@@ -101,3 +101,31 @@ class TestDynamicSegmentToBig(Test):
         self.assertEqual(self.fileinfo.output['importTable']['imports'][16]['name'], 'exit')
         self.assertEqual(self.fileinfo.output['importTable']['imports'][31]['name'], 'gettimeofday')
         self.assertEqual(self.fileinfo.output['importTable']['imports'][47]['name'], 'raise')
+
+class TestDynamicSectionHeaderIsCut(Test):
+    """ There is no valid dynamic segment in this file, only dynamic section.
+        Moreover, section's header entry goes beyond filesize - it cannot be read fully.
+        Test that we load it anyway.
+    """
+    settings = TestSettings(
+        tool='fileinfo',
+        input='f106711ebad010d3e1fa132577c39019c4f61b63dd1e7bd97ee8a41cb4eb5f12',
+        args='--verbose --json'
+    )
+
+    def test_for_dynamic_section_entries(self):
+        assert self.fileinfo.succeeded
+
+        type = 'string table offset of name of needed library (dt_needed)'
+
+        # first
+        self.assertEqual(self.fileinfo.output['dynamicSections'][0]['dynamicSectionEntries'][0]['type'], 'dt_pltgot')
+        self.assertEqual(self.fileinfo.output['dynamicSections'][0]['dynamicSectionEntries'][0]['value'], '0xcf28')
+        # first/last lib
+        self.assertEqual(self.fileinfo.output['dynamicSections'][0]['dynamicSectionEntries'][13]['type'], type)
+        self.assertEqual(self.fileinfo.output['dynamicSections'][0]['dynamicSectionEntries'][13]['description'], 'libstdc++.so')
+        self.assertEqual(self.fileinfo.output['dynamicSections'][0]['dynamicSectionEntries'][16]['type'], type)
+        self.assertEqual(self.fileinfo.output['dynamicSections'][0]['dynamicSectionEntries'][16]['description'], 'libdl.so')
+        # last
+        self.assertEqual(self.fileinfo.output['dynamicSections'][0]['dynamicSectionEntries'][25]['type'], 'end of _dynamic array (dt_null)')
+        self.assertEqual(self.fileinfo.output['dynamicSections'][0]['dynamicSectionEntries'][25]['value'], '0')
