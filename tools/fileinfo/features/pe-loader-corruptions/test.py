@@ -362,3 +362,18 @@ class Test033(Test):
         assert self.fileinfo.succeeded
         self.assertEqual(self.fileinfo.output["loaderError"]["code"], 33)
         self.assertEqual(self.fileinfo.output["loaderError"]["code_text"], 'LDR_ERROR_FILE_IS_CUT')
+
+class Test034(Test):
+    settings=TestSettings(
+        tool='fileinfo',
+        input=[
+            '034-file-is-cut-but-loadable-32bit.ex_',
+            '034-file-is-cut-but-loadable-64bit.ex_'
+        ],
+        args='--json --verbose'
+    )
+
+    def test_corrupted_pe(self):
+        assert self.fileinfo.succeeded
+        self.assertEqual(self.fileinfo.output["loaderError"]["code"], 34)
+        self.assertEqual(self.fileinfo.output["loaderError"]["code_text"], 'LDR_ERROR_FILE_IS_CUT_LOADABLE')
