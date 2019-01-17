@@ -129,3 +129,30 @@ class TestDynamicSectionHeaderIsCut(Test):
         # last
         self.assertEqual(self.fileinfo.output['dynamicSections'][0]['dynamicSectionEntries'][25]['type'], 'end of _dynamic array (dt_null)')
         self.assertEqual(self.fileinfo.output['dynamicSections'][0]['dynamicSectionEntries'][25]['value'], '0')
+
+class TestCorruptedSymtabSectionOkDynamicSymtab(Test):
+    """ There is a .dynsym section in this file. But it is probably corrupted, because reading it
+        gives a bunch of empty symbols.
+        There is also symtab entry in dynamic segment that points to a different symtab containing
+        few good symbols.
+        Test that we read this second symtab.
+    """
+    settings = TestSettings(
+        tool='fileinfo',
+        input='c72b6e5980f8ef8269bd37c7b20ba5228a48c917ece56e7e391a084a73649b92',
+        args='--verbose --json'
+    )
+
+    def test_for_random_imports_missing_before_solving_the_issue(self):
+        self.assertEqual(self.fileinfo.output['importTable']['imports'][0]['name'], '__cxa_finalize')
+        self.assertEqual(self.fileinfo.output['importTable']['imports'][6]['name'], 'dlopen')
+        self.assertEqual(self.fileinfo.output['importTable']['imports'][12]['name'], 'memset')
+        self.assertEqual(self.fileinfo.output['importTable']['imports'][22]['name'], 'fopen')
+        self.assertEqual(self.fileinfo.output['importTable']['imports'][27]['name'], 'getenv')
+
+    def test_for_random_symbols_missing_before_solving_the_issue(self):
+        self.assertEqual(self.fileinfo.output['symbolTables'][1]['symbols'][1]['name'], '__cxa_finalize')
+        self.assertEqual(self.fileinfo.output['symbolTables'][1]['symbols'][7]['name'], 'inflate')
+        self.assertEqual(self.fileinfo.output['symbolTables'][1]['symbols'][17]['name'], '__system_property_get')
+        self.assertEqual(self.fileinfo.output['symbolTables'][1]['symbols'][28]['name'], 'sscanf')
+        self.assertEqual(self.fileinfo.output['symbolTables'][1]['symbols'][31]['name'], 'JNI_OnLoad')
