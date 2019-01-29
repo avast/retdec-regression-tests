@@ -63,8 +63,8 @@ class TestMissingLibsAndFunctions(Test):
         self.assertEqual(self.fileinfo.output['importTable']['imports'][150]['usageType'], 'FUNCTION')
 
 class TestDynamicSegmentToBig(Test):
-    """ Dynamic segment in this file is too big - its offset + size > filesize.
-        Test that we load it anyway.
+    """Dynamic segment in this file is too big - its offset + size > filesize.
+       Test that we load it anyway.
     """
     settings = TestSettings(
         tool='fileinfo',
@@ -103,9 +103,9 @@ class TestDynamicSegmentToBig(Test):
         self.assertEqual(self.fileinfo.output['importTable']['imports'][47]['name'], 'raise')
 
 class TestDynamicSectionHeaderIsCut(Test):
-    """ There is no valid dynamic segment in this file, only dynamic section.
-        Moreover, section's header entry goes beyond filesize - it cannot be read fully.
-        Test that we load it anyway.
+    """There is no valid dynamic segment in this file, only dynamic section.
+       Moreover, section's header entry goes beyond filesize - it cannot be read fully.
+       Test that we load it anyway.
     """
     settings = TestSettings(
         tool='fileinfo',
@@ -131,11 +131,11 @@ class TestDynamicSectionHeaderIsCut(Test):
         self.assertEqual(self.fileinfo.output['dynamicSections'][0]['dynamicSectionEntries'][25]['value'], '0')
 
 class TestCorruptedSymtabSectionOkDynamicSymtab(Test):
-    """ There is a .dynsym section in this file. But it is probably corrupted, because reading it
-        gives a bunch of empty symbols.
-        There is also symtab entry in dynamic segment that points to a different symtab containing
-        few good symbols.
-        Test that we read this second symtab.
+    """There is a .dynsym section in this file. But it is probably corrupted, because reading it
+       gives a bunch of empty symbols.
+       There is also symtab entry in dynamic segment that points to a different symtab containing
+       few good symbols.
+       Test that we read this second symtab.
     """
     settings = TestSettings(
         tool='fileinfo',
