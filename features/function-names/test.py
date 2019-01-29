@@ -1,7 +1,7 @@
 from regression_tests import *
 
 class FiboTest(Test):
-    """ Symbols of imported functions in this binary are prefixed with
+    """Symbols of imported functions in this binary are prefixed with
     '__isoc99_' e.g. __isoc99_scanf.
     Tests that these prefixes are removed and correct LTI signatures are used.
     """
@@ -19,7 +19,7 @@ class FiboTest(Test):
         assert self.out_c.funcs['main'].calls('scanf')
 
 class CloseTest(Test):
-    """ _close function is used in the original source code. __close symbol is
+    """_close function is used in the original source code. __close symbol is
     used in binary.
     Tests that _close function is used in the decompiled source code.
     Tests that the name of used function is the same as comment for import.
