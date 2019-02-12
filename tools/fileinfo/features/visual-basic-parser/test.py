@@ -68,3 +68,20 @@ class Test1(Test):
         self.assertEqual(self.fileinfo.output['visualBasicInfo']['objectTable']['objects'][0]['methods'][3], 'InjPath')
         self.assertEqual(self.fileinfo.output['visualBasicInfo']['objectTable']['objects'][0]['methods'][4], 'nand')
         self.assertEqual(self.fileinfo.output['visualBasicInfo']['objectTable']['objects'][0]['methods'][5], 'xori')
+
+
+# Test for proper COM Visual Basic metadata parsing
+class Test2(Test):
+    settings = TestSettings(
+        tool='fileinfo',
+        input='c4affaea94863009d90668c9d86291864cd6027d798a20085b5110f6473450b7',
+        args='--verbose --json'
+    )
+
+    def test_visual_basic_com_data_presented(self):
+        assert self.fileinfo.succeeded
+        self.assertEqual(self.fileinfo.output['visualBasicInfo']['comObjectCLSID'], '13A84C25-CDF1-F24D-9338-CEF08CAAF469')
+        self.assertEqual(self.fileinfo.output['visualBasicInfo']['comObjectEventsCLSID'], '3490B97E-F7E7-8847-8A6F-97AB39FC9C97')
+        self.assertEqual(self.fileinfo.output['visualBasicInfo']['comObjectInterfaceCLSID'], '1A2ADBEC-0944-C944-A046-F535D14B4E10')
+        self.assertEqual(self.fileinfo.output['visualBasicInfo']['comObjectName'], 'usrReverseRelay')
+        self.assertEqual(self.fileinfo.output['visualBasicInfo']['comObjectType'], 'ActiveXUserControl')
