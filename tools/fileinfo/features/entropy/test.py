@@ -13,6 +13,10 @@ class TestPE(Test):
         self.assertEqual(self.fileinfo.output['sectionTable']['sections'][0]['entropy'], '0.653098')
         self.assertEqual(self.fileinfo.output['sectionTable']['sections'][2]['entropy'], '0.990941')
 
+    def test_overlay_entropy(self):
+        assert self.fileinfo.succeeded
+        self.assertEqual(self.fileinfo.output['overlay']['entropy'], '0')
+
 class TestELF(Test):
     settings = TestSettings(
         tool='fileinfo',
@@ -51,6 +55,10 @@ class TestELF(Test):
         self.assertEqual(self.fileinfo.output['sectionTable']['sections'][27]['entropy'], '0.59874')
         self.assertEqual(self.fileinfo.output['sectionTable']['sections'][28]['entropy'], '0.532765')
 
+    def test_overlay_entropy(self):
+        assert self.fileinfo.succeeded
+        self.assertEqual(self.fileinfo.output['overlay']['entropy'], '0.0586244')
+
 class TestMACHO(Test):
     settings = TestSettings(
         tool='fileinfo',
@@ -68,6 +76,10 @@ class TestMACHO(Test):
         self.assertEqual(self.fileinfo.output['sectionTable']['sections'][5]['entropy'], '0')
         self.assertEqual(self.fileinfo.output['sectionTable']['sections'][6]['entropy'], '0.1875')
 
+    def test_overlay_entropy(self):
+        assert self.fileinfo.succeeded
+        self.assertEqual(self.fileinfo.output['overlay']['entropy'], '0.738361')
+
 class TestCOFF(Test):
     settings = TestSettings(
         tool='fileinfo',
@@ -81,3 +93,7 @@ class TestCOFF(Test):
         self.assertEqual(self.fileinfo.output['sectionTable']['sections'][3]['entropy'], '0.444582')
         self.assertEqual(self.fileinfo.output['sectionTable']['sections'][4]['entropy'], '0.590768')
         self.assertEqual(self.fileinfo.output['sectionTable']['sections'][5]['entropy'], '0.43337')
+
+    def test_overlay_entropy(self):
+        assert self.fileinfo.succeeded
+        self.assertEqual(self.fileinfo.output['overlay']['entropy'], '0.458062')
