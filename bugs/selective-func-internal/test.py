@@ -2,8 +2,7 @@ from regression_tests import *
 
 class Test(Test):
     """Checks that our internal function name can be given as a parameter to
-
-        retdec-decompiler.py --select-functions
+       retdec-decompiler.py --select-functions
     """
 
     settings = TestSettings(
