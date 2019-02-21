@@ -72,15 +72,14 @@ class Test_0922b80e59bf37eb6dbbb62263f8473e(Test):
         assert r'http://85.255.113.26/hello.php' in self.out_c.string_literal_values
         assert r'IcmpSendEcho' in self.out_c.string_literal_values
 
-if not on_macos():
-    class TestOnlyEp(Test):
-        settings=TestSettings(
-            input=['WINKERNE.EXE---elkern-----elkern---', '2E4BA89B5C529173B2AF2D97245D260A.ex', '66F1225AC976107169EA9CFC103333F2.ex',
-                '77757A0F31F7217F706BC510BA427899.ex', '89005A881F694EBBDC072EE74C328801.ex', 'EE383DAF4D9F0774141F9E2FD8E93730.ex', 'F8EEE82B5150B75D4B176CD9804C9F2B.ex']
-        )
+class TestOnlyEp(Test):
+    settings=TestSettings(
+        input=['WINKERNE.EXE---elkern-----elkern---', '2E4BA89B5C529173B2AF2D97245D260A.ex', '66F1225AC976107169EA9CFC103333F2.ex',
+            '77757A0F31F7217F706BC510BA427899.ex', '89005A881F694EBBDC072EE74C328801.ex', 'EE383DAF4D9F0774141F9E2FD8E93730.ex', 'F8EEE82B5150B75D4B176CD9804C9F2B.ex']
+    )
 
-        def test(self):
-            assert self.out_c.has_funcs('entry_point')
+    def test(self):
+        assert self.out_c.has_funcs('entry_point')
 
 class TestEmpty(Test):
     settings=TestSettings(
