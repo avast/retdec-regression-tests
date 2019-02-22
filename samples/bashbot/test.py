@@ -70,9 +70,9 @@ class BashbotTest(Test):
         assert self.out_c.has_string_literal( 'BOGOMIPS' )
         assert self.out_c.has_string_literal( 'buf: %s\\n' )
         assert self.out_c.has_string_literal( 'GETLOCALIP' )
-        #assert self.out_c.has_string_literal( 'LINK CLOSED' )
+        assert self.out_c.has_string_literal( 'LINK CLOSED' ) #
         assert self.out_c.has_string_literal( 'PING' )
-        #assert self.out_c.has_string_literal( 'PONG!' )
+        assert self.out_c.has_string_literal( 'PONG!' )
         assert self.out_c.has_string_literal( 'sh' )
 
         # jk: the following strings are not detected on all architectures at the same time.

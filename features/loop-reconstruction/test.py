@@ -59,9 +59,8 @@ class for_simple_O0(TestBase):
     def test_f9_has_for_loop(self):
         self.assert_func_has_for_loop('f9', 'int32_t i = 100; i >= 1; i--')
 
-    # TODO
-    #def test_f10_has_for_loop(self):
-        #self.assert_func_has_for_loop('f10', 'int32_t i = 100; i >= 2; i--')
+    def test_f10_has_for_loop(self):
+        self.assert_func_has_for_loop('f10', 'int32_t i = 100; i >= 2; i--')
 
 class for_simple_O0_MIPS_gcc(TestBase):
     settings = TestSettings(
