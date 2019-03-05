@@ -23,15 +23,11 @@ class Test(Test):
         assert self.out_c.has_func( 'EnterCriticalSection2' )  #
         assert self.out_c.has_func( 'LeaveCriticalSection2' )  #
         assert self.out_c.has_func( 'DeleteCriticalSection2' )  #
-        assert self.out_c.has_func( 'MakeEmpty' )  #
         assert self.out_c.has_func( 'GetKeyboardType2' )  #
-        assert self.out_c.has_func( '_40_FpuInit' )  #
-        assert self.out_c.has_func( 'function_401ad4' )  #
-        assert self.out_c.has_func( 'function_401b90' )  #
-        assert self.out_c.has_func( 'function_401cf4' )  #
+        assert self.out_c.has_func( '_40_Halt' )  #
+        assert self.out_c.has_func( 'LocalAlloc2' )  #
         assert self.out_c.has_func( 'TlsGetValue2' )  #
         assert self.out_c.has_func( 'TlsSetValue2' )  #
-        assert self.out_c.has_func( 'AllocTlsBuffer' )  #
         assert self.out_c.has_func( 'InitializeModule' )  #
         assert self.out_c.has_func( 'function_401e24' )  #
         assert self.out_c.has_func( 'function_401e5c' )  #
