@@ -26,7 +26,7 @@ class TestAllHashes(Test):
 
 
 # https://github.com/avast-tl/retdec/issues/246
-# Test for ordinals thar are translated by YARA/pefile LUT.
+# Test for ordinals that are translated by YARA/pefile LUT.
 class TestImportHashYARAcompatibleLutOrds(Test):
     settings = TestSettings(
         tool='fileinfo',
@@ -43,7 +43,7 @@ class TestImportHashYARAcompatibleLutOrds(Test):
 
 
 # https://github.com/avast-tl/retdec/issues/246
-# Test for ordinals thar are NOT translated by YARA/pefile LUT.
+# Test for ordinals that are NOT translated by YARA/pefile LUT.
 class TestImportHashYARAcompatibleNoLutOrds(Test):
     settings = TestSettings(
         tool='fileinfo',
