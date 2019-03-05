@@ -25,12 +25,12 @@ class TestRunBase(TestBase):
 
 class Test_2018_x64Pe(TestBase):
     settings_2018 = TestSettings(
-        input=files_in_dir('2018-09-17', matching=r'.*\.exe'),
+        input=files_in_dir('2018-09-17', matching=r'(.*\.exe|for-loop\.x64\.gcc\.O0\.g\.elf)'),
     )
 
 class Test_2018(TestRunBase):
     settings_2018 = TestSettings(
-        input=files_in_dir('2018-09-17', excluding=r'.*\.exe'),
+        input=files_in_dir('2018-09-17', excluding=r'(.*\.exe|for-loop\.x64\.gcc\.O0\.g\.elf)'),
     )
 
 class Test_2017(TestRunBase):

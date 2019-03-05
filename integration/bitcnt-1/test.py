@@ -30,7 +30,7 @@ class TestBase(Test):
 
 class Test_2018(TestBase):
     settings_2018 = TestSettings(
-        input=files_in_dir('2018-09-17', excluding=r'.*\.exe'),
+        input=files_in_dir('2018-09-17', excluding=r'(.*\.exe|bitcnt-1\.x64\.clang\.O0\.g\.elf)'),
     )
 
 class Test_2018_x64Pe(Test):
