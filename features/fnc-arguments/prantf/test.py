@@ -41,7 +41,7 @@ class PowerpcClangTest(Test):
     def test_structure(self):
         main = self.out_c.funcs['main']
         assert main.calls('function_10000630')
-        assert self.out_c.contains('function_10000630\(.*"My number is %d\.", 1, 0\)')
+        assert self.out_c.contains('function_10000630\(.*"My number is %d\.", 1\)')
 
         fnc = self.out_c.funcs['function_10000630']
         assert fnc.calls('prantf')

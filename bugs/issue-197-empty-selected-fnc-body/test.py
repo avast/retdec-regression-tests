@@ -11,7 +11,7 @@ class Test(Test):
     def test_selected_function(self):
         assert self.out_c.has_comment_matching('// Address range: 0x7148 - 0x71b4')
         assert self.out_c.has_just_funcs('LzmaProps_Decode')
-        assert self.out_c.contains('v[0-9]+ >= 4 != v[0-9]+ != 4')
+        assert self.out_c.contains('a3 >= 4 != a3 != 4')
         assert self.out_c.contains('v[0-9]+ < .*&g[0-9]+')
         assert self.out_c.contains('v[0-9]+ >= 224 == \(v[0-9]+ != -32\)')
         assert self.out_c.contains('return 4')

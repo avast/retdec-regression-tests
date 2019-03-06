@@ -13,4 +13,4 @@ class Test(Test):
 
     def test_check_error_message(self):
         assert self.decompiler.return_code == 1
-        assert self.decompiler.log.contains( r'Error: Unsupported target format \'ELF64\'.' )
+        assert self.decompiler.log.contains( r'Error: Unsupported target format and architecture combination' )

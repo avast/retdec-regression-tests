@@ -43,6 +43,39 @@ class TestBase(Test):
             expected_output="Prime factors of '4096': 2 x 2 x 2 x 2 x 2 x 2 x 2 x 2 x 2 x 2 x 2 x 2\n"
         )
 
+class Test_2018(TestBase):
+    settings_2018 = TestSettings(
+        input=files_in_dir('2018-09-17', excluding=r'.*\.exe'),
+    )
+
+class Test_2018_x64Pe(Test):
+    settings_2018 = TestSettings(
+        input=files_in_dir('2018-09-17', matching=r'.*\.exe'),
+    )
+
+    def test_check_function_factorize(self):
+        assert self.out_c.has_func('factorize')
+        assert self.out_c.funcs['factorize'].return_type.is_void()
+        assert self.out_c.funcs['factorize'].param_count == 1
+        assert self.out_c.funcs['factorize'].params[0].type.is_int(32)
+        assert self.out_c.funcs['factorize'].calls('printf')
+        assert self.out_c.funcs['factorize'].has_any_while_loops()
+        assert self.out_c.funcs['factorize'].has_any_return_stmts()
+        assert self.out_c.funcs['factorize'].has_any_assignments()
+
+    def test_check_main(self):
+        assert self.out_c.has_func('main')
+        assert self.out_c.funcs['main'].calls('scanf')
+        assert self.out_c.funcs['main'].calls('factorize')
+        assert self.out_c.funcs['main'].has_any_while_loops()
+        assert self.out_c.funcs['main'].has_any_return_stmts()
+        assert self.out_c.funcs['main'].has_return_stmts('return 0')
+
+    def test_check_presence_of_literals(self):
+        assert self.out_c.has_string_literal('Prime factors of \'%d\': ')
+        assert self.out_c.has_string_literal('%d x ')
+        assert self.out_c.has_string_literal('%d\\n')
+
 class Test_2017(TestBase):
     settings_2017 = TestSettings(
         input=files_in_dir('2017-11-14'),

@@ -23,6 +23,18 @@ class TestBase(Test):
             expected_output='Read 4\nReturn 10\n'
         )
 
+class Test_2018(TestBase):
+    settings_2018 = TestSettings(
+        input=files_in_dir('2018-09-17'),
+    )
+
+class Test_2018_x64Pe(Test):
+    settings = TestSettings( input=['2018-10-01-win/dowhile.x64.clang.O0.g.exe', '2018-10-01-win/dowhile.x64.gcc.O0.g.exe'] )
+
+    def test_check_function_main(self):
+        assert self.out_c.contains('printf\("Read %d\\\\n", .*\);')
+        assert self.out_c.contains('printf\("Return %d\\\\n", .*\);')
+
 class Test_2017(TestBase):
     settings_2017 = TestSettings(
         input=files_in_dir('2017-11-14'),
