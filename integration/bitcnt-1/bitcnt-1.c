@@ -21,12 +21,12 @@ int  bit_count(long x)
 
 int main(int argc, char *argv[])
 {
-      long n;
+      int n = 0;
 
       while(scanf("%d", &n)==1)
       {
             int i = bit_count(n);
-            printf("%ld contains %d bit set\n", n, i);
+            printf("%d contains %d bit set\n", n, i);
       }
       return 0;
 }
