@@ -97,3 +97,20 @@ class TestX86GccElf_EA64(CommonTest):
         input=inName+'.x86.gcc-4.7.2.O0.g.elf',
         args='--ea64'
     )
+
+class TestX64GccElf_EA64_full(CommonTest):
+    settings = TestSettings.from_settings(base_settings,
+        input=inName+'.x64.gcc.O0.g.elf',
+        args='--ea64'
+    )
+
+class TestX64GccElf_EA64_selective(Test):
+    settings = TestSettings.from_settings(base_settings,
+        input=inName+'.x64.gcc.O0.g.elf',
+        args='--ea64 --select 0x40065C'
+    )
+
+    def test_for_ack(self):
+        assert self.out_c.has_just_funcs('ack')
+        fnc = self.out_c.funcs['ack']
+        assert fnc.calls('ack')
