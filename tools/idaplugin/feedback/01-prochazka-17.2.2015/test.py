@@ -27,7 +27,8 @@ class Test_17_2_2015(Test):
         assert self.out_c.contains('\=.*\(GetLastError\(\) \=\= 183\)')
 
     def test_switch_in_sub_409640(self):
-        assert self.out_c.contains('switch \(GetLastError\(\)\)')
+        assert self.out_c.contains('errorCode = GetLastError\(\)')
+        assert self.out_c.contains('switch \(errorCode\)')
         assert self.out_c.contains('case 0:')
         assert self.out_c.contains('result = 0;')
         assert self.out_c.contains('case 2:')

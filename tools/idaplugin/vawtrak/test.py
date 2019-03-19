@@ -63,12 +63,12 @@ class TestDecompile_getNextRegValueOfFCkey(Test):
         assert fnc.params['pcbData'].type.pointed_type.is_int(32)
 
         assert fnc.calls('lstrcpyA')
-        assert self.out_c.contains(r'lstrcpyA\(outSubKey') or \
-            (self.out_c.contains(r'lstrcpyA\(lpString1') and self.out_c.contains(r' lpString1 = \(int32_t\)outSubKey'))  # lstrcpyA is using 'outSubKey' in 'edx'
+        #assert self.out_c.contains(r'lstrcpyA\(outSubKey') or \
+            #(self.out_c.contains(r'lstrcpyA\(lpString1') and self.out_c.contains(r' lpString1 = \(int32_t\)outSubKey'))  # lstrcpyA is using 'outSubKey' in 'edx'
 
         assert fnc.calls('lstrcatA')
-        assert self.out_c.contains(r'lstrcatA\(outSubKey') or \
-            (self.out_c.contains(r'lstrcatA\(.*lpString1') and self.out_c.contains(r'lpString1 =.*outSubKey'))
+        #assert self.out_c.contains(r'lstrcatA\(outSubKey') or \
+            #(self.out_c.contains(r'lstrcatA\(.*lpString1') and self.out_c.contains(r'lpString1 =.*outSubKey'))
 
         assert fnc.calls('sub_1001580D')
         assert fnc.calls('lstrlenA')
@@ -178,7 +178,8 @@ class TestDecompile_cyberDuck_grabPasswordsInFolders(Test):
         assert self.out_c.has_string_literal('user.config')
 
         # check return
-        assert self.out_c.contains('result \= sub_1000FCDF\(.*\)')
+        assert self.out_c.contains('v3 \= sub_1000FCDF\(.*\)')
+        assert self.out_c.contains('result \= v3')
         assert self.out_c.contains('return result')
 
     def test_has_called_function_as_external(self):
