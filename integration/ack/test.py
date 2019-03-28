@@ -404,6 +404,14 @@ class Test_2015_ArmGccElf(TestBase):
         assert self.out_config.is_statically_linked('_reclaim_reent', 0x15e10)
         # leftovers - unconfirmed
 
+class Test_2018_Arm64GccElf(TestBase):
+    settings = TestSettings( input='2018-09-13/ack.aarch64.gcc.O0.g.elf' )
+
+    def test_check_dsm(self):
+        assert self.out_dsm.contains('0x400664:\s*fd 7b bd a9\s*stp x29, x30, \[sp, \#-0x30\]\!')
+        assert self.out_dsm.contains('0x400648:\s*e7 ff ff 97\s*bl \#0x4005e4 <ack>')
+        assert self.out_dsm.contains('0x4006c8:\s*82 ff ff 97\s*bl \#0x4004d0 <printf>')
+
 class Test_2015_ArmGccExe(TestBase):
     settings = TestSettings( input='2015-03-30/ack.arm.mingw32ce-4.4.0.O0.g.ex' )
 
