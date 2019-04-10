@@ -19,7 +19,7 @@ class TestMachODetected(Test):
     )
 
     def test_macho_detection(self):
-        assert self.fileinfo.failed
+        assert self.fileinfo.succeeded
         assert self.fileinfo.output.contains(
-            r"Detected format is: Mach-O."
+            r"File format\s+: Mach-O"
         )
