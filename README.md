@@ -1,12 +1,12 @@
 ## RetDec Regression Tests
 
-A collection of regression tests for [RetDec](https://github.com/avast-tl/retdec) and associated tools.
+A collection of regression tests for [RetDec](https://github.com/avast/retdec) and associated tools.
 
 **Warning: This repository contains malware binaries!**
 
 ## Use
 
-This repository contains a collection of test cases for [RetDec](https://github.com/avast-tl/retdec) and associated tools. To run the tests, you have to use our [regression-tests framework](https://github.com/avast-tl/retdec-regression-tests-framework).
+This repository contains a collection of test cases for [RetDec](https://github.com/avast/retdec) and associated tools. To run the tests, you have to use our [regression-tests framework](https://github.com/avast/retdec-regression-tests-framework).
 
 ## License
 
@@ -19,4 +19,4 @@ C/C++ source codes and binaries:
 
 ## Contributing
 
-See [RetDec contribution guidelines](https://github.com/avast-tl/retdec/wiki/Contribution-Guidelines) and our [regression-tests framework](https://github.com/avast-tl/retdec-regression-tests-framework).
+See [RetDec contribution guidelines](https://github.com/avast/retdec/wiki/Contribution-Guidelines) and our [regression-tests framework](https://github.com/avast/retdec-regression-tests-framework).

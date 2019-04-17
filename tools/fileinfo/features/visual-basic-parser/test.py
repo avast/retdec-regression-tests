@@ -1,6 +1,6 @@
 from regression_tests import *
 
-# https://github.com/avast-tl/retdec/issues/138
+# https://github.com/avast/retdec/issues/138
 # Test for proper Visual Basic metadata parsing
 class Test1(Test):
     settings = TestSettings(

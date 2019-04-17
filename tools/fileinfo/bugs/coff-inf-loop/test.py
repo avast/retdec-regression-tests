@@ -1,7 +1,7 @@
 from regression_tests import *
 
 
-# https://github.com/avast-tl/retdec/issues/242
+# https://github.com/avast/retdec/issues/242
 class TestNoInfLoop(Test):
     settings = TestSettings(
         tool='fileinfo',

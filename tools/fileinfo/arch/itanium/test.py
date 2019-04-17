@@ -24,7 +24,7 @@ class TestIA64(Test):
         self.assertEqual(self.fileinfo.output['Overlay size'], '0x1e')
 
 
-# https://github.com/avast-tl/retdec/issues/142
+# https://github.com/avast/retdec/issues/142
 # While this is not a core file, it contains note sections that has slightly
 # different behaviour that common ELF files so we will test it aswell
 class TestELFNotes(Test):

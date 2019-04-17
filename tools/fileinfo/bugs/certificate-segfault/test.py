@@ -29,7 +29,7 @@ class Test2(Test):
         self.assertEqual(self.fileinfo.output['certificateTable']['certificates'][0]['sha256'], 'ced5ab020125966499a067abfb138434281bc5b00c90d5d74d31529ff5169bf2')
 
 
-# https://github.com/avast-tl/retdec/issues/255
+# https://github.com/avast/retdec/issues/255
 class Test3(Test):
     settings=TestSettings(
         tool='fileinfo',
@@ -45,7 +45,7 @@ class Test3(Test):
         self.assertEqual(self.fileinfo.output['certificateTable']['certificates'][0]['sha256'], 'a2219c3e44ee3748eae12e5aa6c961af47c185e25a8e59affd8fcaed641286cd')
 
 
-# https://github.com/avast-tl/retdec/issues/250
+# https://github.com/avast/retdec/issues/250
 class Test4(Test):
     settings=TestSettings(
         tool='fileinfo',

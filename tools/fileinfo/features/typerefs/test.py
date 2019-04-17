@@ -72,7 +72,7 @@ class TestTypeRefNested(Test):
         self.assertEqual(self.fileinfo.output['dotnetInfo']['typeRefTable']['md5'], '5742603226df6e720f055413ba924c2c')
         self.assertEqual(self.fileinfo.output['dotnetInfo']['typeRefTable']['sha256'], 'c40e879174d85aaf426217ab5e39de04214245636550b82051a759d2946f15db')
 
-# https://github.com/avast-tl/retdec/issues/363
+# https://github.com/avast/retdec/issues/363
 # Test typeref hashes for .NET files
 # Default VS binary
 class TestTypeRefHashDefault(Test):

@@ -25,7 +25,7 @@ class TestAllHashes(Test):
         self.assertEqual(self.fileinfo.output['sha256'], '7b016e04b4ac2cd10cbbad5978be9c460adf274ed12b4872965572980b386d59')
 
 
-# https://github.com/avast-tl/retdec/issues/246
+# https://github.com/avast/retdec/issues/246
 # Test for ordinals that are translated by YARA/pefile LUT.
 class TestImportHashYARAcompatibleLutOrds(Test):
     settings = TestSettings(
@@ -42,7 +42,7 @@ class TestImportHashYARAcompatibleLutOrds(Test):
         )
 
 
-# https://github.com/avast-tl/retdec/issues/246
+# https://github.com/avast/retdec/issues/246
 # Test for ordinals that are NOT translated by YARA/pefile LUT.
 class TestImportHashYARAcompatibleNoLutOrds(Test):
     settings = TestSettings(
@@ -58,7 +58,7 @@ class TestImportHashYARAcompatibleNoLutOrds(Test):
             '4a685152543193737b50e1b699b8764e'
         )
 
-# https://github.com/avast-tl/retdec/issues/121
+# https://github.com/avast/retdec/issues/121
 # Test export hashes for PE format
 class TestExportHashPE(Test):
     settings = TestSettings(
@@ -74,7 +74,7 @@ class TestExportHashPE(Test):
         self.assertEqual(self.fileinfo.output['exportTable']['md5'], 'ed5fc6509f84c22d0a5181a74b169f4d')
         self.assertEqual(self.fileinfo.output['exportTable']['sha256'], '2ad7a39d00b78ab7bcb584bcef1d4a95246ebe9241e5ae3e24234bd6bca63cd9')
 
-# https://github.com/avast-tl/retdec/issues/121
+# https://github.com/avast/retdec/issues/121
 # Test export hashes for ELF format
 class TestExportHashELF(Test):
     settings = TestSettings(
@@ -90,7 +90,7 @@ class TestExportHashELF(Test):
         self.assertEqual(self.fileinfo.output['exportTable']['md5'], '1751216bdaf64142e87ce756a0c40817')
         self.assertEqual(self.fileinfo.output['exportTable']['sha256'], '6bb3c5893a91e9680ebcedea9f2b01cac380b1f98af4067be567981e3b3bf91b')
 
-# https://github.com/avast-tl/retdec/issues/121
+# https://github.com/avast/retdec/issues/121
 # Test export hashes for ELF format
 class TestExportHashMACHO(Test):
     settings = TestSettings(

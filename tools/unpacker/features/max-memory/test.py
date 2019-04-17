@@ -5,7 +5,7 @@ class TestUnpackingWhenNoLimit(Test):
     """Checks that the unpacker correctly unpacks a file when there is no
     memory limit.
 
-    Test for https://github.com/avast-tl/retdec/issues/290
+    Test for https://github.com/avast/retdec/issues/290
     """
 
     settings = TestSettings(
@@ -21,7 +21,7 @@ class TestUnpackingWhenSufficientLimit(Test):
     """Checks that the unpacker correctly unpacks a file when there is a
     sufficient memory limit.
 
-    Test for https://github.com/avast-tl/retdec/issues/290
+    Test for https://github.com/avast/retdec/issues/290
     """
 
     settings = TestSettings(
@@ -41,7 +41,7 @@ class TestUnpackingWhenInvalidLimit(Test):
     """Checks that the unpacker fails with an error when the memory limit is
     invalid.
 
-    Test for https://github.com/avast-tl/retdec/issues/290
+    Test for https://github.com/avast/retdec/issues/290
     """
 
     settings = TestSettings(
@@ -56,13 +56,13 @@ class TestUnpackingWhenInvalidLimit(Test):
 
 
 # Memory limiting does not work correctly on macOS (see
-# https://github.com/avast-tl/retdec/issues/379).
+# https://github.com/avast/retdec/issues/379).
 if not on_macos():
     class TestUnpackingWhenInsufficientLimit(Test):
         """Checks that the unpacker fails to unpack a file when the memory limit is
         not sufficient.
 
-        Test for https://github.com/avast-tl/retdec/issues/290
+        Test for https://github.com/avast/retdec/issues/290
         """
 
         settings = TestSettings(

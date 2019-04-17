@@ -1,7 +1,7 @@
 from regression_tests import *
 
 
-# https://github.com/avast-tl/retdec/issues/89
+# https://github.com/avast/retdec/issues/89
 class TestStringTableSegfault(Test):
     settings = TestSettings(
         tool='fileinfo',
@@ -12,7 +12,7 @@ class TestStringTableSegfault(Test):
         assert self.fileinfo.succeeded
 
 
-# https://github.com/avast-tl/retdec/issues/89
+# https://github.com/avast/retdec/issues/89
 class TestDynamicSegfault(Test):
     settings = TestSettings(
         tool='fileinfo',
@@ -23,7 +23,7 @@ class TestDynamicSegfault(Test):
         assert self.fileinfo.succeeded
 
 
-# https://github.com/avast-tl/retdec/issues/241
+# https://github.com/avast/retdec/issues/241
 class TestAddSymbolTableSegfault(Test):
     settings = TestSettings(
         tool='fileinfo',
@@ -34,7 +34,7 @@ class TestAddSymbolTableSegfault(Test):
         assert self.fileinfo.succeeded
 
 
-# https://github.com/avast-tl/retdec/issues/248
+# https://github.com/avast/retdec/issues/248
 class TestAddRelocationTableSegfault(Test):
     settings = TestSettings(
         tool='fileinfo',

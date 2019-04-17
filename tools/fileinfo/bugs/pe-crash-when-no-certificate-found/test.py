@@ -4,7 +4,7 @@ class Test(Test):
     """Checks that fileinfo does not crash when analyzing a PE sample for which
     we are unable to find a signer or counter-signer.
 
-    https://github.com/avast-tl/retdec/issues/87
+    https://github.com/avast/retdec/issues/87
     """
 
     settings=TestSettings(
