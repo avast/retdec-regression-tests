@@ -7,8 +7,7 @@ class Test(Test):
     )
 
     def test_fileinfo_succeeds(self):
-        assert not self.fileinfo.succeeded
+        assert self.fileinfo.succeeded
         assert self.fileinfo.output.contains(
-            'Error: Failed to parse the input file \(it is probably'
-            ' corrupted\). Detected format is: Mach-O.'
+            r'File format\s+: Mach-O'
         )
