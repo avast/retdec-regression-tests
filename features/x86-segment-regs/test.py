@@ -2,9 +2,9 @@ from regression_tests import *
 
 class TestBasic(Test):
     """Related to:
-    #41:  https://github.com/avast-tl/retdec/issues/41
-    #169: https://github.com/avast-tl/retdec/issues/169
-    #391: https://github.com/avast-tl/retdec/pull/391
+    #41:  https://github.com/avast/retdec/issues/41
+    #169: https://github.com/avast/retdec/issues/169
+    #391: https://github.com/avast/retdec/pull/391
     """
     settings=TestSettings(
         input='Test.exe'
@@ -18,9 +18,9 @@ class TestBasic(Test):
 
 class TestLoadNull(Test):
     """Related to:
-    #41:  https://github.com/avast-tl/retdec/issues/41
-    #169: https://github.com/avast-tl/retdec/issues/169
-    #391: https://github.com/avast-tl/retdec/pull/391
+    #41:  https://github.com/avast/retdec/issues/41
+    #169: https://github.com/avast/retdec/issues/169
+    #391: https://github.com/avast/retdec/pull/391
 
     Test that load from null is replaced by special intrinsic.
     """
@@ -35,7 +35,7 @@ class TestLoadNull(Test):
 
 class TestIssue376(Test):
     """Related to:
-    #376: https://github.com/avast-tl/retdec/issues/376
+    #376: https://github.com/avast/retdec/issues/376
     """
     settings=TestSettings(
         input='96BA2AE23FB2267D993BD018A5BDEEF062BED7C56DD6C37BDDC00EFA65085363',
@@ -60,7 +60,7 @@ class TestIssue376(Test):
 
 class TestIssue347(Test):
     """Related to:
-    #347: https://github.com/avast-tl/retdec/issues/347
+    #347: https://github.com/avast/retdec/issues/347
     """
     settings=TestSettings(
         input='625dc8112bc509236ff5d0255b85cc0b82c9dd1ef27f6320a7394f33ab46800e',

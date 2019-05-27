@@ -1,6 +1,6 @@
 from regression_tests import *
 
-# https://github.com/avast-tl/retdec/issues/138
+# https://github.com/avast/retdec/issues/138
 # Test for proper Visual Basic metadata parsing
 class Test1(Test):
     settings = TestSettings(
@@ -23,7 +23,7 @@ class Test1(Test):
         self.assertEqual(self.fileinfo.output['visualBasicInfo']['projectPrimaryLCID'], 'English - United States')
         self.assertEqual(self.fileinfo.output['visualBasicInfo']['projectSecondaryLCID'], 'German - Austria')
         self.assertEqual(self.fileinfo.output['visualBasicInfo']['typeLibCLSID'], 'AB656C18-7E7D-2A48-90D0-CC26EBE49DE4')
-        self.assertEqual(self.fileinfo.output['visualBasicInfo']['typeLibLCID'], 'Unicode')
+        self.assertEqual(self.fileinfo.output['visualBasicInfo']['typeLibLCID'], 'Unspecified')
         self.assertEqual(self.fileinfo.output['visualBasicInfo']['typeLibMajorVersion'], '1')
         self.assertEqual(self.fileinfo.output['visualBasicInfo']['typeLibMinorVersion'], '0')
 

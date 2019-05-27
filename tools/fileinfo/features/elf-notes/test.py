@@ -1,8 +1,8 @@
 from regression_tests import *
 
 
-# https://github.com/avast-tl/retdec/issues/142
-# https://github.com/avast-tl/retdec/issues/244
+# https://github.com/avast/retdec/issues/142
+# https://github.com/avast/retdec/issues/244
 class TestELFNotesExe(Test):
     settings = TestSettings(
         tool='fileinfo',
@@ -53,7 +53,7 @@ class TestELFNotesExe(Test):
         self.assertEqual(self.fileinfo.output['osOrAbiVersion'], '11.1.506')
 
 
-# https://github.com/avast-tl/retdec/issues/244
+# https://github.com/avast/retdec/issues/244
 class TestELFNotesGnu(Test):
     settings = TestSettings(
         tool='fileinfo',
@@ -67,7 +67,7 @@ class TestELFNotesGnu(Test):
         self.assertEqual(self.fileinfo.output['osOrAbiVersion'], '2.6.32')
 
 
-# https://github.com/avast-tl/retdec/issues/244
+# https://github.com/avast/retdec/issues/244
 class TestELFNotesAndroid(Test):
     settings = TestSettings(
         tool='fileinfo',
@@ -86,7 +86,7 @@ class TestELFNotesAndroid(Test):
         self.assertEqual(self.fileinfo.output['tools'][0]['version'], '1.11')
 
 
-# https://github.com/avast-tl/retdec/issues/142
+# https://github.com/avast/retdec/issues/142
 class TestELFNotesCore(Test):
     settings = TestSettings(
         tool='fileinfo',

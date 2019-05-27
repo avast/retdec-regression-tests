@@ -9,8 +9,7 @@ class Test0(Test):
 
     def test_symbol_table(self):
         assert self.fileinfo.succeeded
-        self.assertEqual(len(self.fileinfo.output['symbolTables']), 1)
-        self.assertEqual(len(self.fileinfo.output['symbolTables'][0]['symbols']), 1200)
+        self.assertEqual(self.fileinfo.output['declaredNumberOfSections'], '44')
 
 
 class Test1(Test):
@@ -22,8 +21,7 @@ class Test1(Test):
 
     def test_symbol_table(self):
         assert self.fileinfo.succeeded
-        self.assertEqual(len(self.fileinfo.output['symbolTables']), 1)
-        self.assertEqual(len(self.fileinfo.output['symbolTables'][0]['symbols']), 2643)
+        self.assertEqual(self.fileinfo.output['declaredNumberOfSections'], '41')
 
 
 class Test2(Test):
@@ -35,8 +33,7 @@ class Test2(Test):
 
     def test_symbol_table(self):
         assert self.fileinfo.succeeded
-        self.assertEqual(len(self.fileinfo.output['symbolTables']), 1)
-        self.assertEqual(len(self.fileinfo.output['symbolTables'][0]['symbols']), 2654)
+        self.assertEqual(self.fileinfo.output['declaredNumberOfSections'], '41')
 
 
 class Test3(Test):
@@ -51,5 +48,4 @@ class Test3(Test):
 
     def test_symbol_table(self):
         assert self.fileinfo.succeeded
-        self.assertEqual(len(self.fileinfo.output['symbolTables']), 1)
-        self.assertEqual(len(self.fileinfo.output['symbolTables'][0]['symbols']), 2582)
+        self.assertEqual(self.fileinfo.output['declaredNumberOfSections'], '42')

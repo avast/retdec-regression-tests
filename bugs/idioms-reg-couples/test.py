@@ -1166,7 +1166,7 @@ class TestCryptoLocker(Test):
         assert fnc.calls( 'DialogBoxParamW' )
         assert fnc.calls( 'EnterCriticalSection' )
         assert fnc.calls( 'function_401910' )
-        assert fnc.calls( 'function_408d30' )
+        #assert fnc.calls( 'function_408d30' )
         assert fnc.calls( 'function_40c410' )
         assert fnc.calls( 'function_40e220' )
         assert fnc.calls( 'GetCursorPos' )

@@ -1,7 +1,7 @@
 from regression_tests import *
 
 
-# https://github.com/avast-tl/retdec/issues/82
+# https://github.com/avast/retdec/issues/82
 class TestInvalidCharsReplaced(Test):
     settings = TestSettings(
         tool='fileinfo',

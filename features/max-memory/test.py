@@ -5,7 +5,7 @@ class TestDefaultLimit(Test):
     """Checks that retdec-decompiler.py correctly decompiles a binary file when
     there is the default memory limit (half of system RAM).
 
-    Test for https://github.com/avast-tl/retdec/issues/270
+    Test for https://github.com/avast/retdec/issues/270
     """
 
     settings = TestSettings(
@@ -26,7 +26,7 @@ class TestCustomSufficientLimit(Test):
     """Checks that retdec-decompiler.py correctly decompiles a binary file when
     there is a custom memory limit (but sufficient).
 
-    Test for https://github.com/avast-tl/retdec/issues/270
+    Test for https://github.com/avast/retdec/issues/270
     """
 
     settings = TestSettings(
@@ -48,7 +48,7 @@ class TestNoLimit(Test):
     """Checks that retdec-decompiler.py correctly decompiles a binary file when
     there is no memory limit.
 
-    Test for https://github.com/avast-tl/retdec/issues/270
+    Test for https://github.com/avast/retdec/issues/270
     """
 
     settings = TestSettings(
@@ -67,13 +67,13 @@ class TestNoLimit(Test):
 
 
 # Memory limiting does not work correctly on macOS (see
-# https://github.com/avast-tl/retdec/issues/379).
+# https://github.com/avast/retdec/issues/379).
 if not on_macos():
     class TestCustomInsufficientLimit(Test):
         """Checks that retdec-decompiler.py fails to decompile a binary file when
         the maximal memory limit is too low.
 
-        Test for https://github.com/avast-tl/retdec/issues/270
+        Test for https://github.com/avast/retdec/issues/270
         """
 
         settings = TestSettings(
