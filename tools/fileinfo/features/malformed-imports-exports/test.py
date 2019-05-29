@@ -20,7 +20,8 @@ from regression_tests import *
 class Test002(Test):
     settings=TestSettings(
         tool='fileinfo',
-        timeout=20,					# ~3.4 seconds on Intel Xeon E5-1620 v3 @3.50 GHz with 16 GB RAM (Windows 10 x64, Release, x64 build)
+        timeout=40,					# ~3.4 seconds on Intel Xeon E5-1620 v3 @3.50 GHz with 16 GB RAM (Windows 10 x64, Release, x64 build)
+                                    # ~26  seconds on -------------------- || ---------------------- (Windows 10 x64, Debug, x64 build)
         input=[
             '7CE5BB5CA99B3570514AF03782545D41213A77A0F93D4AAC8269823A8D3A58EF.dat',
         ],
