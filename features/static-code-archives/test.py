@@ -1,6 +1,5 @@
 from regression_tests import *
 
-
 class DecompileWithSignaturesFromSigfile(Test):
 
     settings = TestSettings(
@@ -18,7 +17,6 @@ class DecompileWithSignaturesFromSigfile(Test):
         assert self.out_c.funcs['main'].calls('factorial')
         assert self.out_c.funcs['main'].calls('my_strlen')
 
-
 class DecompileWithSignaturesFromArchive(Test):
 
     settings = TestSettings(
@@ -35,7 +33,6 @@ class DecompileWithSignaturesFromArchive(Test):
         assert self.out_c.funcs['main'].calls('ackermann')
         assert self.out_c.funcs['main'].calls('factorial')
         assert self.out_c.funcs['main'].calls('my_strlen')
-
 
 class DecompileWithSignaturesFromArchiveInvalidArchive(Test):
 

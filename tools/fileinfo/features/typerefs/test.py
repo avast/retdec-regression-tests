@@ -104,7 +104,6 @@ class TestTypeRefHashNestedInfinite(Test):
         self.assertEqual(self.fileinfo.output['dotnetInfo']['typeRefTable']['md5'], 'f8a9907a02d8a1bede13aa8dfc005269')
         self.assertEqual(self.fileinfo.output['dotnetInfo']['typeRefTable']['sha256'], '9b327187b627a940bfe8645ca3df66500906f1822cfe08e279cbf23a7dd23660')
 
-
 class TestTypeRefCorruptedAssemblyRefTable(Test):
     settings = TestSettings(
         tool='fileinfo',
@@ -118,7 +117,6 @@ class TestTypeRefCorruptedAssemblyRefTable(Test):
         self.assertEqual(self.fileinfo.output['dotnetInfo']['typeRefTable']['crc32'], '57e1972c')
         self.assertEqual(self.fileinfo.output['dotnetInfo']['typeRefTable']['md5'], '84321e6febcdb37d337633ad56f28025')
         self.assertEqual(self.fileinfo.output['dotnetInfo']['typeRefTable']['sha256'], 'f226ba802a629e8edfdaa08e199e11ead5cd0b0b7d461b725678a11a71dec809')
-
 
     def test_correctly_parses_typerefs(self):
         assert self.fileinfo.succeeded

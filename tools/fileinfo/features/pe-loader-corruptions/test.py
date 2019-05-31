@@ -17,7 +17,6 @@ class Test000(Test):
         assert self.fileinfo.succeeded
         assert 'loaderError' not in self.fileinfo.output, 'unexpectedly found loader error'
 
-
 class Test002(Test):
     settings=TestSettings(
         tool='fileinfo',
@@ -32,7 +31,6 @@ class Test002(Test):
         assert self.fileinfo.succeeded
         self.assertEqual(self.fileinfo.output["loaderError"]["code"], 2)
         self.assertEqual(self.fileinfo.output["loaderError"]["code_text"], 'LDR_ERROR_E_LFANEW_UNALIGNED')
-
 
 class Test008(Test):
     settings=TestSettings(
@@ -49,7 +47,6 @@ class Test008(Test):
         self.assertEqual(self.fileinfo.output["loaderError"]["code"], 8)
         self.assertEqual(self.fileinfo.output["loaderError"]["code_text"], 'LDR_ERROR_IMAGE_NON_EXECUTABLE')
 
-
 class Test009(Test):
     settings=TestSettings(
         tool='fileinfo',
@@ -64,7 +61,6 @@ class Test009(Test):
         assert self.fileinfo.succeeded
         self.assertEqual(self.fileinfo.output["loaderError"]["code"], 9)
         self.assertEqual(self.fileinfo.output["loaderError"]["code_text"], 'LDR_ERROR_NO_OPTHDR_MAGIC')
-
 
 class Test010(Test):
     settings=TestSettings(
@@ -96,7 +92,6 @@ class Test011(Test):
         self.assertEqual(self.fileinfo.output["loaderError"]["code"], 11)
         self.assertEqual(self.fileinfo.output["loaderError"]["code_text"], 'LDR_ERROR_FILE_ALIGNMENT_ZERO')
 
-
 class Test012(Test):
     settings=TestSettings(
         tool='fileinfo',
@@ -111,7 +106,6 @@ class Test012(Test):
         assert self.fileinfo.succeeded
         self.assertEqual(self.fileinfo.output["loaderError"]["code"], 12)
         self.assertEqual(self.fileinfo.output["loaderError"]["code_text"], 'LDR_ERROR_FILE_ALIGNMENT_NOT_POW2')
-
 
 class Test013(Test):
     settings=TestSettings(
@@ -128,7 +122,6 @@ class Test013(Test):
         self.assertEqual(self.fileinfo.output["loaderError"]["code"], 13)
         self.assertEqual(self.fileinfo.output["loaderError"]["code_text"], 'LDR_ERROR_SECTION_ALIGNMENT_ZERO')
 
-
 class Test014(Test):
     settings=TestSettings(
         tool='fileinfo',
@@ -143,7 +136,6 @@ class Test014(Test):
         assert self.fileinfo.succeeded
         self.assertEqual(self.fileinfo.output["loaderError"]["code"], 14)
         self.assertEqual(self.fileinfo.output["loaderError"]["code_text"], 'LDR_ERROR_SECTION_ALIGNMENT_NOT_POW2')
-
 
 class Test015(Test):
     settings=TestSettings(
@@ -160,7 +152,6 @@ class Test015(Test):
         self.assertEqual(self.fileinfo.output["loaderError"]["code"], 15)
         self.assertEqual(self.fileinfo.output["loaderError"]["code_text"], 'LDR_ERROR_SECTION_ALIGNMENT_TOO_SMALL')
 
-
 class Test016(Test):
     settings=TestSettings(
         tool='fileinfo',
@@ -174,7 +165,6 @@ class Test016(Test):
         assert self.fileinfo.succeeded
         self.assertEqual(self.fileinfo.output["loaderError"]["code"], 16)
         self.assertEqual(self.fileinfo.output["loaderError"]["code_text"], 'LDR_ERROR_SECTION_ALIGNMENT_INVALID')
-
 
 class Test017(Test):
     settings=TestSettings(
@@ -191,7 +181,6 @@ class Test017(Test):
         self.assertEqual(self.fileinfo.output["loaderError"]["code"], 17)
         self.assertEqual(self.fileinfo.output["loaderError"]["code_text"], 'LDR_ERROR_SIZE_OF_IMAGE_TOO_BIG')
 
-
 class Test018(Test):
     settings=TestSettings(
         tool='fileinfo',
@@ -205,7 +194,6 @@ class Test018(Test):
         assert self.fileinfo.succeeded
         self.assertEqual(self.fileinfo.output["loaderError"]["code"], 18)
         self.assertEqual(self.fileinfo.output["loaderError"]["code_text"], 'LDR_ERROR_INVALID_MACHINE32')
-
 
 class Test019(Test):
     settings=TestSettings(
@@ -236,7 +224,6 @@ class Test020(Test):
         self.assertEqual(self.fileinfo.output["loaderError"]["code"], 20)
         self.assertEqual(self.fileinfo.output["loaderError"]["code_text"], 'LDR_ERROR_SIZE_OF_HEADERS_INVALID')
 
-
 class Test021(Test):
     settings=TestSettings(
         tool='fileinfo',
@@ -251,7 +238,6 @@ class Test021(Test):
         assert self.fileinfo.succeeded
         self.assertEqual(self.fileinfo.output["loaderError"]["code"], 21)
         self.assertEqual(self.fileinfo.output["loaderError"]["code_text"], 'LDR_ERROR_SIZE_OF_OPTHDR_NOT_ALIGNED')
-
 
 class Test023(Test):
     settings=TestSettings(
@@ -268,7 +254,6 @@ class Test023(Test):
         self.assertEqual(self.fileinfo.output["loaderError"]["code"], 23)
         self.assertEqual(self.fileinfo.output["loaderError"]["code_text"], 'LDR_ERROR_IMAGE_BASE_NOT_ALIGNED')
 
-
 class Test025(Test):
     settings=TestSettings(
         tool='fileinfo',
@@ -283,7 +268,6 @@ class Test025(Test):
         assert self.fileinfo.succeeded
         self.assertEqual(self.fileinfo.output["loaderError"]["code"], 25)
         self.assertEqual(self.fileinfo.output["loaderError"]["code_text"], 'LDR_ERROR_RAW_DATA_OVERFLOW')
-
 
 class Test028(Test):
     settings=TestSettings(
@@ -314,7 +298,6 @@ class Test029(Test):
         self.assertEqual(self.fileinfo.output["loaderError"]["code"], 29)
         self.assertEqual(self.fileinfo.output["loaderError"]["code_text"], 'LDR_ERROR_INVALID_SECTION_VA')
 
-
 class Test030(Test):
     settings=TestSettings(
         tool='fileinfo',
@@ -330,7 +313,6 @@ class Test030(Test):
         self.assertEqual(self.fileinfo.output["loaderError"]["code"], 30)
         self.assertEqual(self.fileinfo.output["loaderError"]["code_text"], 'LDR_ERROR_INVALID_SECTION_VSIZE')
 
-
 class Test032(Test):
     settings=TestSettings(
         tool='fileinfo',
@@ -345,7 +327,6 @@ class Test032(Test):
         assert self.fileinfo.succeeded
         self.assertEqual(self.fileinfo.output["loaderError"]["code"], 32)
         self.assertEqual(self.fileinfo.output["loaderError"]["code_text"], 'LDR_ERROR_INVALID_SIZE_OF_IMAGE')
-
 
 class Test033(Test):
     settings=TestSettings(

@@ -1,6 +1,5 @@
 from regression_tests import *
 
-
 class TestMachODelphi16(Test):
     settings=TestSettings(
         tool='fileinfo',
@@ -25,7 +24,6 @@ class TestMachODelphi16(Test):
         )
         # Language detection.
         self.assertEqual(self.fileinfo.output['languages'][0]['name'], 'Delphi')
-
 
 class TestMachODelphi18(Test):
     settings=TestSettings(
@@ -52,7 +50,6 @@ class TestMachODelphi18(Test):
         # Language detection.
         self.assertEqual(self.fileinfo.output['languages'][0]['name'], 'Delphi')
 
-
 class TestDelphi19(Test):
     settings=TestSettings(
         tool='fileinfo',
@@ -73,7 +70,6 @@ class TestDelphi19(Test):
         )
         # Language detection.
         self.assertEqual(self.fileinfo.output['languages'][0]['name'], 'Delphi')
-
 
 class TestDelphiNoComment(Test):
     settings=TestSettings(

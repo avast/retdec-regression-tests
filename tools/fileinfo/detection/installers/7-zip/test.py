@@ -10,7 +10,6 @@ class Test7ZipDetection(Test):
         assert self.fileinfo.succeeded
         assert self.fileinfo.output.contains(r'.*7-Zip SFX')
 
-
 class Test7ZipConsoleDetection(Test):
     settings = TestSettings(
         tool='fileinfo',

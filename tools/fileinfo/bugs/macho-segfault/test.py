@@ -11,7 +11,6 @@ class Test0(Test):
         assert self.fileinfo.succeeded
         self.assertEqual(self.fileinfo.output['declaredNumberOfSections'], '44')
 
-
 class Test1(Test):
     settings=TestSettings(
         tool='fileinfo',
@@ -23,7 +22,6 @@ class Test1(Test):
         assert self.fileinfo.succeeded
         self.assertEqual(self.fileinfo.output['declaredNumberOfSections'], '41')
 
-
 class Test2(Test):
     settings=TestSettings(
         tool='fileinfo',
@@ -34,7 +32,6 @@ class Test2(Test):
     def test_symbol_table(self):
         assert self.fileinfo.succeeded
         self.assertEqual(self.fileinfo.output['declaredNumberOfSections'], '41')
-
 
 class Test3(Test):
     settings=TestSettings(

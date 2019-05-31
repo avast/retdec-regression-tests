@@ -78,7 +78,6 @@ class Test_2018_x64Pe(Test):
         assert self.out_c.funcs['iterative_ackermann'].has_any_while_loops()
         assert self.out_c.funcs['iterative_ackermann'].has_any_return_stmts()
 
-
     def test_check_formula_ackermann(self):
         assert self.out_c.has_func('formula_ackermann')
         assert self.out_c.funcs['formula_ackermann'].param_count == 2

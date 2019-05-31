@@ -1,6 +1,5 @@
 from regression_tests import *
 
-
 class TestIA64(Test):
     settings = TestSettings(
         tool='fileinfo',
@@ -22,7 +21,6 @@ class TestIA64(Test):
         self.assertEqual(self.fileinfo.output['Original language'], 'C++')
         self.assertEqual(self.fileinfo.output['Overlay offset'], '0x1c3534')
         self.assertEqual(self.fileinfo.output['Overlay size'], '0x1e')
-
 
 # https://github.com/avast/retdec/issues/142
 # While this is not a core file, it contains note sections that has slightly

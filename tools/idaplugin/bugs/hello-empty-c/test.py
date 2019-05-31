@@ -15,7 +15,6 @@ class TestDecompileElfX86NotRebased(Test):
     def test_idaplugin_succeeded(self):
         self.assertEqual(self.idaplugin.succeeded, False)
 
-
 class TestDecompileElfX86RebasedTo0x0(Test):
     settings = TestSettings(
         tool='idaplugin',

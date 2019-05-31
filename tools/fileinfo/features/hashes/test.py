@@ -24,7 +24,6 @@ class TestAllHashes(Test):
         self.assertEqual(self.fileinfo.output['md5'], '496c97a81e58c72398750b5c4808261e')
         self.assertEqual(self.fileinfo.output['sha256'], '7b016e04b4ac2cd10cbbad5978be9c460adf274ed12b4872965572980b386d59')
 
-
 # https://github.com/avast/retdec/issues/246
 # Test for ordinals that are translated by YARA/pefile LUT.
 class TestImportHashYARAcompatibleLutOrds(Test):
@@ -40,7 +39,6 @@ class TestImportHashYARAcompatibleLutOrds(Test):
             self.fileinfo.output['importTable']['md5'],
             'd3bf8a7746a8d1ee8f6e5960c3f69378'
         )
-
 
 # https://github.com/avast/retdec/issues/246
 # Test for ordinals that are NOT translated by YARA/pefile LUT.

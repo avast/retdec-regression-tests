@@ -10,4 +10,3 @@ class TestInnoSetupDetection(Test):
         assert self.fileinfo.succeeded
         assert self.fileinfo.output.contains(r'.*Inno Setup \(5.4.0 - 5.5.1\)')
 
-

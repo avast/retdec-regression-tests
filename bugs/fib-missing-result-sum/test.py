@@ -1,6 +1,5 @@
 from regression_tests import *
 
-
 class Test(Test):
     settings = TestSettings(
         input='fib.mips.clang.O2.elf',

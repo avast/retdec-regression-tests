@@ -1,6 +1,5 @@
 from regression_tests import *
 
-
 class Test(Test):
     settings=TestSettings(
         tool='fileinfo',

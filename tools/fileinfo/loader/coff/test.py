@@ -19,7 +19,6 @@ class CoffTest(Test):
         self.assertEqual(self.fileinfo.output['loaderInfo']['segments'][5]['address'], '0x391')
         self.assertEqual(self.fileinfo.output['loaderInfo']['segments'][6]['address'], '0x3a1')
 
-
 class CoffWithBssTest(Test):
     settings=TestSettings(
         tool='fileinfo',

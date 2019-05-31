@@ -12,7 +12,6 @@ def find_data_in_msvc_sample(out_c):
     ep_func = out_c.funcs['main']
     assert ep_func.calls('WSAStartup', 'printf')
 
-
 class TestCodeAfterData105(Test):
     settings = TestSettings(
         input = 'mpress_105_code_after_data'
@@ -20,7 +19,6 @@ class TestCodeAfterData105(Test):
 
     def test(self):
         find_data_in_version_sample(self.out_c)
-
 
 class TestCodeAfterData127(Test):
     settings = TestSettings(
@@ -30,7 +28,6 @@ class TestCodeAfterData127(Test):
     def test(self):
         find_data_in_version_sample(self.out_c)
 
-
 class TestCodeAfterData205(Test):
     settings = TestSettings(
         input = 'mpress_205_code_after_data'
@@ -38,7 +35,6 @@ class TestCodeAfterData205(Test):
 
     def test(self):
         find_data_in_version_sample(self.out_c)
-
 
 class TestCodeAfterData219(Test):
     settings = TestSettings(
@@ -56,7 +52,6 @@ class TestCodeBeforeData105(Test):
     def test(self):
         find_data_in_version_sample(self.out_c)
 
-
 class TestCodeBeforeData127(Test):
     settings = TestSettings(
         input = 'mpress_127_code_before_data'
@@ -65,7 +60,6 @@ class TestCodeBeforeData127(Test):
     def test(self):
         find_data_in_version_sample(self.out_c)
 
-
 class TestCodeBeforeData205(Test):
     settings = TestSettings(
         input = 'mpress_205_code_before_data'
@@ -73,7 +67,6 @@ class TestCodeBeforeData205(Test):
 
     def test(self):
         find_data_in_version_sample(self.out_c)
-
 
 class TestCodeBeforeData219(Test):
     settings = TestSettings(
@@ -91,7 +84,6 @@ class TestCodeInBetweenData105(Test):
     def test(self):
         find_data_in_version_sample(self.out_c)
 
-
 class TestCodeInBetweenData127(Test):
     settings = TestSettings(
         input = 'mpress_127_code_in_between_data'
@@ -99,7 +91,6 @@ class TestCodeInBetweenData127(Test):
 
     def test(self):
         find_data_in_version_sample(self.out_c)
-
 
 class TestCodeInBetweenData205(Test):
     settings = TestSettings(
@@ -109,7 +100,6 @@ class TestCodeInBetweenData205(Test):
     def test(self):
         find_data_in_version_sample(self.out_c)
 
-
 class TestCodeInBetweenData219(Test):
     settings = TestSettings(
         input = 'mpress_219_code_in_between_data'
@@ -118,7 +108,6 @@ class TestCodeInBetweenData219(Test):
     def test(self):
         find_data_in_version_sample(self.out_c)
 
-
 class TestMsvcLzmaSample(Test):
     settings = TestSettings(
         input = 'mpress_219_msvc_lzma'
@@ -126,7 +115,6 @@ class TestMsvcLzmaSample(Test):
 
     def test(self):
         find_data_in_msvc_sample(self.out_c)
-
 
 class TestMsvcLzmatSample(Test):
     settings = TestSettings(

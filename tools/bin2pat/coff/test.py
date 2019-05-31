@@ -1,6 +1,5 @@
 from regression_tests import *
 
-
 class TestBasicBin2Patx86Minqw(Test):
     settings = TestSettings(
         tool='bin2pat',
@@ -53,7 +52,6 @@ class TestBasicBin2Patx86Minqw(Test):
             " 00 00 01 D8 83 C4 14 5B 5D C3 90 90 }"
         )
 
-
 class TestBasicBin2Patx86Msvc(Test):
     settings = TestSettings(
         tool='bin2pat',
@@ -80,7 +78,6 @@ class TestBasicBin2Patx86Msvc(Test):
             " 5E 5B 81 C4 C0 00 00 00 3B EC E8 ?? ?? ?? ?? 8B E5 5D C3 }"
         )
         self.assertEqual(rules['file_0_0']['conditions'], ['$1'])
-
 
 class TestBasicBin2Patx64Mingw(Test):
     settings = TestSettings(

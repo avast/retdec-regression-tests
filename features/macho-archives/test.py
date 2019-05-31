@@ -1,7 +1,6 @@
 from regression_tests import *
 import json
 
-
 class TestExtractMachOIsArchiveJson(Test):
     settings = TestSettings(
         tool='retdec-macho-extractor',
@@ -11,7 +10,6 @@ class TestExtractMachOIsArchiveJson(Test):
 
     def test_check_control_json(self):
         assert 'is a static library.' in self.retdec_macho_extractor.output
-
 
 class TestExtractMachONotArchiveJson(Test):
     settings = TestSettings(
@@ -23,7 +21,6 @@ class TestExtractMachONotArchiveJson(Test):
     def test_check_control_json(self):
         assert 'NOT a static library.' in self.retdec_macho_extractor.output
 
-
 class TestExtractMachONotArchiveObjectsJson(Test):
     settings = TestSettings(
         tool='retdec-macho-extractor',
@@ -33,7 +30,6 @@ class TestExtractMachONotArchiveObjectsJson(Test):
 
     def test_check_control_json(self):
         assert 'is not an archive!' in self.retdec_macho_extractor.output
-
 
 class TestExtractMachOJson(Test):
     settings = TestSettings(
@@ -51,7 +47,6 @@ class TestExtractMachOJson(Test):
         self.assertEqual(as_json['architectures'][1]['index'], 1)
         self.assertEqual(as_json['architectures'][1]['cpuFamily'], 'powerpc')
 
-
 class TestExtractArchiveJson(Test):
     settings = TestSettings(
         tool='retdec-macho-extractor',
@@ -67,7 +62,6 @@ class TestExtractArchiveJson(Test):
         self.assertEqual(as_json['architectures'][1]['name'], 'arm64')
         self.assertEqual(as_json['architectures'][1]['index'], 1)
         self.assertEqual(as_json['architectures'][1]['cpuFamily'], 'arm64')
-
 
 class TestExtractArchiveJsonWithOjects(Test):
     settings = TestSettings(
@@ -117,7 +111,6 @@ class TestExtractArchiveJsonWithOjects(Test):
             'TatvikTransportStreamParser.o'
         )
 
-
 class TestExtractArchiveWithOjects(Test):
     settings = TestSettings(
         tool='retdec-macho-extractor',
@@ -145,7 +138,6 @@ class TestExtractArchiveWithOjects(Test):
             self.retdec_macho_extractor.output
         )
 
-
 class TestExtractArchivePlain(Test):
     settings = TestSettings(
         tool='retdec-macho-extractor',
@@ -156,7 +148,6 @@ class TestExtractArchivePlain(Test):
     def test_check_extract_plain(self):
         self.assertIn('0\tarmv7\tarm', self.retdec_macho_extractor.output)
         self.assertIn('1\tarm64\tarm64', self.retdec_macho_extractor.output)
-
 
 class TestExtractPrintErrorInJson(Test):
     settings = TestSettings(
@@ -171,7 +162,6 @@ class TestExtractPrintErrorInJson(Test):
         self.assertNotEqual(self.retdec_macho_extractor.return_code, 0)
         as_json = json.loads(self.retdec_macho_extractor.output)
         self.assertEqual(as_json['error'], 'no input file')
-
 
 class TestExtractArchiveDecompilationPick(Test):
     settings = TestSettings(
@@ -201,7 +191,6 @@ class TestExtractArchiveDecompilationPick(Test):
             self.decompiler.output
         )
 
-
 class TestExtractArchiveDecompilationListArchs(Test):
     settings = TestSettings(
         input='archive',
@@ -220,7 +209,6 @@ class TestExtractArchiveDecompilationListArchs(Test):
         self.assertIn('armv7\tarm', self.decompiler.output)
         self.assertIn('arm64\tarm64', self.decompiler.output)
 
-
 class TestExtractArchiveDecompilation(Test):
     settings = TestSettings(
         input='archive',
@@ -230,7 +218,6 @@ class TestExtractArchiveDecompilation(Test):
     def test_check_decompilation(self):
         assert self.out_c.has_func( '_GetPositionCall' )
         assert self.out_c.has_func( '_MovePositionCall' )
-
 
 class TestExtractDecompileArchiveJson(Test):
     settings = TestSettings(
@@ -279,7 +266,6 @@ class TestExtractDecompileArchiveJson(Test):
             as_json['architectures'][1]['objects'][3]['name'],
             'TatvikTransportStreamParser.o'
         )
-
 
 class TestExtractDecompileArchivePlainText(Test):
     settings = TestSettings(

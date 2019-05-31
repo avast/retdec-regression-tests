@@ -1,6 +1,5 @@
 from regression_tests import *
 
-
 class TestMachOSwift(Test):
     settings=TestSettings(
         tool='fileinfo',
@@ -15,7 +14,6 @@ class TestMachOSwift(Test):
         self.assertEqual(self.fileinfo.output['tools'][0]['type'], 'compiler')
         # Language detection.
         self.assertEqual(self.fileinfo.output['languages'][0]['name'], 'Swift')
-
 
 class TestMachOGo(Test):
     settings=TestSettings(
@@ -35,7 +33,6 @@ class TestMachOGo(Test):
         # Language detection.
         self.assertEqual(self.fileinfo.output['languages'][0]['name'], 'Go')
 
-
 class TestMachOXcode(Test):
     settings=TestSettings(
         tool='fileinfo',
@@ -48,7 +45,6 @@ class TestMachOXcode(Test):
         # Compiler detection.
         self.assertEqual(self.fileinfo.output['tools'][0]['name'], 'XCode')
         self.assertEqual(self.fileinfo.output['tools'][0]['type'], 'compiler')
-
 
 class TestMachOGhc(Test):
     settings=TestSettings(

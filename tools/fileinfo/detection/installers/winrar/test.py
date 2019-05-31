@@ -10,7 +10,6 @@ class TestWinRARDetection(Test):
         assert self.fileinfo.succeeded
         assert self.fileinfo.output.contains(r'.*WinRAR SFX')
 
-
 class TestWinRARZipDetection(Test):
     settings = TestSettings(
         tool='fileinfo',

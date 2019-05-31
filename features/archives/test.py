@@ -1,7 +1,6 @@
 from regression_tests import *
 import json
 
-
 class TestArchiveIdentification(Test):
     settings = TestSettings(
         input=[
@@ -19,7 +18,6 @@ class TestArchiveIdentification(Test):
         assert 'fact_x86.o' in self.decompiler.output
         assert 'lib.o' in self.decompiler.output
 
-
 class TestArchiveEmptyInputArchive(Test):
     settings = TestSettings(
         input='empty.a',
@@ -33,7 +31,6 @@ class TestArchiveEmptyInputArchive(Test):
         self.assertNotEqual(self.decompiler.return_code, 0)
         assert self.decompiler.log.contains(r'This file is an archive!')
         assert self.decompiler.log.contains(r'Error: The input archive is empty.')
-
 
 class TestArchiveWithEmptyFile(Test):
     settings = TestSettings(
@@ -53,7 +50,6 @@ class TestArchiveWithEmptyFile(Test):
         # format is not supported.
         assert self.decompiler.log.contains(r'Error: File format.*not supported.')
 
-
 class TestArchiveInvalidInputArchive(Test):
     settings = TestSettings(
         input='invalid.a',
@@ -70,7 +66,6 @@ class TestArchiveInvalidInputArchive(Test):
             r'Error: The input archive has invalid format.'
         )
 
-
 class TestArchiveDecompilationFreeBSD(Test):
     settings = TestSettings(
         input='free_bsd.a',
@@ -84,7 +79,6 @@ class TestArchiveDecompilationFreeBSD(Test):
         assert self.out_c.has_func('ack')
         assert self.out_c.has_func('factorial')
 
-
 class TestArchiveDecompilationGNU(Test):
     settings = TestSettings(
         input='gnu.a',
@@ -97,7 +91,6 @@ class TestArchiveDecompilationGNU(Test):
     def test_check_decompilation(self):
         assert self.out_c.has_func('__Z9factoriali')
 
-
 class TestArchiveDecompilationMSVC(Test):
     settings = TestSettings(
         input='msvc.lib',
@@ -109,7 +102,6 @@ class TestArchiveDecompilationMSVC(Test):
 
     def test_check_decompilation(self):
         assert self.out_c.has_func('_factorial')
-
 
 class TestArchiveInvalidIndex(Test):
     settings = TestSettings(
@@ -133,7 +125,6 @@ class TestArchiveInvalidIndex(Test):
             'Valid indexes are 0-1.'
         )
 
-
 class TestArchiveInvalidIndexOneFile(Test):
     settings = TestSettings(
         input='leading_ws.a',
@@ -152,7 +143,6 @@ class TestArchiveInvalidIndexOneFile(Test):
             'The only valid index is 0.'
         )
 
-
 class TestArchiveInvalidName(Test):
     settings = TestSettings(
         input='free_bsd.a',
@@ -170,7 +160,6 @@ class TestArchiveInvalidName(Test):
             'not found in the input archive.'
         )
 
-
 class TestDecompileArchiveList(Test):
     settings = TestSettings(
         tool='retdec-archive-decompiler.py',
@@ -186,7 +175,6 @@ class TestDecompileArchiveList(Test):
         self.assertEqual(as_json['objects'][1]['name'], 'lib.o')
         self.assertEqual(as_json['objects'][1]['index'], 1)
 
-
 class TestDecompileArchiveListPlainText(Test):
     settings = TestSettings(
         tool='retdec-archive-decompiler.py',
@@ -199,7 +187,6 @@ class TestDecompileArchiveListPlainText(Test):
         assert '0\tfact_x86.o' in self.retdec_archive_decompiler_py.output
         assert '1\tlib.o' in self.retdec_archive_decompiler_py.output
 
-
 class TestDecompileArchiveNoInput(Test):
     settings = TestSettings(
         tool='retdec-archive-decompiler.py',
@@ -209,7 +196,6 @@ class TestDecompileArchiveNoInput(Test):
     def test_check_list(self):
         assert 'error: the following arguments are required: FILE' in self.retdec_archive_decompiler_py.output
 
-
 class TestDecompileArchiveNoInputJson(Test):
     settings = TestSettings(
         tool='retdec-archive-decompiler.py',
@@ -218,7 +204,6 @@ class TestDecompileArchiveNoInputJson(Test):
 
     def test_check_list(self):
         assert 'error: the following arguments are required: FILE' in self.retdec_archive_decompiler_py.output
-
 
 class TestDecompileArchiveExclusiveArgs(Test):
     settings = TestSettings(
@@ -233,7 +218,6 @@ class TestDecompileArchiveExclusiveArgs(Test):
             'Arguments --plain and --json are mutually exclusive.'
         )
 
-
 class TestDecompileArchiveListQuotesEscaped(Test):
     settings = TestSettings(
         tool='retdec-archive-decompiler.py',
@@ -246,7 +230,6 @@ class TestDecompileArchiveListQuotesEscaped(Test):
         as_json = json.loads(self.retdec_archive_decompiler_py.output)
         self.assertEqual(as_json['objects'][0]['name'], 'myobject_.o')
         self.assertEqual(as_json['objects'][0]['index'], 0)
-
 
 class TestDecompileArchiveListNamesEscaped(Test):
     settings = TestSettings(
@@ -261,7 +244,6 @@ class TestDecompileArchiveListNamesEscaped(Test):
         self.assertEqual(as_json['objects'][0]['name'], 'Debug\\Factorial.obj')
         self.assertEqual(as_json['objects'][1]['name'], 'Debug\\Ack.obj')
 
-
 class TestDecompileArchiveListLeadingWSJson(Test):
     settings = TestSettings(
         tool='retdec-archive-decompiler.py',
@@ -273,7 +255,6 @@ class TestDecompileArchiveListLeadingWSJson(Test):
         as_json = json.loads(self.retdec_archive_decompiler_py.output)
         self.assertEqual(as_json['objects'][0]['name'], ' file.o')
 
-
 class TestDecompileArchiveListLeadingWSPlainText(Test):
     settings = TestSettings(
         tool='retdec-archive-decompiler.py',
@@ -283,7 +264,6 @@ class TestDecompileArchiveListLeadingWSPlainText(Test):
 
     def test_check_list(self):
         assert '0\t file.o' in self.retdec_archive_decompiler_py.output
-
 
 #class TestArchiveDecompilationLeadingWSIndex(Test):
 #    settings = TestSettings(
@@ -295,7 +275,6 @@ class TestDecompileArchiveListLeadingWSPlainText(Test):
 #        assert self.out_c.has_func('main')
 #        assert self.out_c.funcs['main'].calls('puts')
 
-
 #class TestArchiveDecompilationLeadingWSName(Test):
 #    settings = TestSettings(
 #        input='leading_ws.a',
@@ -305,7 +284,6 @@ class TestDecompileArchiveListLeadingWSPlainText(Test):
 #    def test_check_decompilation(self):
 #        assert self.out_c.has_func('main')
 #        assert self.out_c.funcs['main'].calls('puts')
-
 
 #class TestArchiveDecompilationEscapedNewline(Test):
 #    settings = TestSettings(
@@ -317,7 +295,6 @@ class TestDecompileArchiveListLeadingWSPlainText(Test):
 #        assert self.out_c.has_func('main')
 #        assert self.out_c.funcs['main'].calls('puts')
 
-
 class TestDecompileArchiveListLeadingWSPlainText(Test):
     settings = TestSettings(
         tool='retdec-archive-decompiler.py',
@@ -327,7 +304,6 @@ class TestDecompileArchiveListLeadingWSPlainText(Test):
 
     def test_check_list(self):
         assert '0\tfi_le.o' in self.retdec_archive_decompiler_py.output
-
 
 class TestArchiveThinInputArchive(Test):
     settings = TestSettings(
@@ -345,7 +321,6 @@ class TestArchiveThinInputArchive(Test):
             r'Error: File is a thin archive and cannot be decompiled.'
         )
 
-
 class TestDecompileArchiveThinInputArchive(Test):
     settings = TestSettings(
         tool='retdec-archive-decompiler.py',
@@ -358,7 +333,6 @@ class TestDecompileArchiveThinInputArchive(Test):
             r'Error: File is a thin archive and cannot be decompiled.'
         )
 
-
 class TestArchiveDecompilationMultipleSameNamesFirst(Test):
     settings = TestSettings(
         input='multiple.a',
@@ -368,7 +342,6 @@ class TestArchiveDecompilationMultipleSameNamesFirst(Test):
     def test_check_decompilation(self):
         assert self.out_c.has_func('factorial')
         assert self.out_c.funcs['factorial'].calls('factorial')
-
 
 class TestArchiveDecompilationMultipleSameNamesSecond(Test):
     settings = TestSettings(
