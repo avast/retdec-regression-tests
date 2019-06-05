@@ -358,3 +358,78 @@ class Test034(Test):
         assert self.fileinfo.succeeded
         self.assertEqual(self.fileinfo.output["loaderError"]["code"], 34)
         self.assertEqual(self.fileinfo.output["loaderError"]["code_text"], 'LDR_ERROR_FILE_IS_CUT_LOADABLE')
+
+class Test035(Test):
+    settings=TestSettings(
+        tool='fileinfo',
+        input=[
+            '035-import-dir-invalid-32bit.ex_',
+            '035-import-dir-invalid-64bit.ex_'
+        ],
+        args='--json --verbose'
+    )
+
+    def test_corrupted_pe(self):
+        assert self.fileinfo.succeeded
+        self.assertEqual(self.fileinfo.output["loaderError"]["code"], 35)
+        self.assertEqual(self.fileinfo.output["loaderError"]["code_text"], 'LDR_ERROR_IMPDIR_OUT_OF_FILE')
+
+class Test036(Test):
+    settings=TestSettings(
+        tool='fileinfo',
+        input=[
+            '036-import-directory-cut-32bit.ex_',
+            '036-import-directory-cut-64bit.ex_'
+        ],
+        args='--json --verbose'
+    )
+
+    def test_corrupted_pe(self):
+        assert self.fileinfo.succeeded
+        self.assertEqual(self.fileinfo.output["loaderError"]["code"], 36)
+        self.assertEqual(self.fileinfo.output["loaderError"]["code_text"], 'LDR_ERROR_IMPDIR_CUT')
+
+class Test038(Test):
+    settings=TestSettings(
+        tool='fileinfo',
+        input=[
+            '038-import-name-invalid-32bit.ex_',
+            '038-import-name-invalid-64bit.ex_'
+        ],
+        args='--json --verbose'
+    )
+
+    def test_corrupted_pe(self):
+        assert self.fileinfo.succeeded
+        self.assertEqual(self.fileinfo.output["loaderError"]["code"], 38)
+        self.assertEqual(self.fileinfo.output["loaderError"]["code_text"], 'LDR_ERROR_IMPDIR_NAME_RVA_INVALID')
+
+class Test039(Test):
+    settings=TestSettings(
+        tool='fileinfo',
+        input=[
+            '039-import-thunk-invalid-32bit.ex_',
+            '039-import-thunk-invalid-64bit.ex_'
+        ],
+        args='--json --verbose'
+    )
+
+    def test_corrupted_pe(self):
+        assert self.fileinfo.succeeded
+        self.assertEqual(self.fileinfo.output["loaderError"]["code"], 39)
+        self.assertEqual(self.fileinfo.output["loaderError"]["code_text"], 'LDR_ERROR_IMPDIR_THUNK_RVA_INVALID')
+
+class Test041(Test):
+    settings=TestSettings(
+        tool='fileinfo',
+        input=[
+            '041-rsrc-beyond-end-of-file-32bit.ex_',
+            '041-rsrc-beyond-end-of-file-32bit.ex_'
+        ],
+        args='--json --verbose'
+    )
+
+    def test_corrupted_pe(self):
+        assert self.fileinfo.succeeded
+        self.assertEqual(self.fileinfo.output["loaderError"]["code"], 41)
+        self.assertEqual(self.fileinfo.output["loaderError"]["code_text"], 'LDR_ERROR_RSRC_OVER_END_OF_IMAGE')
