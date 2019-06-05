@@ -1,9 +1,5 @@
 from regression_tests import *
 
-#assert self.out_c.has_func('foo')
-#assert self.out_c.has_func('bar')
-#assert self.out_c.has_func('main')
-
 class Test_arm_elf(Test):
     settings = TestSettings(
         input='hello-arm-elf.o'
