@@ -11,4 +11,3 @@ class Testx64MSVCDetection(Test):
         assert self.fileinfo.output.contains(r'Microsoft Linker \(14\.1\)')
         assert self.fileinfo.output.contains(r'MSVC \(15\.0\) Visual Studio 2017')
 
-

@@ -49,7 +49,6 @@ class TestMips(Test):
         fnc = self.out_c.funcs['function_200a5c']
         assert fnc.calls('function_202dc8')
 
-
 class TestMipsSegmentAtZeroAddress(Test):
     settings = TestSettings(
         input='mips-elf-df0691c3563daddf77f7ac9189475e08',

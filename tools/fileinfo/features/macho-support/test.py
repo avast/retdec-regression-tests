@@ -254,7 +254,6 @@ class TestMachoNewStyle(Test):
         self.assertEqual(self.fileinfo.output['exportTable']['exports'][1]['index'], '1')
         self.assertEqual(self.fileinfo.output['exportTable']['exports'][1]['name'], '_main')
 
-
 class TestMachoARMRelocs(Test):
     settings = TestSettings(
         tool='fileinfo',
@@ -271,7 +270,6 @@ class TestMachoARMRelocs(Test):
         self.assertEqual(self.fileinfo.output['relocationTables'][0]['relocations'][1]['index'], '1')
         self.assertEqual(self.fileinfo.output['relocationTables'][0]['relocations'][1]['offset'], '0x1e')
         self.assertEqual(self.fileinfo.output['relocationTables'][0]['relocations'][1]['type'], '6')
-
 
 class TestMachoARMScattRelocs(Test):
     settings = TestSettings(
@@ -293,7 +291,6 @@ class TestMachoARMScattRelocs(Test):
         self.assertEqual(self.fileinfo.output['relocationTables'][0]['relocations'][2]['offset'], '0x2')
         self.assertEqual(self.fileinfo.output['relocationTables'][0]['relocations'][2]['type'], '9')
 
-
 class TestMachox86Relocs(Test):
     settings = TestSettings(
         tool='fileinfo',
@@ -307,7 +304,6 @@ class TestMachox86Relocs(Test):
         self.assertEqual(self.fileinfo.output['relocationTables'][0]['relocations'][0]['offset'], '0x40')
         self.assertEqual(self.fileinfo.output['relocationTables'][0]['relocations'][0]['symbolName'], '_test_function')
         self.assertEqual(self.fileinfo.output['relocationTables'][0]['relocations'][0]['type'], '0')
-
 
 class TestMachox64Relocs(Test):
     settings = TestSettings(

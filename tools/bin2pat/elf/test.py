@@ -1,6 +1,5 @@
 from regression_tests import *
 
-
 class TestBasicBin2Patx86(Test):
     settings = TestSettings(
         tool='bin2pat',
@@ -60,7 +59,6 @@ class TestBasicBin2Patx86(Test):
             " 69 C0 E8 03 00 00 01 D8 8B 5D FC C9 C3 }"
         )
 
-
 class TestBasicBin2Pat64(Test):
     settings = TestSettings(
         tool='bin2pat',
@@ -116,7 +114,6 @@ class TestBasicBin2Pat64(Test):
             " ?? ?? ?? 69 C0 E8 03 00 00 01 D8 48 83 C4 18 5B 5D C3 }"
         )
 
-
 class TestBasicBin2PatMipsBE(Test):
     settings = TestSettings(
         tool='bin2pat',
@@ -139,7 +136,6 @@ class TestBasicBin2PatMipsBE(Test):
             " 08 8F C2 00 18 00 62 10 23 03 C0 E8 21 8F BE 00 14 27 BD 00 18"
             " 03 E0 00 08 00 00 00 00 }"
         )
-
 
 class TestBasicBin2PatMipsLE(Test):
     settings = TestSettings(
@@ -170,7 +166,6 @@ class TestBasicBin2PatMipsLE(Test):
             " 00 21 E8 C0 03 24 00 BF 8F 20 00 BE 8F 1C 00 B0 8F 28 00 BD 27"
             " 08 00 E0 03 00 00 00 00 }"
         )
-
 
 class TestBasicBin2PatPic32(Test):
     settings = TestSettings(

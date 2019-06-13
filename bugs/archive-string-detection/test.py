@@ -11,7 +11,6 @@ class TestX86COFF(Test):
         assert self.out_dsm.contains('0x83:\s*e8 78 ff ff ff\s*call 0 <_foo>')
         assert self.out_dsm.contains('0x90:\s*c7 04 24 c5 00 00 00\s*mov dword ptr \[esp\], 0xc5')
 
-
 class TestArmCOFF(Test):
     settings=TestSettings(
         input='hello-arm-coff.obj'
@@ -19,7 +18,6 @@ class TestArmCOFF(Test):
 
     def test_relocations_applied(self):
         assert self.out_dsm.contains('0xe8:\s*00 01 00 00 10 01 00 00')
-
 
 class TestX86Elf(Test):
     settings=TestSettings(
@@ -31,7 +29,6 @@ class TestX86Elf(Test):
         #assert self.out_dsm.contains('0x5f:\s*e8 c4 ff ff ff\s*call 0x28 <bar>')
         #assert self.out_dsm.contains('0x6d:\s*e8 8e ff ff ff\s*call 0 <foo>')
         #assert self.out_dsm.contains('0x7a:\s*c7 04 24 ad 00 00 00\s*mov dword ptr \[esp\], 0xad')
-
 
 class TestArmElf(Test):
     settings=TestSettings(
@@ -45,7 +42,6 @@ class TestArmElf(Test):
         #assert self.out_dsm.contains('0xe4:\s*fc 00 00 00')
         #assert self.out_dsm.contains('0xe8:\s*0c 01 00 00')
 
-
 class TestMipsElf(Test):
     settings=TestSettings(
         input='hello-mips-elf.o'
@@ -56,7 +52,6 @@ class TestMipsElf(Test):
         assert self.out_dsm.contains('0xf0:\s*0c 00 00 00\s*jal 0 <foo>')
         assert self.out_dsm.contains('0x100:\s*0c 00 00 1f\s*jal 0x7c <bar>')
         assert self.out_dsm.contains('0x10c:\s*24 64 01 e8\s*addiu \$a0, \$v1, 0x1e8')
-
 
 class TestPowerPCElf(Test):
     settings=TestSettings(

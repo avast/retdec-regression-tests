@@ -10,7 +10,6 @@ class TestNSISDetection(Test):
         assert self.fileinfo.succeeded
         assert self.fileinfo.output.contains(r'.*Nullsoft Install System \(2.49\)')
 
-
 class TestNSISNoManifestDetection(Test):
     settings = TestSettings(
         tool='fileinfo',

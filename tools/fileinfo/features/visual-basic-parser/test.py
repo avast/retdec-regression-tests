@@ -69,7 +69,6 @@ class Test1(Test):
         self.assertEqual(self.fileinfo.output['visualBasicInfo']['objectTable']['objects'][0]['methods'][4], 'nand')
         self.assertEqual(self.fileinfo.output['visualBasicInfo']['objectTable']['objects'][0]['methods'][5], 'xori')
 
-
 # Test for proper COM Visual Basic metadata parsing
 class Test2(Test):
     settings = TestSettings(

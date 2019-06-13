@@ -1,6 +1,5 @@
 from regression_tests import *
 
-
 base_settings_little = TestSettings(
     tool='idaplugin',
     input='ack.mips.gcc.O0.little.ihex',
@@ -32,7 +31,6 @@ class TestDecompileSelectiveAckLittle(Test):
         assert self.out_c.has_just_funcs('sub_8900368')
         ack = self.out_c.funcs[ 'sub_8900368' ]
         assert ack.calls( 'sub_8900368' )
-
 
 base_settings_big = TestSettings(
     tool='idaplugin',

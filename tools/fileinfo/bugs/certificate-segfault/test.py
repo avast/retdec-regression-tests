@@ -14,7 +14,6 @@ class Test1(Test):
         self.assertEqual(self.fileinfo.output['certificateTable']['certificates'][0]['sha256'], '8815dff787f21fa8106760cb89c5b4493f4bd45e2ce801d2a4fe1f61dee0c039')
         self.assertEqual(self.fileinfo.output['certificateTable']['certificates'][1]['sha256'], '1c1983300c10fb262c0b2304b7be15aaba10ae356ebbbb177583dc44774eb080')
 
-
 class Test2(Test):
     settings=TestSettings(
         tool='fileinfo',
@@ -27,7 +26,6 @@ class Test2(Test):
         assert 'signerCertificateIndex' not in self.fileinfo.output['certificateTable']
         self.assertEqual(self.fileinfo.output['certificateTable']['numberOfCertificates'], '1')
         self.assertEqual(self.fileinfo.output['certificateTable']['certificates'][0]['sha256'], 'ced5ab020125966499a067abfb138434281bc5b00c90d5d74d31529ff5169bf2')
-
 
 # https://github.com/avast/retdec/issues/255
 class Test3(Test):
@@ -43,7 +41,6 @@ class Test3(Test):
     def test_certificate_table_present(self):
         assert self.fileinfo.succeeded
         self.assertEqual(self.fileinfo.output['certificateTable']['certificates'][0]['sha256'], 'a2219c3e44ee3748eae12e5aa6c961af47c185e25a8e59affd8fcaed641286cd')
-
 
 # https://github.com/avast/retdec/issues/250
 class Test4(Test):

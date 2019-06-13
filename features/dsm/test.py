@@ -29,7 +29,6 @@ class TestFunctionThroughSections(Test):
         assert self.out_dsm.contains(r'; function: function_80483c0 at 0x80483c0 -- 0x80483c6')
         assert self.out_dsm.contains(r'; function: function_80483d0 at 0x80483d0 -- 0x80483d6')
 
-
 class TestDsm(Test):
     settings=TestSettings(
         input='ackermann.x86.clang-3.2.O0.g.ex'

@@ -1,6 +1,5 @@
 from regression_tests import *
 
-
 class TestBin2PatMachoArm32(Test):
     settings = TestSettings(
         tool='bin2pat',
@@ -33,7 +32,6 @@ class TestBin2PatMachoArm32(Test):
             "{ 80 B5 6F 46 ?? ?? ?? ?? ?? ?? ?? ?? 78 44 00 68 80 47 ?? ?? ??"
             " ?? 80 BD }"
         )
-
 
 class TestBin2YaraMachoX86(Test):
     settings = TestSettings(
@@ -71,7 +69,6 @@ class TestBin2YaraMachoX86(Test):
             "{ 55 89 E5 83 EC 08 E8 ?? ?? ?? ?? 89 04 24 E8 ?? ?? ?? ?? 83 C4"
             " 08 5D C3 }"
         )
-
 
 class TestBin2YaraMachoPPC64(Test):
     settings = TestSettings(

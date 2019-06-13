@@ -1,6 +1,5 @@
 from regression_tests import *
 
-
 # https://github.com/avast/retdec/issues/82
 class TestInvalidCharsReplaced(Test):
     settings = TestSettings(

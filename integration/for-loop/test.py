@@ -22,7 +22,6 @@ class TestRunBase(TestBase):
     def test_c_contains_just_main(self):
         assert self.out_c.has_just_funcs('main')
 
-
 class Test_2018_x64Pe(TestBase):
     settings_2018 = TestSettings(
         input=files_in_dir('2018-09-17', matching=r'.*\.exe'),

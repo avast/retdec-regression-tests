@@ -1,6 +1,5 @@
 from regression_tests import *
 
-
 base_settings_x86 = TestSettings(
     tool='idaplugin',
     input='ack-x86-pe-little-gcc-O0.bin.exe-sec.raw',

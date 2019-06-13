@@ -16,7 +16,6 @@ from regression_tests import *
         #self.assertEqual(self.fileinfo.output['declaredNumberOfDataDirectories'], '620')
         #self.assertEqual(len(self.fileinfo.output['importTable']['imports']), 527798)
 
-
 class Test002(Test):
     settings=TestSettings(
         tool='fileinfo',

@@ -1,6 +1,5 @@
 from regression_tests import *
 
-
 class TestUnpackingWhenNoLimit(Test):
     """Checks that the unpacker correctly unpacks a file when there is no
     memory limit.
@@ -15,7 +14,6 @@ class TestUnpackingWhenNoLimit(Test):
 
     def test_correctly_unpacks_file(self):
         assert self.unpacker.succeeded
-
 
 class TestUnpackingWhenSufficientLimit(Test):
     """Checks that the unpacker correctly unpacks a file when there is a
@@ -36,7 +34,6 @@ class TestUnpackingWhenSufficientLimit(Test):
     def test_correctly_unpacks_file(self):
         assert self.unpacker.succeeded
 
-
 class TestUnpackingWhenInvalidLimit(Test):
     """Checks that the unpacker fails with an error when the memory limit is
     invalid.
@@ -53,7 +50,6 @@ class TestUnpackingWhenInvalidLimit(Test):
     def test_fails_to_unpack_file(self):
         assert not self.unpacker.succeeded, 'unpacker succeeded but should have failed'
         assert 'Invalid value for --max-memory' in self.unpacker.output
-
 
 # Memory limiting does not work correctly on macOS (see
 # https://github.com/avast/retdec/issues/379).

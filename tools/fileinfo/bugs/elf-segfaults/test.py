@@ -1,6 +1,5 @@
 from regression_tests import *
 
-
 # https://github.com/avast/retdec/issues/89
 class TestStringTableSegfault(Test):
     settings = TestSettings(
@@ -10,7 +9,6 @@ class TestStringTableSegfault(Test):
 
     def test_no_segfault(self):
         assert self.fileinfo.succeeded
-
 
 # https://github.com/avast/retdec/issues/89
 class TestDynamicSegfault(Test):
@@ -22,7 +20,6 @@ class TestDynamicSegfault(Test):
     def test_no_segfault(self):
         assert self.fileinfo.succeeded
 
-
 # https://github.com/avast/retdec/issues/241
 class TestAddSymbolTableSegfault(Test):
     settings = TestSettings(
@@ -32,7 +29,6 @@ class TestAddSymbolTableSegfault(Test):
 
     def test_no_segfault(self):
         assert self.fileinfo.succeeded
-
 
 # https://github.com/avast/retdec/issues/248
 class TestAddRelocationTableSegfault(Test):

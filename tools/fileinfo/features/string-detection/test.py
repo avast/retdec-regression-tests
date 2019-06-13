@@ -8,7 +8,6 @@ class StringTest(Test):
         self.assertEqual(string['sectionName'], section_name)
         self.assertEqual(string['content'], content)
 
-
 class Test1(StringTest):
     settings=TestSettings(
         tool='fileinfo',
@@ -22,7 +21,6 @@ class Test1(StringTest):
         self.check_string(79, '0x186d0', 'wide', '.rsrc', 'dotnet_gui.exe')
         self.check_string(92, '0x18863', 'ascii', '.rsrc', '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>')
         self.check_string(98, '0x189b9', 'ascii', '.rsrc', '        <requestedExecutionLevel level="asInvoker" uiAccess="false"/>')
-
 
 class Test2(StringTest):
     settings=TestSettings(
@@ -38,7 +36,6 @@ class Test2(StringTest):
         self.check_string(49, '0x422e', 'ascii', '.idata', 'GetModuleHandleA')
         self.check_string(82, '0x4a98', 'wide', '.rsrc', 'PACKAGEINFO')
 
-
 class Test3(StringTest):
     settings=TestSettings(
         tool='fileinfo',
@@ -53,7 +50,6 @@ class Test3(StringTest):
         self.check_string(41, '0x46cc', 'ascii', '.idata', 'GetModuleHandleA')
         self.check_string(153, '0x5498', 'wide', '.rsrc', 'PACKAGEINFO')
 
-
 class Test4(StringTest):
     settings=TestSettings(
         tool='fileinfo',
@@ -66,7 +62,6 @@ class Test4(StringTest):
         self.check_string(14, '0x5aed', 'ascii', '__cstring', 'Cannot open script file \'%s\'')
         self.check_string(33, '0x5bdc', 'ascii', '__cstring', 'ob/wW/dD/qQ  byte (oct,hex), word, dword, qword (lil, big endian)')
         self.check_string(61, '0x5fa8', 'ascii', '__cstring', '[0x%08llx]> ')
-
 
 class Test5(StringTest):
     settings=TestSettings(
@@ -81,7 +76,6 @@ class Test5(StringTest):
         self.check_string(7, '0x670', 'ascii', '.rodata', 'This is just example program')
         self.check_string(40, '0x18fa', 'ascii', '.strtab', 'main')
         self.check_string(44, '0x193a', 'ascii', '.shstrtab', '.symtab')
-
 
 class Test6(StringTest):
     settings=TestSettings(

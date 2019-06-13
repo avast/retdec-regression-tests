@@ -1,6 +1,5 @@
 from regression_tests import *
 
-
 class TestNewARM32Signatures(Test):
     settings = TestSettings(
         input='arm.exe'
@@ -71,7 +70,6 @@ class TestNewARM32Signatures(Test):
         assert self.out_config.is_statically_linked('_ValidateImageBase', 0x40c76c)
         assert self.out_config.is_statically_linked('strrchr', 0x40c7c4)
         assert self.out_config.is_statically_linked('strchr', 0x40c7f8)
-
 
 class TestNewx86Signatures(Test):
     settings = TestSettings(

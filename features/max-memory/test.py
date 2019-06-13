@@ -1,6 +1,5 @@
 from regression_tests import *
 
-
 class TestDefaultLimit(Test):
     """Checks that retdec-decompiler.py correctly decompiles a binary file when
     there is the default memory limit (half of system RAM).
@@ -20,7 +19,6 @@ class TestDefaultLimit(Test):
         self.assertIn('--max-memory-half-ram', self.decompiler.output)
         # For bin2llvmir and llvmir2hll:
         self.assertIn(' -max-memory-half-ram', self.decompiler.output)
-
 
 class TestCustomSufficientLimit(Test):
     """Checks that retdec-decompiler.py correctly decompiles a binary file when
@@ -43,7 +41,6 @@ class TestCustomSufficientLimit(Test):
         # For bin2llvmir and llvmir2hll:
         self.assertIn(' -max-memory 1073741824', self.decompiler.output)
 
-
 class TestNoLimit(Test):
     """Checks that retdec-decompiler.py correctly decompiles a binary file when
     there is no memory limit.
@@ -64,7 +61,6 @@ class TestNoLimit(Test):
         self.assertNotIn('--max-memory', self.decompiler.output)
         # For bin2llvmir and llvmir2hll:
         self.assertNotIn(' -max-memory', self.decompiler.output)
-
 
 # Memory limiting does not work correctly on macOS (see
 # https://github.com/avast/retdec/issues/379).
