@@ -28,8 +28,7 @@ class Test001(Test):
 
     def test_missing_deps(self):
         assert self.fileinfo.succeeded
-        self.assertEqual(self.fileinfo.output["loaderError"]["code"], 42)
-        self.assertEqual(self.fileinfo.output["loaderError"]["code_text"], 'LDR_ERROR_MISSING_DEPENDENCY')
+        self.assertFalse("loaderError" in self.fileinfo.output)
         self.assertEqual(self.fileinfo.output["missingDeps"]["count"], '2')
         self.assertEqual(self.fileinfo.output["missingDeps"]["items"][0]["name"], "ADVAPY32.dll")
         self.assertEqual(self.fileinfo.output["missingDeps"]["items"][1]["name"], "KERNUL32.dll")
