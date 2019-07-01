@@ -11,22 +11,18 @@ class Test1(Test):
 
     def test_anomalies_presented(self):
         assert self.fileinfo.succeeded
-        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][0]['abbreviation'], 'epInWritableSec')
+        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][0]['identifier'], 'EpInWritableSection')
         self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][0]['description'], 'Entry point in writable section')
-        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][1]['abbreviation'], 'unusualSecName')
-        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][1]['description'], 'Unusual section name: UPX0')
-        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][2]['abbreviation'], 'packedSecName')
-        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][2]['description'], 'Packer section name: UPX0')
-        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][3]['abbreviation'], 'uninitSecHasData')
-        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][3]['description'], 'Section UPX0 is marked uninitialized but contains data')
-        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][4]['abbreviation'], 'unusualSecName')
-        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][4]['description'], 'Unusual section name: UPX1')
-        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][5]['abbreviation'], 'packedSecName')
-        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][5]['description'], 'Packer section name: UPX1')
-        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][6]['abbreviation'], 'unusualSecChar')
-        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][6]['description'], 'Section .rsrc has unusual characteristics')
-        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][7]['abbreviation'], 'unusualSecName')
-        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][7]['description'], 'Unusual section name: .imports')
+        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][1]['identifier'], 'PackerSectionName')
+        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][1]['description'], 'Packer section name: UPX0')
+        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][2]['identifier'], 'UninitSectionHasData')
+        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][2]['description'], 'Section UPX0 is marked uninitialized but contains data')
+        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][3]['identifier'], 'PackerSectionName')
+        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][3]['description'], 'Packer section name: UPX1')
+        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][4]['identifier'], 'UnusualSectionFlags')
+        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][4]['description'], 'Section .rsrc has unusual characteristics')
+        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][5]['identifier'], 'UnusualSectionName')
+        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][5]['description'], 'Unusual section name: .imports')
 
 class Test2(Test):
     settings = TestSettings(
@@ -37,30 +33,18 @@ class Test2(Test):
 
     def test_anomalies_presented(self):
         assert self.fileinfo.succeeded
-        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][0]['abbreviation'], 'epInLastSec')
-        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][0]['description'], 'Entry point in last section')
-        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][1]['abbreviation'], 'epInWritableSec')
+        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][0]['identifier'], 'EpInLastSection')
+        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][0]['description'], 'Entry point in the last section')
+        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][1]['identifier'], 'EpInWritableSection')
         self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][1]['description'], 'Entry point in writable section')
-        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][2]['abbreviation'], 'unusualSecName')
+        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][2]['identifier'], 'UnusualSectionName')
         self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][2]['description'], 'Unusual section name: YADO')
-        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][3]['abbreviation'], 'noRawDataSec')
-        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][3]['description'], 'Section YADO has zero SizeOfRawData')
-        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][4]['abbreviation'], 'duplSecNames')
-        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][4]['description'], 'Multiple sections with name YADO')
-        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][5]['abbreviation'], 'noRawDataSec')
-        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][5]['description'], 'Section YADO has zero SizeOfRawData')
-        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][6]['abbreviation'], 'noRawDataSec')
-        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][6]['description'], 'Section YADO has zero SizeOfRawData')
-        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][7]['abbreviation'], 'noRawDataSec')
-        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][7]['description'], 'Section YADO has zero SizeOfRawData')
-        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][8]['abbreviation'], 'noRawDataSec')
-        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][8]['description'], 'Section YADO has zero SizeOfRawData')
-        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][9]['abbreviation'], 'unusualSecName')
-        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][9]['description'], 'Unusual section name: krypton')
-        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][10]['abbreviation'], 'noRawDataSec')
-        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][10]['description'], 'Section krypton has zero SizeOfRawData')
-        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][11]['abbreviation'], 'unusualSecName')
-        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][11]['description'], 'Unusual section name: _!_!_!_')
+        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][3]['identifier'], 'DuplicitSectionNames')
+        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][3]['description'], 'Multiple sections with name YADO')
+        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][4]['identifier'], 'UnusualSectionName')
+        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][4]['description'], 'Unusual section name: krypton')
+        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][5]['identifier'], 'UnusualSectionName')
+        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][5]['description'], 'Unusual section name: _!_!_!_')
 
 class Test3(Test):
     settings = TestSettings(
@@ -71,12 +55,39 @@ class Test3(Test):
 
     def test_anomalies_presented(self):
         assert self.fileinfo.succeeded
-        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][0]['abbreviation'], 'epInLastSec')
-        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][0]['description'], 'Entry point in last section')
-        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][1]['abbreviation'], 'epInWritableSec')
+        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][0]['identifier'], 'EpInLastSection')
+        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][0]['description'], 'Entry point in the last section')
+        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][1]['identifier'], 'EpInWritableSection')
         self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][1]['description'], 'Entry point in writable section')
-        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][2]['abbreviation'], 'epInNonExecSec')
-        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][2]['description'], 'Entry point in nonexecutable section')
+        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][2]['identifier'], 'UnusualSectionFlags')
+        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][2]['description'], 'Section .text has unusual characteristics')
+        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][3]['identifier'], 'UnusualSectionFlags')
+        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][3]['description'], 'Section .rdata has unusual characteristics')
+        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][4]['identifier'], 'UnusualSectionName')
+        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][4]['description'], 'Unusual section name: /4')
+        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][5]['identifier'], 'UnusualSectionFlags')
+        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][5]['description'], 'Section .bss has unusual characteristics')
+        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][6]['identifier'], 'UnusualSectionName')
+        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][6]['description'], 'Unusual section name: /14')
+        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][7]['identifier'], 'UnusualSectionName')
+        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][7]['description'], 'Unusual section name: /29')
+        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][8]['identifier'], 'UnusualSectionName')
+        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][8]['description'], 'Unusual section name: /45')
+        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][9]['identifier'], 'UnusualSectionName')
+        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][9]['description'], 'Unusual section name: /61')
+        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][10]['identifier'], 'UnusualSectionName')
+        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][10]['description'], 'Unusual section name: /73')
+        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][11]['identifier'], 'UnusualSectionName')
+        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][11]['description'], 'Unusual section name: /87')
+        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][12]['identifier'], 'UnusualSectionName')
+        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][12]['description'], 'Unusual section name: /99')
+        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][13]['identifier'], 'UnusualSectionName')
+        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][13]['description'], 'Unusual section name: /112')
+        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][14]['identifier'], 'UnusualSectionName')
+        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][14]['description'], 'Unusual section name: /123')
+        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][15]['identifier'], 'UnusualSectionName')
+        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][15]['description'], 'Unusual section name: /134')
+
 
 class Test4(Test):
     settings = TestSettings(
@@ -87,10 +98,10 @@ class Test4(Test):
 
     def test_anomalies_presented(self):
         assert self.fileinfo.succeeded
-        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][0]['abbreviation'], 'epOutsideSecs')
+        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][0]['identifier'], 'EpOutsideSections')
         self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][0]['description'], 'Entry point is outside of mapped sections')
-        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][1]['abbreviation'], 'sizeOfHeadersNotAligned')
-        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][1]['description'], 'SizeOfHeaders is not aligned to multiple of FileAlignment')
+        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][1]['identifier'], 'SizeOfHeaderNotAligned')
+        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][1]['description'], 'SizeOfHeader is not aligned to multiple of FileAlignment')
 
 class Test5(Test):
     settings = TestSettings(
@@ -101,14 +112,14 @@ class Test5(Test):
 
     def test_anomalies_presented(self):
         assert self.fileinfo.succeeded
-        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][0]['abbreviation'], 'unusualSecName')
-        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][0]['description'], 'Unusual section name: CODE\u0011')
-        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][1]['abbreviation'], 'unusualSecName')
-        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][1]['description'], 'Unusual section name: D\u0011TA')
-        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][2]['abbreviation'], 'overlappingSecs')
-        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][2]['description'], 'Sections D\u0011TA and BSS\u0011 overlap')
-        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][3]['abbreviation'], 'overlappingSecs')
-        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][3]['description'], 'Sections D\u0011TA and .idata overlap')
+        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][0]['identifier'], 'UnusualSectionName')
+        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][0]['description'], 'Unusual section name: CODE\\x11')
+        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][1]['identifier'], 'UnusualSectionName')
+        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][1]['description'], 'Unusual section name: D\\x11TA')
+        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][2]['identifier'], 'OverlappingSections')
+        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][2]['description'], 'Sections D\\x11TA and BSS\\x11 overlap')
+        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][3]['identifier'], 'OverlappingSections')
+        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][3]['description'], 'Sections D\\x11TA and .idata overlap')
 
 class Test6(Test):
     settings = TestSettings(
@@ -119,10 +130,10 @@ class Test6(Test):
 
     def test_anomalies_presented(self):
         assert self.fileinfo.succeeded
-        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][0]['abbreviation'], 'epOutsideSecs')
+        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][0]['identifier'], 'EpOutsideSections')
         self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][0]['description'], 'Entry point is outside of mapped sections')
-        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][1]['abbreviation'], 'sizeOfHeadersNotAligned')
-        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][1]['description'], 'SizeOfHeaders is not aligned to multiple of FileAlignment')
+        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][1]['identifier'], 'SizeOfHeaderNotAligned')
+        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][1]['description'], 'SizeOfHeader is not aligned to multiple of FileAlignment')
 
 class Test7(Test):
     settings = TestSettings(
@@ -133,11 +144,11 @@ class Test7(Test):
 
     def test_anomalies_presented(self):
         assert self.fileinfo.succeeded
-        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][0]['abbreviation'], 'epInWritableSec')
+        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][0]['identifier'], 'EpInWritableSection')
         self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][0]['description'], 'Entry point in writable section')
-        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][1]['abbreviation'], 'unusualSecChar')
+        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][1]['identifier'], 'UnusualSectionFlags')
         self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][1]['description'], 'Section .text has unusual characteristics')
-        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][2]['abbreviation'], 'largeRes')
+        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][2]['identifier'], 'LargeResource')
         self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][2]['description'], 'Resource 103 has size over 100MB')
 
 class Test8(Test):
@@ -149,17 +160,13 @@ class Test8(Test):
 
     def test_anomalies_presented(self):
         assert self.fileinfo.succeeded
-        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][0]['abbreviation'], 'largeSec')
+        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][0]['identifier'], 'LargeSection')
         self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][0]['description'], 'Section .text has size over 100MB')
-        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][1]['abbreviation'], 'overlappingSecs')
+        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][1]['identifier'], 'OverlappingSections')
         self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][1]['description'], 'Sections .text and .rsrc overlap')
-        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][2]['abbreviation'], 'noRawDataSec')
-        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][2]['description'], 'Section .data has zero SizeOfRawData')
-        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][3]['abbreviation'], 'largeSec')
-        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][3]['description'], 'Section .rsrc has size over 100MB')
-        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][4]['abbreviation'], 'largeRes')
-        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][4]['description'], 'Resource 101 has size over 100MB')
-        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][5]['abbreviation'], 'stretchedRes')
-        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][5]['description'], 'Resource 101 is stretched over multiple sections')
-        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][6]['abbreviation'], 'obsoleteCoffFlags')
-        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][6]['description'], 'Coff file flags are obsolete')
+        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][2]['identifier'], 'LargeSection')
+        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][2]['description'], 'Section .rsrc has size over 100MB')
+        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][3]['identifier'], 'LargeResource')
+        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][3]['description'], 'Resource 101 has size over 100MB')
+        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][4]['identifier'], 'StretchedResource')
+        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][4]['description'], 'Resource 101 is stretched over multiple sections')
