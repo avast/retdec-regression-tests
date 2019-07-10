@@ -24,6 +24,7 @@ class Test(Test):
             self.fileinfo.output['Detected tool'],
             [
                 'VMProtect (packer), combined heuristic',
-                'Microsoft Linker (12.0) (linker), combined heuristic'
+                'Microsoft Linker (12.0) (linker), combined heuristic',
+                'Microsoft (linker), dos header style'
             ]
         )

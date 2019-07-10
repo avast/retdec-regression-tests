@@ -1,5 +1,31 @@
 from regression_tests import *
 
+class Test_ActiveMark(Test):
+    settings=TestSettings(
+        tool='fileinfo',
+        input=[
+            'sample_activemark.dat',
+        ],
+        args='--json'
+    )
+
+    def test_corrupted_pe(self):
+        assert self.fileinfo.succeeded
+        self.assertTrue(self.fileinfo.output['tools'][1]['name'] == 'ActiveMark')
+
+class Test_MPRMMGVA(Test):
+    settings=TestSettings(
+        tool='fileinfo',
+        input=[
+            'sample_mprmmgva.dat',
+        ],
+        args='--json'
+    )
+
+    def test_corrupted_pe(self):
+        assert self.fileinfo.succeeded
+        self.assertTrue(self.fileinfo.output['tools'][0]['name'] == 'MPRMMGVA')
+
 class Test_SafeDisc(Test):
     settings=TestSettings(
         tool='fileinfo',
@@ -13,7 +39,7 @@ class Test_SafeDisc(Test):
 
     def test_corrupted_pe(self):
         assert self.fileinfo.succeeded
-        self.assertTrue((self.fileinfo.output['tools'][1]['name'] == 'SafeDisc') or (self.fileinfo.output['tools'][2]['name'] == 'SafeDisc'))
+        self.assertIn('SafeDisc', [tool['name'] for tool in self.fileinfo.output['tools']])
 
 class Test_SecuROM(Test):
     settings=TestSettings(
@@ -44,3 +70,16 @@ class Test_StarForce(Test):
     def test_corrupted_pe(self):
         assert self.fileinfo.succeeded
         self.assertTrue('StarForce' in self.fileinfo.output['tools'][0]['name'])
+
+class Test_Petite(Test):
+    settings=TestSettings(
+        tool='fileinfo',
+        input=[
+            'sample_petite_001.dat',
+        ],
+        args='--json'
+    )
+
+    def test_corrupted_pe(self):
+        assert self.fileinfo.succeeded
+        self.assertEqual(self.fileinfo.output['tools'][0]['name'], 'Petite')
