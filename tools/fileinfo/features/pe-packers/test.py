@@ -11,7 +11,7 @@ class Test_ActiveMark(Test):
 
     def test_corrupted_pe(self):
         assert self.fileinfo.succeeded
-        self.assertTrue((self.fileinfo.output['tools'][1]['name'] == 'ActiveMark'))
+        self.assertTrue(self.fileinfo.output['tools'][1]['name'] == 'ActiveMark')
 
 class Test_MPRMMGVA(Test):
     settings=TestSettings(
@@ -24,7 +24,7 @@ class Test_MPRMMGVA(Test):
 
     def test_corrupted_pe(self):
         assert self.fileinfo.succeeded
-        self.assertTrue((self.fileinfo.output['tools'][0]['name'] == 'MPRMMGVA'))
+        self.assertTrue(self.fileinfo.output['tools'][0]['name'] == 'MPRMMGVA')
 
 class Test_SafeDisc(Test):
     settings=TestSettings(
@@ -39,9 +39,7 @@ class Test_SafeDisc(Test):
 
     def test_corrupted_pe(self):
         assert self.fileinfo.succeeded
-        self.assertTrue((self.fileinfo.output['tools'][1]['name'] == 'SafeDisc') or
-                        (self.fileinfo.output['tools'][2]['name'] == 'SafeDisc') or
-                        (self.fileinfo.output['tools'][3]['name'] == 'SafeDisc'))
+        self.assertIn('SafeDisc', [tool['name'] for tool in self.fileinfo.output['tools']])
 
 class Test_SecuROM(Test):
     settings=TestSettings(
