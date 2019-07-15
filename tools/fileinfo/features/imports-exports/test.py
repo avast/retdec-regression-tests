@@ -183,7 +183,7 @@ class ExportByOrdinalTest(Test):
         args='--verbose --json'
     )
 
-    def test_correctly_analyzes_imports_and_exports(self):
+    def test_correctly_analyzes_exports(self):
         assert self.fileinfo.succeeded
 
         self.assertEqual(self.fileinfo.output['exportTable']['exports'][0]['ordinalNumber'], '111')
