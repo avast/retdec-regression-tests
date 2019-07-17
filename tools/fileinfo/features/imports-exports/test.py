@@ -58,10 +58,10 @@ class PeTest(Test):
         self.assertEqual(self.fileinfo.output['exportTable']['exports'][1]['address'], '0x10001620')
         self.assertEqual(self.fileinfo.output['exportTable']['exports'][2]['address'], '0x10001430')
         self.assertEqual(self.fileinfo.output['exportTable']['exports'][3]['address'], '0x100012d0')
-        self.assertEqual(self.fileinfo.output['exportTable']['exports'][0]['ordinalNumber'], '0')
-        self.assertEqual(self.fileinfo.output['exportTable']['exports'][1]['ordinalNumber'], '1')
-        self.assertEqual(self.fileinfo.output['exportTable']['exports'][2]['ordinalNumber'], '2')
-        self.assertEqual(self.fileinfo.output['exportTable']['exports'][3]['ordinalNumber'], '3')
+        self.assertEqual(self.fileinfo.output['exportTable']['exports'][0]['ordinalNumber'], '1')
+        self.assertEqual(self.fileinfo.output['exportTable']['exports'][1]['ordinalNumber'], '2')
+        self.assertEqual(self.fileinfo.output['exportTable']['exports'][2]['ordinalNumber'], '3')
+        self.assertEqual(self.fileinfo.output['exportTable']['exports'][3]['ordinalNumber'], '4')
 
 class ElfTest(Test):
     settings = TestSettings(
@@ -175,3 +175,18 @@ class ElfTest(Test):
         self.assertEqual(self.fileinfo.output['exportTable']['exports'][1]['address'], '0x12990')
         self.assertEqual(self.fileinfo.output['exportTable']['exports'][2]['address'], '0x12994')
         self.assertEqual(self.fileinfo.output['exportTable']['exports'][3]['address'], '0x12998')
+
+class ExportByOrdinalTest(Test):
+    settings = TestSettings(
+        tool='fileinfo',
+        input='export_ordinals.dll',
+        args='--verbose --json'
+    )
+
+    def test_correctly_analyzes_exports(self):
+        assert self.fileinfo.succeeded
+
+        self.assertEqual(self.fileinfo.output['exportTable']['exports'][0]['ordinalNumber'], '111')
+        self.assertEqual(self.fileinfo.output['exportTable']['exports'][100]['ordinalNumber'], '211')
+        self.assertEqual(self.fileinfo.output['exportTable']['exports'][200]['ordinalNumber'], '311')
+        self.assertEqual(self.fileinfo.output['exportTable']['exports'][300]['ordinalNumber'], '411')

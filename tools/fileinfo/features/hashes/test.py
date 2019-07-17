@@ -68,9 +68,9 @@ class TestExportHashPE(Test):
     def test_correctly_computes_export_hash(self):
         assert self.fileinfo.succeeded
 
-        self.assertEqual(self.fileinfo.output['exportTable']['crc32'], '537c3723')
-        self.assertEqual(self.fileinfo.output['exportTable']['md5'], 'ed5fc6509f84c22d0a5181a74b169f4d')
-        self.assertEqual(self.fileinfo.output['exportTable']['sha256'], '2ad7a39d00b78ab7bcb584bcef1d4a95246ebe9241e5ae3e24234bd6bca63cd9')
+        self.assertEqual(self.fileinfo.output['exportTable']['crc32'], '0129b53c')
+        self.assertEqual(self.fileinfo.output['exportTable']['md5'], 'aad0eae4ce7252a9bfd0ffaa3f5f9785')
+        self.assertEqual(self.fileinfo.output['exportTable']['sha256'], '96ed433038a072261a91f36898fe9189a64a626472638a0d78f21b8979acefcf')
 
 # https://github.com/avast/retdec/issues/121
 # Test export hashes for ELF format
