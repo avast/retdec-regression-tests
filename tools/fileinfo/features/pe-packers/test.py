@@ -9,7 +9,7 @@ class Test_ActiveMark(Test):
         args='--json'
     )
 
-    def test_corrupted_pe(self):
+    def test_pe_packer(self):
         assert self.fileinfo.succeeded
         self.assertTrue(self.fileinfo.output['tools'][1]['name'] == 'ActiveMark')
 
@@ -22,7 +22,7 @@ class Test_MPRMMGVA(Test):
         args='--json'
     )
 
-    def test_corrupted_pe(self):
+    def test_pe_packer(self):
         assert self.fileinfo.succeeded
         self.assertTrue(self.fileinfo.output['tools'][0]['name'] == 'MPRMMGVA')
 
@@ -37,7 +37,7 @@ class Test_SafeDisc(Test):
         args='--json'
     )
 
-    def test_corrupted_pe(self):
+    def test_pe_packer(self):
         assert self.fileinfo.succeeded
         self.assertIn('SafeDisc', [tool['name'] for tool in self.fileinfo.output['tools']])
 
@@ -52,7 +52,7 @@ class Test_SecuROM(Test):
         args='--json'
     )
 
-    def test_corrupted_pe(self):
+    def test_pe_packer(self):
         assert self.fileinfo.succeeded
         self.assertEqual(self.fileinfo.output['tools'][0]['name'], 'SecuROM')
 
@@ -67,7 +67,7 @@ class Test_StarForce(Test):
         args='--json'
     )
 
-    def test_corrupted_pe(self):
+    def test_pe_packer(self):
         assert self.fileinfo.succeeded
         self.assertTrue('StarForce' in self.fileinfo.output['tools'][0]['name'])
 
@@ -80,6 +80,19 @@ class Test_Petite(Test):
         args='--json'
     )
 
-    def test_corrupted_pe(self):
+    def test_pe_packer(self):
         assert self.fileinfo.succeeded
         self.assertEqual(self.fileinfo.output['tools'][0]['name'], 'Petite')
+
+class Test_RLPack(Test):
+    settings=TestSettings(
+        tool='fileinfo',
+        input=[
+            'sample_rlpack_001.dat',
+        ],
+        args='--json'
+    )
+
+    def test_pe_packer(self):
+        assert self.fileinfo.succeeded
+        self.assertEqual(self.fileinfo.output['tools'][0]['name'], 'RLPack')
