@@ -10,6 +10,6 @@ class Test_Watcom1(Test):
         args='--json'
     )
 
-    def test_corrupted_pe(self):
+    def test_pe_linker(self):
         assert self.fileinfo.succeeded
         self.assertTrue((self.fileinfo.output['tools'][1]['name'] == 'Watcom') or (self.fileinfo.output['tools'][3]['name'] == 'Watcom'))
