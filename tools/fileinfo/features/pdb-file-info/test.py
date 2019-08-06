@@ -13,7 +13,7 @@ class TestRsds(Test):
         self.assertEqual(self.fileinfo.output['pdbInfo']['age'], '1')
         self.assertEqual(self.fileinfo.output['pdbInfo']['guid'], 'b57b8088-ec47-4900-ba81-e571172dfce')
         self.assertEqual(self.fileinfo.output['pdbInfo']['path'], 'DpInst.pdb')
-        self.assertEqual(self.fileinfo.output['pdbInfo']['timestamp'], '2009-05-23 12:37:17')
+        self.assertEqual(self.fileinfo.output['pdbInfo']['timestamp'], '2009-05-23T10:37:17+0000')
         self.assertEqual(self.fileinfo.output['pdbInfo']['type'], 'RSDS')
 
 class TestNb10(Test):
@@ -29,5 +29,5 @@ class TestNb10(Test):
 
         self.assertEqual(self.fileinfo.output['pdbInfo']['age'], '1')
         self.assertEqual(self.fileinfo.output['pdbInfo']['guid'], '55308367')
-        self.assertEqual(self.fileinfo.output['pdbInfo']['timestamp'], '2015-04-17 05:52:07')
+        self.assertEqual(self.fileinfo.output['pdbInfo']['timestamp'], '2015-04-17T03:52:07+0000')
         self.assertEqual(self.fileinfo.output['pdbInfo']['type'], 'NB10')

@@ -1,6 +1,6 @@
 from regression_tests import *
 
-class Test(Test):
+class Test_1(Test):
     settings=TestSettings(
         tool='fileinfo',
         args='--json --verbose',
@@ -8,9 +8,9 @@ class Test(Test):
     )
 
     def test_has_timestamp(self):
-        self.assertEqual(self.fileinfo.output['timestamp'], '2006-10-27 09:17:31')
+        self.assertEqual(self.fileinfo.output['timestamp'], '2006-10-27T07:17:31+0000')
 
-class Test(Test):
+class Test_2(Test):
     settings=TestSettings(
         tool='fileinfo',
         args='--json --verbose',
@@ -18,4 +18,4 @@ class Test(Test):
     )
 
     def test_has_timestamp(self):
-        self.assertEqual(self.fileinfo.output['timestamp'], '2017-07-03 23:54:35')
+        self.assertEqual(self.fileinfo.output['timestamp'], '2017-07-03T21:54:35+0000')
