@@ -493,8 +493,8 @@ class Test_2015_MipsGccElf(TestBase):
     def test_properties(self):
         assert self.out_c.has_comment_matching('// int printf\(const char \* restrict format, ...\);')
         assert self.out_c.has_comment_matching('// int scanf\(const char \* restrict format, ...\);')
-        assert self.out_c.contains('int32_t x = 0; // bp-28')
-        assert self.out_c.contains('int32_t y = 0; // bp-24')
+        assert self.out_c.contains('int32_t x = 0; // bp-28, 0x8900444')
+        assert self.out_c.contains('int32_t y = 0; // bp-24, 0x8900448')
 
     def test_statically_linked_function_detection(self):
         # confirmed functions
@@ -807,8 +807,8 @@ class Test_2015_X86GccExe(TestBase):
     def test_properties(self):
         assert self.out_c.has_comment_matching('// int printf\(const char \* restrict format, ...\);')
         assert self.out_c.has_comment_matching('// int scanf\(const char \* restrict format, ...\);')
-        assert self.out_c.contains('int32_t x = 0; // bp-24')
-        assert self.out_c.contains('int32_t y = 0; // bp-28')
+        assert self.out_c.contains('int32_t x = 0; // bp-24, 0x4015d1')
+        assert self.out_c.contains('int32_t y = 0; // bp-28, 0x4015d9')
 
     def test_statically_linked_function_detection(self):
         # confirmed functions
