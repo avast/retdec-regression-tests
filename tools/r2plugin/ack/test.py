@@ -20,7 +20,14 @@ class TestProjFile(Test):
     )
 
     def test_for_ack(self):
-        assert self.out_c.has_just_funcs('_ack')
+        assert self.out_c.has_just_funcs('ack')
+        assert self.out_c.funcs['ack'].param_count == 2
+        assert self.out_c.funcs['ack'].params[0].type.is_int(32)
+        assert self.out_c.funcs['ack'].params[1].type.is_int(32)
+        assert self.out_c.funcs['ack'].params[0].name == "m"
+        assert self.out_c.funcs['ack'].params[1].name == "n"
+        assert self.out_c.funcs['ack'].calls('ack')
+        assert self.out_c.funcs['ack'].has_any_if_stmts()
 
 class TestX86GccExe_main(Test):
     settings = TestSettings(
