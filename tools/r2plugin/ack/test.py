@@ -101,6 +101,7 @@ class TestChangeSignature(Test):
 
     def test_parameters_are_set(self):
         assert self.out_c.has_just_funcs('_ack')
+        assert self.out_c.funcs['_ack'].return_type.is_int(16)
         assert self.out_c.funcs['_ack'].param_count == 2
         assert self.out_c.funcs['_ack'].params[0].type.is_char()
         assert self.out_c.funcs['_ack'].params[1].type.is_int(64)
