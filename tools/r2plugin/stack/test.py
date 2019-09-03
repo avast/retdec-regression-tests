@@ -22,7 +22,6 @@ class TestX86ClangMacho_ack(Test):
         assert self.out_c.funcs['main'].calls('_printf')
         assert self.out_c.funcs['main'].calls('_my_sum1')
         assert self.out_c.funcs['main'].calls('_my_sum2')
-        assert self.out_c.funcs['main'].has_local_vars()
         assert self.out_c.funcs['main'].has_any_assignments()
         assert self.out_c.funcs['main'].has_any_if_stmts()
         assert self.out_c.funcs['main'].has_any_return_stmts()
