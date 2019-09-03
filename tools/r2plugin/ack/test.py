@@ -107,3 +107,25 @@ class TestChangeSignature(Test):
         assert self.out_c.funcs['_ack'].params[1].type.is_int(64)
         assert self.out_c.funcs['_ack'].params[0].name == "a"
         assert self.out_c.funcs['_ack'].params[1].name == "b"
+
+
+class TestChangeSignatureFP(Test):
+    settings = TestSettings(
+        tool='r2plugin',
+        input='ack.x86.clang.macho',
+        commands=(
+            's 0x01e90',                                # Seek address
+            '"afs float _ack (double a, float b);"'   # Change signature
+                                                        # !! quotes required
+        ),
+        args='--select 0x01e90'
+    )
+
+    def test_parameters_are_set(self):
+        assert self.out_c.has_just_funcs('_ack')
+        assert self.out_c.funcs['_ack'].return_type.is_float()
+        assert self.out_c.funcs['_ack'].param_count == 2
+        assert self.out_c.funcs['_ack'].params[0].type.is_double()
+        assert self.out_c.funcs['_ack'].params[1].type.is_float()
+        assert self.out_c.funcs['_ack'].params[0].name == "a"
+        assert self.out_c.funcs['_ack'].params[1].name == "b"
