@@ -28,7 +28,6 @@ class DWARFTest(Test):
         self.assertTrue(self.out_c.has_global_var('g'))
         # Parameters.
         self.assertEqual(self.out_c.funcs['func'].params[0].name, 'a')
-        self.assertEqual(self.out_c.funcs['main'].params[0].name, 'argc')
-        self.assertEqual(self.out_c.funcs['main'].params[1].name, 'argv')
+        self.assertEqual(self.out_c.funcs['main'].param_count, 0)
 
         self.out_c.funcs['main'].calls('func')
