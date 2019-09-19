@@ -16,7 +16,7 @@ class TestCryptoLocker(Test):
         assert self.out_c.has_string_literal( 'Global\\\\' )
         assert self.out_c.has_string_literal( 'Local\\\\' )
         assert self.out_c.has_string_literal( 'Microsoft Enhanced RSA and AES Cryptographic Provider (Prototype)' )
-        assert self.out_c.has_string_literal( 'name' )
+        #assert self.out_c.has_string_literal( 'name' )
         assert self.out_c.has_string_literal( 'pid' )
         assert self.out_c.has_string_literal( 'PrivateKey' )
         assert self.out_c.has_string_literal( 'PublicKey' )
