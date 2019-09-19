@@ -10,8 +10,9 @@ class X86Test(Test):
         input='input-x86.ex'
     )
 
-    def test_real_register_name_is_emitted_in_comment(self):
-        assert self.out_c.contains(r'int32_t g[0-9]+ = 0; // ecx')
+    # TODO: we should test that v1 is in fact ecx
+    def test_ecx_is_used(self):
+        assert self.out_c.contains(r'return printf\("%d\\n", v1\);')
 
 class SameRegAndFncNameTest(Test):
     settings = TestSettings(

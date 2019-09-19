@@ -19,6 +19,5 @@ class Test(Test):
         assert self.out_c.has_string_literal( 'fib(%d) = %d\\n' )
 
     def test_bug_solution(self):
-        assert self.out_c.contains(r'\= fib.*\- ?1')
-        assert self.out_c.contains(r'\= fib.*\- ?2')
-        assert self.out_c.contains(r'return v. \+ v.;')
+        assert self.out_c.contains(r'v. \= fib.*\- ?1')
+        assert self.out_c.contains(r'return fib.*\- ?2.*\+ v.')
