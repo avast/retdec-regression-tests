@@ -1,5 +1,9 @@
 from regression_tests import *
 
+def list_remove(element, x):
+    x.remove(element)
+    return x
+
 class TestBase(Test):
     def test_produce_expected_output(self):
         self.assert_c_produces_output_when_run(
@@ -62,10 +66,10 @@ class Test_2018(Test):
 
 class Test_2017(TestBase):
     settings_2017 = TestSettings(
-        input=files_in_dir('2017-11-14'),
+        input=list_remove('2017-11-14/float-operations.mips.gcc.O0.g.elf', files_in_dir('2017-11-14')),
     )
 
 class Test_2015(TestBase):
     settings_2015 = TestSettings(
-        input=files_in_dir('2015-03-30'),
+        input=list_remove('2015-03-30/float-operations.mips.pspgcc-4.3.5.O0.g.elf', files_in_dir('2015-03-30')),
     )
