@@ -127,7 +127,7 @@ class Test(Test):
         assert self.out_c.has_string_literal( 'join number must be >= 1' )
         assert self.out_c.has_string_literal( 'l->first!=((void *)0)' )
         assert self.out_c.has_string_literal( 'l->last->list[l->length-1].start!=s || l->last->list[l->length-1].end<e' )
-        assert self.out_c.has_string_literal( 'l->last->list[l->length-1].start<=s' )
+        #assert self.out_c.has_string_literal( 'l->last->list[l->length-1].start<=s' )
         assert self.out_c.has_string_literal( 'l->last->next==((void *)0)' )
         assert self.out_c.has_string_literal( 'l->length<=( 1 << 7 )' )
         assert self.out_c.has_string_literal( 'l->length==0 || !l->sorted || l->end_sorted|| l->nested || e>l->last->list[l->length-1].end' )
