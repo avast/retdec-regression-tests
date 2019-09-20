@@ -178,8 +178,7 @@ class TestDecompile_cyberDuck_grabPasswordsInFolders(Test):
         assert self.out_c.has_string_literal('user.config')
 
         # check return
-        assert self.out_c.contains(r'v[0-9] \= sub_1000FCDF\(.*\)')
-        assert self.out_c.contains(r'result \= v[0-9]')
+        assert self.out_c.contains(r'result \= sub_1000FCDF\(.*\)')
         assert self.out_c.contains('return result')
 
     def test_has_called_function_as_external(self):
