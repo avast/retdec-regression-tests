@@ -462,3 +462,16 @@ class Test041(Test):
         self.assertEqual(self.fileinfo.output["loaderError"]["code"], 41)
         self.assertEqual(self.fileinfo.output["loaderError"]["code_text"], 'LDR_ERROR_RSRC_OVER_END_OF_IMAGE')
         self.assertEqual(self.fileinfo.output["loaderError"]["loadable_anyway"], 'true')
+
+class Test042(Test):
+    settings=TestSettings(
+        tool='fileinfo',
+        input=[
+            '042-quite-many-import-descriptors.ex_'
+        ],
+        args='--json --verbose'
+    )
+
+    def test_corrupted_pe(self):
+        assert self.fileinfo.succeeded
+        assert 'loaderError' not in self.fileinfo.output, 'unexpectedly found loader error'
