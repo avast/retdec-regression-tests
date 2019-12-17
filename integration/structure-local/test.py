@@ -86,13 +86,13 @@ class Test_2018(Test):
         #assert self.out_c.funcs['fnc_complex_print'].params[0].type.is_pointer()
         #assert self.out_c.funcs['fnc_complex_print'].params[0].type.point_type.is_struct()
         assert self.out_c.funcs['fnc_complex_print'].calls('printf')
-        assert self.out_c.funcs['fnc_complex_print'].has_any_for_loops()
+        assert self.out_c.funcs['fnc_complex_print'].has_any_for_loops() or self.out_c.funcs['fnc_complex_print'].has_any_while_loops()
 
     def test_check_function_fnc_complex(self):
         assert self.out_c.has_func('fnc_complex')
         assert self.out_c.funcs['fnc_complex'].return_type.is_int(32)
         assert self.out_c.funcs['fnc_complex'].param_count == 0
-        assert self.out_c.funcs['fnc_complex'].has_any_for_loops()
+        assert self.out_c.funcs['fnc_complex'].has_any_for_loops() or self.out_c.funcs['fnc_complex'].has_any_while_loops()
         assert self.out_c.funcs['fnc_complex'].calls('malloc')
         assert self.out_c.funcs['fnc_complex'].has_any_return_stmts()
         #assert self.out_c.funcs['fnc_complex'].has_return_stmts('return 0')
@@ -113,7 +113,7 @@ class Test_2018(Test):
         #assert self.out_c.funcs['fnc_sasa_print'].params[0].type.is_pointer()
         #assert self.out_c.funcs['fnc_sasa_print'].params[0].type.point_type.is_struct()
         assert self.out_c.funcs['fnc_sasa_print'].calls('printf')
-        assert self.out_c.funcs['fnc_sasa_print'].has_any_for_loops()
+        assert self.out_c.funcs['fnc_sasa_print'].has_any_for_loops() or self.out_c.funcs['fnc_sasa_print'].has_any_while_loops()
 
     def test_check_function_fnc_sasa(self):
         assert self.out_c.has_func('fnc_sasa')

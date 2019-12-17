@@ -54,7 +54,6 @@ class Test_2018_x64Pe(Test):
         assert self.out_c.funcs['my_sum2'].param_count == 1
         assert self.out_c.funcs['my_sum2'].params[0].type.is_int(32)
         assert self.out_c.funcs['my_sum2'].calls('rand')
-        assert self.out_c.funcs['my_sum2'].has_any_assignments()
         assert self.out_c.funcs['my_sum2'].has_any_return_stmts()
         assert len(self.out_c.funcs['my_sum2'].return_stmts) == 1
 
