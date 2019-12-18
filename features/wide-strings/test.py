@@ -28,8 +28,8 @@ class Test_C(Test):
         assert self.out_c.has_string_literal( '' )
         assert self.out_c.has_string_literal( 'ab' )
 
-        str1=r'\x0058\x0020\x010d\x0020\x000a'
-        str2=r'\x00000058\x00000020\x0000010d\x00000020\x0000000a'
+        str1=r'X \x010d \n'
+        str2=r'X \x0000010d \n'
         assert self.out_c.has_string_literal(str1) or self.out_c.has_string_literal(str2)
 
 class Test_bin(Test):

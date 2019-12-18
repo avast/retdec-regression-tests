@@ -172,3 +172,6 @@ class Test_MSVC(Test):
         assert self.out_c.has_string_literal(' 8 \\n')
         assert self.out_c.has_string_literal(' 57 \\n')
         assert self.out_c.has_string_literal(' after jumpt table 2 ')
+
+    def test_issue_636(self):
+        assert self.out_c.contains('char \* g[0-9]; // 0x419548')

@@ -20,6 +20,6 @@ class Test(Test):
         #assert self.out_c.contains('int32_t v. = .*; // edi') # this is inlined at the moment
         pass
 
-    def test_out_c_contains_real_register_names(self):
-        assert self.out_c.contains('g[12] = 0; // ebx')
-        assert self.out_c.contains('g[12] = 0; // esi')
+    def test_out_c_doesnt_contain_real_register_names(self):
+        assert not self.out_c.contains('g[12] = 0; // ebx')
+        assert not self.out_c.contains('g[12] = 0; // esi')

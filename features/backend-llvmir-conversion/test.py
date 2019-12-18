@@ -126,9 +126,9 @@ class PostProcessingPerformedCorrectly2(Test):
         assert '0x40178c' in self.out_c # had one reference
         #assert '0x4016f0' in self.out_c # had one reference
         #assert '0x40171c' in self.out_c # had one reference
-        assert '0x401773' in self.out_c # had one reference
-        assert '0x40177e' in self.out_c # had one reference
-        assert '0x401914' in self.out_c # had one reference
+        #assert '0x401773' in self.out_c # had one reference
+        #assert '0x40177e' in self.out_c # had one reference
+        #assert '0x401914' in self.out_c # had one reference
         #assert '0x401cd7' in self.out_c # had one reference
 
     # this label was referenced by goto, but was not appended to body

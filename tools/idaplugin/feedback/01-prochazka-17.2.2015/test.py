@@ -41,5 +41,4 @@ class Test_17_2_2015(Test):
         assert self.out_c.contains('result = 3;')
         assert self.out_c.contains('case 87:')
         assert self.out_c.contains('result = 2;')
-
         assert self.out_c.contains('return result;')

@@ -31,7 +31,7 @@ class Test_2018(Test):
 
 class Test_2017(Test):
     settings_2017 = TestSettings(
-        input=files_in_dir('2017-11-14'),
+        input=files_in_dir('2017-11-14', excluding=['strlen.thumb.gcc.O0.g.elf']),
     )
 
     def test_produce_expected_output(self):
