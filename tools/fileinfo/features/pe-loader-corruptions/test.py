@@ -10,7 +10,7 @@ class Test000(Test):
             '000-correct-file-small-alignment-32bit.ex_',
             '000-correct-file-size-of-opt-header-zero-64bit.ex_',
             '000-valid-file-weird-virtual-size.ex_',
-			'000-valid-file-import-directory-not-zero-terminated.ex_',
+            '000-valid-file-import-directory-not-zero-terminated.ex_',
         ],
         args='--json --verbose'
     )
