@@ -72,7 +72,7 @@ class InvalidInputConfigErrorTest(Test):
 
     def test_decompilation_fails_with_correct_error_message(self):
         self.assertNotEqual(self.decompiler.return_code, 0)
-        assert self.decompiler.log.contains(r'Error: .*config.*[sS]yntax error.*')
+        assert self.decompiler.log.contains(r'Error: loading of config failed')
 
 class MissingInfoAboutFileTest(Test):
     """Checks that bin2llvmir fails with a proper error message when basic
