@@ -476,3 +476,19 @@ class Test042(Test):
     def test_corrupted_pe(self):
         assert self.fileinfo.succeeded
         assert 'loaderError' not in self.fileinfo.output, 'unexpectedly found loader error'
+
+class Test043(Test):
+    settings=TestSettings(
+        tool='fileinfo',
+        input=[
+            '043-zeroed-entrypoint-32bit.ex_',
+            '043-zeroed-entrypoint-64bit.ex_'
+        ],
+        args='--json --verbose'
+    )
+
+    def test_corrupted_pe(self):
+        assert self.fileinfo.succeeded
+        self.assertEqual(self.fileinfo.output["loaderError"]["code"], 43)
+        self.assertEqual(self.fileinfo.output["loaderError"]["code_text"], 'LDR_ERROR_ENTRY_POINT_ZEROED')
+        self.assertEqual(self.fileinfo.output["loaderError"]["loadable_anyway"], 'true')
