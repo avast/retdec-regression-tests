@@ -18,8 +18,8 @@ class TestX86ClangMacho_ack(Test):
 
     def test_for_ack(self):
         assert self.out_c.has_just_funcs('main')
-        assert self.out_c.funcs['main'].calls('_scanf')
-        assert self.out_c.funcs['main'].calls('_printf')
+        assert self.out_c.funcs['main'].calls('scanf')
+        assert self.out_c.funcs['main'].calls('printf')
         assert self.out_c.funcs['main'].calls('_my_sum1')
         assert self.out_c.funcs['main'].calls('_my_sum2')
         assert self.out_c.funcs['main'].has_any_assignments()
