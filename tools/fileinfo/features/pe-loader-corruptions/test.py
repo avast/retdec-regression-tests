@@ -492,3 +492,35 @@ class Test043(Test):
         self.assertEqual(self.fileinfo.output["loaderError"]["code"], 43)
         self.assertEqual(self.fileinfo.output["loaderError"]["code_text"], 'LDR_ERROR_ENTRY_POINT_ZEROED')
         self.assertEqual(self.fileinfo.output["loaderError"]["loadable_anyway"], 'true')
+
+class Test044(Test):
+    settings=TestSettings(
+        tool='fileinfo',
+        input=[
+            '044-digital-signature-cut-32bit.ex_',
+            '044-digital-signature-cut-64bit.ex_'
+        ],
+        args='--json --verbose'
+    )
+
+    def test_corrupted_pe(self):
+        assert self.fileinfo.succeeded
+        self.assertEqual(self.fileinfo.output["loaderError"]["code"], 44)
+        self.assertEqual(self.fileinfo.output["loaderError"]["code_text"], 'LDR_ERROR_DIGITAL_SIGNATURE_CUT')
+        self.assertEqual(self.fileinfo.output["loaderError"]["loadable_anyway"], 'true')
+
+class Test045(Test):
+    settings=TestSettings(
+        tool='fileinfo',
+        input=[
+            '045-digital-signature-zeroed-32bit.ex_',
+            '045-digital-signature-zeroed-64bit.ex_'
+        ],
+        args='--json --verbose'
+    )
+
+    def test_corrupted_pe(self):
+        assert self.fileinfo.succeeded
+        self.assertEqual(self.fileinfo.output["loaderError"]["code"], 45)
+        self.assertEqual(self.fileinfo.output["loaderError"]["code_text"], 'LDR_ERROR_DIGITAL_SIGNATURE_ZEROED')
+        self.assertEqual(self.fileinfo.output["loaderError"]["loadable_anyway"], 'true')
