@@ -85,8 +85,6 @@ class PostProcessingPerformedCorrectly1(Test):
     # and has not disappeared
     def test_labels_were_correctly_replaced(self):
         assert '0x4016e7' in self.out_c # had one reference
-        assert '0x4017a2' in self.out_c # had one reference
-
         assert '0x401751' in self.out_c # replaced due to few statements
 
 class PostProcessingPerformedCorrectly2(Test):

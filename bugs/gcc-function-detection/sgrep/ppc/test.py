@@ -101,7 +101,7 @@ class Test(Test):
         assert self.out_c.has_string_literal( 'evaluating' )
         assert self.out_c.has_string_literal( 'exprs>0' )
         assert self.out_c.has_string_literal( 'extracting' )
-        assert self.out_c.has_string_literal( 'fork' )
+        #assert self.out_c.has_string_literal( 'fork' )
         assert self.out_c.has_string_literal( 'free_tree_node' )
         assert self.out_c.has_string_literal( 'gc lists scanned' )
         assert self.out_c.has_string_literal( 'gc_lists_now<=4' )
