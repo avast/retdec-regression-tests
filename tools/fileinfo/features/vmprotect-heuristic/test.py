@@ -23,7 +23,7 @@ class Test(Test):
         self.assertEqual(
             self.fileinfo.output['Detected tool'],
             [
-                'VMProtect (packer), combined heuristic',
+                'VMProtect (2.04+) (packer), combined heuristic',
                 'Microsoft Linker (12.0) (linker), combined heuristic',
                 'Microsoft (linker), dos header style'
             ]
