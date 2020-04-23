@@ -90,12 +90,7 @@ class TestIhexMipsGccO0O1O2(Test):
         assert self.out_c.has_string_literal('ackerman( %d , %d ) = %d\\n')
 
     def test_call_graph(self):
-        if self.settings.input == 'ack.mips.gcc.O0.little.ihex':
-            main = self.out_c.funcs[ 'function_8900428' ]
-        elif self.settings.input == 'ack.mips.gcc.O1.little.ihex':
-            main = self.out_c.funcs[ 'function_89003c4' ]
-        elif self.settings.input == 'ack.mips.gcc.O2.little.ihex':
-            main = self.out_c.funcs[ 'function_89003c0' ]
+        main = self.out_c.funcs[ 'main' ]
 
         scanf = 'scanf'
         printf = 'printf'
@@ -117,15 +112,14 @@ class TestIhexMipsGccO3(Test):
     )
 
     def test_for_functions(self):
-        assert self.out_c.has_func( 'entry_point' )
-        assert self.out_c.has_func( 'function_8900554' ) # main
+        assert self.out_c.has_func( 'main' )
 
     def test_for_strings(self):
         assert self.out_c.has_string_literal('%d %d')
         assert self.out_c.has_string_literal('ackerman( %d , %d ) = %d\\n')
 
     def test_call_graph(self):
-        main = self.out_c.funcs[ 'function_8900554' ]
+        main = self.out_c.funcs[ 'main' ]
         scanf = 'scanf'
         printf = 'printf'
         assert main.calls( scanf )
