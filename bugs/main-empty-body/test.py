@@ -3,7 +3,7 @@ from regression_tests import *
 class TestDecodeOnly(Test):
     settings = TestSettings(
         input='71d5a692b877db86adae65c06de6d49b',
-        args='--select-function main --select-decode-only'
+        args='--select-functions main --select-decode-only'
     )
 
     def test_check_for_selected_function(self):
