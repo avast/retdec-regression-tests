@@ -44,11 +44,10 @@ class TestArchiveWithEmptyFile(Test):
 
     def test_is_archive_but_the_format_of_file_inside_it_is_unsupported(self):
         self.assertNotEqual(self.decompiler.return_code, 0)
-        assert self.decompiler.log.contains(r'This file is an archive!')
         # The archive contains an empty file, so the archive is valid and its
         # extraction should succeed. However, fileinfo should fail because the
         # format is not supported.
-        assert self.decompiler.log.contains(r'Error: File format.*not supported.')
+        assert self.decompiler.log.contains(r'Error: Failed to load input file')
 
 class TestArchiveInvalidInputArchive(Test):
     settings = TestSettings(
@@ -103,12 +102,10 @@ class TestArchiveDecompilationMSVC(Test):
     def test_check_decompilation(self):
         assert self.out_c.has_func('_factorial')
 
-class TestArchiveInvalidIndex(Test):
+class TestArchiveInvalidIndex_1(Test):
     settings = TestSettings(
         input='free_bsd.a',
         ar_index=[
-            '1111111111111111111111111111111111111',
-            'notanumber',
             '2'
         ]
     )
@@ -123,6 +120,26 @@ class TestArchiveInvalidIndex(Test):
         assert self.decompiler.log.contains(
             r'Error: File on index \'.*\' was not found in the input archive. '
             'Valid indexes are 0-1.'
+        )
+
+class TestArchiveInvalidIndex_2(Test):
+    settings = TestSettings(
+        input='free_bsd.a',
+        ar_index=[
+            '1111111111111111111111111111111111111',
+            'notanumber',
+        ]
+    )
+
+    def setUp(self):
+        # Fail expected.
+        pass
+
+    def test_check_failure(self):
+        self.assertTrue(self.decompiler.failed)
+        assert not self.decompiler.log.contains(r'integer expression expected')
+        assert self.decompiler.log.contains(
+            r'Invalid --ar-index argument'
         )
 
 class TestArchiveInvalidIndexOneFile(Test):
@@ -140,7 +157,7 @@ class TestArchiveInvalidIndexOneFile(Test):
         assert not self.decompiler.log.contains(r'integer expression expected')
         assert self.decompiler.log.contains(
             r'Error: File on index \'.*\' was not found in the input archive. '
-            'The only valid index is 0.'
+            'Valid indexes are 0-0.'
         )
 
 class TestArchiveInvalidName(Test):
