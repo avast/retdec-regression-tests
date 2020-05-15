@@ -466,11 +466,28 @@ class Test041(Test):
         self.assertEqual(self.fileinfo.output["loaderError"]["code_text"], 'LDR_ERROR_RSRC_OVER_END_OF_IMAGE')
         self.assertEqual(self.fileinfo.output["loaderError"]["loadable_anyway"], 'true')
 
+class Test042(Test):
+    settings=TestSettings(
+        tool='fileinfo',
+        input=[
+            '042-rsrc-name-out-of-image-32bit.ex_',
+            '042-rsrc-name-out-of-image-64bit.ex_'
+        ],
+        args='--json --verbose'
+    )
+
+    def test_corrupted_pe(self):
+        assert self.fileinfo.succeeded
+        self.assertEqual(self.fileinfo.output["loaderError"]["code"], 42)
+        self.assertEqual(self.fileinfo.output["loaderError"]["code_text"], 'LDR_ERROR_RSRC_NAME_OUT_OF_IMAGE')
+        self.assertEqual(self.fileinfo.output["loaderError"]["loadable_anyway"], 'true')
+
 class Test043(Test):
     settings=TestSettings(
         tool='fileinfo',
         input=[
-            '043-rsrc-data-beyond-end-of-file-32bit.ex_'
+            '043-rsrc-data-out-of-image-32bit.ex_',
+            '043-rsrc-data-out-of-image-64bit.ex_'
         ],
         args='--json --verbose'
     )
@@ -478,8 +495,24 @@ class Test043(Test):
     def test_corrupted_pe(self):
         assert self.fileinfo.succeeded
         self.assertEqual(self.fileinfo.output["loaderError"]["code"], 43)
-        self.assertEqual(self.fileinfo.output["loaderError"]["code_text"], 'LDR_ERROR_RSRC_DATA_OVER_END_OF_IMAGE')
-        self.assertEqual(self.fileinfo.output["loaderError"]["loadable_anyway"], 'false')
+        self.assertEqual(self.fileinfo.output["loaderError"]["code_text"], 'LDR_ERROR_RSRC_DATA_OUT_OF_IMAGE')
+        self.assertEqual(self.fileinfo.output["loaderError"]["loadable_anyway"], 'true')
+
+class Test044(Test):
+    settings=TestSettings(
+        tool='fileinfo',
+        input=[
+            '044-rsrc-subdir-out-of-image-32bit.ex_',
+            '044-rsrc-subdir-out-of-image-64bit.ex_'
+        ],
+        args='--json --verbose'
+    )
+
+    def test_corrupted_pe(self):
+        assert self.fileinfo.succeeded
+        self.assertEqual(self.fileinfo.output["loaderError"]["code"], 44)
+        self.assertEqual(self.fileinfo.output["loaderError"]["code_text"], 'LDR_ERROR_RSRC_SUBDIR_OUT_OF_IMAGE')
+        self.assertEqual(self.fileinfo.output["loaderError"]["loadable_anyway"], 'true')
 
 class Test_WrongImpDesc(Test):
     settings=TestSettings(
