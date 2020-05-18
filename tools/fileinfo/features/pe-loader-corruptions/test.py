@@ -11,6 +11,8 @@ class Test000(Test):
             '000-correct-file-signed-32bit.ex_',
             '000-correct-file-signed-64bit.ex_',
             '000-correct-file-size-of-opt-header-zero-64bit.ex_',
+			'000-relocations-ok-32bit.ex_',
+			'000-relocations-ok-64bit.ex_',
             '000-valid-file-weird-virtual-size.ex_',
             '000-valid-file-import-directory-not-zero-terminated.ex_',
         ],
@@ -573,4 +575,56 @@ class Test048(Test):
         assert self.fileinfo.succeeded
         self.assertEqual(self.fileinfo.output["loaderError"]["code"], 48)
         self.assertEqual(self.fileinfo.output["loaderError"]["code_text"], 'LDR_ERROR_DIGITAL_SIGNATURE_ZEROED')
+        self.assertEqual(self.fileinfo.output["loaderError"]["loadable_anyway"], 'true')
+
+class Test049(Test):
+    settings=TestSettings(
+        tool='fileinfo',
+        input='049-relocations-out-of-image-32bit.ex_',
+        args='--json --verbose'
+    )
+
+    def test_corrupted_pe(self):
+        assert self.fileinfo.succeeded
+        self.assertEqual(self.fileinfo.output["loaderError"]["code"], 49)
+        self.assertEqual(self.fileinfo.output["loaderError"]["code_text"], 'LDR_ERROR_RELOCATIONS_OUT_OF_IMAGE')
+        self.assertEqual(self.fileinfo.output["loaderError"]["loadable_anyway"], 'true')
+
+class Test050(Test):
+    settings=TestSettings(
+        tool='fileinfo',
+        input='050-reloc-block-invalid-va-32bit.ex_',
+        args='--json --verbose'
+    )
+
+    def test_corrupted_pe(self):
+        assert self.fileinfo.succeeded
+        self.assertEqual(self.fileinfo.output["loaderError"]["code"], 50)
+        self.assertEqual(self.fileinfo.output["loaderError"]["code_text"], 'LDR_ERROR_RELOC_BLOCK_INVALID_VA')
+        self.assertEqual(self.fileinfo.output["loaderError"]["loadable_anyway"], 'true')
+
+class Test051(Test):
+    settings=TestSettings(
+        tool='fileinfo',
+        input='051-reloc-block-invalid-length-32bit.ex_',
+        args='--json --verbose'
+    )
+
+    def test_corrupted_pe(self):
+        assert self.fileinfo.succeeded
+        self.assertEqual(self.fileinfo.output["loaderError"]["code"], 51)
+        self.assertEqual(self.fileinfo.output["loaderError"]["code_text"], 'LDR_ERROR_RELOC_BLOCK_INVALID_LENGTH')
+        self.assertEqual(self.fileinfo.output["loaderError"]["loadable_anyway"], 'true')
+
+class Test052(Test):
+    settings=TestSettings(
+        tool='fileinfo',
+        input='052-reloc-entry-invalid-type-32bit.ex_',
+        args='--json --verbose'
+    )
+
+    def test_corrupted_pe(self):
+        assert self.fileinfo.succeeded
+        self.assertEqual(self.fileinfo.output["loaderError"]["code"], 52)
+        self.assertEqual(self.fileinfo.output["loaderError"]["code_text"], 'LDR_ERROR_RELOC_ENTRY_BAD_TYPE')
         self.assertEqual(self.fileinfo.output["loaderError"]["loadable_anyway"], 'true')
