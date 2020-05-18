@@ -1739,7 +1739,7 @@ class TestCryptoLocker(Test):
         fnc = self.out_c.funcs[ 'function_40fb70' ]
         assert fnc.calls( 'function_40fd60' )
         assert fnc.calls( 'function_410370' )
-        assert fnc.calls( 'function_4104f0' )
+        #assert fnc.calls( 'function_4104f0' )
         assert fnc.calls( 'ReleaseMutex' )
         assert fnc.calls( 'WaitForSingleObject' )
         fnc = self.out_c.funcs[ 'function_40fc10' ]
