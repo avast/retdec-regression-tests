@@ -47,7 +47,7 @@ class LowSectionOffsetAutoalignTest(Test):
 
     def test_low_section_offset_autoalign(self):
         assert self.fileinfo.succeeded
-        self.assertEqual(self.fileinfo.output['sectionTable']['sections'][0]['offset'], '0x1ff')
+        self.assertEqual(self.fileinfo.output['sectionTable']['sections'][0]['offset'], '0')
         self.assertEqual(self.fileinfo.output['importTable']['numberOfImports'], '2')
         self.assertEqual(self.fileinfo.output['importTable']['imports'][0]['index'], '0')
         self.assertEqual(self.fileinfo.output['importTable']['imports'][0]['name'], 'ExitProcess')
