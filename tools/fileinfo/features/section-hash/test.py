@@ -13,10 +13,10 @@ class NoBoundImport2Test(Test):
         self.assertEqual(self.fileinfo.output['sectionTable']['crc32'], '58078107')
         self.assertEqual(self.fileinfo.output['sectionTable']['md5'], '7d4c5cc2526aab0d41f6c4d6d2884c36')
         self.assertEqual(self.fileinfo.output['sectionTable']['sha256'], '91ea35c3d0bcbaf9192532122ef5dda10bfbe4b2c1d994d0caef341443918d03')
-        self.assertEqual(self.fileinfo.output['sectionTable']['sections'][0]['offset'], '0x4')
-        self.assertEqual(self.fileinfo.output['sectionTable']['sections'][0]['crc32'], 'ddeb0ebe')
-        self.assertEqual(self.fileinfo.output['sectionTable']['sections'][0]['md5'], '6a4607fc3e888a0a22f3991c2fdfd8c3')
-        self.assertEqual(self.fileinfo.output['sectionTable']['sections'][0]['sha256'], '7647a5b2dba2556ac996b579f8875bdbd64820593b307c96888731c9b1fce3fb')
+        self.assertEqual(self.fileinfo.output['sectionTable']['sections'][0]['offset'], '0')
+        self.assertEqual(self.fileinfo.output['sectionTable']['sections'][0]['crc32'], 'dbf45aca')
+        self.assertEqual(self.fileinfo.output['sectionTable']['sections'][0]['md5'], '032101c46f64659380ce2eca1bb14004')
+        self.assertEqual(self.fileinfo.output['sectionTable']['sections'][0]['sha256'], 'e99d995e6f0770fdc81ddbb24a7982548b95de7657255e7e663178a33a645757')
 
 class WindowManTest(Test):
     settings = TestSettings(
