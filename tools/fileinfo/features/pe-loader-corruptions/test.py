@@ -628,3 +628,19 @@ class Test052(Test):
         self.assertEqual(self.fileinfo.output["loaderError"]["code"], 52)
         self.assertEqual(self.fileinfo.output["loaderError"]["code_text"], 'LDR_ERROR_RELOC_ENTRY_BAD_TYPE')
         self.assertEqual(self.fileinfo.output["loaderError"]["loadable_anyway"], 'true')
+
+class Test053(Test):
+    settings=TestSettings(
+        tool='fileinfo',
+        input=[
+            '053-memory-layout-32bit.ex_',
+            '053-memory-layout-64bit.ex_'
+        ],
+        args='--json --verbose'
+    )
+
+    def test_corrupted_pe(self):
+        assert self.fileinfo.succeeded
+        self.assertEqual(self.fileinfo.output["loaderError"]["code"], 53)
+        self.assertEqual(self.fileinfo.output["loaderError"]["code_text"], 'LDR_ERROR_INMEMORY_IMAGE')
+        self.assertEqual(self.fileinfo.output["loaderError"]["loadable_anyway"], 'false')
