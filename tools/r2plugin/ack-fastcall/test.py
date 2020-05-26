@@ -7,7 +7,7 @@ class TestArgs(Test):
         commands=(
             's 0x0804847c',                             # Seek address
             'afc fastcall',                             # Set call convention
-            '"afs int32_t ack(int32_t m, int32_t n);"'  # Set signature
+            'afs int32_t ack(int32_t m, int32_t n)'     # Set signature
         ),
         args='--select 0x0804847c'
     )
