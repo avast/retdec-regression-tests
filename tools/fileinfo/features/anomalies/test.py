@@ -118,8 +118,6 @@ class Test5(Test):
         self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][1]['description'], 'Unusual section name: D\\x11TA')
         self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][2]['identifier'], 'UnusualSectionName')
         self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][2]['description'], 'Unusual section name: BSS\\x11')
-        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][3]['identifier'], 'OverlappingSections')
-        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][3]['description'], 'Sections BSS\\x11 and .idata overlap')
 
 class Test6(Test):
     settings = TestSettings(
@@ -170,3 +168,17 @@ class Test8(Test):
         self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][3]['description'], 'Resource 101 has size over 100MB')
         self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][4]['identifier'], 'StretchedResource')
         self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][4]['description'], 'Resource 101 is stretched over multiple sections')
+
+class Test9(Test):
+    settings = TestSettings(
+        tool='fileinfo',
+        input='retdec_unpacker_sections.ex_',
+        args='--verbose --json'
+    )
+
+    def test_anomalies_presented(self):
+        assert self.fileinfo.succeeded
+        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][0]['identifier'], 'PackerSectionName')
+        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][0]['description'], 'Packer section name: gu_idata')
+        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][1]['identifier'], 'PackerSectionName')
+        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][1]['description'], 'Packer section name: gu_rsrc')
