@@ -139,7 +139,7 @@ class TestArchiveInvalidIndex_2(Test):
         self.assertTrue(self.decompiler.failed)
         assert not self.decompiler.log.contains(r'integer expression expected')
         assert self.decompiler.log.contains(
-            r'Invalid --ar-index argument'
+            r'\[--ar-index\] invalid index:'
         )
 
 class TestArchiveInvalidIndexOneFile(Test):
