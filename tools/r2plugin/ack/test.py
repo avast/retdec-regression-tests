@@ -43,7 +43,8 @@ class TestArgs(Test):
         input='ack.x86.clang.macho',
         commands=(
             's 0x01e90',            # Seek address
-            'afvb-*',               # Remove all local vars
+            'afvb-arg_8h',          # Remove local var "arg_8h"
+            'afvb-arg_ch',          # Remove local var "arg_ch"
             'afn ack',              # Rename function
             'afvb 8 m int32_t',     # Provide stack var m
             'afvb 12 n int32_t',    # Provide stack var n
@@ -68,7 +69,8 @@ class TestArgsCustom(Test):
         input='ack.x86.clang.macho',
         commands=(
             's 0x01e90',            # Seek address
-            'afvb-*',               # Remove all local vars
+            'afvb-arg_8h',          # Remove local var "arg_8h"
+            'afvb-arg_ch',          # Remove local var "arg_ch"
             'afn ack',              # Rename function
             'afvb 8 xxx int64_t',   # Provide stack var m
             'afvb 12 yyy char',     # Provide stack var n
@@ -93,7 +95,7 @@ class TestChangeSignature(Test):
         input='ack.x86.clang.macho',
         commands=(
             's 0x01e90',                                # Seek address
-            '"afs int16_t _ack (char a, int64_t b);"'   # Change signature
+            'afs int16_t _ack (char a, int64_t b)'      # Change signature
                                                         # !! quotes required
         ),
         args='--select 0x01e90'
@@ -115,7 +117,7 @@ class TestChangeSignatureFP(Test):
         input='ack.x86.clang.macho',
         commands=(
             's 0x01e90',                                # Seek address
-            '"afs float _ack (double a, float b);"'   # Change signature
+            'afs float _ack (double a, float b)'        # Change signature
                                                         # !! quotes required
         ),
         args='--select 0x01e90'
