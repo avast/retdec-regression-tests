@@ -349,11 +349,11 @@ class Test032(Test):
         args='--json --verbose'
     )
 
+    # Note that in Windows 10, these 2 files can be loaded just fine.
+    # Earlier versions of Windows (up and including to 8.1) still consider these files invalid
     def test_corrupted_pe(self):
         assert self.fileinfo.succeeded
-        self.assertEqual(self.fileinfo.output["loaderError"]["code"], 32)
-        self.assertEqual(self.fileinfo.output["loaderError"]["code_text"], 'LDR_ERROR_INVALID_SIZE_OF_IMAGE')
-        self.assertEqual(self.fileinfo.output["loaderError"]["loadable_anyway"], 'false')
+        assert 'loaderError' not in self.fileinfo.output, 'unexpectedly found loader error'
 
 class Test033(Test):
     settings=TestSettings(
@@ -361,7 +361,6 @@ class Test033(Test):
         input=[
             '033-file-is-cut-32bit.ex_',
             '033-file-is-cut-32bit.ex_',
-            '033-file-is-cut-small-alignment-32bit.ex_',
         ],
         args='--json --verbose'
     )
@@ -376,6 +375,7 @@ class Test034(Test):
     settings=TestSettings(
         tool='fileinfo',
         input=[
+            '033-file-is-cut-small-alignment-32bit.ex_',
             '034-file-is-cut-but-loadable-32bit.ex_',
             '034-file-is-cut-but-loadable-64bit.ex_'
         ],
