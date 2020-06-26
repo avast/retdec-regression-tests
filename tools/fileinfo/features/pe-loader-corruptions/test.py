@@ -256,9 +256,7 @@ class Test021(Test):
 
     def test_corrupted_pe(self):
         assert self.fileinfo.succeeded
-        self.assertEqual(self.fileinfo.output["loaderError"]["code"], 21)
-        self.assertEqual(self.fileinfo.output["loaderError"]["code_text"], 'LDR_ERROR_SIZE_OF_OPTHDR_NOT_ALIGNED')
-        self.assertEqual(self.fileinfo.output["loaderError"]["loadable_anyway"], 'false')
+        assert 'loaderError' not in self.fileinfo.output, 'unexpectedly found loader error'
 
 class Test023(Test):
     settings=TestSettings(
