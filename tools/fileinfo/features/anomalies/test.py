@@ -118,6 +118,8 @@ class Test5(Test):
         self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][1]['description'], 'Unusual section name: D\\x11TA')
         self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][2]['identifier'], 'UnusualSectionName')
         self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][2]['description'], 'Unusual section name: BSS\\x11')
+        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][3]['identifier'], 'OverlappingSections')
+        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][3]['description'], 'Sections .idata and .tls overlap')
 
 class Test6(Test):
     settings = TestSettings(
