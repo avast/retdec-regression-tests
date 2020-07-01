@@ -400,7 +400,7 @@ class Test035(Test):
         assert self.fileinfo.succeeded
         self.assertEqual(self.fileinfo.output["loaderError"]["code"], 35)
         self.assertEqual(self.fileinfo.output["loaderError"]["code_text"], 'LDR_ERROR_IMPDIR_OUT_OF_FILE')
-        self.assertEqual(self.fileinfo.output["loaderError"]["loadable_anyway"], 'false')
+        self.assertEqual(self.fileinfo.output["loaderError"]["loadable_anyway"], 'true')
 
 class Test036(Test):
     settings=TestSettings(
@@ -416,7 +416,7 @@ class Test036(Test):
         assert self.fileinfo.succeeded
         self.assertEqual(self.fileinfo.output["loaderError"]["code"], 36)
         self.assertEqual(self.fileinfo.output["loaderError"]["code_text"], 'LDR_ERROR_IMPDIR_CUT')
-        self.assertEqual(self.fileinfo.output["loaderError"]["loadable_anyway"], 'false')
+        self.assertEqual(self.fileinfo.output["loaderError"]["loadable_anyway"], 'true')
 
 class Test038(Test):
     settings=TestSettings(
@@ -432,7 +432,7 @@ class Test038(Test):
         assert self.fileinfo.succeeded
         self.assertEqual(self.fileinfo.output["loaderError"]["code"], 38)
         self.assertEqual(self.fileinfo.output["loaderError"]["code_text"], 'LDR_ERROR_IMPDIR_NAME_RVA_INVALID')
-        self.assertEqual(self.fileinfo.output["loaderError"]["loadable_anyway"], 'false')
+        self.assertEqual(self.fileinfo.output["loaderError"]["loadable_anyway"], 'true')
 
 class Test039(Test):
     settings=TestSettings(
@@ -448,7 +448,7 @@ class Test039(Test):
         assert self.fileinfo.succeeded
         self.assertEqual(self.fileinfo.output["loaderError"]["code"], 39)
         self.assertEqual(self.fileinfo.output["loaderError"]["code_text"], 'LDR_ERROR_IMPDIR_THUNK_RVA_INVALID')
-        self.assertEqual(self.fileinfo.output["loaderError"]["loadable_anyway"], 'false')
+        self.assertEqual(self.fileinfo.output["loaderError"]["loadable_anyway"], 'true')
 
 class Test041(Test):
     settings=TestSettings(
