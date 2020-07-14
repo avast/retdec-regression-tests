@@ -48,18 +48,6 @@ class TestProcrypt(Test):
         self.assertEqual(self.fileinfo.output['tools'][0]['heuristics'], True)
         self.assertEqual(self.fileinfo.output['tools'][0]['name'], 'ProCrypt')
 
-class TestRamnit(Test):
-    settings=TestSettings(
-        input='b9bf69972077eee9c68d9e6e1841ad662ea072e803f0e02261c7d06528ba15aa',
-        tool='fileinfo',
-        args='--json'
-    )
-
-    def test_heuristic_works(self):
-        assert self.fileinfo.succeeded
-        self.assertEqual(self.fileinfo.output['tools'][0]['heuristics'], True)
-        self.assertEqual(self.fileinfo.output['tools'][0]['name'], 'Ramnit')
-
 class TestTSULoader(Test):
     settings=TestSettings(
         input='4cb6f3563107054610512dfedb951930d2bc799d478e51727fa9d77fe70415d1',
