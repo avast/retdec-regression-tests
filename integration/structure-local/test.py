@@ -1,68 +1,6 @@
 from regression_tests import *
 
 class TestBase(Test):
-    def test_produce_expected_output(self):
-        self.assert_c_produces_output_when_run(
-            input='a 10 3.1415',
-            expected_return_code=0,
-            expected_output=
-'''97 10 3.140000
-3.140000 10 97
-123 97 3.140000
-1 2 3 0.000000
-3 4 5 4.140000
-5 6 7 8.280001
-7 8 9 12.420000
-9 10 11 16.560001
-123 456
-
-0
-55
-65
-
-1
-65
-75
-
-2
-75
-85
-
-3
-85
-95
-
-4
-95
-105
-
-5
-105
-115
-
-6
-115
-125
-
-7
-125
-135
-
-8
-135
-145
-
-9
-145
-155
-'''
-        )
-
-class Test_2018(Test):
-    settings_2018 = TestSettings(
-        input=files_in_dir('2018-09-17'),
-    )
-
     def test_check_function_fnc_basic_print(self):
         assert self.out_c.has_func('fnc_basic_print')
         assert self.out_c.funcs['fnc_basic_print'].return_type.is_int(32)
@@ -151,3 +89,67 @@ class Test_2017(TestBase):
     #settings_2015 = TestSettings(
         #input=files_in_dir('2015-03-30'),
     #)
+
+class TestRun(TestBase):
+    def test_produce_expected_output(self):
+        if not on_macos():
+            self.assert_c_produces_output_when_run(
+                input='a 10 3.1415',
+                expected_return_code=0,
+                expected_output=
+'''97 10 3.140000
+3.140000 10 97
+123 97 3.140000
+1 2 3 0.000000
+3 4 5 4.140000
+5 6 7 8.280001
+7 8 9 12.420000
+9 10 11 16.560001
+123 456
+
+0
+55
+65
+
+1
+65
+75
+
+2
+75
+85
+
+3
+85
+95
+
+4
+95
+105
+
+5
+105
+115
+
+6
+115
+125
+
+7
+125
+135
+
+8
+135
+145
+
+9
+145
+155
+'''
+        )
+
+class Test_2018(TestBase):
+    settings_2018 = TestSettings(
+        input=files_in_dir('2018-09-17'),
+    )
