@@ -12,4 +12,9 @@ class Test_Watcom1(Test):
 
     def test_pe_linker(self):
         assert self.fileinfo.succeeded
-        self.assertTrue((self.fileinfo.output['tools'][1]['name'] == 'Watcom') or (self.fileinfo.output['tools'][3]['name'] == 'Watcom'))
+        linker_found = False
+        for tool in self.fileinfo.output['tools']:
+            if tool['name'] == 'Watcom':
+                linker_found = True
+                break
+        self.assertTrue(linker_found)
