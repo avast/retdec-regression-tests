@@ -122,8 +122,10 @@ class Test_2018_x64Pe(Test):
     def test_check_function_main(self):
         assert self.out_c.has_func('main')
         assert self.out_c.funcs['main'].has_any_for_loops()
-        assert (self.out_c.funcs['main'].has_for_loops('for (int64_t i = 0; i < 10; i++)'))
-        assert (self.out_c.funcs['main'].has_for_loops('for (int64_t j = 0; j < 10; j++)'))
+        assert (self.out_c.funcs['main'].has_for_loops('for (int64_t i = 0; i < 10; i++)') or
+                self.out_c.funcs['main'].has_for_loops('for (int64_t i = 0; i < 10; i)'))
+        assert (self.out_c.funcs['main'].has_for_loops('for (int64_t j = 0; j < 10; j++)') or
+                self.out_c.funcs['main'].has_for_loops('for (int64_t j = 0; j < 10; j)'))
         assert self.out_c.funcs['main'].calls('printf')
 
     def test_check_presence_of_literals(self):
