@@ -9,5 +9,5 @@ class Test(Test):
         ]
     )
 
-    def test_output_contains_dotnet_info(self):
+    def test_analysis_succeeds(self):
         assert self.fileinfo.succeeded
