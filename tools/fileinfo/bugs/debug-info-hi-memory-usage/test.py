@@ -1,5 +1,8 @@
 from regression_tests import *
 
+# A test for the fix of https://github.com/avast/retdec/issues/824. As we do
+# not have a way of checking the amount of allocated memory in regression
+# tests, just check that the analysis succeeds.
 class Test(Test):
     settings=TestSettings(
         tool='fileinfo',
