@@ -18,7 +18,7 @@ class Test(Test):
         assert self.out_c.has_string_literal( ' %dK nest stack size, %dK inner tablesize\\n' )
         assert self.out_c.has_string_literal( ' -%c %s' )
         assert self.out_c.has_string_literal( ' Longest list size was %d regions.\\n' )
-        #assert self.out_c.has_string_literal( " ] 'expr' [<files...>]\\n" )
+        assert self.out_c.has_string_literal( " ] 'expr' [<files...>]\\n" )
         assert self.out_c.has_string_literal( '%-18s%8s%8s%8s\\n' )
         assert self.out_c.has_string_literal( '%15s:%-4d%6s:%-4d%5s:%-4d%5s:%-4d%11s:%-4d%4s:%-4d\\n' )
         assert self.out_c.has_string_literal( '%15s:%-4d%6s:%-4d\\n' )

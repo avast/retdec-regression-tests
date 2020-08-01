@@ -46,8 +46,8 @@ class Test(Test):
         # different code that back-end does not restructure correctly. We
         # should improve the structuring, but this is a task for a more time
         # than we have at the moment.
-        # assert self.out_c.has_string_literal( ' incomplete distance tree\\n' )
-        # assert self.out_c.has_string_literal( ' incomplete literal tree\\n' )
+        assert self.out_c.has_string_literal( ' incomplete distance tree\\n' )
+        assert self.out_c.has_string_literal( ' incomplete literal tree\\n' )
         assert self.out_c.has_string_literal( '%2ld.%1ld%%' )
         assert self.out_c.has_string_literal( '%5s %08lx %11s ' )
         assert self.out_c.has_string_literal( '%9ld %9ld ' )
@@ -108,7 +108,7 @@ class Test(Test):
         assert self.out_c.has_string_literal( 'compr' )
         assert self.out_c.has_string_literal( 'compressed  uncompr. ratio uncompressed_name' )
         assert self.out_c.has_string_literal( 'corrupted input -- file name too large' )
-        #assert self.out_c.has_string_literal( 'de' )
+        assert self.out_c.has_string_literal( 'de' )
         assert self.out_c.has_string_literal( 'defla' )
         assert self.out_c.has_string_literal( 'gun' )
         assert self.out_c.has_string_literal( 'gzcat' )

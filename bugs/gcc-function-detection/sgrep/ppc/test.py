@@ -88,7 +88,7 @@ class Test(Test):
         assert self.out_c.has_string_literal( 'common.c' )
         assert self.out_c.has_string_literal( 'comp_tree_nodes' )
         assert self.out_c.has_string_literal( 'concat' )
-        #assert self.out_c.has_string_literal( 'constant gc list must be sorted' )
+        assert self.out_c.has_string_literal( 'constant gc list must be sorted' )
         assert self.out_c.has_string_literal( 'containing' )
         assert self.out_c.has_string_literal( 'create_reference_counters' )
         assert self.out_c.has_string_literal( 'creating tempfile: open' )
@@ -148,7 +148,7 @@ class Test(Test):
         assert self.out_c.has_string_literal( 'read style file %s : %s\\n' )
         assert self.out_c.has_string_literal( 'read_expressions' )
         assert self.out_c.has_string_literal( 'reg1.end<reg2.end' )
-        #assert self.out_c.has_string_literal( 'region end point must be greater than start point' )
+        assert self.out_c.has_string_literal( 'region end point must be greater than start point' )
         assert self.out_c.has_string_literal( 'regions created' )
         assert self.out_c.has_string_literal( 'remove_duplicate_phrases' )
         assert self.out_c.has_string_literal( 'remove_duplicates' )
@@ -178,9 +178,9 @@ class Test(Test):
         assert self.out_c.has_string_literal( 'l->length<=( 1 << 7 )' )
         assert self.out_c.has_string_literal( 'start_region_search' )
         assert self.out_c.has_string_literal( ' -%c %s' )
-        #assert self.out_c.has_string_literal( 'l->last->next==((void *)0)' )          # TODO: non-deterministic, sometimes it is there, sometimes it is not.
-        #assert self.out_c.has_string_literal( 'handle->list->length<=( 1 << 7 )' )          # TODO: non-deterministic, sometimes it is there, sometimes it is not.
-        #assert self.out_c.has_string_literal( 'do_get_region' )          # TODO: non-deterministic, sometimes it is there, sometimes it is not.
+        assert self.out_c.has_string_literal( 'l->last->next==((void *)0)' )          # TODO: non-deterministic, sometimes it is there, sometimes it is not.
+        assert self.out_c.has_string_literal( 'handle->list->length<=( 1 << 7 )' )          # TODO: non-deterministic, sometimes it is there, sometimes it is not.
+        assert self.out_c.has_string_literal( 'do_get_region' )          # TODO: non-deterministic, sometimes it is there, sometimes it is not.
 
     # Currently detected functions which have their named (from symbols) counterparts in not-stripped binary.
     #
