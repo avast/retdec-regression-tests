@@ -8,7 +8,7 @@ class TestCryptoLocker(Test):
     )
 
     def test_check_for_currently_detected_strings(self):
-        #assert self.out_c.has_string_literal( '.bat' )
+        assert self.out_c.has_string_literal( '.bat' )
         assert self.out_c.has_string_literal( '.exe' )
         assert self.out_c.has_string_literal( '.tmp.tmp' )
         assert self.out_c.has_string_literal( '@echo off\\r\\n:Repeat\\r\\nattrib -R -S -H \\"%s\\"\\r\\ndel /F \\"%s\\" >nul\\r\\nif exist \\"%s\\" goto Repeat\\r\\ndel /F \\"%s\\"' )
