@@ -31,7 +31,7 @@ class TestAll(TestBase):
 
         # String is not found on many archs. Checking for it only on some would be
         # to difficult -> do not check for it at all right now.
-        #assert self.out_c.has_string_literal_matching( r'Derived::Derived(\\n)?' )
+        assert self.out_c.has_string_literal_matching( r'Derived::Derived(\\n)?' )
 
     def test_for_vtables(self):
         assert self.out_config.vtable_count == 2
