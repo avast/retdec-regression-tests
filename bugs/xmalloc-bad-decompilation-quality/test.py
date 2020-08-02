@@ -23,7 +23,7 @@ class Test(Test):
         assert self.out_c.has_string_literal( '(C)' )
         assert self.out_c.has_string_literal( "*iter->cur.ptr == '\\\\0'" )
         assert self.out_c.has_string_literal( '/.libs/' )
-        #assert self.out_c.has_string_literal( '/usr/local/lib' )
+        assert self.out_c.has_string_literal( '/usr/local/lib' )
         assert self.out_c.has_string_literal( '/usr/local/share/locale' )
         assert self.out_c.has_string_literal( 'A NULL argv[0] was passed through an exec system call.\\n' )
         assert self.out_c.has_string_literal( 'ASCII' )
