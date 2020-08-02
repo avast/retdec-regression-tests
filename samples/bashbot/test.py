@@ -74,10 +74,24 @@ class BashbotTest(Test):
         assert self.out_c.has_string_literal( 'PING' )
         assert self.out_c.has_string_literal( 'PONG!' )
         assert self.out_c.has_string_literal( 'sh' )
+        assert self.out_c.has_string_literal( '%d.%d.%d.%d' )
+        assert self.out_c.has_string_literal( '%s 2>&1' )
+        assert self.out_c.has_string_literal( 'DUP' )
+        assert self.out_c.has_string_literal( 'Failed opening raw socket.' )
+        assert self.out_c.has_string_literal( 'Failed setting raw headers mode.' )
+        assert self.out_c.has_string_literal( 'FAILED TO CONNECT' )
+        assert self.out_c.has_string_literal( 'FORK' )
+        assert self.out_c.has_string_literal( 'HOLD' )
+        assert self.out_c.has_string_literal( 'Invalid flag \\"%s\\"' )
+        assert self.out_c.has_string_literal( 'JUNK' )
+        assert self.out_c.has_string_literal( 'KILLATTK' )
+        assert self.out_c.has_string_literal( 'Killed %d.' )
+        assert self.out_c.has_string_literal( 'LOLNOGTFO' )
+        assert self.out_c.has_string_literal( 'None Killed.' )
+        assert self.out_c.has_string_literal( 'SCANNER' )
+        assert self.out_c.has_string_literal( 'SCANNER ON | OFF' )
 
         # jk: the following strings are not detected on all architectures at the same time.
-        #assert self.out_c.has_string_literal( '%d.%d.%d.%d' ) #x86
-        #assert self.out_c.has_string_literal( '%s 2>&1' ) #x86
         #assert self.out_c.has_string_literal( '(null)' ) #x86
         #assert self.out_c.has_string_literal( '/bin/busybox;echo -e \'gayfgt\'\\r\\n' ) #PPC
         #assert self.out_c.has_string_literal( ':>%$#' )
@@ -85,27 +99,12 @@ class BashbotTest(Test):
         #assert self.out_c.has_string_literal( 'all' ) #x86
         #assert self.out_c.has_string_literal( 'assword:' ) #PPC
         #assert self.out_c.has_string_literal( '-c' ) #x86
-        #assert self.out_c.has_string_literal( 'DUP' ) #ARM
-        #assert self.out_c.has_string_literal( 'Failed opening raw socket.' ) #arm
-        #assert self.out_c.has_string_literal( 'Failed setting raw headers mode.' ) #arm
-        #assert self.out_c.has_string_literal( 'FAILED TO CONNECT' ) #arm
-        #assert self.out_c.has_string_literal( 'FORK' ) #PPC
         #assert self.out_c.has_string_literal( 'gayfgt' ) #PPC
-        #assert self.out_c.has_string_literal( 'HOLD' ) # PPC
-        #assert self.out_c.has_string_literal( 'Invalid flag \\"%s\\"' ) #arm
-        #assert self.out_c.has_string_literal( 'JUNK' ) #PPC
-        #assert self.out_c.has_string_literal( 'KILLATTK' ) #PPC
-        #assert self.out_c.has_string_literal( 'Killed %d.' ) #x86
-        #assert self.out_c.has_string_literal( 'LOLNOGTFO' ) #arm
-        #assert self.out_c.has_string_literal( 'My IP: %s' ) #PPC
         #assert self.out_c.has_string_literal( 'ncorrect' ) #thumb
-        #assert self.out_c.has_string_literal( 'None Killed.' ) #arm
         #assert self.out_c.has_string_literal( 'OFF' ) #x86
         #assert self.out_c.has_string_literal( 'ogin:' ) #arm
         #assert self.out_c.has_string_literal( 'ON' ) #x86
         #assert self.out_c.has_string_literal( 'REPORT %s:%s:%s' ) #PPC
-        #assert self.out_c.has_string_literal( 'SCANNER' ) #arm
-        #assert self.out_c.has_string_literal( 'SCANNER ON | OFF' ) #x86
         #assert self.out_c.has_string_literal( 'sh\\r\\n' ) #thumb
         #assert self.out_c.has_string_literal( 'shell\\r\\n' ) #thum
         #assert self.out_c.has_string_literal( 'ulti-call' ) #arm
