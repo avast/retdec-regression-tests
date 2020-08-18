@@ -10,7 +10,7 @@ class TestDecompileAll(Test):
     settings = TestSettings.from_settings(base_settings)
 
     def test_main_comment(self):
-        assert self.out_c.contains(r'// Comment:\n//     this is\n//     a main\n//     function\nint32_t _main')
+        assert self.out_c.contains(r'// Comment:\n//     this is \n//     a main \n//     function\nint32_t _main')
 
 class TestDecompileSelective(Test):
     settings = TestSettings.from_settings(base_settings,
@@ -18,4 +18,4 @@ class TestDecompileSelective(Test):
     )
 
     def test_main_comment(self):
-        assert self.out_c.contains(r'// Comment:\n//     this is\n//     a main\n//     function<retdec_select>\nint32_t _main')
+        assert self.out_c.contains(r'// Comment:\n//     this is \n//     a main \n//     function<retdec_select>\nint32_t _main')
