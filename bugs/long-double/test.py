@@ -20,7 +20,7 @@ class Test(Test):
             # On Windows, the literal may either be 1e320L or inf, depending on
             # the compiler (MSVC does not support 80b long double, so it uses
             # double, in which the literal "overflows" to inf).
-            assert self.out_c.contains('1.0e\+320L') or self.out_c.contains('inf')
+            assert self.out_c.contains('1.0e\+320L') or self.out_c.contains('inf \* ') or self.out_c.contains('INFINITY \* ')
         else:  # Linux
             # Both GCC and Clang on Linux support 80b long double.
             assert self.out_c.contains('1.0e\+320L')
