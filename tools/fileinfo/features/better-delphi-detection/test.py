@@ -80,14 +80,16 @@ class TestDelphiNoComment(Test):
 
     def test_delphi_was_detected(self):
         assert self.fileinfo.succeeded
+        desired_tool_recognized = False
+
         # Compiler detection.
-        self.assertEqual(
-            self.fileinfo.output['tools'][0]['name'], 'Embarcadero Delphi'
-        )
-        self.assertEqual(self.fileinfo.output['tools'][0]['type'], 'compiler')
-        self.assertEqual(self.fileinfo.output['tools'][0]['version'], '26.0+')
-        self.assertEqual(
-            self.fileinfo.output['tools'][0]['additional'], 'XE5 or higher'
-        )
+        for tool in self.fileinfo.output['tools']:
+            if(tool['name'] == 'Embarcadero Delphi' and \
+               tool['type'] == 'compiler' and \
+               tool['version'] == '26.0+' and \
+               tool['additional'] == 'XE5 or higher'):
+                desired_tool_recognized = True
+        self.assertTrue(desired_tool_recognized)            
+
          # Language detection.
         self.assertEqual(self.fileinfo.output['languages'][0]['name'], 'Delphi')
