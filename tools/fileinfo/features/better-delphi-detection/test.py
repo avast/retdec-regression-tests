@@ -89,7 +89,7 @@ class TestDelphiNoComment(Test):
                tool['version'] == '26.0+' and \
                tool['additional'] == 'XE5 or higher'):
                 desired_tool_recognized = True
-        self.assertTrue(desired_tool_recognized)            
+        self.assertTrue(desired_tool_recognized)
 
          # Language detection.
         self.assertEqual(self.fileinfo.output['languages'][0]['name'], 'Delphi')
