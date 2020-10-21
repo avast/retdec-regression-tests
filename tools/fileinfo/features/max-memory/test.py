@@ -44,7 +44,7 @@ class TestAnalysis_Issue872(Test):
     settings = TestSettings(
         tool='fileinfo',
         args=[
-            '--max-memory=104857600',  # 100 MB
+            '--max-memory=110100480',  # 105 MB
             '--max-memory-half-ram',
         ],
         input='E556E9A67BBED5B6C32BE434A148841FEFEE81EB39432D427CB08FEFB0098173'
