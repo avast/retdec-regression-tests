@@ -44,7 +44,7 @@ class TestAnalysis_Issue872(Test):
     settings = TestSettings(
         tool='fileinfo',
         args=[
-            '--max-memory=125829120',  # 120 MB. Needed to be updated after VS2017 Spectre update
+            '--max-memory=157286400',  # 150 MB. Needed to be updated after VS2017 Spectre update
             '--max-memory-half-ram',
         ],
         input='E556E9A67BBED5B6C32BE434A148841FEFEE81EB39432D427CB08FEFB0098173'
