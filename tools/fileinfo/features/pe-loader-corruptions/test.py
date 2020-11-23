@@ -439,7 +439,8 @@ class Test039(Test):
         tool='fileinfo',
         input=[
             '039-import-thunk-invalid-32bit.ex_',
-            '039-import-thunk-invalid-64bit.ex_'
+            '039-import-thunk-invalid-64bit.ex_',
+            '039-import-thunk-invalid-name-64bit.ex_'
         ],
         args='--json --verbose'
     )
