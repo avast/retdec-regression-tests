@@ -11,8 +11,8 @@ class Test000(Test):
             '000-correct-file-signed-32bit.ex_',
             '000-correct-file-signed-64bit.ex_',
             '000-correct-file-size-of-opt-header-zero-64bit.ex_',
-			'000-relocations-ok-32bit.ex_',
-			'000-relocations-ok-64bit.ex_',
+            '000-relocations-ok-32bit.ex_',
+            '000-relocations-ok-64bit.ex_',
             '000-valid-file-weird-virtual-size.ex_',
             '000-valid-file-import-directory-not-zero-terminated.ex_',
         ],
@@ -439,7 +439,8 @@ class Test039(Test):
         tool='fileinfo',
         input=[
             '039-import-thunk-invalid-32bit.ex_',
-            '039-import-thunk-invalid-64bit.ex_'
+            '039-import-thunk-invalid-64bit.ex_',
+            '039-import-thunk-invalid-name-64bit.ex_'
         ],
         args='--json --verbose'
     )
