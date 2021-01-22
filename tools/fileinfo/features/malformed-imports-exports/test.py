@@ -16,23 +16,25 @@ from regression_tests import *
         #self.assertEqual(self.fileinfo.output['declaredNumberOfDataDirectories'], '620')
         #self.assertEqual(len(self.fileinfo.output['importTable']['imports']), 527798)
 
-# Not included. The sample contains imports with name
-# containing an array of equal characters, which we no longer consider valid
-#class Test002(Test):
-#    settings=TestSettings(
-#        tool='fileinfo',
-#        timeout=60,					# ~3.4 seconds on Intel Xeon E5-1620 v3 @3.50 GHz with 16 GB RAM (Windows 10 x64, Release, x64 build)
-#                                    # ~26  seconds on -------------------- || ---------------------- (Windows 10 x64, Debug, x64 build)
-#        input=[
-#            '7CE5BB5CA99B3570514AF03782545D41213A77A0F93D4AAC8269823A8D3A58EF.dat',
-#        ],
-#        args='--json --verbose'
-#    )
-#
-#    def test_imports_exports(self):
-#        assert self.fileinfo.succeeded
-#        self.assertEqual(self.fileinfo.output['declaredNumberOfDataDirectories'], '16')
-#        self.assertEqual(len(self.fileinfo.output['importTable']['imports']), 28672)
+# 2021-01-22: We no longer consider this sample valid.
+# The sample contains imports with name containing an array of equal characters
+class Test002(Test):
+    settings=TestSettings(
+        tool='fileinfo',
+        timeout=60,					# ~3.4 seconds on Intel Xeon E5-1620 v3 @3.50 GHz with 16 GB RAM (Windows 10 x64, Release, x64 build)
+                                    # ~26  seconds on -------------------- || ---------------------- (Windows 10 x64, Debug, x64 build)
+        input=[
+            '7CE5BB5CA99B3570514AF03782545D41213A77A0F93D4AAC8269823A8D3A58EF.dat',
+        ],
+        args='--json --verbose'
+    )
+
+    def test_imports_exports(self):
+        assert self.fileinfo.succeeded
+        self.assertEqual(self.fileinfo.output["loaderError"]["code"], 38)
+        self.assertEqual(self.fileinfo.output["loaderError"]["code_text"], 'LDR_ERROR_IMPDIR_NAME_RVA_INVALID')
+        #self.assertEqual(self.fileinfo.output['declaredNumberOfDataDirectories'], '16')
+        #self.assertEqual(len(self.fileinfo.output['importTable']['imports']), 28672)
 
 # Not included because of the sample size (17.1 MB)
 #class Test003(Test):
