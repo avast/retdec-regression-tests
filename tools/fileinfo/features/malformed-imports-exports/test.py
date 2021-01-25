@@ -16,6 +16,8 @@ from regression_tests import *
         #self.assertEqual(self.fileinfo.output['declaredNumberOfDataDirectories'], '620')
         #self.assertEqual(len(self.fileinfo.output['importTable']['imports']), 527798)
 
+# 2021-01-22: We no longer consider this sample valid.
+# The sample contains imports with name containing an array of equal characters
 class Test002(Test):
     settings=TestSettings(
         tool='fileinfo',
@@ -29,8 +31,10 @@ class Test002(Test):
 
     def test_imports_exports(self):
         assert self.fileinfo.succeeded
-        self.assertEqual(self.fileinfo.output['declaredNumberOfDataDirectories'], '16')
-        self.assertEqual(len(self.fileinfo.output['importTable']['imports']), 28672)
+        self.assertEqual(self.fileinfo.output["loaderError"]["code"], 38)
+        self.assertEqual(self.fileinfo.output["loaderError"]["code_text"], 'LDR_ERROR_IMPDIR_NAME_RVA_INVALID')
+        #self.assertEqual(self.fileinfo.output['declaredNumberOfDataDirectories'], '16')
+        #self.assertEqual(len(self.fileinfo.output['importTable']['imports']), 28672)
 
 # Not included because of the sample size (17.1 MB)
 #class Test003(Test):
