@@ -22,4 +22,7 @@ class TestCorruptedPEWithoutCrash(Test):
     )
 
     def test_corrupted_pe(self):
-        assert 'errors' in self.fileinfo.output
+        assert self.fileinfo.succeeded
+        self.assertEqual(self.fileinfo.output["loaderError"]["code"], 5)
+        self.assertEqual(self.fileinfo.output["loaderError"]["code_text"], 'LDR_ERROR_NTHEADER_OUT_OF_FILE')
+        self.assertEqual(self.fileinfo.output["loaderError"]["loadable_anyway"], 'false')
