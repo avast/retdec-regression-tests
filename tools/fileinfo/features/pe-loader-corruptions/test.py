@@ -23,6 +23,23 @@ class Test000(Test):
         assert self.fileinfo.succeeded
         assert 'loaderError' not in self.fileinfo.output, 'unexpectedly found loader error'
 
+class Test001(Test):
+    settings=TestSettings(
+        tool='fileinfo',
+        input=[
+            '001-pe-header-cut-001.ex_',
+            '001-pe-header-cut-002.ex_',
+        ],
+        args='--json --verbose'
+    )
+
+    def test_corrupted_pe(self):
+        assert self.fileinfo.succeeded
+        self.assertEqual(self.fileinfo.output["loaderError"]["code"], 5)
+        self.assertEqual(self.fileinfo.output["loaderError"]["code_text"], 'LDR_ERROR_NTHEADER_OUT_OF_FILE')
+        self.assertEqual(self.fileinfo.output["loaderError"]["loadable_anyway"], 'false')
+
+
 class Test002(Test):
     settings=TestSettings(
         tool='fileinfo',
