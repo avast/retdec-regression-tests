@@ -24,7 +24,6 @@ class Test3(Test):
     settings=TestSettings(
         tool='unpacker',
         input=[
-            '160fd4eaf7720894e8247f69026c4bab',
             'd2df52363bba1927192f4d7808097c4f'
         ]
     )
