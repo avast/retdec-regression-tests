@@ -1,7 +1,8 @@
 from regression_tests import *
 
+
 class Test1(Test):
-    settings=TestSettings(
+    settings = TestSettings(
         tool='fileinfo',
         args='--json --verbose',
         input='c1ae78a9681fd2c6dac9501258ee8f69'
@@ -9,13 +10,18 @@ class Test1(Test):
 
     def test_certificate_table_present(self):
         assert self.fileinfo.succeeded
-        assert 'signerCertificateIndex' not in self.fileinfo.output['certificateTable']
-        self.assertEqual(self.fileinfo.output['certificateTable']['numberOfCertificates'], '2')
-        self.assertEqual(self.fileinfo.output['certificateTable']['certificates'][0]['sha256'], '8815dff787f21fa8106760cb89c5b4493f4bd45e2ce801d2a4fe1f61dee0c039')
-        self.assertEqual(self.fileinfo.output['certificateTable']['certificates'][1]['sha256'], '1c1983300c10fb262c0b2304b7be15aaba10ae356ebbbb177583dc44774eb080')
+        assert len(self.fileinfo.output['certificateTable']
+                   ['signatures'][0]['signer']['chain']) == 0
+        self.assertEqual(len(
+            self.fileinfo.output['certificateTable']['signatures'][0]['allCertificates']), 5)
+        self.assertEqual(self.fileinfo.output['certificateTable']['signatures'][0]['signer']['counterSigners']
+                         [0]['chain'][0]['sha256'], '8815DFF787F21FA8106760CB89C5B4493F4BD45E2CE801D2A4FE1F61DEE0C039')
+        self.assertEqual(self.fileinfo.output['certificateTable']['signatures'][0]['signer']['counterSigners']
+                         [0]['chain'][1]['sha256'], '1C1983300C10FB262C0B2304B7BE15AABA10AE356EBBBB177583DC44774EB080')
+
 
 class Test2(Test):
-    settings=TestSettings(
+    settings = TestSettings(
         tool='fileinfo',
         args='--json --verbose',
         input='d4744d78e0b4c1f50bc081eff41b69d6'
@@ -23,13 +29,18 @@ class Test2(Test):
 
     def test_certificate_table_present(self):
         assert self.fileinfo.succeeded
-        assert 'signerCertificateIndex' not in self.fileinfo.output['certificateTable']
-        self.assertEqual(self.fileinfo.output['certificateTable']['numberOfCertificates'], '1')
-        self.assertEqual(self.fileinfo.output['certificateTable']['certificates'][0]['sha256'], 'ced5ab020125966499a067abfb138434281bc5b00c90d5d74d31529ff5169bf2')
+        assert len(self.fileinfo.output['certificateTable']
+                   ['signatures'][0]['signer']['chain']) == 0
+        self.assertEqual(len(
+            self.fileinfo.output['certificateTable']['signatures'][0]['allCertificates']), 3)
+        self.assertEqual(self.fileinfo.output['certificateTable']['signatures'][0]['allCertificates']
+                         [0]['sha256'], 'CED5AB020125966499A067ABFB138434281BC5B00C90D5D74D31529FF5169BF2')
 
 # https://github.com/avast/retdec/issues/255
+
+
 class Test3(Test):
-    settings=TestSettings(
+    settings = TestSettings(
         tool='fileinfo',
         args='--json --verbose',
         input=[
@@ -40,11 +51,14 @@ class Test3(Test):
 
     def test_certificate_table_present(self):
         assert self.fileinfo.succeeded
-        self.assertEqual(self.fileinfo.output['certificateTable']['certificates'][0]['sha256'], 'a2219c3e44ee3748eae12e5aa6c961af47c185e25a8e59affd8fcaed641286cd')
+        self.assertEqual(self.fileinfo.output['certificateTable']['signatures'][0]['allCertificates']
+                         [0]['sha256'], 'A2219C3E44EE3748EAE12E5AA6C961AF47C185E25A8E59AFFD8FCAED641286CD')
 
 # https://github.com/avast/retdec/issues/250
+
+
 class Test4(Test):
-    settings=TestSettings(
+    settings = TestSettings(
         tool='fileinfo',
         args='--json --verbose',
         input='34722C26B5557979DE5B4DCAE01DD4D0CD1DC99AF78656D7DA93D3B6BB907C9A'
@@ -52,4 +66,5 @@ class Test4(Test):
 
     def test_certificate_table_present(self):
         assert self.fileinfo.succeeded
-        self.assertEqual(self.fileinfo.output['certificateTable']['certificates'][0]['sha256'], 'f0a14c45793c834fa6b10891813fd27487315e98bf5423d30dcaa44b4b28cd04')
+        self.assertEqual(self.fileinfo.output['certificateTable']['signatures'][0]['signer']['chain'][0]
+                         ['sha256'], 'F0A14C45793C834FA6B10891813FD27487315E98BF5423D30DCAA44B4B28CD04')
