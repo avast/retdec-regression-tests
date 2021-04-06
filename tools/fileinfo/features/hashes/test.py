@@ -134,3 +134,26 @@ class TestResourceIconHash2(Test):
         self.assertEqual(self.fileinfo.output['resourceTable']['iconMd5'], '9ec05f304e57a9e606c0032634e559db')
         self.assertEqual(self.fileinfo.output['resourceTable']['iconSha256'], 'bdb247c84e26b93d2ea6b7f4e12d3949ef5be2e9c5eff07a805bdc658a770e84')
         self.assertEqual(self.fileinfo.output['resourceTable']['iconAvgHash'], '0000202038380000')
+
+class TestTelfhash1(Test):
+    settings = TestSettings(
+        tool='fileinfo',
+        input='export_hashELF',
+        args='--verbose --json'
+    )
+
+    def test_telfhash(self):
+        assert self.fileinfo.succeeded
+        assert self.fileinfo.output['telfhash'] == 't1dab0126dd319c94560ce1610444376b7d106c875105b601301f010b85e001801447d3d'
+
+
+class TestTelfhash2(Test):
+    settings = TestSettings(
+        tool='fileinfo',
+        input='telfhash',
+        args='--verbose --json'
+    )
+
+    def test_telfhash(self):
+        assert self.fileinfo.succeeded
+        assert self.fileinfo.output['telfhash'] == 't1e123fc0c6cf10e452aca53e7ec3409c4237be21e15a978159e2cd3bd99ad2cd1db6b1e'
