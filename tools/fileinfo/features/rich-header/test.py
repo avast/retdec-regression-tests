@@ -7,6 +7,11 @@ class Test_001(Test):
         input=['file-32bit.ex_', 'file-64bit.ex_']
     )
 
+    def test_rich_header_hashes(self):
+        self.assertEqual(self.fileinfo.output['richHeader']['crc32'], '16861530')
+        self.assertEqual(self.fileinfo.output['richHeader']['md5'], 'de84ff8c697e83363b298b766d419a35') # checked against VT
+        self.assertEqual(self.fileinfo.output['richHeader']['sha256'], 'b25a3fc8763b4ff2188560f49c45a9baf8076f2a5a01394c033a4661ae895b2c')
+
     def test_rich_header_values(self):
         self.assertEqual(self.fileinfo.output['richHeader']['richHeaderRecords'][0]['count'], '3')
         self.assertEqual(self.fileinfo.output['richHeader']['richHeaderRecords'][0]['product_id'], '123.50727')
