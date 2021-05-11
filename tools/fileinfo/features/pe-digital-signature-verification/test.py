@@ -17,7 +17,7 @@ class TestVerified(Test):
     def test_signature_verified(self):
         assert self.fileinfo.succeeded
 
-        for sig in self.fileinfo.output["certificateTable"]['signatures']:
+        for sig in self.fileinfo.output["digitalSignatures"]['signatures']:
             assert len(sig['warnings']) == 0
 
 
@@ -38,5 +38,5 @@ class TestNotVerified(Test):
 
     def test_signature_not_verified(self):
         assert self.fileinfo.succeeded
-        for sig in self.fileinfo.output["certificateTable"]['signatures']:
+        for sig in self.fileinfo.output["digitalSignatures"]['signatures']:
             assert len(sig['warnings']) != 0

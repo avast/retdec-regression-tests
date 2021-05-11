@@ -10,5 +10,5 @@ class Test(Test):
 
     def test_output_does_not_contain_subject(self):
         assert self.fileinfo.succeeded
-        self.assertEqual(len(self.fileinfo.output['certificateTable']
+        self.assertEqual(len(self.fileinfo.output['digitalSignatures']
                              ['signatures'][0]['allCertificates'][0]['attributes']['subject']), 0)

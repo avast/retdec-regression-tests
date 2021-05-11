@@ -10,7 +10,7 @@ class Test(Test):
 
     def test_output_does_not_contain_any_date(self):
         assert self.fileinfo.succeeded
-        assert 'validSince' not in self.fileinfo.output['certificateTable'][
+        assert 'validSince' not in self.fileinfo.output['digitalSignatures'][
             'signatures'][0]['allCertificates'][0]['attributes']['subject']
-        assert 'validUntil' not in self.fileinfo.output['certificateTable'][
+        assert 'validUntil' not in self.fileinfo.output['digitalSignatures'][
             'signatures'][0]['allCertificates'][0]['attributes']['subject']

@@ -15,4 +15,4 @@ class Test(Test):
     def test_signature_verified(self):
         assert self.fileinfo.succeeded
         self.assertEqual(
-            len(self.fileinfo.output['certificateTable']['signatures'][0]['warnings']), 0)
+            len(self.fileinfo.output['digitalSignatures']['signatures'][0]['warnings']), 0)

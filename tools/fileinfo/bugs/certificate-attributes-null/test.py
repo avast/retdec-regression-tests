@@ -10,8 +10,8 @@ class Test(Test):
 
     def test_attributes_are_empty_but_present(self):
         assert self.fileinfo.succeeded
-        self.assertEqual(len(self.fileinfo.output['certificateTable'][
+        self.assertEqual(len(self.fileinfo.output['digitalSignatures'][
             'signatures'][0]['allCertificates'][0]['attributes']['issuer']), 0)
         self.assertEqual(len(
-            self.fileinfo.output['certificateTable'][
+            self.fileinfo.output['digitalSignatures'][
                 'signatures'][0]['allCertificates'][0]['attributes']['subject']), 0)

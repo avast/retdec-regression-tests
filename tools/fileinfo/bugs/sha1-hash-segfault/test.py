@@ -10,9 +10,9 @@ class Test(Test):
 
     def test_has_certificate_table(self):
         assert self.fileinfo.succeeded
-        assert 'certificateTable' in self.fileinfo.output
+        assert 'digitalSignatures' in self.fileinfo.output
         self.assertEqual(5, len(
-            self.fileinfo.output['certificateTable']['signatures'][0]['allCertificates']))
+            self.fileinfo.output['digitalSignatures']['signatures'][0]['allCertificates']))
 
         self.assertEqual('CN=Microsoft Corporation,O=Microsoft Corporation,L=Redmond,ST=Washington,C=US',
-                         self.fileinfo.output['certificateTable']['signatures'][0]['signer']['chain'][0]['subject'])
+                         self.fileinfo.output['digitalSignatures']['signatures'][0]['signer']['chain'][0]['subject'])
