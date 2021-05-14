@@ -10,14 +10,32 @@ class Test1(Test):
 
     def test_certificate_table_present(self):
         assert self.fileinfo.succeeded
-        assert len(self.fileinfo.output['digitalSignatures']
-                   ['signatures'][0]['signer']['chain']) == 0
-        self.assertEqual(len(
-            self.fileinfo.output['digitalSignatures']['signatures'][0]['allCertificates']), 5)
-        self.assertEqual(self.fileinfo.output['digitalSignatures']['signatures'][0]['signer']['counterSigners']
-                         [0]['chain'][0]['sha256'], '8815DFF787F21FA8106760CB89C5B4493F4BD45E2CE801D2A4FE1F61DEE0C039')
-        self.assertEqual(self.fileinfo.output['digitalSignatures']['signatures'][0]['signer']['counterSigners']
-                         [0]['chain'][1]['sha256'], '1C1983300C10FB262C0B2304B7BE15AABA10AE356EBBBB177583DC44774EB080')
+
+        first_sig = self.fileinfo.output['digitalSignatures']['signatures'][0]
+
+        assert len(first_sig['signer']['chain']) == 0
+
+        # Malware - invalid signature
+        assert first_sig['warnings'][0] == "Signature digest doesn't match the file digest"
+        assert first_sig['warnings'][1] == "Signing cert is missing"
+        assert first_sig['warnings'][2] == "Signature isn't valid"
+
+        assert len(first_sig['allCertificates']) == 5
+
+        # all certs
+        assert first_sig['allCertificates'][0]['sha256'] == "AB7036365C7154AA29C2C29F5D4191163B162A2225011357D56D07FFA7BC1F72"
+        assert first_sig['allCertificates'][1]['sha256'] == "A2BDF61928644D5A0F5CCC93C9B339E600AD1AD05E4682D86C1477CE39997CFF"
+        assert first_sig['allCertificates'][2]['sha256'] == "8815DFF787F21FA8106760CB89C5B4493F4BD45E2CE801D2A4FE1F61DEE0C039"
+        assert first_sig['allCertificates'][3]['sha256'] == "1C1983300C10FB262C0B2304B7BE15AABA10AE356EBBBB177583DC44774EB080"
+        assert first_sig['allCertificates'][4]['sha256'] == "647B6D0F5F2C7F079A5A19532C07018515CABF7E6B9FE54086DC8E6786463893"
+
+        # Counter-sig chain
+        counter_sig = first_sig['signer']['counterSigners'][0]
+        assert counter_sig['chain'][0]['sha256'] == '8815DFF787F21FA8106760CB89C5B4493F4BD45E2CE801D2A4FE1F61DEE0C039'
+        assert counter_sig['chain'][1]['sha256'] == '1C1983300C10FB262C0B2304B7BE15AABA10AE356EBBBB177583DC44774EB080'
+
+        assert counter_sig['warnings'][0] == "Couldn't decrypt the digest"
+        assert counter_sig['warnings'][1] == "Failed to verify the signature with counter-signature"
 
 
 class Test2(Test):
@@ -29,12 +47,28 @@ class Test2(Test):
 
     def test_certificate_table_present(self):
         assert self.fileinfo.succeeded
-        assert len(self.fileinfo.output['digitalSignatures']
-                   ['signatures'][0]['signer']['chain']) == 0
-        self.assertEqual(len(
-            self.fileinfo.output['digitalSignatures']['signatures'][0]['allCertificates']), 3)
-        self.assertEqual(self.fileinfo.output['digitalSignatures']['signatures'][0]['allCertificates']
-                         [0]['sha256'], 'CED5AB020125966499A067ABFB138434281BC5B00C90D5D74D31529FF5169BF2')
+
+        first_sig = self.fileinfo.output['digitalSignatures']['signatures'][0]
+
+        assert len(first_sig['signer']['chain']) == 0
+
+        # Malware - invalid signature
+        assert first_sig['warnings'][0] == "Signature digest doesn't match the file digest"
+        assert first_sig['warnings'][1] == "Signing cert is missing"
+        assert first_sig['warnings'][2] == "Signature isn't valid"
+
+        assert len(first_sig['allCertificates']) == 3
+
+        assert first_sig['allCertificates'][0]['sha256'] == "CED5AB020125966499A067ABFB138434281BC5B00C90D5D74D31529FF5169BF2"
+        assert first_sig['allCertificates'][1]['sha256'] == "931802145A1193CD0DC7D84F45530E166D29672A3C8A0B80A9EAA0A5023ACEC3"
+        assert first_sig['allCertificates'][2]['sha256'] == "6CA93FE1705083A68C1C87326CA367972C89BB2765289A2A6E97B77668A19E80"
+
+        counter_sig = first_sig['signer']['counterSigners'][0]
+
+        assert len(counter_sig['chain']) == 1
+
+        assert counter_sig['chain'][0]['sha256'] == 'CED5AB020125966499A067ABFB138434281BC5B00C90D5D74D31529FF5169BF2'
+        assert counter_sig['warnings'][0] == "Failed to verify the counter-signature"
 
 # https://github.com/avast/retdec/issues/255
 
@@ -51,8 +85,16 @@ class Test3(Test):
 
     def test_certificate_table_present(self):
         assert self.fileinfo.succeeded
-        self.assertEqual(self.fileinfo.output['digitalSignatures']['signatures'][0]['allCertificates']
-                         [0]['sha256'], 'A2219C3E44EE3748EAE12E5AA6C961AF47C185E25A8E59AFFD8FCAED641286CD')
+
+        first_sig = self.fileinfo.output['digitalSignatures']['signatures'][0]
+
+        assert first_sig['warnings'][0] == "Wrong contentInfo contentType"
+        assert first_sig['warnings'][1] == "Couldn't get SpcSpOpusInfo"
+        assert first_sig['warnings'][2] == "Couldn't get SignerInfo message digest"
+        assert first_sig['warnings'][3] == "Missing correct SignerInfo contentType"
+        assert first_sig['warnings'][4] == "Signature isn't valid"
+
+        assert first_sig['allCertificates'][0]['sha256'] == "A2219C3E44EE3748EAE12E5AA6C961AF47C185E25A8E59AFFD8FCAED641286CD"
 
 # https://github.com/avast/retdec/issues/250
 
@@ -66,5 +108,15 @@ class Test4(Test):
 
     def test_certificate_table_present(self):
         assert self.fileinfo.succeeded
-        self.assertEqual(self.fileinfo.output['digitalSignatures']['signatures'][0]['signer']['chain'][0]
-                         ['sha256'], 'F0A14C45793C834FA6B10891813FD27487315E98BF5423D30DCAA44B4B28CD04')
+        first_sig = self.fileinfo.output['digitalSignatures']['signatures'][0]
+
+        assert len(first_sig['signer']['chain']) == 1
+
+        # Malware - invalid signature
+        assert first_sig['warnings'][0] == "Signature digest doesn't match the file digest"
+
+        assert len(first_sig['allCertificates']) == 3
+
+        assert first_sig['allCertificates'][0]['sha256'] == "8815DFF787F21FA8106760CB89C5B4493F4BD45E2CE801D2A4FE1F61DEE0C039"
+        assert first_sig['allCertificates'][1]['sha256'] == "1C1983300C10FB262C0B2304B7BE15AABA10AE356EBBBB177583DC44774EB080"
+        assert first_sig['allCertificates'][2]['sha256'] == "F0A14C45793C834FA6B10891813FD27487315E98BF5423D30DCAA44B4B28CD04"

@@ -10,8 +10,30 @@ class Test(Test):
     def test_certificate_directory(self):
         assert self.unpacker.succeeded
         assert self.fileinfo.succeeded
-        self.assertEqual(self.fileinfo.output["certificateTable"]["numberOfCertificates"], "4")
-        self.assertEqual(self.fileinfo.output["certificateTable"]["certificates"][0]["sha256"], "f63b42f1e0c3950730d95b3b6b78b8f7c7991097b5f8d81f64b2c83a1decf5ca")
-        self.assertEqual(self.fileinfo.output["certificateTable"]["certificates"][1]["sha256"], "8ef8f2565be30e7ce7ba6302bb18b42a3acd148a0ddb4779e4c03e862f39589b")
-        self.assertEqual(self.fileinfo.output["certificateTable"]["certificates"][2]["sha256"], "2cf1ec6ab594113bd538df6d5c940e3319b424f8756d975888072c6ab558b771")
-        self.assertEqual(self.fileinfo.output["certificateTable"]["certificates"][3]["sha256"], "2463525300d9e8e0a6f5d79e2b20b9f5182fe40d3fd7c85ddaf48e6c25bedf5d")
+
+        assert self.fileinfo.output['digitalSignatures']['numberOfSignatures'] == 1
+
+        first_sig = self.fileinfo.output['digitalSignatures']['signatures'][0]
+        assert first_sig['digestAlgorithm'] == 'sha1'
+        # Unpacked file -> different contents than original -> different hash -> invalid signature on the unpacked file
+        assert first_sig['fileDigest'] == '5CBE1AD2114B8EA09819F798DA2CBD89CAC4E53B'
+        assert first_sig['signedDigest'] == '79FBA75A396B6C8EB65D46C7B75065A75CA5148A'
+        assert first_sig['warnings'][0] == "Signature digest doesn't match the file digest"
+
+        assert len(first_sig['allCertificates']) == 4
+        assert first_sig['allCertificates'][0]['sha256'] == "2CF1EC6AB594113BD538DF6D5C940E3319B424F8756D975888072C6AB558B771"
+        assert first_sig['allCertificates'][1]['sha256'] == "2463525300D9E8E0A6F5D79E2B20B9F5182FE40D3FD7C85DDAF48E6C25BEDF5D"
+        assert first_sig['allCertificates'][2]['sha256'] == "8EF8F2565BE30E7CE7BA6302BB18B42A3ACD148A0DDB4779E4C03E862F39589B"
+        assert first_sig['allCertificates'][3]['sha256'] == "F63B42F1E0C3950730D95B3B6B78B8F7C7991097B5F8D81F64B2C83A1DECF5CA"
+
+        first_sig_signer = first_sig['signer']
+        assert first_sig_signer['digest'] == "6ACC465F78C739BD14942911C884D248A0C2687D"
+        assert first_sig_signer['digestAlgorithm'] == 'sha1'
+
+        assert len(first_sig_signer['chain']) == 3
+
+        first_sig_countersig = first_sig_signer['counterSigners'][0]
+        assert first_sig_countersig['signTime'] == "Oct  5 20:08:28 2013 GMT"
+        assert first_sig_countersig['digest'] == 'E51C5443FA1C958B804E0B02A0AAF535091DFDDC'
+        assert first_sig_countersig['digestAlgorithm'] == 'sha1'
+        assert len(first_sig_countersig['chain']) == 2
