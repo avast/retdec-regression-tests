@@ -1,7 +1,8 @@
 from regression_tests import *
 
+
 class TestVerified(Test):
-    settings=TestSettings(
+    settings = TestSettings(
         input=[
             'VSTST-FileConverter.ex',
             'c339b87d932b3f86c298b1745db1a28b1214fb7635ba3805851ef8699290f9b8',
@@ -15,10 +16,13 @@ class TestVerified(Test):
 
     def test_signature_verified(self):
         assert self.fileinfo.succeeded
-        self.assertEqual(self.fileinfo.output["signatureVerified"], "true")
+
+        for sig in self.fileinfo.output["digitalSignatures"]['signatures']:
+            assert len(sig['warnings']) == 0
+
 
 class TestNotVerified(Test):
-    settings=TestSettings(
+    settings = TestSettings(
         input=[
             '64f3ff5bd6b0d4e1a128a729368ca01c7b98620994f5e297b069af11947d8785',
             'a6aebb7c1368f571206c60729264a6feeae4a497b7326fcdb6ace519765727aa',
@@ -34,4 +38,5 @@ class TestNotVerified(Test):
 
     def test_signature_not_verified(self):
         assert self.fileinfo.succeeded
-        self.assertEqual(self.fileinfo.output["signatureVerified"], "false")
+        for sig in self.fileinfo.output["digitalSignatures"]['signatures']:
+            assert len(sig['warnings']) != 0

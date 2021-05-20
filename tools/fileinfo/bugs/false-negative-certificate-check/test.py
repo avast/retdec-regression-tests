@@ -1,7 +1,8 @@
 from regression_tests import *
 
+
 class Test(Test):
-    settings=TestSettings(
+    settings = TestSettings(
         tool='fileinfo',
         args='--json --verbose',
         input=[
@@ -13,4 +14,5 @@ class Test(Test):
 
     def test_signature_verified(self):
         assert self.fileinfo.succeeded
-        self.assertEqual(self.fileinfo.output['signatureVerified'], 'true')
+        self.assertEqual(
+            len(self.fileinfo.output['digitalSignatures']['signatures'][0]['warnings']), 0)
