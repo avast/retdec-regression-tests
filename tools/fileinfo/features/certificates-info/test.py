@@ -25,7 +25,7 @@ class Test1(Test):
 
         assert first_sig['allCertificates'][0]['subject'] == "CN=Symantec Time Stamping Services CA - G2,O=Symantec Corporation,C=US"
         assert first_sig['allCertificates'][0]['issuer'] == "CN=Thawte Timestamping CA,OU=Thawte Certification,O=Thawte,L=Durbanville,ST=Western Cape,C=ZA"
-        assert first_sig['allCertificates'][0]['serialNumber'] == "7E93EBFB7CC64E59EA4B9A77D406FC3B"
+        assert first_sig['allCertificates'][0]['serialNumber'] == "7e:93:eb:fb:7c:c6:4e:59:ea:4b:9a:77:d4:06:fc:3b"
         assert first_sig['allCertificates'][0]['publicKeyAlgorithm'] == "rsaEncryption"
         assert first_sig['allCertificates'][0]['signatureAlgorithm'] == "sha1WithRSAEncryption"
         assert first_sig['allCertificates'][0]['validSince'] == "Dec 21 00:00:00 2012 GMT"
@@ -134,7 +134,7 @@ class Test2(Test):
 
         assert first_sig['allCertificates'][0]['subject'] == "CN=Symantec Time Stamping Services CA - G2,O=Symantec Corporation,C=US"
         assert first_sig['allCertificates'][0]['issuer'] == "CN=Thawte Timestamping CA,OU=Thawte Certification,O=Thawte,L=Durbanville,ST=Western Cape,C=ZA"
-        assert first_sig['allCertificates'][0]['serialNumber'] == "7E93EBFB7CC64E59EA4B9A77D406FC3B"
+        assert first_sig['allCertificates'][0]['serialNumber'] == "7e:93:eb:fb:7c:c6:4e:59:ea:4b:9a:77:d4:06:fc:3b"
         assert first_sig['allCertificates'][0]['publicKeyAlgorithm'] == "rsaEncryption"
         assert first_sig['allCertificates'][0]['signatureAlgorithm'] == "sha1WithRSAEncryption"
         assert first_sig['allCertificates'][0]['validSince'] == "Dec 21 00:00:00 2012 GMT"
