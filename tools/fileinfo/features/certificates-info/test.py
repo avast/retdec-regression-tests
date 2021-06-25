@@ -25,6 +25,8 @@ class Test1(Test):
 
         assert first_sig['allCertificates'][0]['subject'] == "CN=Symantec Time Stamping Services CA - G2,O=Symantec Corporation,C=US"
         assert first_sig['allCertificates'][0]['issuer'] == "CN=Thawte Timestamping CA,OU=Thawte Certification,O=Thawte,L=Durbanville,ST=Western Cape,C=ZA"
+        assert first_sig['allCertificates'][0]['subjectOneline'] == "/C=US/O=Symantec Corporation/CN=Symantec Time Stamping Services CA - G2"
+        assert first_sig['allCertificates'][0]['issuerOneline'] == "/C=ZA/ST=Western Cape/L=Durbanville/O=Thawte/OU=Thawte Certification/CN=Thawte Timestamping CA"
         assert first_sig['allCertificates'][0]['serialNumber'] == "7e:93:eb:fb:7c:c6:4e:59:ea:4b:9a:77:d4:06:fc:3b"
         assert first_sig['allCertificates'][0]['publicKeyAlgorithm'] == "rsaEncryption"
         assert first_sig['allCertificates'][0]['signatureAlgorithm'] == "sha1WithRSAEncryption"
