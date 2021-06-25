@@ -11,4 +11,4 @@ class Test(Test):
         assert self.fileinfo.succeeded
         symbol_name = self.fileinfo.output['symbolTables'][0]['symbols'][2]['name']
         orig_symbol_name_part = symbol_name.encode('ascii').decode('unicode_escape')
-        self.assertEqual(len(orig_symbol_name_part), 96)
+        self.assertEqual(len(orig_symbol_name_part), 256)
