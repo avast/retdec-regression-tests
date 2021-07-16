@@ -346,6 +346,6 @@ class TestTypelib(Test):
         input='756684f4017ba7e931a26724ae61606b16b5f8cc84ed38a260a34e50c5016f59'
     )
 
-    def test_typelib_random_guid_detection(self):
+    def test_typelib_random_guid_detection_issue_966(self):
         assert self.fileinfo.succeeded
         assert 'typeLibId' not in self.fileinfo.output['dotnetInfo']
