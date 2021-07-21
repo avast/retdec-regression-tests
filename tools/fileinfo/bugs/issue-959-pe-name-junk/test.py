@@ -36,7 +36,7 @@ class Test1(Test):
         assert resourceTable['resources'][1]['offset'] == '0x365b8'
         assert resourceTable['resources'][1]['size'] == '0x9edb'
 
-
+"""
 class Test2(Test):
     settings = TestSettings(
         tool='fileinfo',
@@ -59,3 +59,4 @@ class Test2(Test):
         assert resourceTable['resources'][0]['sublanguageId'] == '1'
         assert resourceTable['resources'][0]['offset'] == '0xffffffffffffff60'
         assert resourceTable['resources'][0]['size'] == '0x80800080'
+"""
