@@ -36,7 +36,6 @@ class Test1(Test):
         assert 'offset' not in resourceTable['resources'][1]
         assert resourceTable['resources'][1]['size'] == '0x9edb'
 
-"""
 class Test2(Test):
     settings = TestSettings(
         tool='fileinfo',
@@ -49,7 +48,7 @@ class Test2(Test):
 
         # Type name strings are absurdly long indicating random junk RVA and thus ignored
         resourceTable = self.fileinfo.output['resourceTable']
-        assert resourceTable['numberOfResources'] == '64'
+        assert resourceTable['numberOfResources'] == '106'
 
         assert resourceTable['resources'][0]['index'] == '0'
         assert resourceTable['resources'][0]['nameId'] == '1'
@@ -59,4 +58,3 @@ class Test2(Test):
         assert resourceTable['resources'][0]['sublanguageId'] == '1'
         assert resourceTable['resources'][0]['offset'] == '0xffffffffffffff60'
         assert resourceTable['resources'][0]['size'] == '0x80800080'
-"""
