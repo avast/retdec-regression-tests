@@ -11,7 +11,7 @@ class Test(Test):
     def test_certificates_are_present(self):
         assert self.fileinfo.succeeded
 
-        first_sig = self.fileinfo.output['digitalSignatures']['signatures'][0]
+        first_sig = self.fileinfo.output['invalidSignatures']['signatures'][0]
 
         assert len(first_sig['allCertificates']) == 4
         assert first_sig['warnings'][0] == "Signature digest doesn't match the file digest"
