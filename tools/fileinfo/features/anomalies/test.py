@@ -184,3 +184,19 @@ class Test9(Test):
         self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][0]['description'], 'Packer section name: gu_idata')
         self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][1]['identifier'], 'PackerSectionName')
         self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][1]['description'], 'Packer section name: gu_rsrc')
+
+class Test10(Test):
+    settings = TestSettings(
+        tool='fileinfo',
+        input='ba0b32b812b8bd25b1481f25e1ab37663611e87c73e9f15f6a9c442a97add916',
+        args='--verbose --json'
+    )
+
+    def test_anomalies_presented(self):
+        assert self.fileinfo.succeeded
+        assert "offset" not in self.fileinfo.output['entryPoint']
+
+        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][0]['identifier'], 'EpInWritableSection')
+        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][0]['description'], 'Entry point in writable section')
+        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][1]['identifier'], 'EpInMemoryOnly')
+        self.assertEqual(self.fileinfo.output['anomalyTable']['anomalies'][1]['description'], 'Entry point in memory-only part of a section')
