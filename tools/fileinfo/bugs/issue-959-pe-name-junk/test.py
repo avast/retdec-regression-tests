@@ -33,7 +33,7 @@ class Test1(Test):
         assert resourceTable['resources'][1]['language'] == 'English'
         assert resourceTable['resources'][1]['languageId'] == '9'
         assert resourceTable['resources'][1]['sublanguageId'] == '1'
-        assert resourceTable['resources'][1]['offset'] == '0x365b8'
+        assert 'offset' not in resourceTable['resources'][1]
         assert resourceTable['resources'][1]['size'] == '0x9edb'
 
 """
