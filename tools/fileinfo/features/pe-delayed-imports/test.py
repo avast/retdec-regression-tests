@@ -20,7 +20,6 @@ class Test001(Test):
         self.assertEqual(self.fileinfo.output['importTable']['imports'][77]['index'], '77')
         self.assertEqual(self.fileinfo.output['importTable']['imports'][78]['index'], '78')
         self.assertEqual(self.fileinfo.output['importTable']['imports'][79]['index'], '79')
-        assert 'name' not in self.fileinfo.output['importTable']['imports'][69]
         self.assertEqual(self.fileinfo.output['importTable']['imports'][72]['name'], 'GetInputState')
         self.assertEqual(self.fileinfo.output['importTable']['imports'][73]['name'], 'wsprintfA')
         self.assertEqual(self.fileinfo.output['importTable']['imports'][74]['name'], 'PostThreadMessageA')
@@ -47,7 +46,7 @@ class Test001(Test):
         self.assertEqual(self.fileinfo.output['importTable']['imports'][77]['address'], '0x4020f2')
         self.assertEqual(self.fileinfo.output['importTable']['imports'][78]['address'], '0x4020c0')
         self.assertEqual(self.fileinfo.output['importTable']['imports'][79]['address'], '0x4020e0')
-        self.assertEqual(self.fileinfo.output['importTable']['imports'][69]['ordinalNumber'], '20')
+        self.assertEqual(self.fileinfo.output['importTable']['imports'][69]['name'], 'sendto')
         self.assertEqual(self.fileinfo.output['importTable']['imports'][69]['delayed'], 'false')
         self.assertEqual(self.fileinfo.output['importTable']['imports'][72]['delayed'], 'true')
         self.assertEqual(self.fileinfo.output['importTable']['imports'][73]['delayed'], 'true')
@@ -74,7 +73,6 @@ class Test002(Test):
         self.assertEqual(self.fileinfo.output['importTable']['imports'][0]['libraryName'], 'KERNEL32.dll')
         self.assertEqual(self.fileinfo.output['importTable']['imports'][0]['address'], '0x400a00')
         self.assertEqual(self.fileinfo.output['importTable']['imports'][0]['name'], 'GetModuleHandleA')
-        self.assertEqual(self.fileinfo.output['importTable']['imports'][0]['ordinalNumber'], '294')
         self.assertEqual(self.fileinfo.output['importTable']['imports'][0]['delayed'], 'false')
 
         self.assertEqual(self.fileinfo.output['importTable']['imports'][25]['index'], '25')
@@ -114,7 +112,6 @@ class Test003(Test):
         self.assertEqual(self.fileinfo.output['importTable']['imports'][0]['libraryName'], 'KERNEL32.dll')
         self.assertEqual(self.fileinfo.output['importTable']['imports'][0]['address'], '0x400c00')
         self.assertEqual(self.fileinfo.output['importTable']['imports'][0]['name'], 'WaitForSingleObject')
-        self.assertEqual(self.fileinfo.output['importTable']['imports'][0]['ordinalNumber'], '1124')
         self.assertEqual(self.fileinfo.output['importTable']['imports'][0]['delayed'], 'false')
 
         self.assertEqual(self.fileinfo.output['importTable']['imports'][25]['index'], '25')
@@ -154,7 +151,6 @@ class Test004(Test):
         self.assertEqual(self.fileinfo.output['importTable']['imports'][0]['libraryName'], 'KERNEL32.dll')
         self.assertEqual(self.fileinfo.output['importTable']['imports'][0]['address'], '0x140001000')
         self.assertEqual(self.fileinfo.output['importTable']['imports'][0]['name'], 'WaitForSingleObject')
-        self.assertEqual(self.fileinfo.output['importTable']['imports'][0]['ordinalNumber'], '1128')
 
         self.assertEqual(self.fileinfo.output['importTable']['imports'][24]['index'], '24')
         self.assertEqual(self.fileinfo.output['importTable']['imports'][24]['libraryName'], 'COMCTL32.dll')
