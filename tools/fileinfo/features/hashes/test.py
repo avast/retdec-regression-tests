@@ -135,6 +135,36 @@ class TestResourceIconHash2(Test):
         self.assertEqual(self.fileinfo.output['resourceTable']['iconSha256'], 'bdb247c84e26b93d2ea6b7f4e12d3949ef5be2e9c5eff07a805bdc658a770e84')
         self.assertEqual(self.fileinfo.output['resourceTable']['iconAvgHash'], '0000202038380000')
 
+class TestResourceIconHash3(Test):
+    settings = TestSettings(
+        tool='fileinfo',
+        input='resource_icon_hash3',
+        args='--verbose --json'
+    )
+
+    def test_correctly_computes_resource_icon_hash(self):
+        assert self.fileinfo.succeeded
+
+        self.assertEqual(self.fileinfo.output['resourceTable']['iconCrc32'], '06272459')
+        self.assertEqual(self.fileinfo.output['resourceTable']['iconMd5'], 'be0bd1d1c38eb059201c3a97141728f6')
+        self.assertEqual(self.fileinfo.output['resourceTable']['iconSha256'], '7e648590d398e4313266a5c7ace61a07302e5325137d03e8fa8f9cc443a15fe4')
+        self.assertEqual(self.fileinfo.output['resourceTable']['iconAvgHash'], '0042001000004200')
+
+class TestResourceIconHash4(Test):
+    settings = TestSettings(
+        tool='fileinfo',
+        input='sample-cross-linked-icons.dat',
+        args='--verbose --json'
+    )
+
+    def test_correctly_computes_resource_icon_hash(self):
+        assert self.fileinfo.succeeded
+
+        self.assertEqual(self.fileinfo.output['resourceTable']['iconCrc32'], '57d94c0d')
+        self.assertEqual(self.fileinfo.output['resourceTable']['iconMd5'], 'f16287a63f1594c772a6be0a090f9440')
+        self.assertEqual(self.fileinfo.output['resourceTable']['iconSha256'], 'bb6f9795ad97367b4dc0dd5787ca0a9160d62b95a34f5830e7f6f69d791e42c6')
+        self.assertEqual(self.fileinfo.output['resourceTable']['iconAvgHash'], 'ffc3bdffbd8183ff')
+
 class TestTelfhash1(Test):
     settings = TestSettings(
         tool='fileinfo',
