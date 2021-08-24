@@ -47,6 +47,7 @@ class Test001(Test):
         self.assertEqual(self.fileinfo.output['importTable']['imports'][78]['address'], '0x4020c0')
         self.assertEqual(self.fileinfo.output['importTable']['imports'][79]['address'], '0x4020e0')
         self.assertEqual(self.fileinfo.output['importTable']['imports'][69]['name'], 'sendto')
+        self.assertEqual(self.fileinfo.output['importTable']['imports'][69]['ordinalNumber'], '20')
         self.assertEqual(self.fileinfo.output['importTable']['imports'][69]['delayed'], 'false')
         self.assertEqual(self.fileinfo.output['importTable']['imports'][72]['delayed'], 'true')
         self.assertEqual(self.fileinfo.output['importTable']['imports'][73]['delayed'], 'true')

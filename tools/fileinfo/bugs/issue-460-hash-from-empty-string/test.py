@@ -11,6 +11,6 @@ class Test(Test):
         assert self.fileinfo.succeeded
 
         imports = self.fileinfo.output['importTable'];
-        assert 'crc32' in imports
-        assert 'md5' in imports
-        assert 'sha256' in imports
+        assert 'crc32' not in imports
+        assert 'md5' not in imports
+        assert 'sha256' not in imports
