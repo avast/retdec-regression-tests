@@ -16,7 +16,7 @@ class Test(Test):
         first_sig = self.fileinfo.output['digitalSignatures']['signatures'][0]
         assert first_sig['digestAlgorithm'] == 'sha1'
         # Unpacked file -> different contents than original -> different hash -> invalid signature on the unpacked file
-        assert first_sig['fileDigest'] == '5CBE1AD2114B8EA09819F798DA2CBD89CAC4E53B'
+        assert first_sig['fileDigest'] == '3E8002A08AEB8A1AF564E26C84FD0352C1302FEA'
         assert first_sig['signedDigest'] == '79FBA75A396B6C8EB65D46C7B75065A75CA5148A'
         assert first_sig['warnings'][0] == "Signature digest doesn't match the file digest"
 
