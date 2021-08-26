@@ -16,6 +16,7 @@ class Test1(Test):
         assert len(first_sig['signer']['chain']) == 0
 
         # Malware - invalid signature
+        assert first_sig['signatureVerified'] == False
         assert first_sig['warnings'][0] == "Signature digest doesn't match the file digest"
         assert first_sig['warnings'][1] == "Signing cert is missing"
         assert first_sig['warnings'][2] == "Signature isn't valid"
@@ -53,6 +54,7 @@ class Test2(Test):
         assert len(first_sig['signer']['chain']) == 0
 
         # Malware - invalid signature
+        assert first_sig['signatureVerified'] == False
         assert first_sig['warnings'][0] == "Signature digest doesn't match the file digest"
         assert first_sig['warnings'][1] == "Signing cert is missing"
         assert first_sig['warnings'][2] == "Signature isn't valid"
@@ -88,6 +90,7 @@ class Test3(Test):
 
         first_sig = self.fileinfo.output['digitalSignatures']['signatures'][0]
 
+        assert first_sig['signatureVerified'] == False
         assert first_sig['warnings'][0] == "Wrong contentInfo contentType"
         assert first_sig['warnings'][1] == "Couldn't get SpcSpOpusInfo"
         assert first_sig['warnings'][2] == "Couldn't get SignerInfo message digest"
@@ -113,6 +116,7 @@ class Test4(Test):
         assert len(first_sig['signer']['chain']) == 1
 
         # Malware - invalid signature
+        assert first_sig['signatureVerified'] == False
         assert first_sig['warnings'][0] == "Signature digest doesn't match the file digest"
 
         assert len(first_sig['allCertificates']) == 3
