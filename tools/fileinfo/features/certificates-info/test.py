@@ -17,6 +17,7 @@ class Test1(Test):
 
         assert len(first_sig['allCertificates']) == 5
 
+        assert first_sig['signatureVerified'] == True
         assert len(first_sig['warnings']) == 0
         assert first_sig['digestAlgorithm'] == 'sha1'
         assert first_sig['fileDigest'] == 'F6B86E97AEB3E567F58901F799E18FC6F89CC92E'
@@ -77,6 +78,7 @@ class Test1(Test):
 
         second_sig = self.fileinfo.output['digitalSignatures']['signatures'][1]
 
+        assert second_sig['signatureVerified'] == True
         assert len(second_sig['warnings']) == 0
         assert second_sig['digestAlgorithm'] == 'sha256'
         assert second_sig['fileDigest'] == '9FC3902927BFEDA2A3F61D650B0D2CBEC6D84597989EA6244D4EF954C67CA0B3'
@@ -129,6 +131,7 @@ class Test2(Test):
 
         assert len(first_sig['allCertificates']) == 5
 
+        assert first_sig['signatureVerified'] == True
         assert len(first_sig['warnings']) == 0
         assert first_sig['digestAlgorithm'] == 'sha1'
         assert first_sig['fileDigest'] == '3E7B33AB316770BD369BFADF5FB5354730C89991'
@@ -186,6 +189,7 @@ class Test2(Test):
 
         second_sig = self.fileinfo.output['digitalSignatures']['signatures'][1]
 
+        assert second_sig['signatureVerified'] == True
         assert len(second_sig['warnings']) == 0
         assert second_sig['digestAlgorithm'] == 'sha256'
         assert second_sig['fileDigest'] == '6BE0FA5AB9336DDCC6ACE35ED2BC9744860E80088F35E5D77AF254F246228CDE'
@@ -235,6 +239,7 @@ class Test3(Test):
 
         first_sig = self.fileinfo.output['digitalSignatures']['signatures'][0]
 
+        assert first_sig['signatureVerified'] == True
         assert len(first_sig['warnings']) == 0
         assert first_sig['digestAlgorithm'] == 'sha1'
         assert first_sig['fileDigest'] == '0C13D3C2B3C6F48FA3485B36E08AC822C579C1E0'
@@ -271,6 +276,7 @@ class Test3(Test):
 
         second_sig = self.fileinfo.output['digitalSignatures']['signatures'][1]
 
+        assert second_sig['signatureVerified'] == True
         assert len(second_sig['warnings']) == 0
         assert second_sig['digestAlgorithm'] == 'sha256'
         assert second_sig['fileDigest'] == '838379A390118A6562F3E06BE818F5A6407FD7F4FEA9ADF4C36A8B6952B1336B'
@@ -321,6 +327,7 @@ class Test4(Test):
 
         first_sig = self.fileinfo.output['digitalSignatures']['signatures'][0]
 
+        assert first_sig['signatureVerified'] == True
         assert len(first_sig['warnings']) == 0
         assert first_sig['digestAlgorithm'] == 'sha1'
         assert first_sig['fileDigest'] == 'F9D74771FD4A1A2233D266F1F73B53464328EE1E'
@@ -368,6 +375,7 @@ class Test5(Test):
 
         first_sig = self.fileinfo.output['digitalSignatures']['signatures'][0]
 
+        assert first_sig['signatureVerified'] == True
         assert len(first_sig['warnings']) == 0
         assert first_sig['digestAlgorithm'] == 'sha1'
         assert first_sig['fileDigest'] == '65901089C84EF122BE9397F508580A3EFC674D1D'
@@ -417,6 +425,8 @@ class Test6(Test):
         assert first_sig['digestAlgorithm'] == 'sha1'
         assert first_sig['fileDigest'] == 'A6BE6C062A26427A722571FD634838DD2FE3743D'
         assert first_sig['signedDigest'] == 'A6BE6C062A26427A722571FD634838DD2FE3743D'
+
+        assert first_sig['signatureVerified'] == True
         assert len(first_sig['warnings']) == 0
         assert len(first_sig['allCertificates']) == 7
 
@@ -435,6 +445,7 @@ class Test6(Test):
 
         second_sig = self.fileinfo.output['digitalSignatures']['signatures'][1]
 
+        assert second_sig['signatureVerified'] == True
         assert len(second_sig['warnings']) == 0
         assert second_sig['digestAlgorithm'] == 'sha256'
         assert second_sig['fileDigest'] == '54227373068BB3F2721F0E9B849142F3B68FDDD43571A9327C3F9CA44420EEA8'
@@ -484,6 +495,7 @@ class Test7(Test):
 
         first_sig = self.fileinfo.output['digitalSignatures']['signatures'][0]
 
+        assert first_sig['signatureVerified'] == True
         assert len(first_sig['warnings']) == 0
         assert first_sig['digestAlgorithm'] == 'sha1'
         assert first_sig['fileDigest'] == '798D33E74F6F28A62A336C61CF81AE0277F47516'
@@ -507,6 +519,7 @@ class Test7(Test):
 
         second_sig = self.fileinfo.output['digitalSignatures']['signatures'][1]
 
+        assert second_sig['signatureVerified'] == True
         assert len(second_sig['warnings']) == 0
         assert second_sig['digestAlgorithm'] == 'sha256'
         assert second_sig['fileDigest'] == '5BFB3AB09F359E11D76D95640BACB3A6CD65F2EF0D1763DC47D0B7F7203D22B7'
@@ -621,6 +634,7 @@ class Test10(Test):
         assert first_sig['fileDigest'] == '427DC17A763807D2DEAD406DDFD3AAE93F5CE235'
         assert first_sig['signedDigest'] == '427DC17A763807D2DEAD406DDFD3AAE93F5CE235'
         assert first_sig['programName'] == 'VSTST-FileConverter.exe'
+        assert first_sig['signatureVerified'] == True
         assert len(first_sig['warnings']) == 0
         assert len(first_sig['allCertificates']) == 4
         assert first_sig['allCertificates'][0]['sha256'] == "E43F82BC40029F17DBB516613D1E1A96EC2940CE76E0A9CD5F53BA50175A8766"
@@ -643,6 +657,7 @@ class Test10(Test):
 
         second_sig = self.fileinfo.output['digitalSignatures']['signatures'][1]
 
+        assert second_sig['signatureVerified'] == True
         assert len(second_sig['warnings']) == 0
         assert second_sig['digestAlgorithm'] == 'sha256'
         assert second_sig['fileDigest'] == '7E6B06384FF2B27537F0AC76E311C116434D02DBC735FAF113B6EFD6D629F74C'
@@ -733,6 +748,7 @@ class Test12(Test):
         assert len(self.fileinfo.output['digitalSignatures']['signatures']) == 2
 
         first_signature = self.fileinfo.output['digitalSignatures']['signatures'][0]
+        assert first_signature['signatureVerified'] == True
         assert len(first_signature['warnings']) == 0
         assert len(first_signature['allCertificates']) == 6
         assert first_signature['fileDigest'] == 'D643405056A4A16042D47942A8C6A59524BDA64A'
@@ -755,6 +771,7 @@ class Test12(Test):
 
         #######################################################################
         second_signature = self.fileinfo.output['digitalSignatures']['signatures'][1]
+        assert second_signature['signatureVerified'] == True
         assert len(second_signature['warnings']) == 0
         assert len(first_signature['allCertificates']) == 6
         assert second_signature['fileDigest'] == '75CACDF5BE7BAEECB89C70BC01343FB7C9E8FD000CC191F08D2A996359D617FE'
