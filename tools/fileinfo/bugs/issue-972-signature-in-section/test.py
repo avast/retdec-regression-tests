@@ -5,10 +5,10 @@ class Test(Test):
     settings = TestSettings(
         tool='fileinfo',
         args='--json --verbose',
-        input='c2ee13fd028448d80ed59b445fd647e2'
+        input='026ca63f4f1364726b32af8d6e628172dcffc36405c4e09a140bf422045c743b'
     )
 
-    def test_certificates_are_present(self):
+    def issue_972_signatures_inside_(self):
         assert self.fileinfo.succeeded
 
         assert 'digitalSignatures' not in self.fileinfo.output
