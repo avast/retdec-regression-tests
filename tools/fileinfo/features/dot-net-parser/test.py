@@ -349,3 +349,126 @@ class TestTypelib(Test):
     def test_typelib_random_guid_detection_issue_966(self):
         assert self.fileinfo.succeeded
         assert 'typeLibId' not in self.fileinfo.output['dotnetInfo']
+
+
+class TestNoParamEntries(Test):
+    settings = TestSettings(
+        tool='fileinfo',
+        args='--json --verbose',
+        input='9e2475a6a2809a128400d271a45db2d5995701fe4969dac4bb6cece7bd1ed3dd'
+    )
+
+    def test_no_param_entries(self):
+        assert self.fileinfo.succeeded
+        classes = self.fileinfo.output['dotnetInfo']['classes']
+        assert classes[2]['name'] == 'C__0'
+        assert classes[2]['methods'][8]['name'] == 'Initialize'
+        assert classes[2]['methods'][8]['parameters'][0]['name'] == 'P_0'
+        assert classes[2]['methods'][8]['parameters'][0]['type'] == 'object'
+        assert classes[2]['methods'][8]['parameters'][1]['name'] == 'P_1'
+        assert classes[2]['methods'][8]['parameters'][1]['type'] == 'object'
+        assert classes[2]['methods'][8]['parameters'][2]['name'] == 'P_2'
+        assert classes[2]['methods'][8]['parameters'][2]['type'] == 'object'
+        assert classes[2]['methods'][8]['parameters'][3]['name'] == 'P_3'
+        assert classes[2]['methods'][8]['parameters'][3]['type'] == 'object'
+        assert classes[2]['methods'][8]['parameters'][4]['name'] == 'P_4'
+        assert classes[2]['methods'][8]['parameters'][4]['type'] == 'object'
+
+        assert classes[2]['methods'][9]['name'] == 'ApplyValues'
+        assert classes[2]['methods'][9]['parameters'][0]['name'] == 'P_0'
+        assert classes[2]['methods'][9]['parameters'][0]['type'] == 'System.Collections.IDictionary'
+
+
+class TestVisibilities(Test):
+    settings = TestSettings(
+        tool='fileinfo',
+        args='--json --verbose',
+        input='visibilities.dll'
+    )
+
+    def test_all_visibility_types(self):
+        assert self.fileinfo.succeeded
+        classes = self.fileinfo.output['dotnetInfo']['classes']
+        assert classes[1]['name'] == "Internal"
+        assert classes[1]['namespace'] == "dotnet"
+        assert classes[1]['visibility'] == "internal"
+
+        assert classes[3]['name'] == "Visibility"
+        assert classes[3]['namespace'] == "dotnet"
+        assert classes[3]['visibility'] == "internal"
+        assert classes[3]['methods'][0]['name'] == "private_func"
+        assert classes[3]['methods'][0]['visibility'] == "private"
+        assert classes[3]['methods'][1]['name'] == "public_func"
+        assert classes[3]['methods'][1]['visibility'] == "public"
+        assert classes[3]['methods'][2]['name'] == "internal_func"
+        assert classes[3]['methods'][2]['visibility'] == "internal"
+        assert classes[3]['methods'][3]['name'] == "protected_func"
+        assert classes[3]['methods'][3]['visibility'] == "protected"
+        assert classes[3]['methods'][4]['name'] == "priv_prot_func"
+        assert classes[3]['methods'][4]['visibility'] == "private protected"
+        assert classes[3]['methods'][5]['name'] == "prot_internal"
+        assert classes[3]['methods'][5]['visibility'] == "protected internal"
+
+        assert classes[6]['name'] == "Public"
+        assert classes[6]['namespace'] == "dotnet.Enclosing"
+        assert classes[6]['visibility'] == "public"
+
+        assert classes[7]['name'] == "Private"
+        assert classes[7]['namespace'] == "dotnet.Enclosing"
+        assert classes[7]['visibility'] == "private"
+
+        assert classes[8]['name'] == "Protected"
+        assert classes[8]['namespace'] == "dotnet.Enclosing"
+        assert classes[8]['visibility'] == "protected"
+
+        assert classes[9]['name'] == "FamilyOrAssembly"
+        assert classes[9]['namespace'] == "dotnet.Enclosing"
+        assert classes[9]['visibility'] == "protected internal"
+
+        assert classes[10]['name'] == "FamilyAndAssembly"
+        assert classes[10]['namespace'] == "dotnet.Enclosing"
+        assert classes[10]['visibility'] == "private protected"
+
+class TestOddMetadataOptions(Test):
+    settings=TestSettings(
+        tool='fileinfo',
+        args='--json --verbose',
+        input='5b5817fe2d4f0989501802b0e2bb4451583ff27fd0723f40bb7f8b0417dd7c58'
+    )
+
+    def test_extra_data_flag(self):
+        assert self.fileinfo.succeeded
+        # Sometimes there are 4 extra bytes that needs to be skipped
+        # when parsing due to the ExtraData flag being set in Metadata stream
+        # And sometimes there are multiple streams of the same name
+        classes = self.fileinfo.output['dotnetInfo']['classes']
+        assert len(classes) == 22
+
+class TestEmptyStrings(Test):
+    settings=TestSettings(
+        tool='fileinfo',
+        args='--json --verbose',
+        input='FA798A906AFEF2E2FA50DFED9A19119A712B14F941AAD51B23E56A8809A2A96B'
+    )
+
+    def test_empty_string_in_string_heap(self):
+        assert self.fileinfo.succeeded
+        classes = self.fileinfo.output['dotnetInfo']['classes']
+        assert classes[1]['name'] == '0'
+        assert classes[1]['methods'][0]['name'] == '0'
+        assert 'name' not in classes[1]['methods'][0]['parameters'][0]['type']
+        assert classes[1]['methods'][0]['parameters'][0]['type'] == 'object'
+
+class TestDeepNamespaces(Test):
+    settings=TestSettings(
+        tool='fileinfo',
+        args='--json --verbose',
+        input='visibilities.dll'
+    )
+
+    def test_nested_namespaces(self):
+        assert self.fileinfo.succeeded
+        classes = self.fileinfo.output['dotnetInfo']['classes']
+        assert classes[18]['name'] == 'NestedNestedType'
+        assert classes[18]['namespace'] == "dotnet.Enclosing.NestedType"
+        assert classes[18]['visibility'] == "public"
