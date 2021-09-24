@@ -14,5 +14,5 @@ class Test(Test):
         self.assertEqual(5, len(
             self.fileinfo.output['digitalSignatures']['signatures'][0]['allCertificates']))
 
-        self.assertEqual('CN=Microsoft Corporation,O=Microsoft Corporation,L=Redmond,ST=Washington,C=US',
+        self.assertEqual('/C=US/ST=Washington/L=Redmond/O=Microsoft Corporation/CN=Microsoft Corporation',
                          self.fileinfo.output['digitalSignatures']['signatures'][0]['signer']['chain'][0]['subject'])
