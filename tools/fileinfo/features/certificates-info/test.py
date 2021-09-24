@@ -24,10 +24,8 @@ class Test1(Test):
         assert first_sig['signedDigest'] == 'F6B86E97AEB3E567F58901F799E18FC6F89CC92E'
         assert first_sig['programName'] == "Broadband Download, Thunder in a Flash!"
 
-        assert first_sig['allCertificates'][0]['subject'] == "CN=Symantec Time Stamping Services CA - G2,O=Symantec Corporation,C=US"
-        assert first_sig['allCertificates'][0]['issuer'] == "CN=Thawte Timestamping CA,OU=Thawte Certification,O=Thawte,L=Durbanville,ST=Western Cape,C=ZA"
-        assert first_sig['allCertificates'][0]['subjectOneline'] == "/C=US/O=Symantec Corporation/CN=Symantec Time Stamping Services CA - G2"
-        assert first_sig['allCertificates'][0]['issuerOneline'] == "/C=ZA/ST=Western Cape/L=Durbanville/O=Thawte/OU=Thawte Certification/CN=Thawte Timestamping CA"
+        assert first_sig['allCertificates'][0]['subject'] == "/C=US/O=Symantec Corporation/CN=Symantec Time Stamping Services CA - G2"
+        assert first_sig['allCertificates'][0]['issuer'] == "/C=ZA/ST=Western Cape/L=Durbanville/O=Thawte/OU=Thawte Certification/CN=Thawte Timestamping CA"
         assert first_sig['allCertificates'][0]['serialNumber'] == "7e:93:eb:fb:7c:c6:4e:59:ea:4b:9a:77:d4:06:fc:3b"
         assert first_sig['allCertificates'][0]['publicKeyAlgorithm'] == "rsaEncryption"
         assert first_sig['allCertificates'][0]['signatureAlgorithm'] == "sha1WithRSAEncryption"
@@ -137,8 +135,8 @@ class Test2(Test):
         assert first_sig['fileDigest'] == '3E7B33AB316770BD369BFADF5FB5354730C89991'
         assert first_sig['signedDigest'] == '3E7B33AB316770BD369BFADF5FB5354730C89991'
 
-        assert first_sig['allCertificates'][0]['subject'] == "CN=Symantec Time Stamping Services CA - G2,O=Symantec Corporation,C=US"
-        assert first_sig['allCertificates'][0]['issuer'] == "CN=Thawte Timestamping CA,OU=Thawte Certification,O=Thawte,L=Durbanville,ST=Western Cape,C=ZA"
+        assert first_sig['allCertificates'][0]['subject'] == "/C=US/O=Symantec Corporation/CN=Symantec Time Stamping Services CA - G2"
+        assert first_sig['allCertificates'][0]['issuer'] == "/C=ZA/ST=Western Cape/L=Durbanville/O=Thawte/OU=Thawte Certification/CN=Thawte Timestamping CA"
         assert first_sig['allCertificates'][0]['serialNumber'] == "7e:93:eb:fb:7c:c6:4e:59:ea:4b:9a:77:d4:06:fc:3b"
         assert first_sig['allCertificates'][0]['publicKeyAlgorithm'] == "rsaEncryption"
         assert first_sig['allCertificates'][0]['signatureAlgorithm'] == "sha1WithRSAEncryption"
@@ -537,7 +535,7 @@ class Test7(Test):
 
         second_sig_countersig = second_sig_signer['counterSigners'][0]
         assert len(second_sig_countersig['warnings']) == 1
-        assert second_sig_countersig['warnings'][0] == "Couldn't parse signature"
+        assert second_sig_countersig['warnings'][0] == "Couldn't parse counter-signature"
 
 
 class Test8(Test):
@@ -675,7 +673,7 @@ class Test10(Test):
 
         second_sig_countersig = second_sig_signer['counterSigners'][0]
         assert len(second_sig_countersig['warnings']) == 1
-        assert second_sig_countersig['warnings'][0] == "Couldn't parse signature"
+        assert second_sig_countersig['warnings'][0] == "Couldn't parse counter-signature"
 
 
 class TestEscaping(Test):
