@@ -170,6 +170,15 @@ class Test2(Test):
         assert first_sig_signer['digest'] == "229A2D7B4C8F2E8EC5B6943D0F0E53B9F59E33B5"
         assert first_sig_signer['digestAlgorithm'] == 'sha1'
 
+        assert first_sig_signer['certificate']['subject'] == '/C=CZ/ST=Jihomoravsky kraj/L=Brno/O=AVG Technologies CZ, s.r.o./CN=AVG Technologies CZ, s.r.o.'
+        assert first_sig_signer['certificate'][
+            'issuer'] == '/C=US/O=VeriSign, Inc./OU=VeriSign Trust Network/OU=Terms of use at https://www.verisign.com/rpa (c)10/CN=VeriSign Class 3 Code Signing 2010 CA'
+        assert first_sig_signer['certificate']['sha256'] == '3B0ABE047D7E84F3BBD12B5E399BED55E4D7E9FCC3F629B8953A8C060EF6D746'
+        assert first_sig_signer['certificate']['sha1'] == 'AB7E760DA2485EA9EF5A6EEE7647748D4BA6B947'
+        assert first_sig_signer['certificate']['validSince'] == 'Oct 22 00:00:00 2014 GMT'
+        assert first_sig_signer['certificate']['validUntil'] == 'Jan 20 23:59:59 2018 GMT'
+        assert first_sig_signer['certificate']['serialNumber'] == '26:6d:33:3e:de:17:a8:b4:72:05:3e:4f:a3:93:45:72'
+
         assert len(first_sig_signer['chain']) == 3
         assert first_sig_signer['chain'][0]['sha256'] == "3B0ABE047D7E84F3BBD12B5E399BED55E4D7E9FCC3F629B8953A8C060EF6D746"
         assert first_sig_signer['chain'][1]['sha256'] == "0CFC19DB681B014BFE3F23CB3A78B67208B4E3D8D7B6A7B1807F7CD6ECB2A54E"
