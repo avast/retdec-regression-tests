@@ -165,6 +165,32 @@ class TestResourceIconHash4(Test):
         self.assertEqual(self.fileinfo.output['resourceTable']['iconSha256'], 'bb6f9795ad97367b4dc0dd5787ca0a9160d62b95a34f5830e7f6f69d791e42c6')
         self.assertEqual(self.fileinfo.output['resourceTable']['iconAvgHash'], 'ffc3bdffbd8183ff')
 
+class TestResourceIconHashPng(Test):
+    settings = TestSettings(
+        tool='fileinfo',
+        input='png_icon.file',
+        args='--verbose --json'
+    )
+
+    def test_correctly_computes_resource_icon_hash(self):
+        assert self.fileinfo.succeeded
+
+        self.assertEqual(self.fileinfo.output['resourceTable']['iconMd5'], '4066f80a90faf7d2bb0b2b3cfba3f91e')
+        self.assertEqual(self.fileinfo.output['resourceTable']['iconAvgHash'], 'ffffdffbefefefff')
+
+class TestResourceIconHashDib(Test):
+    settings = TestSettings(
+        tool='fileinfo',
+        input='dib_icon.file',
+        args='--verbose --json'
+    )
+
+    def test_correctly_computes_resource_icon_hash(self):
+        assert self.fileinfo.succeeded
+
+        self.assertEqual(self.fileinfo.output['resourceTable']['iconMd5'], '6fc488a9aaa79eb8bea0e6e4e586ba87')
+        self.assertEqual(self.fileinfo.output['resourceTable']['iconAvgHash'], 'ffffdffbefefefff')
+
 class TestTelfhash1(Test):
     settings = TestSettings(
         tool='fileinfo',
