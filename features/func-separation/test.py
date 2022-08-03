@@ -16,6 +16,10 @@ class UserAndLinkedTest(Test):
 
     def test_funcs_are_separated_in_c_into_user_defined_dynamically_linked_and_statically_linked(self):
         expected_code_re = re.compile("""
+                -\ Dynamically\ Linked\ Functions\ Without\ Header\ -
+                .*
+                _wfopen
+                .*
                 -\ Functions\ -
                 .*
                 main
@@ -24,9 +28,6 @@ class UserAndLinkedTest(Test):
                 .*
                 ___main
                 .*
-                -\ Dynamically\ Linked\ Functions\ -
-                .*
-                _wfopen
             """,
             flags=re.VERBOSE | re.DOTALL
         )

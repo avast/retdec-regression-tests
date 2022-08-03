@@ -41,12 +41,12 @@ class Test(Test):
         #assert self.out_c.has_func('___set_app_type')
 
     def test_has_some_random_imported_functions(self):
-        assert self.out_c.has_comment_matching(r'.*_onexit_t __dllonexit\(_onexit_t.*\);')
-        assert self.out_c.has_comment_matching(r'.*void _?_RTC_CheckEsp\(void\);')
+        assert self.out_c.contains(r'int32_t \(\*__dllonexit\(int32_t.*\);')
+        assert self.out_c.contains(r'void __set_app_type\(int32_t a1\);')
 
     def test_declared_fnc_signatures_added_by_1628(self):
-        assert self.out_c.has_comment_matching(r'.*void _?_RTC_CheckStackVars\(char.*, int32_t.*\);')
+        assert self.out_c.contains(r'.*void _?_RTC_CheckStackVars\(char.*, int32_t.*\);')
         # the problem is that when we do not remove unreachable BBs, this fnc is called from
         # without params from call table -- we should not considered such calls, but we have
         # no way to detect it is the case.
-        #assert self.out_c.has_comment_matching(r'.*void _CrtSetCheckCount\(int32_t.*\);')
+        #assert self.out_c.contains(r'.*void _CrtSetCheckCount\(int32_t.*\);')

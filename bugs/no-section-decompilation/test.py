@@ -23,7 +23,7 @@ class mips_elf_efbb701bea47201fffe8ecb4443f1ccc(Test):
     def test_for_some_dynamically_linked_function(self):
         expected_code_re = re.compile("""
                 .*
-                -\ Dynamically\ Linked\ Functions\ -
+                -\ Dynamically\ Linked\ Functions\ Without\ Header\ -
                 .*
                 boot_DynaLoader.*
                 Perl_av_store.*
