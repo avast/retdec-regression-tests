@@ -46,13 +46,8 @@ class Test(Test):
         assert self.out_c.has_func( 'WritePolygon' )
 
     def test_has_some_random_imported_functions(self):
-        assert self.out_c.has_comment_matching(r'.*int32_t _addd\(.*a1.*') # a2.*')
-        assert self.out_c.has_comment_matching(r'.*int32_t.*_led\(.*a1.*') # a2.*')
-        assert self.out_c.has_comment_matching(r'.*int32_t.*_subd\(.*\);')
-        assert self.out_c.has_comment_matching(r'.*HPEN.*CreatePen\(.*\);')
-        assert self.out_c.has_comment_matching(r'.*HGDIOBJ.*SelectObject\(.*\);')
-        assert self.out_c.has_comment_matching(r'.*UINT.*SetTextAlign\(.*\);')
-        assert self.out_c.has_comment_matching(r'.*size_t.*wcstombs\(.*\);')
-        assert self.out_c.has_comment_matching(r'.*COLORREF.*SetTextColor\(.*\);')
-        assert self.out_c.has_comment_matching(r'.*FARPROC.*GetProcAddressW\(.*\);')
-        assert self.out_c.has_comment_matching(r'.*void.*GetCurrentFT\(.*lpFileTime\);')
+        assert self.out_c.contains(r'.*int32_t _addd\(.*a1.*') # a2.*')
+        assert self.out_c.contains(r'.*int32_t.*_led\(.*a1.*') # a2.*')
+        assert self.out_c.contains(r'.*int32_t.*_subd\(.*\);')
+        assert self.out_c.contains(r'.*int32_t \(\*GetProcAddressW\(.*\);')
+        assert self.out_c.contains(r'.*void GetCurrentFT\(struct _FILETIME \* a1\);')

@@ -10,10 +10,6 @@ class FiboTest(Test):
         input='fibo.x86-clang-O1.elf'
     )
 
-    def test_imported_functions(self):
-        assert self.out_c.has_comment_matching(r'// int printf\(.*char.*\*.*...\);')
-        assert self.out_c.has_comment_matching(r'// int scanf\(.*char.*\*.*...\);')
-
     def test_imported_functions_are_used(self):
         assert self.out_c.funcs['main'].calls('printf')
         assert self.out_c.funcs['main'].calls('scanf')
@@ -30,7 +26,7 @@ class CloseTest(Test):
     )
 
     def test_imported_close_function(self):
-        assert self.out_c.has_comment_matching(r'// int __cdecl _close\(.*int.*\);')
+        assert self.out_c.contains(r'int32_t _close\(int32_t a1\);')
 
     def test_imported_close_function_is_used(self):
         assert self.out_c.funcs['main'].calls('_close')

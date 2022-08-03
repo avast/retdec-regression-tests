@@ -805,8 +805,6 @@ class Test_2015_X86GccExe(TestBase):
         assert not self.out_c.contains('int32_t g.*; // ebp') # there should be no work with ebp
 
     def test_properties(self):
-        assert self.out_c.has_comment_matching('// int printf\(const char \* restrict format, ...\);')
-        assert self.out_c.has_comment_matching('// int scanf\(const char \* restrict format, ...\);')
         assert self.out_c.contains('int32_t x = 0; // bp-24, 0x4015d1')
         assert self.out_c.contains('int32_t y = 0; // bp-28, 0x4015d9')
 
