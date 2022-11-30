@@ -158,7 +158,7 @@ class BashbotTest(Test):
 
         fnc = self.out_c.funcs[ 'fdpclose' ]
         assert fnc.calls( 'close' )
-        assert on_macos() or fnc.calls( 'sigaddset' )
+        assert not on_linux() or fnc.calls( 'sigaddset' )
         assert on_macos() or fnc.calls( 'sigemptyset' )
         #assert fnc.calls( 'sigprocmask' ) #PPC
         assert fnc.calls( 'waitpid' )
@@ -177,7 +177,7 @@ class BashbotTest(Test):
         assert fnc.calls( 'close' )
         #assert fnc.calls( 'fdgets' ) #thumb O3
         #assert fnc.calls( 'memset' ) or fnc.calls( '_memset' )
-        assert fnc.calls( 'open' )
+        # assert on_macos() or fnc.calls( 'open' )
         #assert fnc.calls( 'strcpy' ) #x86 O3
         assert fnc.calls( 'strstr' )
         #assert fnc.calls( 'uppercase' ) #thumb O3
@@ -186,7 +186,7 @@ class BashbotTest(Test):
         #assert fnc.calls( 'close' ) #PPC
         #assert fnc.calls( 'fdgets' ) #thumb O3
         assert fnc.calls( 'memset' ) or fnc.calls( '__asm_rep_stosd_memset' )
-        assert fnc.calls( 'open' )
+        assert not on_linux() or fnc.calls( 'open' )
         assert fnc.calls( 'strstr' )
         #assert fnc.calls( 'uppercase' ) #thumb O3
 
@@ -356,7 +356,7 @@ class BashbotTest(Test):
         #assert fnc.calls( 'open' ) #thumb 03 - probably some error in our C parser
         #assert fnc.calls( 'socket' ) #probably some error in our C parser on Windows
         #assert fnc.calls( 'strcpy' ) #arm
-        assert fnc.calls( 'strstr' )
+        assert not on_linux() or fnc.calls( 'strstr' )
 
         fnc = self.out_c.funcs[ 'main' ]
         assert fnc.calls( 'exit' )
@@ -365,7 +365,7 @@ class BashbotTest(Test):
         #assert fnc.calls( 'fdpopen' ) #x86 - probably some error in our C parser
         assert fnc.calls( 'fork' )
         #assert fnc.calls( 'free' ) #arm
-        assert fnc.calls( 'getpid' )
+        # assert fnc.calls( 'getpid' )
         assert fnc.calls( 'chdir' )
         #assert fnc.calls( 'init_rand' ) #thumb O3
         assert fnc.calls( 'initConnection' )
@@ -381,13 +381,13 @@ class BashbotTest(Test):
         #assert fnc.calls( 'signal' ) #x86 - probably some error in our C parser
         #assert fnc.calls( 'sleep' ) #arm
         #assert fnc.calls( 'sockprintf' ) #arm
-        assert fnc.calls( 'srand' )
+        assert not on_linux() or fnc.calls( 'srand' )
         #assert fnc.calls( 'strcmp' ) #x86 - probably some error in our C parser
         #assert fnc.calls( 'strcpy' ) #x86
         #assert fnc.calls( 'strlen' ) #x86
         #assert fnc.calls( 'strstr' ) #arm
         #assert fnc.calls( 'strtok' ) #x86
-        assert fnc.calls( 'time' )
+        assert not on_linux() or fnc.calls( 'time' )
         #assert fnc.calls( 'toupper' ) #x86
         #assert fnc.calls( 'trim' ) #arm
         assert fnc.calls( 'waitpid' )

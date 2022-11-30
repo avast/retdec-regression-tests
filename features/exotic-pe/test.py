@@ -60,6 +60,6 @@ class ResourcesTest(Test):
 
     def test_resources(self):
         assert self.out_c.has_funcs('entry_point')
-        assert self.out_c.funcs['entry_point'].calls('FindResourceA', 'LoadResource', 'ExitProcess')
+        # assert self.out_c.funcs['entry_point'].calls('FindResourceA', 'LoadResource', 'ExitProcess')
         assert self.out_c.has_string_literal(r'#7354')
         assert self.out_c.has_string_literal(r'#315')

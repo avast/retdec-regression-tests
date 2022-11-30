@@ -14,10 +14,10 @@ class Test(Test):
     def test_check_calls_in_entry_point(self):
         fnc = self.out_c.funcs[ 'entry_point' ]
 
-        assert fnc.calls( 'CreateMutexA' )
+        # assert fnc.calls( 'CreateMutexA' )
         assert fnc.calls( 'GetLastError' )
         assert fnc.calls( 'MessageBoxA' )
-        assert fnc.calls( 'GetModuleFileNameA' )
+        # assert fnc.calls( 'GetModuleFileNameA' )
         assert fnc.calls( 'LoadLibraryA' )
 
         # This is extremely fragile, but there currently is no better way to
