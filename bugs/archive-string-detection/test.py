@@ -59,7 +59,7 @@ class TestPowerPCElf(Test):
     )
 
     def test_relocations_applied(self):
-        assert self.out_dsm.contains('0xfc:\s*30 60 01 6c\s*addic r3, r0, 364')
-        assert self.out_dsm.contains('0x108:\s*33 a0 01 7c\s*addic r29, r0, 380')
-        assert self.out_dsm.contains('0x110:\s*4b ff fe f1\s*bl 0x0 <foo>')
+        assert self.out_dsm.contains('0xfc:\s*30 60 01 6c\s*addic r3, r0, 0x16c')
+        assert self.out_dsm.contains('0x108:\s*33 a0 01 7c\s*addic r29, r0, 0x17c')
+        assert self.out_dsm.contains('0x110:\s*4b ff fe f1\s*bl 0 <foo>')
         assert self.out_dsm.contains('0x11c:\s*4b ff ff 6d\s*bl 0x88 <bar>')
