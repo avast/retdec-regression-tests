@@ -206,7 +206,7 @@ class TestTelfhash1(Test):
         self.assertEqual(self.fileinfo.output['importTable']['crc32'], 'e441714e')
         self.assertEqual(self.fileinfo.output['importTable']['md5'], '26e125edc4bb34a4a3a424543f0cac84')
         self.assertEqual(self.fileinfo.output['importTable']['sha256'], 'afcb2d66afb328958e3fd93f4fd5028eb66edb61cb407e20f10bacd489315ed1')
-        self.assertEqual(self.fileinfo.output['importTable']['tlsh'], 't167d095efc918dd4f4c4d9514247738343191c5033d1480c3477042dc002446d35cdc6c')
+        self.assertEqual(self.fileinfo.output['importTable']['tlsh'], 'T167D095EFC918DD4F4C4D9514247738343191C5033D1480C3477042DC002446D35CDC6C')
 
 class TestTelfhash2(Test):
     settings = TestSettings(
