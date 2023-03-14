@@ -200,13 +200,13 @@ class TestTelfhash1(Test):
 
     def test_telfhash(self):
         assert self.fileinfo.succeeded
-        self.assertEqual(self.fileinfo.output['telfhash'], 't1dab0126dd319c94560ce1610444376b7d106c875105b601301f010b85e001801447d3d')
+        self.assertEqual(self.fileinfo.output['telfhash'], 'T1DAB0126DD319C94560CE1610444376B7D106C875105B601301F010B85E001801447D3D')
 
     def test_import_table_hashes(self):
         self.assertEqual(self.fileinfo.output['importTable']['crc32'], 'e441714e')
         self.assertEqual(self.fileinfo.output['importTable']['md5'], '26e125edc4bb34a4a3a424543f0cac84')
         self.assertEqual(self.fileinfo.output['importTable']['sha256'], 'afcb2d66afb328958e3fd93f4fd5028eb66edb61cb407e20f10bacd489315ed1')
-        self.assertEqual(self.fileinfo.output['importTable']['tlsh'], 't167d095efc918dd4f4c4d9514247738343191c5033d1480c3477042dc002446d35cdc6c')
+        self.assertEqual(self.fileinfo.output['importTable']['tlsh'], 'T167D095EFC918DD4F4C4D9514247738343191C5033D1480C3477042DC002446D35CDC6C')
 
 class TestTelfhash2(Test):
     settings = TestSettings(
@@ -217,4 +217,4 @@ class TestTelfhash2(Test):
 
     def test_telfhash(self):
         assert self.fileinfo.succeeded
-        self.assertEqual(self.fileinfo.output['telfhash'], 't1e123fc0c6cf10e452aca53e7ec3409c4237be21e15a978159e2cd3bd99ad2cd1db6b1e')
+        self.assertEqual(self.fileinfo.output['telfhash'], 'T1E123FC0C6CF10E452ACA53E7EC3409C4237BE21E15A978159E2CD3BD99AD2CD1DB6B1E')
