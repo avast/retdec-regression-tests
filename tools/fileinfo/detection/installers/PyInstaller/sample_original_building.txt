@@ -1,0 +1,8 @@
+How to build a PyInstaller sample
+---------------------------------
+
+1. Install Python version of your choice
+2. Install PyInstaller
+   * pip install -U PyInstaller
+3 Build the file
+   * pyinstaller --onefile sample_original.py
