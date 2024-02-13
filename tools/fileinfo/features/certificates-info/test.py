@@ -543,8 +543,11 @@ class Test7(Test):
         assert len(second_sig_signer['chain']) == 2
 
         second_sig_countersig = second_sig_signer['counterSigners'][0]
-        assert len(second_sig_countersig['warnings']) == 1
-        assert second_sig_countersig['warnings'][0] == "Couldn't parse counter-signature"
+        assert second_sig_countersig['signTime'] == "Jul  7 07:30:58 2015 GMT"
+        assert second_sig_countersig['digest'] == "A859AF093DA60BCAF680CA062457775563F0421851D7337D517BFC9213B14B40"
+        assert second_sig_countersig['digestAlgorithm'] == 'sha256'
+        assert len(second_sig_countersig['warnings']) == 0
+        assert len(second_sig_countersig['chain']) == 2
 
 
 class Test8(Test):
@@ -681,8 +684,11 @@ class Test10(Test):
         assert len(second_sig_signer['chain']) == 2
 
         second_sig_countersig = second_sig_signer['counterSigners'][0]
-        assert len(second_sig_countersig['warnings']) == 1
-        assert second_sig_countersig['warnings'][0] == "Couldn't parse counter-signature"
+        assert second_sig_countersig['signTime'] == "Jul  7 07:34:44 2015 GMT"
+        assert second_sig_countersig['digest'] == '952BBF50C96A849E5A0301AC3DAD5EA9AA7B23BB5C07450F2E30BF7AF76C253F'
+        assert second_sig_countersig['digestAlgorithm'] == 'sha256'
+        assert len(second_sig_countersig['warnings']) == 0
+        assert len(second_sig_countersig['chain']) == 2
 
 
 class TestEscaping(Test):
