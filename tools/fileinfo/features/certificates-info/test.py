@@ -533,7 +533,7 @@ class Test7(Test):
         assert second_sig['signedDigest'] == '5BFB3AB09F359E11D76D95640BACB3A6CD65F2EF0D1763DC47D0B7F7203D22B7'
         assert first_sig['programName'] == 'msenvmnu.dll'
 
-        assert len(second_sig['allCertificates']) == 2
+        assert len(second_sig['allCertificates']) == 4
         assert second_sig['allCertificates'][0]['sha1'] == "76DAF3E30F95B244CA4D6107E0243BB97F7DF965"
         assert second_sig['allCertificates'][1]['sha1'] == "F252E794FE438E35ACE6E53762C0A234A2C52135"
 
@@ -674,7 +674,7 @@ class Test10(Test):
         assert second_sig['signedDigest'] == '7E6B06384FF2B27537F0AC76E311C116434D02DBC735FAF113B6EFD6D629F74C'
         assert first_sig['programName'] == 'VSTST-FileConverter.exe'
 
-        assert len(second_sig['allCertificates']) == 2
+        assert len(second_sig['allCertificates']) == 4
         assert second_sig['allCertificates'][0]['sha256'] == "BD3FCED7A02EA9A18CEBC0628AF487A2925960BE8A88A35609666FA7901987AA"
         assert second_sig['allCertificates'][1]['sha256'] == "56DA8722AFD94066FFE1E4595473A4854892B843A0827D53FB7D8F4AEED1E18B"
 
