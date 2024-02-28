@@ -1,10 +1,10 @@
 from regression_tests import *
 
-class Test_Version_105(Test):
+class Test_PeInOverlay(Test):
     settings = TestSettings(
         tool='fileinfo',
         input=['pe-in-overlay32.exe_',
-               'pe-in-overlay64.exe_']
+               'pe-in-overlay64.exe_'],
         args='--json'
     )
 
