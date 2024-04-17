@@ -29,12 +29,21 @@ class TestPyInstaller_30_38(Test):
         assert self.fileinfo.succeeded
         assert self.fileinfo.output.contains(r'PyInstaller \(3.0-3.8\)')
 
-class TestPyInstaller_39_plus(Test):
+class TestPyInstaller_39(Test):
     settings = TestSettings(
         tool='fileinfo',
         input=['sample_pyinstaller_39.exe_',
-               'sample_pyinstaller_39_x64.exe_',
-               'sample_pyinstallerx_310.exe_',
+               'sample_pyinstaller_39_x64.exe_']
+    )
+
+    def test_detected_pyinstaller(self):
+        assert self.fileinfo.succeeded
+        assert self.fileinfo.output.contains(r'PyInstaller \(3.9\)')
+
+class TestPyInstaller_310_plus(Test):
+    settings = TestSettings(
+        tool='fileinfo',
+        input=['sample_pyinstallerx_310.exe_',
                'sample_pyinstallerx_310_x64.exe_',
                'sample_pyinstallerx_311.exe_',
                'sample_pyinstallerx_311_x64.exe_']
@@ -42,4 +51,4 @@ class TestPyInstaller_39_plus(Test):
 
     def test_detected_pyinstaller(self):
         assert self.fileinfo.succeeded
-        assert self.fileinfo.output.contains(r'PyInstaller \(3.9\+\)')
+        assert self.fileinfo.output.contains(r'PyInstaller \(3.10\+\)')
