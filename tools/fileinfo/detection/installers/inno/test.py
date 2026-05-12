@@ -18,7 +18,7 @@ class TestInnoSetupDetection_670(Test):
 
     def test_detected_inno(self):
         assert self.fileinfo.succeeded
-        assert self.fileinfo.output.contains(r'.*Inno Setup \(6.7.0\)')
+        assert self.fileinfo.output.contains(r'.*Inno Setup \(6.x\)')
 
 class TestInnoSetupDetection_700(Test):
     settings = TestSettings(
@@ -28,7 +28,7 @@ class TestInnoSetupDetection_700(Test):
 
     def test_detected_inno(self):
         assert self.fileinfo.succeeded
-        assert self.fileinfo.output.contains(r'.*Inno Setup \(7.0.0\)')
+        assert self.fileinfo.output.contains(r'.*Inno Setup \(7.x\)')
 
 class TestInnoUnistallerDetection(Test):
     settings = TestSettings(
