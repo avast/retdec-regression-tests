@@ -28,7 +28,9 @@ class TestPyInstaller_3x(Test):
                'sample_pyinstallerx_310.exe_',
                'sample_pyinstallerx_310_x64.exe_',
                'sample_pyinstallerx_311.exe_',
-               'sample_pyinstallerx_311_x64.exe_']
+               'sample_pyinstallerx_312_x64.exe_',
+               'sample_pyinstallerx_313_x64.exe_',
+               'sample_pyinstallerx_314_x64.exe_']
     )
 
     def test_detected_pyinstaller(self):
